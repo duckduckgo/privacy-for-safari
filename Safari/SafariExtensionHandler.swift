@@ -2,8 +2,19 @@
 //  SafariExtensionHandler.swift
 //  Safari
 //
-//  Created by Chris Brind on 17/04/2019.
-//  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.
+//  Copyright © 2019 DuckDuckGo. All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import SafariServices
@@ -19,17 +30,34 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func toolbarItemClicked(in window: SFSafariWindow) {
-        // This method will be called when your toolbar item is clicked.
-        NSLog("The extension's toolbar item was clicked")
+        window.getToolbarItem { toolbarItem in
+            toolbarItem?.showPopover()
+        }
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-        // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
         validationHandler(true, "")
+        
+        window.getToolbarItem { toolbarItem in
+            
+            let name = [ "ToolbarGradeA",
+                         "ToolbarGradeB",
+                         "ToolbarGradeBPlus",
+                         "ToolbarGradeC",
+                         "ToolbarGradeCPlus",
+                         "ToolbarGradeD"].shuffled().first ?? "ToolbarGradeA"
+            
+            toolbarItem?.setImage(NSImage(named: NSImage.Name(name)))
+        }
+        
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
         return SafariExtensionViewController.shared
+    }
+    
+    override func popoverWillShow(in window: SFSafariWindow) {
+        SafariExtensionViewController.shared.safariWindow = window
     }
 
 }

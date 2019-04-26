@@ -1,30 +1,90 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SafariExtensionViewController" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="SafariExtensionViewController" customModule="Safari_App_Extension" customModuleProvider="target">
             <connections>
+                <outlet property="searchField" destination="zFw-K7-EcN" id="JgX-BP-hRl"/>
+                <outlet property="tabs" destination="u24-RE-9Oh" id="svi-Ce-Ajn"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="119"/>
+        <customView wantsLayer="YES" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Iy-aV-wGF">
-                    <rect key="frame" x="103" y="82" width="124" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Safari" id="2Ec-kd-q2K">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EW3-Sm-fSZ">
+                    <rect key="frame" x="16" y="560" width="268" height="24"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-ht-4tA">
+                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="QZP-ht-4tA" secondAttribute="height" multiplier="1:1" id="KgZ-N8-l6g"/>
+                                <constraint firstAttribute="height" constant="24" id="MOf-XW-Nql"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="6FX-ne-XAu"/>
+                        </imageView>
+                        <textField focusRingType="none" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-K7-EcN">
+                            <rect key="frame" x="28" y="2" width="204" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="PnP-xk-KlO"/>
+                            </constraints>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" focusRingType="none" placeholderString="Search DuckDuckGo" id="T1m-Ma-6Rg">
+                                <font key="font" size="16" name="ProximaNova-Regular"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <action selector="performSearchWithSender:" target="-2" id="pvq-I1-uUQ"/>
+                            </connections>
+                        </textField>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="4sM-Fe-yOe">
+                            <rect key="frame" x="236" y="0.0" width="32" height="24"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SearchLoupe" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fol-nQ-O59">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="performSearchWithSender:" target="-2" id="jet-Zv-fto"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <real value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="u24-RE-9Oh">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="560"/>
+                    <font key="font" metaFont="system"/>
+                </tabView>
             </subviews>
+            <constraints>
+                <constraint firstItem="EW3-Sm-fSZ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="0e1-TW-BGB"/>
+                <constraint firstItem="EW3-Sm-fSZ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="INg-sm-kce"/>
+                <constraint firstAttribute="bottom" secondItem="u24-RE-9Oh" secondAttribute="bottom" id="Wbz-k3-EzT"/>
+                <constraint firstItem="u24-RE-9Oh" firstAttribute="top" secondItem="EW3-Sm-fSZ" secondAttribute="bottom" id="Zwv-zj-Sg0"/>
+                <constraint firstAttribute="trailing" secondItem="EW3-Sm-fSZ" secondAttribute="trailing" constant="16" id="gdL-ai-0Fl"/>
+                <constraint firstAttribute="trailing" secondItem="u24-RE-9Oh" secondAttribute="trailing" id="lOy-vR-hCx"/>
+                <constraint firstItem="EW3-Sm-fSZ" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="rKl-g6-huU"/>
+                <constraint firstItem="u24-RE-9Oh" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="sM8-BD-cn8"/>
+            </constraints>
+            <point key="canvasLocation" x="-683" y="28"/>
         </customView>
     </objects>
+    <resources>
+        <image name="Logo" width="119" height="119"/>
+        <image name="SearchLoupe" width="24" height="24"/>
+    </resources>
 </document>

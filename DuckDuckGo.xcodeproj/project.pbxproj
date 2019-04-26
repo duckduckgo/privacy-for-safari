@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */; };
+		8510B257226F3BFB0015D406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8510B256226F3BFB0015D406 /* Assets.xcassets */; };
+		8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */; };
+		8510B262226F5A3B0015D406 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */; };
+		8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B263226F5A840015D406 /* MainDashboardViewController.swift */; };
+		8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8510B265226F5AF30015D406 /* Dashboard.storyboard */; };
+		8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */; };
+		8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */; };
 		85417D64226605E60062A081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417D63226605E60062A081 /* AppDelegate.swift */; };
-		85417D66226605E60062A081 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417D65226605E60062A081 /* ViewController.swift */; };
+		85417D66226605E60062A081 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417D65226605E60062A081 /* MainViewController.swift */; };
 		85417D68226605E60062A081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85417D67226605E60062A081 /* Assets.xcassets */; };
 		85417D6B226605E60062A081 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85417D69226605E60062A081 /* Main.storyboard */; };
 		85417D8E226762870062A081 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85417D8D226762870062A081 /* Cocoa.framework */; };
@@ -16,12 +24,34 @@
 		85417D93226762870062A081 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417D92226762870062A081 /* SafariExtensionViewController.swift */; };
 		85417D96226762870062A081 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85417D94226762870062A081 /* SafariExtensionViewController.xib */; };
 		85417D99226762870062A081 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 85417D98226762870062A081 /* script.js */; };
-		85417D9B226762870062A081 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 85417D9A226762870062A081 /* ToolbarItemIcon.pdf */; };
-		85417D9F226762870062A081 /* Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85417D8B226762870062A081 /* Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		85417D9F226762870062A081 /* Safari App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85417D8B226762870062A081 /* Safari App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		85417DA9226762E40062A081 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85417D8D226762870062A081 /* Cocoa.framework */; };
 		85417DAC226762E40062A081 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 85417DAB226762E40062A081 /* blockerList.json */; };
 		85417DAE226762E40062A081 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417DAD226762E40062A081 /* ContentBlockerRequestHandler.swift */; };
-		85417DB3226762E40062A081 /* ContentBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85417DA8226762E40062A081 /* ContentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		85417DB3226762E40062A081 /* Content Blocker Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85417DA8226762E40062A081 /* Content Blocker Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		85417DDD2268B3E00062A081 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417DDC2268B3E00062A081 /* WelcomeViewController.swift */; };
+		854A9F3822706805008F2A93 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3322706805008F2A93 /* proximanova-regular.otf */; };
+		854A9F3922706805008F2A93 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3422706805008F2A93 /* proximanova-light.otf */; };
+		854A9F3A22706805008F2A93 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3522706805008F2A93 /* proximanova-extrabold.otf */; };
+		854A9F3B22706805008F2A93 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3622706805008F2A93 /* proximanova-bold.otf */; };
+		854A9F3C22706805008F2A93 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3722706805008F2A93 /* proximanova-semibold.otf */; };
+		854A9F3D22706817008F2A93 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3622706805008F2A93 /* proximanova-bold.otf */; };
+		854A9F3E22706817008F2A93 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3522706805008F2A93 /* proximanova-extrabold.otf */; };
+		854A9F3F22706817008F2A93 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3422706805008F2A93 /* proximanova-light.otf */; };
+		854A9F4022706817008F2A93 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3322706805008F2A93 /* proximanova-regular.otf */; };
+		854A9F4122706817008F2A93 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3722706805008F2A93 /* proximanova-semibold.otf */; };
+		854A9F4322707078008F2A93 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4222707078008F2A93 /* SettingsViewController.swift */; };
+		854A9F45227080F7008F2A93 /* DomainPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F44227080F7008F2A93 /* DomainPromptViewController.swift */; };
+		854A9F4722708783008F2A93 /* TrustedSitesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4622708783008F2A93 /* TrustedSitesManager.swift */; };
+		854A9F4822708DC1008F2A93 /* TrustedSitesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4622708783008F2A93 /* TrustedSitesManager.swift */; };
+		854A9F4922708DC2008F2A93 /* TrustedSitesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4622708783008F2A93 /* TrustedSitesManager.swift */; };
+		854A9F4D2270BD34008F2A93 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4C2270BD34008F2A93 /* URLExtension.swift */; };
+		854A9F4E2270BEDC008F2A93 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4C2270BD34008F2A93 /* URLExtension.swift */; };
+		854A9F502271B078008F2A93 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F4F2271B078008F2A93 /* Shared.xcassets */; };
+		854A9F512271B0BA008F2A93 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F4F2271B078008F2A93 /* Shared.xcassets */; };
+		854A9F542271CB01008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
+		854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
+		854A9F562271CB0B008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +78,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				85417D9F226762870062A081 /* Safari.appex in Embed App Extensions */,
-				85417DB3226762E40062A081 /* ContentBlocker.appex in Embed App Extensions */,
+				85417D9F226762870062A081 /* Safari App Extension.appex in Embed App Extensions */,
+				85417DB3226762E40062A081 /* Content Blocker Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,27 +87,45 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
+		8510B256226F3BFB0015D406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogoToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		8510B263226F5A840015D406 /* MainDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
+		8510B265226F5AF30015D406 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationDelegate.swift; sourceTree = "<group>"; };
+		8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardViewController.swift; sourceTree = "<group>"; };
 		85417D60226605E60062A081 /* DuckDuckGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckDuckGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85417D63226605E60062A081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		85417D65226605E60062A081 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		85417D65226605E60062A081 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		85417D67226605E60062A081 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85417D6A226605E60062A081 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		85417D6C226605E60062A081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85417D6D226605E60062A081 /* DuckDuckGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuckDuckGo.entitlements; sourceTree = "<group>"; };
-		85417D8B226762870062A081 /* Safari.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Safari.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		85417D8B226762870062A081 /* Safari App Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari App Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85417D8D226762870062A081 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		85417D90226762870062A081 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
 		85417D92226762870062A081 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
 		85417D95226762870062A081 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		85417D97226762870062A081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85417D98226762870062A081 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		85417D9A226762870062A081 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		85417D9C226762870062A081 /* Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari.entitlements; sourceTree = "<group>"; };
-		85417DA8226762E40062A081 /* ContentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ContentBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		85417DA8226762E40062A081 /* Content Blocker Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Content Blocker Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85417DAB226762E40062A081 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
 		85417DAD226762E40062A081 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
 		85417DAF226762E40062A081 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85417DB0226762E40062A081 /* ContentBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ContentBlocker.entitlements; sourceTree = "<group>"; };
+		85417DDC2268B3E00062A081 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		854A9F3322706805008F2A93 /* proximanova-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-regular.otf"; path = "fonts/licensed/proximanova-regular.otf"; sourceTree = "<group>"; };
+		854A9F3422706805008F2A93 /* proximanova-light.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-light.otf"; path = "fonts/licensed/proximanova-light.otf"; sourceTree = "<group>"; };
+		854A9F3522706805008F2A93 /* proximanova-extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-extrabold.otf"; path = "fonts/licensed/proximanova-extrabold.otf"; sourceTree = "<group>"; };
+		854A9F3622706805008F2A93 /* proximanova-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-bold.otf"; path = "fonts/licensed/proximanova-bold.otf"; sourceTree = "<group>"; };
+		854A9F3722706805008F2A93 /* proximanova-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-semibold.otf"; path = "fonts/licensed/proximanova-semibold.otf"; sourceTree = "<group>"; };
+		854A9F4222707078008F2A93 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		854A9F44227080F7008F2A93 /* DomainPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainPromptViewController.swift; sourceTree = "<group>"; };
+		854A9F4622708783008F2A93 /* TrustedSitesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesManager.swift; sourceTree = "<group>"; };
+		854A9F4C2270BD34008F2A93 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		854A9F4F2271B078008F2A93 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
+		854A9F532271CB01008F2A93 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,14 +155,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8510B261226F5A110015D406 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
+				854A9F4622708783008F2A93 /* TrustedSitesManager.swift */,
+				854A9F4C2270BD34008F2A93 /* URLExtension.swift */,
+				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
+				854A9F532271CB01008F2A93 /* AppIcon.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		85417D57226605E60062A081 = {
 			isa = PBXGroup;
 			children = (
-				85417D62226605E60062A081 /* DuckDuckGo */,
-				85417D8F226762870062A081 /* Safari */,
 				85417DAA226762E40062A081 /* ContentBlocker */,
+				85417D62226605E60062A081 /* DuckDuckGo */,
+				854A9F32227067ED008F2A93 /* Fonts */,
 				85417D8C226762870062A081 /* Frameworks */,
 				85417D61226605E60062A081 /* Products */,
+				85417D8F226762870062A081 /* Safari */,
+				8510B261226F5A110015D406 /* Shared */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				85417D60226605E60062A081 /* DuckDuckGo.app */,
-				85417D8B226762870062A081 /* Safari.appex */,
-				85417DA8226762E40062A081 /* ContentBlocker.appex */,
+				85417D8B226762870062A081 /* Safari App Extension.appex */,
+				85417DA8226762E40062A081 /* Content Blocker Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,11 +194,14 @@
 			isa = PBXGroup;
 			children = (
 				85417D63226605E60062A081 /* AppDelegate.swift */,
-				85417D65226605E60062A081 /* ViewController.swift */,
 				85417D67226605E60062A081 /* Assets.xcassets */,
-				85417D69226605E60062A081 /* Main.storyboard */,
-				85417D6C226605E60062A081 /* Info.plist */,
 				85417D6D226605E60062A081 /* DuckDuckGo.entitlements */,
+				85417D6C226605E60062A081 /* Info.plist */,
+				85417D69226605E60062A081 /* Main.storyboard */,
+				85417D65226605E60062A081 /* MainViewController.swift */,
+				85417DDC2268B3E00062A081 /* WelcomeViewController.swift */,
+				854A9F4222707078008F2A93 /* SettingsViewController.swift */,
+				854A9F44227080F7008F2A93 /* DomainPromptViewController.swift */,
 			);
 			path = DuckDuckGo;
 			sourceTree = "<group>";
@@ -152,13 +217,18 @@
 		85417D8F226762870062A081 /* Safari */ = {
 			isa = PBXGroup;
 			children = (
+				8510B256226F3BFB0015D406 /* Assets.xcassets */,
+				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
+				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
+				85417D97226762870062A081 /* Info.plist */,
+				8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */,
+				8510B263226F5A840015D406 /* MainDashboardViewController.swift */,
+				85417D9C226762870062A081 /* Safari.entitlements */,
 				85417D90226762870062A081 /* SafariExtensionHandler.swift */,
 				85417D92226762870062A081 /* SafariExtensionViewController.swift */,
 				85417D94226762870062A081 /* SafariExtensionViewController.xib */,
-				85417D97226762870062A081 /* Info.plist */,
+				8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */,
 				85417D98226762870062A081 /* script.js */,
-				85417D9A226762870062A081 /* ToolbarItemIcon.pdf */,
-				85417D9C226762870062A081 /* Safari.entitlements */,
 			);
 			path = Safari;
 			sourceTree = "<group>";
@@ -174,6 +244,18 @@
 			path = ContentBlocker;
 			sourceTree = "<group>";
 		};
+		854A9F32227067ED008F2A93 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				854A9F3622706805008F2A93 /* proximanova-bold.otf */,
+				854A9F3522706805008F2A93 /* proximanova-extrabold.otf */,
+				854A9F3422706805008F2A93 /* proximanova-light.otf */,
+				854A9F3322706805008F2A93 /* proximanova-regular.otf */,
+				854A9F3722706805008F2A93 /* proximanova-semibold.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +263,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo" */;
 			buildPhases = (
+				854A9F3022706478008F2A93 /* Install Fonts */,
 				85417D5C226605E60062A081 /* Sources */,
 				85417D73226613900062A081 /* Swiftlint */,
 				85417D5D226605E60062A081 /* Frameworks */,
@@ -198,9 +281,9 @@
 			productReference = 85417D60226605E60062A081 /* DuckDuckGo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		85417D8A226762870062A081 /* Safari */ = {
+		85417D8A226762870062A081 /* Safari App Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 85417DA0226762870062A081 /* Build configuration list for PBXNativeTarget "Safari" */;
+			buildConfigurationList = 85417DA0226762870062A081 /* Build configuration list for PBXNativeTarget "Safari App Extension" */;
 			buildPhases = (
 				85417D87226762870062A081 /* Sources */,
 				85417D88226762870062A081 /* Frameworks */,
@@ -210,14 +293,14 @@
 			);
 			dependencies = (
 			);
-			name = Safari;
+			name = "Safari App Extension";
 			productName = Safari;
-			productReference = 85417D8B226762870062A081 /* Safari.appex */;
+			productReference = 85417D8B226762870062A081 /* Safari App Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		85417DA7226762E40062A081 /* ContentBlocker */ = {
+		85417DA7226762E40062A081 /* Content Blocker Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 85417DB4226762E40062A081 /* Build configuration list for PBXNativeTarget "ContentBlocker" */;
+			buildConfigurationList = 85417DB4226762E40062A081 /* Build configuration list for PBXNativeTarget "Content Blocker Extension" */;
 			buildPhases = (
 				85417DA4226762E40062A081 /* Sources */,
 				85417DA5226762E40062A081 /* Frameworks */,
@@ -227,9 +310,9 @@
 			);
 			dependencies = (
 			);
-			name = ContentBlocker;
+			name = "Content Blocker Extension";
 			productName = ContentBlocker;
-			productReference = 85417DA8226762E40062A081 /* ContentBlocker.appex */;
+			productReference = 85417DA8226762E40062A081 /* Content Blocker Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -244,12 +327,42 @@
 				TargetAttributes = {
 					85417D5F226605E60062A081 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					85417D8A226762870062A081 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					85417DA7226762E40062A081 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -267,8 +380,8 @@
 			projectRoot = "";
 			targets = (
 				85417D5F226605E60062A081 /* DuckDuckGo */,
-				85417D8A226762870062A081 /* Safari */,
-				85417DA7226762E40062A081 /* ContentBlocker */,
+				85417D8A226762870062A081 /* Safari App Extension */,
+				85417DA7226762E40062A081 /* Content Blocker Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -278,7 +391,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				854A9F3C22706805008F2A93 /* proximanova-semibold.otf in Resources */,
 				85417D68226605E60062A081 /* Assets.xcassets in Resources */,
+				854A9F542271CB01008F2A93 /* AppIcon.xcassets in Resources */,
+				854A9F502271B078008F2A93 /* Shared.xcassets in Resources */,
+				854A9F3B22706805008F2A93 /* proximanova-bold.otf in Resources */,
+				854A9F3922706805008F2A93 /* proximanova-light.otf in Resources */,
+				854A9F3A22706805008F2A93 /* proximanova-extrabold.otf in Resources */,
+				854A9F3822706805008F2A93 /* proximanova-regular.otf in Resources */,
 				85417D6B226605E60062A081 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,9 +407,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85417D9B226762870062A081 /* ToolbarItemIcon.pdf in Resources */,
+				8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */,
+				8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */,
+				854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */,
+				854A9F3D22706817008F2A93 /* proximanova-bold.otf in Resources */,
+				854A9F4022706817008F2A93 /* proximanova-regular.otf in Resources */,
+				854A9F3E22706817008F2A93 /* proximanova-extrabold.otf in Resources */,
+				854A9F3F22706817008F2A93 /* proximanova-light.otf in Resources */,
 				85417D96226762870062A081 /* SafariExtensionViewController.xib in Resources */,
+				854A9F512271B0BA008F2A93 /* Shared.xcassets in Resources */,
+				8510B257226F3BFB0015D406 /* Assets.xcassets in Resources */,
 				85417D99226762870062A081 /* script.js in Resources */,
+				854A9F4122706817008F2A93 /* proximanova-semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				854A9F562271CB0B008F2A93 /* AppIcon.xcassets in Resources */,
 				85417DAC226762E40062A081 /* blockerList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +452,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint lint\nelse\necho \"error: SwiftLint not installed. Install using \\`brew install swiftlint\\`\"\nexit 1\nfi\n";
 		};
+		854A9F3022706478008F2A93 /* Install Fonts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Install Fonts";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n[ -z \"$TRAVIS\" ]\n\nif env | grep -q ^TRAVIS=\nthen\necho Skipping fonts on TRAVIS build\nelif [ -d ~/DuckDuckGo/Fonts/proximanova ]\nthen\n\necho Installing fonts from standard location\ncp ~/DuckDuckGo/Fonts/proximanova/*.otf \"$SRCROOT/fonts/licensed\"\n\nelif [ ! -d ~/DuckDuckGo/Fonts/proximanova ]\nthen\n\necho \"warning: Correct fonts not found, install proximanova fonts at ~/DuckDuckGo/Fonts/proximanova\"\n\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -329,8 +477,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85417D66226605E60062A081 /* ViewController.swift in Sources */,
+				854A9F45227080F7008F2A93 /* DomainPromptViewController.swift in Sources */,
+				85417DDD2268B3E00062A081 /* WelcomeViewController.swift in Sources */,
+				85417D66226605E60062A081 /* MainViewController.swift in Sources */,
 				85417D64226605E60062A081 /* AppDelegate.swift in Sources */,
+				854A9F4322707078008F2A93 /* SettingsViewController.swift in Sources */,
+				854A9F4D2270BD34008F2A93 /* URLExtension.swift in Sources */,
+				8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */,
+				854A9F4722708783008F2A93 /* TrustedSitesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,8 +492,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
+				8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */,
 				85417D93226762870062A081 /* SafariExtensionViewController.swift in Sources */,
+				8510B262226F5A3B0015D406 /* NSViewControllerExtension.swift in Sources */,
+				8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */,
+				854A9F4E2270BEDC008F2A93 /* URLExtension.swift in Sources */,
 				85417D91226762870062A081 /* SafariExtensionHandler.swift in Sources */,
+				854A9F4822708DC1008F2A93 /* TrustedSitesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				854A9F4922708DC2008F2A93 /* TrustedSitesManager.swift in Sources */,
 				85417DAE226762E40062A081 /* ContentBlockerRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,12 +517,12 @@
 /* Begin PBXTargetDependency section */
 		85417D9E226762870062A081 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 85417D8A226762870062A081 /* Safari */;
+			target = 85417D8A226762870062A081 /* Safari App Extension */;
 			targetProxy = 85417D9D226762870062A081 /* PBXContainerItemProxy */;
 		};
 		85417DB2226762E40062A081 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 85417DA7226762E40062A081 /* ContentBlocker */;
+			target = 85417DA7226762E40062A081 /* Content Blocker Extension */;
 			targetProxy = 85417DB1226762E40062A081 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -510,6 +671,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DuckDuckGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -530,6 +692,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DuckDuckGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,6 +710,7 @@
 				CODE_SIGN_ENTITLEMENTS = Safari/Safari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Safari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -566,6 +730,7 @@
 				CODE_SIGN_ENTITLEMENTS = Safari/Safari.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Safari/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -582,9 +747,11 @@
 		85417DB5226762E40062A081 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = ContentBlocker/ContentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -601,9 +768,11 @@
 		85417DB6226762E40062A081 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_ENTITLEMENTS = ContentBlocker/ContentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -638,7 +807,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		85417DA0226762870062A081 /* Build configuration list for PBXNativeTarget "Safari" */ = {
+		85417DA0226762870062A081 /* Build configuration list for PBXNativeTarget "Safari App Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85417DA1226762870062A081 /* Debug */,
@@ -647,7 +816,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		85417DB4226762E40062A081 /* Build configuration list for PBXNativeTarget "ContentBlocker" */ = {
+		85417DB4226762E40062A081 /* Build configuration list for PBXNativeTarget "Content Blocker Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85417DB5226762E40062A081 /* Debug */,
