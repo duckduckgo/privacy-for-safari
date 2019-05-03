@@ -17,6 +17,7 @@
 //  limitations under the License.
 //
 
+import TrackerBlocking
 import SafariServices
 import os
 
@@ -27,21 +28,27 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         shared.preferredContentSize = NSSize(width: 300, height: 600)
         return shared
     }()
-    
+
+    @IBOutlet weak var dashboard: MainDashboardViewController!
     @IBOutlet weak var tabs: NSTabView!
     @IBOutlet weak var searchField: NSTextField!
-    
-    weak var safariWindow: SFSafariWindow? {
+
+    var pageData: PageData! {
         didSet {
-            tabs.selectedTabViewItem?.viewController?.viewDidAppear()
+            updateUI()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         installMainDashboard()
     }
-    
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        tabs.selectedTabViewItem?.viewController?.viewWillAppear()
+    }
+
     @IBAction func performSearch(sender: Any) {
         guard !searchField.stringValue.isEmpty else {
             os_log("searchField stringValue is empty")
@@ -58,9 +65,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     private func installMainDashboard() {
-        let dashboard: MainDashboardViewController = NSViewController.loadController(named: "MainDashboard", fromStoryboardNamed: "Dashboard")
+        dashboard = NSViewController.loadController(named: "MainDashboard", fromStoryboardNamed: "Dashboard")
         dashboard.navigationDelegate = self
         tabs.addTabViewItem(NSTabViewItem(viewController: dashboard))
+    }
+
+    private func updateUI() {
+        dashboard.pageData = pageData
     }
     
 }
@@ -72,6 +83,7 @@ extension SafariExtensionViewController: DashboardNavigationDelegate {
     func push(controller: DashboardControllers) {
         let controller: DashboardNavigationController = NSViewController.loadController(named: controller.rawValue, fromStoryboardNamed: "Dashboard")
         controller.navigationDelegate = self
+        controller.pageData = pageData
         tabs.addTabViewItem(NSTabViewItem(viewController: controller))
         tabs.selectTabViewItem(at: tabs.numberOfTabViewItems - 1)
         tabs.selectedTabViewItem?.viewController?.viewDidAppear()

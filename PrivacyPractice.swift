@@ -1,6 +1,6 @@
 //
-//  URLExtension.swift
-//  DuckDuckGo
+//  PrivacyPractice.swift
+//  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,16 +18,16 @@
 //
 
 import Foundation
-import os
 
-extension URL {
+public struct PrivacyPractice {
     
-    init?(withSearch search: String) {
-        guard let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            os_log("encodedSearch is nil")
-            return nil
-        }
-        self.init(string: "https://duckduckgo.com/?q=\(encodedSearch)")
+    public enum Summary {
+        case poor, mixed, good, unknown
     }
-        
+    
+    public let score: Int
+    public let summary: Summary
+    public let goodReasons: [String]
+    public let badReasons: [String]
+    
 }

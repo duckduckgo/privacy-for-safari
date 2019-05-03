@@ -1,6 +1,6 @@
 //
-//  URLExtension.swift
-//  DuckDuckGo
+//  TrackerBlocking.h
+//  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -17,17 +17,14 @@
 //  limitations under the License.
 //
 
-import Foundation
-import os
+#import <Cocoa/Cocoa.h>
 
-extension URL {
-    
-    init?(withSearch search: String) {
-        guard let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            os_log("encodedSearch is nil")
-            return nil
-        }
-        self.init(string: "https://duckduckgo.com/?q=\(encodedSearch)")
-    }
-        
-}
+//! Project version number for TrackerBlocking.
+FOUNDATION_EXPORT double TrackerBlockingVersionNumber;
+
+//! Project version string for TrackerBlocking.
+FOUNDATION_EXPORT const unsigned char TrackerBlockingVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <TrackerBlocking/PublicHeader.h>
+
+

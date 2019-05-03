@@ -19,6 +19,7 @@
 
 import Cocoa
 import SafariServices
+import TrackerBlocking
 
 enum DashboardControllers: String {
     case privacyScoreCard = "ScoreCard"
@@ -27,6 +28,7 @@ enum DashboardControllers: String {
 class DashboardNavigationController: NSViewController {
     
     weak var navigationDelegate: DashboardNavigationDelegate?
+    var pageData: PageData!
     
     @IBAction func back(sender: Any) {
         navigationDelegate?.popController()
@@ -35,8 +37,6 @@ class DashboardNavigationController: NSViewController {
 }
 
 protocol DashboardNavigationDelegate: NSObjectProtocol {
-    
-    var safariWindow: SFSafariWindow? { get }
     
     func push(controller: DashboardControllers)
     

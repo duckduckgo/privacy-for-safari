@@ -20,6 +20,7 @@
 import os
 import Cocoa
 import SafariServices
+import TrackerBlocking
 
 class MainDashboardViewController: NSViewController {
  
@@ -29,48 +30,18 @@ class MainDashboardViewController: NSViewController {
 
     @IBOutlet weak var trustedSitesLabel: NSTextField!
     @IBOutlet weak var urlLabel: NSTextField!
-    
-    weak var pageProperties: SFSafariPageProperties? {
+    @IBOutlet weak var entities: NSTextView!
+
+    var pageData: PageData! {
         didSet {
-            let url = pageProperties?.url?.absoluteString ?? "<unknown url>"
-            DispatchQueue.main.async {
-                self.urlLabel.stringValue = url
-            }
+            updateUI()
         }
     }
-    
-    weak var activePage: SFSafariPage? {
-        didSet {
-            activePage?.getPropertiesWithCompletionHandler({ properties in
-                self.pageProperties = properties
-            })
-        }
-    }
-    
-    weak var activeTab: SFSafariTab? {
-        didSet {
-            activeTab?.getActivePage(completionHandler: { page in
-                self.activePage = page
-            })
-        }
-    }
-    
-    weak var safariWindow: SFSafariWindow? {
-        didSet {
-            safariWindow?.getToolbarItem(completionHandler: { toolbarItem in
-                toolbarItem?.setImage(NSImage(named: NSImage.Name("ToolbarGradeA")))
-            })
-            safariWindow?.getActiveTab(completionHandler: { tab in
-                self.activeTab = tab
-            })
-        }
-    }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
         trustedSites.readFromUserDefaults()
         updateTrustedSitesLabel()
-        safariWindow = navigationDelegate?.safariWindow
     }
     
     @IBAction func clearTrustedSites(sender: Any) {
@@ -85,5 +56,10 @@ class MainDashboardViewController: NSViewController {
     private func updateTrustedSitesLabel() {
         trustedSitesLabel.stringValue = "\(trustedSites.count) trusted sites"
     }
-    
+
+    private func updateUI() {
+        urlLabel.stringValue = pageData.url?.host ?? "No URL"
+        entities.string = String(describing: pageData.notBlockedEntities)
+    }
+
 }

@@ -3,8 +3,12 @@ node('osx') {
         properties([pipelineTriggers([[$class: 'GitHubPushTrigger']])])
         stage('Checkout') {
            checkout scm
+	   sh 'git clean -fdx'
 	}
-        stage('Gym') {
+        stage('Test') {
+	    sh 'xcodebuild test -quiet -project DuckDuckGo.xcodeproj -scheme DuckDuckGo'
+	}
+        stage('Build') {
             sh 'fastlane gym'
         }
         stage('Artifact') {

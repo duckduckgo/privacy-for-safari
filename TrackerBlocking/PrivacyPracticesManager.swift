@@ -1,5 +1,5 @@
 //
-//  URLExtension.swift
+//  PrivacyPractices.swift
 //  DuckDuckGo
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
@@ -18,16 +18,23 @@
 //
 
 import Foundation
-import os
 
-extension URL {
+public protocol PrivacyPracticesManager {
+
+    func findPrivacyPractice(forUrl: URL) -> PrivacyPractice
     
-    init?(withSearch search: String) {
-        guard let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            os_log("encodedSearch is nil")
-            return nil
-        }
-        self.init(string: "https://duckduckgo.com/?q=\(encodedSearch)")
+}
+
+public class DefaultPrivacyPracticesManager: PrivacyPracticesManager {
+    
+    struct Constants {
+        static let unknown = PrivacyPractice(score: 2, summary: .unknown, goodReasons: [], badReasons: [])
     }
-        
+
+    static let shared = DefaultPrivacyPracticesManager()
+    
+    public func findPrivacyPractice(forUrl: URL) -> PrivacyPractice {
+        return Constants.unknown
+    }
+    
 }

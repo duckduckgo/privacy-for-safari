@@ -1,6 +1,6 @@
 //
-//  URLExtension.swift
-//  DuckDuckGo
+//  KnownTrackersManager.swift
+//  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,16 +18,19 @@
 //
 
 import Foundation
-import os
 
-extension URL {
+public protocol KnownTrackersManager {
     
-    init?(withSearch search: String) {
-        guard let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            os_log("encodedSearch is nil")
-            return nil
-        }
-        self.init(string: "https://duckduckgo.com/?q=\(encodedSearch)")
+    func findTracker(forUrl url: URL) -> KnownTracker?
+    
+}
+
+class DefaultKnownTrackersManager: KnownTrackersManager {
+    
+    static let shared: KnownTrackersManager = DefaultKnownTrackersManager()
+    
+    func findTracker(forUrl url: URL) -> KnownTracker? {
+        return url.pathExtension == "jpg" ? KnownTracker(domain: url.host ?? "unknown", owner: "Example", prevalence: 0) : nil
     }
-        
+    
 }

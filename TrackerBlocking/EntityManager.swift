@@ -1,5 +1,5 @@
 //
-//  URLExtension.swift
+//  EntityManager.swift
 //  DuckDuckGo
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
@@ -18,16 +18,19 @@
 //
 
 import Foundation
-import os
 
-extension URL {
+public protocol EntityManager {
     
-    init?(withSearch search: String) {
-        guard let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            os_log("encodedSearch is nil")
-            return nil
-        }
-        self.init(string: "https://duckduckgo.com/?q=\(encodedSearch)")
+    func entity(forUrl url: URL) -> Entity?
+    
+}
+
+class DefaultEntityManager: EntityManager {
+    
+    static let shared: EntityManager = DefaultEntityManager()
+    
+    func entity(forUrl url: URL) -> Entity? {
+        return nil
     }
-        
+    
 }
