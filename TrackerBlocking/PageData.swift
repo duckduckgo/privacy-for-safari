@@ -1,6 +1,6 @@
 //
 //  PageData.swift
-//  DuckDuckGo
+//  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -50,7 +50,7 @@ public struct PageData {
 
     public func calculateGrade() -> Grade.Scores {
         let privacyPractices = Dependencies.shared.privacyPracticesManager
-        let entityManager = Dependencies.shared.entityManager
+        let trackerDataManager = Dependencies.shared.trackerDataManager
         
         let grade = Grade()
         
@@ -66,10 +66,10 @@ public struct PageData {
             grade.https = url.scheme == "https"
             grade.privacyScore = privacyPractices.findPrivacyPractice(forUrl: url).score
             
-            let entity = entityManager.entity(forUrl: url)
+            let entity = trackerDataManager.entity(forUrl: url)
             grade.setParentEntity(named: entity?.name, withPrevalence: entity?.prevalence)
         }
-        
+
         return grade.scores
     }
 

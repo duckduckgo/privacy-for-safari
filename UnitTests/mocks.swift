@@ -20,50 +20,10 @@
 import Foundation
 @testable import TrackerBlocking
 
-class MockEntityManager: EntityManager {
-    
-    typealias ReturnValue = ((URL) -> Entity?)
-    
-    var returnValue: ReturnValue?
-    
-    init(returnValue: ReturnValue? = nil) {
-        self.returnValue = returnValue
-    }
-    
-    func entity(forUrl url: URL) -> Entity? {
-        return returnValue?(url)
-    }
-    
-}
-
 class MockTrackerDetection: TrackerDetection {
-    
-    typealias ReturnValue = ((String, String, URL) -> DetectedTracker?)
-    
-    var returnValue: ReturnValue?
-    
-    init(returnValue: ReturnValue? = nil) {
-        self.returnValue = returnValue
-    }
 
     func detectTracker(forResource resource: String, ofType type: String, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
-        return returnValue?(resource, type, pageUrl)
-    }
-    
-}
-
-class MockKnownTrackersManager: KnownTrackersManager {
-    
-    typealias ReturnValue = ((URL) -> KnownTracker?)
-    
-    var returnValue: ReturnValue?
-    
-    init(returnValue: ReturnValue? = nil) {
-        self.returnValue = returnValue
-    }
-    
-    func findTracker(forUrl url: URL) -> KnownTracker? {
-        return returnValue?(url)
+        return nil
     }
     
 }
@@ -76,22 +36,106 @@ struct MockPrivacyPracticesManager: PrivacyPracticesManager {
     
 }
 
+struct MockTrustedSitesManager: TrustedSitesManager {
+
+    var count: Int {
+        return 0
+    }
+
+    func addDomain(_ domain: String) {
+    }
+
+    func allDomains() -> [String] {
+        return []
+    }
+
+    func clear() {
+    }
+
+    func removeDomain(at index: Int) {
+    }
+
+    func load() {
+    }
+
+    func save() {
+    }
+    
+    func isTrusted(url: URL) -> Bool {
+        return false
+    }
+
+}
+
+class MockTrackerDataManager: TrackerDataManager {
+
+    private var returnEntity: Entity?
+    private var returnTracker: KnownTracker?
+
+    init(returnEntity entity: Entity? = nil, returnTracker tracker: KnownTracker? = nil) {
+        returnEntity = entity
+        returnTracker = tracker
+    }
+
+    func load() {
+    }
+
+    func forEachEntity(_ result: (Entity) -> Void) {
+    }
+
+    func forEachTracker(_ result: (KnownTracker) -> Void) {
+    }
+
+    func contentBlockerRules(withTrustedSites: [String]) -> [ContentBlockerRule] {
+        return []
+    }
+
+    func entity(forUrl url: URL) -> Entity? {
+        return returnEntity
+    }
+
+    func knownTracker(forUrl url: URL) -> KnownTracker? {
+        return returnTracker
+    }
+
+    func update(completion: () -> Void) {
+        completion()
+    }
+    
+}
+
+class MockBlockerListManager: BlockerListManager {
+    
+    var blockerListUrl: URL { return URL(fileURLWithPath: "blockerList.json") }
+    
+    func update(completion: () -> Void) {
+        completion()
+    }
+    
+    func reloadExtension() {
+    }
+    
+}
+
 struct MockDependencies: TrackerBlockerDependencies {
-    
-    let entityManager: EntityManager
+
+    let trustedSitesManager: TrustedSitesManager
     let trackerDetection: TrackerDetection
-    let knownTrackersManager: KnownTrackersManager
     let privacyPracticesManager: PrivacyPracticesManager
+    let trackerDataManager: TrackerDataManager
+    let blockerListManager: BlockerListManager
     
-    init(entityManager: EntityManager = MockEntityManager(),
+    init(trustedSitesManager: TrustedSitesManager = MockTrustedSitesManager(),
          trackerDetection: TrackerDetection = MockTrackerDetection(),
-         knownTrackersManager: KnownTrackersManager = MockKnownTrackersManager(),
-         privacyPracticesManager: PrivacyPracticesManager = MockPrivacyPracticesManager()) {
-        
-        self.entityManager = entityManager
+         privacyPracticesManager: PrivacyPracticesManager = MockPrivacyPracticesManager(),
+         trackerDataManager: TrackerDataManager = MockTrackerDataManager(),
+         blockerListManager: BlockerListManager = MockBlockerListManager()) {
+
+        self.trustedSitesManager = trustedSitesManager
         self.trackerDetection = trackerDetection
-        self.knownTrackersManager = knownTrackersManager
         self.privacyPracticesManager = privacyPracticesManager
+        self.trackerDataManager = trackerDataManager
+        self.blockerListManager = blockerListManager
     }
 
 }

@@ -18,12 +18,20 @@
 //
 
 import Cocoa
+import TrackerBlocking
+import SafariServices
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        
+        Dependencies.shared.trackerDataManager.update {
+            Dependencies.shared.blockerListManager.update {
+                Dependencies.shared.blockerListManager.reloadExtension()
+            }
+        }
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

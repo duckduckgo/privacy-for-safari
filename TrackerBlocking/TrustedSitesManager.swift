@@ -19,12 +19,23 @@
 
 import Foundation
 
-class TrustedSitesManager {
-    
-    static let shared = TrustedSitesManager()
-    
-    static let updatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
-    
+public let kTrustedSitesUpdatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
+
+public protocol TrustedSitesManager {
+
+    var count: Int { get }
+    func addDomain(_ domain: String)
+    func allDomains() -> [String]
+    func clear()
+    func removeDomain(at index: Int)
+    func load()
+    func save()
+    func isTrusted(url: URL) -> Bool
+
+}
+
+public class DefaultTrustedSitesManager: TrustedSitesManager {
+ 
     struct Keys {
         static let domains = "domains"
     }
@@ -35,43 +46,53 @@ class TrustedSitesManager {
         return UserDefaults(suiteName: "group.com.duckduckgo.TrustedSites")
     }
     
-    var count: Int {
+    public var count: Int {
         return domains.count
     }
     
-    private init() {
-        readFromUserDefaults()
+    public init() {
+        load()
     }
     
-    func addDomain(_ domain: String) {
+    public func addDomain(_ domain: String) {
         domains.append(domain)
-        saveToUserDefaults()
+        save()
     }
     
-    func allDomains() -> [String] {
+    public func isTrusted(url: URL) -> Bool {
+        guard let host = url.host else { return false }
+        return domains.contains(host)
+    }
+    
+    public func allDomains() -> [String] {
         return domains
     }
      
-    func clear() {
+    public func clear() {
         domains = []
-        saveToUserDefaults()
+        save()
     }
     
-    func removeSite(at index: Int) {
+    public func removeDomain(at index: Int) {
         guard index >= 0 else { return }
         domains.remove(at: index)
-        saveToUserDefaults()
+        save()
     }
     
-    func readFromUserDefaults() {
+    public func load() {
         if let domains = userDefaults?.array(forKey: Keys.domains) as? [String] {
             self.domains = domains
         }
     }
     
-    func saveToUserDefaults() {
+    public func save() {
         userDefaults?.set(domains, forKey: Keys.domains)
-        DistributedNotificationCenter.default().postNotificationName(TrustedSitesManager.updatedNotificationName,
+        
+        Dependencies.shared.blockerListManager.update {
+            Dependencies.shared.blockerListManager.reloadExtension()
+        }
+
+        DistributedNotificationCenter.default().postNotificationName(kTrustedSitesUpdatedNotificationName,
                                                                      object: nil,
                                                                      userInfo: nil,
                                                                      deliverImmediately: true)

@@ -18,13 +18,14 @@
 //
 
 import Cocoa
+import TrackerBlocking
 
 class SettingsViewController: NSViewController {
 
     @IBOutlet weak var trustedSitesOutline: NSOutlineView!
     @IBOutlet weak var removeTrustedSiteButton: NSButton!
     
-    let trustedSites = TrustedSitesManager.shared
+    let trustedSites = Dependencies.shared.trustedSitesManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,17 +44,17 @@ class SettingsViewController: NSViewController {
     }
     
     @IBAction func removeTrustedSite(sender: Any) {
-        trustedSites.removeSite(at: trustedSitesOutline.selectedRow)
+        trustedSites.removeDomain(at: trustedSitesOutline.selectedRow)
     }
     
     @objc func refreshTrustedSites() {
-        trustedSites.readFromUserDefaults()
+        trustedSites.load()
         trustedSitesOutline.reloadData()
     }
     
     private func observeTrustedSiteChanges() {
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(refreshTrustedSites),
-                                                            name: TrustedSitesManager.updatedNotificationName,
+                                                            name: kTrustedSitesUpdatedNotificationName,
                                                             object: nil)
     }
     

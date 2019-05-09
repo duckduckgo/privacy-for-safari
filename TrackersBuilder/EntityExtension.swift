@@ -1,6 +1,6 @@
 //
-//  EntityManager.swift
-//  DuckDuckGo
+//  EntityExtension.swift
+//  TrackersBuilder
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -19,17 +19,22 @@
 
 import Foundation
 
-public protocol EntityManager {
+extension Entity {
     
-    func entity(forUrl url: URL) -> Entity?
-    
-}
-
-class DefaultEntityManager: EntityManager {
-    
-    static let shared: EntityManager = DefaultEntityManager()
-    
-    func entity(forUrl url: URL) -> Entity? {
+    static func load(entityNamed: String, fromDirectory dir: URL) -> Entity? {
+        let fileName = entityNamed.replacingOccurrences(of: "/", with: "").replacingOccurrences(of: "!", with: "")
+        let file = dir.appendingPathComponent(fileName).appendingPathExtension("json")
+        
+        guard let data = try? Data(contentsOf: file) else {
+            print("Failed to read file", file)
+            return nil
+        }
+        
+        do {
+            return try JSONDecoder().decode(Entity.self, from: data)
+        } catch {
+            print("Failed to decode", fileName, error)
+        }
         return nil
     }
     

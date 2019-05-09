@@ -1,6 +1,6 @@
 //
 //  ContentBlocker.swift
-//  DuckDuckGo
+//  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -27,22 +27,20 @@ public protocol TrackerDetection {
 
 class DefaultTrackerDetection: TrackerDetection {
     
-    static let shared: TrackerDetection = DefaultTrackerDetection()
-    
     func detectTracker(forResource resource: String, ofType type: String, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
-        let knownTrackersManager = Dependencies.shared.knownTrackersManager
-        let entityManager = Dependencies.shared.entityManager
+        let trackerDataManager = Dependencies.shared.trackerDataManager
         
         guard let resourceUrl = URL(withResource: resource) else { return nil }
-        guard let knownTracker = knownTrackersManager.findTracker(forUrl: resourceUrl) else { return nil }
-        let pageOwner = entityManager.entity(forUrl: pageUrl)
+        guard let knownTracker = trackerDataManager.knownTracker(forUrl: resourceUrl) else { return nil }
+
+        let pageOwner = trackerDataManager.entity(forUrl: pageUrl)
         let resourceOwner = knownTracker.owner
         return DetectedTracker(resource: resource,
                                type: type,
                                page: pageUrl,
-                               owner: resourceOwner,
+                               owner: resourceOwner?.name,
                                prevalence: knownTracker.prevalence,
-                               isFirstParty: resourceOwner == pageOwner?.name)
+                               isFirstParty: resourceOwner?.name == pageOwner?.name)
     }
     
 }

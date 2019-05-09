@@ -7,6 +7,8 @@
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.com.duckduckgo.TrustedSites</string>
+		<string>group.com.duckduckgo.BlockerList</string>
+		<string>group.com.duckduckgo.TrackerData</string>
 	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>

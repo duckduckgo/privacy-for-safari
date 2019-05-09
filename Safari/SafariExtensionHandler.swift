@@ -21,7 +21,7 @@ import SafariServices
 import TrackerBlocking
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    
+
     enum Messages: String {
         case resourceLoaded
         case entityData
@@ -121,11 +121,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         page.getContainingTab { tab in
             tab.getContainingWindow(completionHandler: { window in
                 window?.getToolbarItem { toolbarItem in
-                    let count = Data.pageData.notBlockedTrackerCount
-                    toolbarItem?.setBadgeText(count > 0 ? "\(count)" : nil)
 
-                    let grade = Data.pageData.calculateGrade().site.grade
-                    toolbarItem?.setImage(NSImage(forGrade: grade))
+                    if let url = Data.pageData.url {
+                        let count = Data.pageData.notBlockedTrackerCount
+                        toolbarItem?.setBadgeText(count > 0 ? "\(count)" : nil)
+                        let site = Dependencies.shared.trustedSitesManager.isTrusted(url: url) ?
+                            Data.pageData.calculateGrade().enhanced : Data.pageData.calculateGrade().site
+                        let grade = site.grade
+                        toolbarItem?.setImage(grade.image)
+                    } else {
+                        toolbarItem?.setImage(NSImage(named: NSImage.Name("LogoToolbarItemIcon")))
+                    }
+                    
                 }
             })
         }
@@ -133,18 +140,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
 }
 
-extension NSImage {
-    
-    convenience init?(forGrade grade: Grade.Grading) {
-        switch grade {
-        case .a: self.init(named: "ToolbarGradeA")
-        case .bPlus: self.init(named: "ToolbarGradeBPlus")
-        case .b: self.init(named: "ToolbarGradeB")
-        case .cPlus: self.init(named: "ToolbarGradeCPlus")
-        case .c: self.init(named: "ToolbarGradeC")
-        case .d: self.init(named: "ToolbarGradeD")
-        case .dMinus: self.init(named: "ToolbarGradeD")
-        }
+extension Grade.Grading {
+
+    static let images: [Grade.Grading: NSImage] = [
+        .a: NSImage(named: "ToolbarGradeA")!,
+        .bPlus: NSImage(named: "ToolbarGradeBPlus")!,
+        .b: NSImage(named: "ToolbarGradeB")!,
+        .cPlus: NSImage(named: "ToolbarGradeCPlus")!,
+        .c: NSImage(named: "ToolbarGradeC")!,
+        .d: NSImage(named: "ToolbarGradeD")!,
+        .dMinus: NSImage(named: "ToolbarGradeD")!
+    ]
+
+    var image: NSImage? {
+        return Grade.Grading.images[self]
     }
     
 }

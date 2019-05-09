@@ -19,10 +19,32 @@
 
 import Foundation
 
-public struct KnownTracker {
+public struct KnownTracker: Codable {
     
-    let domain: String
-    let owner: String?
-    let prevalence: Double
+    public struct Owner: Codable {
+        
+        public let name: String?
+        
+    }
+    
+    public struct Exception: Codable, Hashable {
+        
+        public let domains: [String]?
+        public let types: [String]?
+        
+    }
+    
+    public struct Rule: Codable, Hashable {
+        
+        public let rule: String
+        public let action: String?
+        public let exceptions: Exception?
+
+    }
+    
+    public let domain: String
+    public let owner: Owner?
+    public let rules: [Rule]?
+    public let prevalence: Double
     
 }

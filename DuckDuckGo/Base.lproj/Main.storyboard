@@ -261,12 +261,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qjm-Kp-cKA">
-                                <rect key="frame" x="139" y="396" width="223" height="84"/>
+                                <rect key="frame" x="141" y="398" width="219" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="215" id="oUw-yi-rtw"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="FbC-CE-S2x">
-                                    <font key="font" size="34" name="ProximaNova-Extrabld"/>
+                                    <font key="font" metaFont="system" size="34"/>
                                     <string key="title">Welcome to 
 DuckDuckGo!</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -274,7 +274,7 @@ DuckDuckGo!</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="px9-Wy-74K">
-                                <rect key="frame" x="76" y="367" width="348" height="21"/>
+                                <rect key="frame" x="76" y="369" width="348" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Protecting your data has never been this easy." id="i2l-kF-F2r">
                                     <font key="font" size="17" name="ProximaNova-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -449,21 +449,21 @@ DuckDuckGo!</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xD0-bM-ICv">
-                                <rect key="frame" x="181" y="438" width="138" height="42"/>
+                                <rect key="frame" x="187" y="439" width="126" height="41"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Settings" id="SQ1-gv-dUz">
-                                    <font key="font" size="34" name="ProximaNova-Extrabld"/>
+                                    <font key="font" metaFont="system" size="34"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEt-je-Uqc">
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEt-je-Uqc">
                                 <rect key="frame" x="20" y="39" width="460" height="366"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="CKb-kE-GfB">
                                     <rect key="frame" x="1" y="1" width="458" height="364"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="MiX-qR-MJp" id="Gaa-pU-Znw">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="MiX-qR-MJp" id="Gaa-pU-Znw">
                                             <rect key="frame" x="0.0" y="0.0" width="458" height="364"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>

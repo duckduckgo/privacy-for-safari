@@ -66,17 +66,19 @@ function handleMessage(event) {
 
     document.addEventListener("beforeload", function(event) {
 
-        if (event.target.nodeName == "LINK") {
-            type = event.target.rel;
-        } else if (event.target.nodeName == "IMG") {
-            type = "image";
-        } else if (event.target.nodeName == "IFRAME") {
-            type = "subdocument";
-        } else {
-            type = event.target.nodeName;
-        }
+		event.srcElement.onload = function() {
+	        if (event.target.nodeName == "LINK") {
+	            type = event.target.rel;
+	        } else if (event.target.nodeName == "IMG") {
+	            type = "image";
+	        } else if (event.target.nodeName == "IFRAME") {
+	            type = "subdocument";
+	        } else {
+	            type = event.target.nodeName;
+	        }
 
-        resourceLoaded(event.url, type);
+	        resourceLoaded(event.url, type);
+		}
 
     }, true)
 

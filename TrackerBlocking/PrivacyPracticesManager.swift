@@ -1,6 +1,6 @@
 //
 //  PrivacyPractices.swift
-//  DuckDuckGo
+//  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -30,8 +30,6 @@ public class DefaultPrivacyPracticesManager: PrivacyPracticesManager {
     struct Constants {
         static let unknown = PrivacyPractice(score: 2, summary: .unknown, goodReasons: [], badReasons: [])
     }
-
-    static let shared = DefaultPrivacyPracticesManager()
     
     public func findPrivacyPractice(forUrl: URL) -> PrivacyPractice {
         return Constants.unknown

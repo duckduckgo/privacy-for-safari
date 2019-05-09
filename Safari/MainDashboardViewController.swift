@@ -26,7 +26,7 @@ class MainDashboardViewController: NSViewController {
  
     weak var navigationDelegate: DashboardNavigationDelegate?
 
-    let trustedSites = TrustedSitesManager.shared
+    let trustedSites: TrustedSitesManager = Dependencies.shared.trustedSitesManager
 
     @IBOutlet weak var trustedSitesLabel: NSTextField!
     @IBOutlet weak var urlLabel: NSTextField!
@@ -40,7 +40,7 @@ class MainDashboardViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        trustedSites.readFromUserDefaults()
+        trustedSites.load()
         updateTrustedSitesLabel()
     }
     

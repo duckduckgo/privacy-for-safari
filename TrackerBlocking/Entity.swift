@@ -19,9 +19,10 @@
 
 import Foundation
 
-public struct Entity {
+public struct Entity: Codable, Hashable {
     
     public let name: String
+    public let properties: [String]
     public let prevalence: Double?
     
 }

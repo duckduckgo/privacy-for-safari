@@ -20,21 +20,23 @@
 import Foundation
 
 public protocol TrackerBlockerDependencies {
-    
-    var entityManager: EntityManager { get }
+
+    var trustedSitesManager: TrustedSitesManager { get }
     var trackerDetection: TrackerDetection { get }
-    var knownTrackersManager: KnownTrackersManager { get }
     var privacyPracticesManager: PrivacyPracticesManager { get }
+    var trackerDataManager: TrackerDataManager { get }
+    var blockerListManager: BlockerListManager { get }
     
 }
 
 public class Dependencies: TrackerBlockerDependencies {
     
     public static var shared: TrackerBlockerDependencies = Dependencies()
-    
-    public let entityManager: EntityManager = DefaultEntityManager.shared
-    public let trackerDetection: TrackerDetection = DefaultTrackerDetection.shared
-    public let knownTrackersManager: KnownTrackersManager = DefaultKnownTrackersManager.shared
-    public let privacyPracticesManager: PrivacyPracticesManager = DefaultPrivacyPracticesManager.shared
+
+    public let trustedSitesManager: TrustedSitesManager = DefaultTrustedSitesManager()
+    public let trackerDetection: TrackerDetection = DefaultTrackerDetection()
+    public let privacyPracticesManager: PrivacyPracticesManager = DefaultPrivacyPracticesManager()
+    public let trackerDataManager: TrackerDataManager = DefaultTrackerDataManager()
+    public let blockerListManager: BlockerListManager = DefaultBlockerListManager()
     
 }
