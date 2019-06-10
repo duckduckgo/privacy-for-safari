@@ -1,3 +1,4 @@
 build/
 xcuserdata/
 DuckDuckGo.app*
+.derivedData/

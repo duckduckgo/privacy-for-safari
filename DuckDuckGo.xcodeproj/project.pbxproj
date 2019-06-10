@@ -30,7 +30,6 @@
 		85417DB3226762E40062A081 /* ContentBlockerExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85417DA8226762E40062A081 /* ContentBlockerExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		85417DDD2268B3E00062A081 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85417DDC2268B3E00062A081 /* WelcomeViewController.swift */; };
 		8541840F2283A54300DD2900 /* TrackerDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8541840E2283A54300DD2900 /* TrackerDataManagerTests.swift */; };
-		854184112283B5B000DD2900 /* trackerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 854184102283B5AF00DD2900 /* trackerData.json */; };
 		854A9F3822706805008F2A93 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3322706805008F2A93 /* proximanova-regular.otf */; };
 		854A9F3922706805008F2A93 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3422706805008F2A93 /* proximanova-light.otf */; };
 		854A9F3A22706805008F2A93 /* proximanova-extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3522706805008F2A93 /* proximanova-extrabold.otf */; };
@@ -70,6 +69,7 @@
 		8599150E227D00B70023C1F2 /* TrackerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599150A227CF7E30023C1F2 /* TrackerData.swift */; };
 		85991510228036AD0023C1F2 /* TrackerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599150F228036AD0023C1F2 /* TrackerDataManager.swift */; };
 		85991511228037F40023C1F2 /* TrackerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8599150F228036AD0023C1F2 /* TrackerDataManager.swift */; };
+		8599154F2289D0E30023C1F2 /* trackerData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8599154E2289D0E30023C1F2 /* trackerData.json */; };
 		859F13D0227A3A2100EDE40A /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859F13CF227A3A2100EDE40A /* Grade.swift */; };
 		859F13D2227A3B2C00EDE40A /* GradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859F13D1227A3B2C00EDE40A /* GradeTests.swift */; };
 		859F13D4227A3B8700EDE40A /* grade-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 859F13D3227A3B8700EDE40A /* grade-cases.json */; };
@@ -204,7 +204,6 @@
 		85417DB0226762E40062A081 /* ContentBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ContentBlocker.entitlements; sourceTree = "<group>"; };
 		85417DDC2268B3E00062A081 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8541840E2283A54300DD2900 /* TrackerDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataManagerTests.swift; sourceTree = "<group>"; };
-		854184102283B5AF00DD2900 /* trackerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trackerData.json; sourceTree = "<group>"; };
 		854A9F3322706805008F2A93 /* proximanova-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-regular.otf"; path = "fonts/licensed/proximanova-regular.otf"; sourceTree = "<group>"; };
 		854A9F3422706805008F2A93 /* proximanova-light.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-light.otf"; path = "fonts/licensed/proximanova-light.otf"; sourceTree = "<group>"; };
 		854A9F3522706805008F2A93 /* proximanova-extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-extrabold.otf"; path = "fonts/licensed/proximanova-extrabold.otf"; sourceTree = "<group>"; };
@@ -235,6 +234,7 @@
 		85991508227CF76A0023C1F2 /* EntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityExtension.swift; sourceTree = "<group>"; };
 		8599150A227CF7E30023C1F2 /* TrackerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerData.swift; sourceTree = "<group>"; };
 		8599150F228036AD0023C1F2 /* TrackerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataManager.swift; sourceTree = "<group>"; };
+		8599154E2289D0E30023C1F2 /* trackerData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trackerData.json; sourceTree = "<group>"; };
 		859F13CC227926D800EDE40A /* PageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageData.swift; sourceTree = "<group>"; };
 		859F13CF227A3A2100EDE40A /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		859F13D1227A3B2C00EDE40A /* GradeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeTests.swift; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 				859914DE227B08EC0023C1F2 /* PrivacyPracticesManager.swift */,
 				8587A6852278901300F622AF /* TrackerBlocking.h */,
 				8599150A227CF7E30023C1F2 /* TrackerData.swift */,
-				854184102283B5AF00DD2900 /* trackerData.json */,
+				8599154E2289D0E30023C1F2 /* trackerData.json */,
 				8587A6742278591D00F622AF /* TrackerDetection.swift */,
 				854A9F4622708783008F2A93 /* TrustedSitesManager.swift */,
 				8599150F228036AD0023C1F2 /* TrackerDataManager.swift */,
@@ -709,7 +709,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				854184112283B5B000DD2900 /* trackerData.json in Resources */,
+				8599154F2289D0E30023C1F2 /* trackerData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

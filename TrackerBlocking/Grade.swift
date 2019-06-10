@@ -92,7 +92,6 @@ public class Grade {
     public init() { }
 
     func setParentEntity(named entity: String?, withPrevalence prevalence: Double?) {
-        NSLog("Setting parent entity \(entity ?? "nil") \(prevalence ?? -1)")
         guard let entity = entity else { return }
         addEntityNotBlocked(named: entity, withPrevalence: prevalence)
     }

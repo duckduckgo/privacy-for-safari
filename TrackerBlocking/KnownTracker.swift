@@ -42,9 +42,20 @@ public struct KnownTracker: Codable {
 
     }
     
+    enum CodingKeys: String, CodingKey {
+        case domain
+        case owner
+        case rules
+        case prevalence
+        case defaultAction = "default"
+        case subdomains
+    }
+
     public let domain: String
     public let owner: Owner?
     public let rules: [Rule]?
     public let prevalence: Double
+    public let defaultAction: String?
+    public let subdomains: [String]?
     
 }

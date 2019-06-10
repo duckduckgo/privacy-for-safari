@@ -14,7 +14,8 @@ pipeline {
 	   sh 'git clean -fdx'
 	} }
         stage('Test') { steps {
-	    sh 'xcodebuild test -quiet -project DuckDuckGo.xcodeproj -scheme DuckDuckGo'
+            sh 'xcodebuild clean'
+            sh 'xcodebuild test -quiet -project DuckDuckGo.xcodeproj -scheme DuckDuckGo'
 	} }
         stage('Build') { steps {
             sh 'fastlane run gym scheme:DuckDuckGo'

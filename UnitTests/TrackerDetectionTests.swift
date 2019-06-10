@@ -32,7 +32,7 @@ class TrackerDetectionTests: XCTestCase {
     func testWhenResourceWithImpliedProtocolAndDifferentEntitiesPresentedThen3rdPartyTrackerReturned() {
 
         let entity = Entity(name: "Example", properties: [], prevalence: nil)
-        let tracker = KnownTracker(domain: "other.com", owner: nil, rules: nil, prevalence: 1.0)
+        let tracker = KnownTracker(domain: "other.com", owner: nil, rules: nil, prevalence: 1.0, defaultAction: nil, subdomains: nil)
         let mockTrackerDataManager = MockTrackerDataManager(returnEntity: entity, returnTracker: tracker)
 
         Dependencies.shared = MockDependencies(trackerDataManager: mockTrackerDataManager)

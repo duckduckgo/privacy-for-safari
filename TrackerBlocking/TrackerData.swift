@@ -31,7 +31,7 @@ public struct TrackerData: Codable {
 
     public func contentBlockerRules(withTrustedSites trustedSites: [String]) -> [ContentBlockerRule] {
         
-        var rules = trackers.map { $0.contentBlockerRules(entitiesByName: entitiesByName() ) }.flatMap { $0 }
+        var rules = trackers.compactMap { $0.contentBlockerRules(entitiesByName: entitiesByName() ) }.flatMap { $0 }
         
         if !trustedSites.isEmpty {
             rules.append(ContentBlockerRule(trigger: .trigger(urlFilter: ".*", ifDomain: trustedSites), action: .ignorePreviousRules()))
@@ -96,39 +96,38 @@ fileprivate extension KnownTracker {
         "stylesheet": .styleSheet
     ]
     
-    func contentBlockerRules(entitiesByName: [String: Entity]) -> [ContentBlockerRule] {
-        var blockerRules = [ContentBlockerRule]()
+    func contentBlockerRules(entitiesByName: [String: Entity]) -> [ContentBlockerRule]? {
+        guard defaultAction != "ignore" else { return nil }
         
         let trackerExceptions = (entitiesByName[owner?.name ?? ""]?.properties ?? [domain]).map { "*" + $0 }
         
         if let trackerRules = rules {
-            
-            trackerRules.forEach { rule in
-                guard rule.action != "ignore" else { return }
-                blockerRules += contentBlockerRules(forTrackerRule: rule, withTrackerDomainExceptions: trackerExceptions)
-            }
-            
+            return trackerRules.map { contentBlockerRules(forTrackerRule: $0, withTrackerDomainExceptions: trackerExceptions) }.flatMap { $0 }
         } else {
-            
-            let normalizedRule = domain.replacingOccurrences(of: ".", with: "\\.")
-            
-            blockerRules.append(ContentBlockerRule(
-                trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions),
-                action: .block()))
-            
+            return contentBlockerRulesFromDomains(withTrackerDomainExceptions: trackerExceptions)
         }
+    }
+    
+    private func contentBlockerRulesFromDomains(withTrackerDomainExceptions trackerExceptions: [String]) -> [ContentBlockerRule] {
+        let domains = [domain] + (subdomains?.map { "\($0).\(domain)" } ?? [])
         
-        return blockerRules
+        return domains.map {
+            let domain = $0.replacingOccurrences(of: ".", with: "\\.")
+            let normalizedRule = "^https?://\(domain)/"
+            return ContentBlockerRule(
+                trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions),
+                action: .block())
+        }
     }
     
     private func contentBlockerRules(forTrackerRule rule: KnownTracker.Rule,
                                      withTrackerDomainExceptions trackerExceptions: [String]) -> [ContentBlockerRule] {
+        
         var rules = [ContentBlockerRule]()
         
         let ruleDomainExceptions = rule.exceptions?.domains ?? []
         
-        let normalizedRule = rule.rule
-            .replacingOccurrences(of: "($|[?/])", with: "")
+        let normalizedRule = "^https?://\(rule.rule)"
         
         rules.append(ContentBlockerRule(
             trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions + ruleDomainExceptions),
