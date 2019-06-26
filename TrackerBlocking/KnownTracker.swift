@@ -25,6 +25,11 @@ public struct KnownTracker: Codable {
         
         public let name: String?
         
+        func isEntity(named name: String?) -> Bool {
+            guard let name = name else { return false }
+            return self.name == name
+        }
+        
     }
     
     public struct Exception: Codable, Hashable {

@@ -2,11 +2,23 @@
 //  TrackerDataManager.swift
 //  TrackerBlocking
 //
-//  Created by Chris Brind on 06/05/2019.
-//  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.
+//  Copyright © 2019 DuckDuckGo. All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import Foundation
+import os
 
 public protocol TrackerDataManager {
     
@@ -14,7 +26,8 @@ public protocol TrackerDataManager {
     func update(completion: () -> Void)
     func forEachEntity(_ result: (Entity) -> Void)
     func forEachTracker(_ result: (KnownTracker) -> Void)
-    func contentBlockerRules(withTrustedSites: [String]) -> [ContentBlockerRule]
+    func contentBlockerRules() -> [TrackerData.TrackerRules]
+    func rule(forTrustedSites trustedSites: [String]) -> ContentBlockerRule?
     func entity(forUrl url: URL) -> Entity?
     func knownTracker(forUrl url: URL) -> KnownTracker?
     
@@ -31,14 +44,14 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     }
     
     var trackerData: TrackerData?
-    var rules = [NSRegularExpression: KnownTracker]()
+    var trackersByRegex = [NSRegularExpression: KnownTracker]()
     var entities = [String: Entity]()
 
     init() {
         do {
             try load()
         } catch {
-            NSLog("failed to load trackerData \(error)")
+            os_log("Failed to load tracker data %{public}s", type: .error, error.localizedDescription)
         }
     }
     
@@ -47,10 +60,10 @@ public class DefaultTrackerDataManager: TrackerDataManager {
         let trackerData = try JSONDecoder().decode(TrackerData.self, from: data)
 
         self.trackerData = trackerData
-        self.rules = trackerData.trackersByRegex()
+        self.trackersByRegex = trackerData.trackersByRegex()
         self.entities = trackerData.entitiesByDomain()
 
-        NSLog("loaded \(rules.count) rules for \(entities.count) entities")
+        os_log("loaded %d rules for %d entities", trackersByRegex.count, entities.count)
     }
     
     public func update(completion: () -> Void) {
@@ -68,8 +81,8 @@ public class DefaultTrackerDataManager: TrackerDataManager {
         trackerData?.trackers.forEach(result)
     }
     
-    public func contentBlockerRules(withTrustedSites sites: [String]) -> [ContentBlockerRule] {
-        return trackerData?.contentBlockerRules(withTrustedSites: sites) ?? []
+    public func contentBlockerRules() -> [TrackerData.TrackerRules] {
+        return trackerData?.contentBlockerRules() ?? []
     }
 
     public func entity(forUrl url: URL) -> Entity? {
@@ -83,30 +96,28 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     }
 
     public func knownTracker(forUrl url: URL) -> KnownTracker? {
-        var pattern: String?
         let url = url.absoluteString
-        let tracker = rules.first(where: {
-            pattern = $0.key.pattern
-            return !$0.key.matches(in: url, options: [], range: NSRange(url.startIndex..., in: url)).isEmpty
+        return trackersByRegex.first(where: {
+            return !$0.key.matches(in: url, options: [ .anchored ], range: NSRange(url.startIndex..., in: url)).isEmpty
         }).map { $0.value }
-
-        if tracker != nil {
-            NSLog("Found tracker \(url) with rule \(pattern ?? "<unknown pattern>")")
-        }
-
-        return tracker
+    }
+    
+    public func rule(forTrustedSites trustedSites: [String]) -> ContentBlockerRule? {
+        guard !trustedSites.isEmpty else { return nil }
+        return ContentBlockerRule(trigger: ContentBlockerRule.Trigger.trigger(urlFilter: ".*", ifDomain: trustedSites.map { "*" + $0 }),
+                                  action: ContentBlockerRule.Action.ignorePreviousRules())
     }
     
     private func installDefaultTrackerData() {
         guard let defaultTrackerDataUrl = Bundle(for: type(of: self)).url(forResource: "trackerData", withExtension: "json") else {
-            NSLog("Failed to find url for trackerData.json")
+            os_log("Failed to determine url for writing trackerData.json", type: .error)
             return
         }
         
         do {
             try Data(contentsOf: defaultTrackerDataUrl).write(to: trackerDataUrl, options: .atomicWrite)
         } catch {
-            NSLog("\(error)")
+            os_log("Failed to write trackerData.json to %{public}s", type: .error, trackerDataUrl.absoluteString)
         }
     }
 

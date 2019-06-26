@@ -18,70 +18,72 @@
 //
 
 import Cocoa
-import os
+import Statistics
 
 class MainViewController: NSViewController {
-
-    struct Constants {
-        
-        static let selectedImage = NSImage(named: NSImage.Name("NSStatusNone"))
-        static let unselectedImage: NSImage? = nil
-        
-    }
     
-    @IBOutlet weak var homeSelectionImage: NSImageView!
-    @IBOutlet weak var settingsSelectionImage: NSImageView!
-    @IBOutlet weak var tabs: NSTabView!
-    @IBOutlet weak var searchField: NSTextField!
+    @IBOutlet var tabs: NSTabView!
+    @IBOutlet var sectionButtons: NSStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        tabs.tabViewBorderType = .line
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Welcome", fromStoryboardNamed: "Main")))
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Settings", fromStoryboardNamed: "Main")))
+        
+        setSectionButtonSelected(atIndex: 0)
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Home", fromStoryboardNamed: "Main")))
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "SendFeedback", fromStoryboardNamed: "Main")))
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "TrustedSites", fromStoryboardNamed: "Main")))
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "GlobalStats", fromStoryboardNamed: "Main")))
 
     }
     
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.delegate = self
+        Dependencies.shared.statisticsLoader.refreshAppRetentionAtb(atLocation: "mvc", completion: nil)
     }
-    
-    @IBAction func selectHome(_ sender: Any) {
-        guard homeSelectionImage.image != Constants.selectedImage else {
-            return
-        }
-        
-        homeSelectionImage.image = Constants.selectedImage
-        settingsSelectionImage.image = Constants.unselectedImage
+
+    @IBAction func selectHome(_ sender: NSClickGestureRecognizer) {
+        print(#function, sender)
+        deselectAllSectionButtons()
+        selectSectionButton(from: sender)
         tabs.selectTabViewItem(at: 0)
     }
-    
-    @IBAction func selectSettings(_ sender: Any) {
-        guard settingsSelectionImage.image != Constants.selectedImage else {
-            return
-        }
-        
-        homeSelectionImage.image = Constants.unselectedImage
-        settingsSelectionImage.image = Constants.selectedImage
+
+    @IBAction func selectSendFeedback(_ sender: NSClickGestureRecognizer) {
+        print(#function, sender)
+        deselectAllSectionButtons()
+        selectSectionButton(from: sender)
         tabs.selectTabViewItem(at: 1)
     }
-    
-    @IBAction func performSearch(_ sender: Any) {
-        guard !searchField.stringValue.isEmpty else {
-            os_log("searchField stringValue is empty")
-            return
-        }
-        
-        guard let url = URL(withSearch: searchField.stringValue) else {
-            os_log("unable to create search url")
-            return
-        }
-        
-        NSWorkspace.shared.open(url)
+
+    @IBAction func selectGlobalStats(_ sender: NSClickGestureRecognizer) {
+        print(#function, sender)
+        deselectAllSectionButtons()
+        selectSectionButton(from: sender)
+        tabs.selectTabViewItem(at: 2)
+    }
+
+    @IBAction func selectTrustedSites(_ sender: NSClickGestureRecognizer) {
+        print(#function, sender)
+        deselectAllSectionButtons()
+        selectSectionButton(from: sender)
+        tabs.selectTabViewItem(at: 3)
+    }
+
+    private func selectSectionButton(from gestureRecognizer: NSClickGestureRecognizer) {
+        let button = gestureRecognizer.view as? SectionButton
+        button?.selected()
     }
     
+    private func deselectAllSectionButtons() {
+        sectionButtons.arrangedSubviews.compactMap { $0 as? SectionButton }.forEach { sectionButton in
+            sectionButton.deselected()
+        }
+    }
+    
+    private func setSectionButtonSelected(atIndex index: Int) {
+        (sectionButtons.arrangedSubviews[index] as? SectionButton)?.selected()
+    }
 }
 
 extension MainViewController: NSWindowDelegate {

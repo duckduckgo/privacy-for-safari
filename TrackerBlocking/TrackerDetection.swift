@@ -21,42 +21,61 @@ import Foundation
 
 public protocol TrackerDetection {
     
-    func detectTracker(forResource resource: String, ofType type: String, onPageWithUrl pageUrl: URL) -> DetectedTracker?
+    func detectTrackerFor(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker?
+    
+    func detectedTrackerFrom(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker
     
 }
 
 class DefaultTrackerDetection: TrackerDetection {
     
-    func detectTracker(forResource resource: String, ofType type: String, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
+    func detectTrackerFor(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
         let trackerDataManager = Dependencies.shared.trackerDataManager
-        
-        guard let resourceUrl = URL(withResource: resource) else { return nil }
         guard let knownTracker = trackerDataManager.knownTracker(forUrl: resourceUrl) else { return nil }
-
+        return buildTracker(usingDataManager: trackerDataManager,
+                            forResourceUrl: resourceUrl,
+                            onPageWithUrl: pageUrl,
+                            andKnownTracker: knownTracker)
+    }
+ 
+    func detectedTrackerFrom(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker {
+        let trackerDataManager = Dependencies.shared.trackerDataManager
+        let knownTracker = trackerDataManager.knownTracker(forUrl: resourceUrl)
+        return buildTracker(usingDataManager: trackerDataManager,
+                            forResourceUrl: resourceUrl,
+                            onPageWithUrl: pageUrl,
+                            andKnownTracker: knownTracker)
+    }
+    
+    private func buildTracker(usingDataManager trackerDataManager: TrackerDataManager,
+                              forResourceUrl resourceUrl: URL,
+                              onPageWithUrl pageUrl: URL,
+                              andKnownTracker knownTracker: KnownTracker?) -> DetectedTracker {
+        
         let pageOwner = trackerDataManager.entity(forUrl: pageUrl)
-        let resourceOwner = knownTracker.owner
-        return DetectedTracker(resource: resource,
-                               type: type,
+        let resourceOwner = knownTracker?.owner
+        return DetectedTracker(resource: resourceUrl,
                                page: pageUrl,
                                owner: resourceOwner?.name,
-                               prevalence: knownTracker.prevalence,
-                               isFirstParty: resourceOwner?.name == pageOwner?.name)
+                               prevalence: knownTracker?.prevalence ?? 0,
+                               isFirstParty: resourceOwner?.isEntity(named: pageOwner?.name) ?? false)
+
     }
     
 }
 
-fileprivate extension URL {
+extension URL {
     
-    init?(withResource resource: String) {
+    public init?(withResource resource: String, relativeTo relativeUrl: URL? = nil) {
         var url: String
         if resource.hasPrefix("//") {
-            url = "http" + resource
-        } else if resource.hasPrefix("http://") || resource.hasPrefix("https://") {
+            url = "http:" + resource
+        } else if resource.hasPrefix("/") || resource.hasPrefix("http://") || resource.hasPrefix("https://") {
             url = resource
         } else {
             return nil
         }
-        self.init(string: url)
+        self.init(string: url, relativeTo: relativeUrl)
     }
 
 }

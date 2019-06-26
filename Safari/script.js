@@ -17,43 +17,6 @@
 //  limitations under the License.
 //
 
-// MARK: data
-
-var entitiesNotBlocked = {}
-var entitiesBlocked = {}
-
-// MARK: message handling
-
-safari.self.addEventListener("message", handleMessage);
-
-function handleMessage(event) {
-
-    function incrementEntity(entitiesObject, entityName, resource) {
-        if (!entitiesObject[entityName]) {
-            entitiesObject[entityName] = {};
-        }
-
-        if (!entitiesObject[entityName][resource]) {
-        	entitiesObject[entityName][resource] = 0;
-        }
-
-        entitiesObject[entityName][resource] += 1;
-    }
-    
-    if (event.name == "entityNotBlocked") {
-        incrementEntity(entitiesNotBlocked, event.message.entity, event.message.resource);
-    } else if (event.name == "entityBlocked") {
-        incrementEntity(entitiesBlocked, event.message.entity, event.message.resource)
-    } else if (event.name == "getEntityData") {
-        safari.extension.dispatchMessage("entityData", {
-            "entitiesNotBlocked": entitiesNotBlocked,
-            "entitiesBlocked": entitiesBlocked
-        });
-    }
-    
-}
-
-
 // MARK: Detection Methods
 (function() {
 

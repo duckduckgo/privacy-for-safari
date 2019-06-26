@@ -19,7 +19,9 @@
 
 import Foundation
 
-public let kTrustedSitesUpdatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
+// swiftlint:disable identifier_name
+public let TrustedSitesManagerUpdatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
+// swiftlint:enable identifier_name
 
 public protocol TrustedSitesManager {
 
@@ -42,15 +44,14 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     
     private var domains = [String]()
     
-    private var userDefaults: UserDefaults? {
-        return UserDefaults(suiteName: "group.com.duckduckgo.TrustedSites")
-    }
+    private let userDefaults: UserDefaults?
     
     public var count: Int {
         return domains.count
     }
     
-    public init() {
+    public init(userDefaults: UserDefaults? = UserDefaults(suiteName: "group.com.duckduckgo.TrustedSites")) {
+        self.userDefaults = userDefaults
         load()
     }
     
@@ -92,7 +93,7 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
             Dependencies.shared.blockerListManager.reloadExtension()
         }
 
-        DistributedNotificationCenter.default().postNotificationName(kTrustedSitesUpdatedNotificationName,
+        DistributedNotificationCenter.default().postNotificationName(TrustedSitesManagerUpdatedNotificationName,
                                                                      object: nil,
                                                                      userInfo: nil,
                                                                      deliverImmediately: true)

@@ -19,47 +19,42 @@
 
 import Foundation
 
-public struct PageData {
-
-    public typealias Resources = [String: Int]
-    public typealias Entities = [String: Resources]
+public class PageData {
 
     public let url: URL?
-    public let blockedEntities: Entities
-    public let notBlockedEntities: Entities
-
-    public var notBlockedTrackerCount: Int {
-        return notBlockedEntities.reduce(0, countTrackers)
+    public var loadedTrackers = [DetectedTracker]() {
+        didSet {
+            grade = nil
+        }
+    }
+    public var blockedTrackers = [DetectedTracker]() {
+        didSet {
+            grade = nil
+        }
     }
 
-    public var blockedTrackerCount: Int {
-        return blockedEntities.reduce(0, countTrackers)
-    }
-
-    public init(url: URL? = nil, blockedEntities: Entities = [:], notBlockedEntities: Entities = [:]) {
+    private var grade: Grade?
+    
+    public init(url: URL? = nil) {
         self.url = url
-        self.blockedEntities = blockedEntities
-        self.notBlockedEntities = notBlockedEntities
-    }
-
-    public func updateEntities(blocked: Entities, notBlocked: Entities) -> PageData {
-        let blockedEntities = update(self.blockedEntities, withEntities: blocked)
-        let notBlockedEntities = update(self.notBlockedEntities, withEntities: notBlocked)
-        return PageData(url: self.url, blockedEntities: blockedEntities, notBlockedEntities: notBlockedEntities)
     }
 
     public func calculateGrade() -> Grade.Scores {
+        if let grade = grade {
+            return grade.scores
+        }
+        
         let privacyPractices = Dependencies.shared.privacyPracticesManager
         let trackerDataManager = Dependencies.shared.trackerDataManager
         
         let grade = Grade()
         
-        blockedEntities.forEach {
-            grade.addEntityBlocked(named: $0.key, withPrevalence: 1)
+        blockedTrackers.forEach { tracker in
+            grade.addEntityBlocked(named: tracker.owner ?? "", withPrevalence: tracker.prevalence)
         }
 
-        notBlockedEntities.forEach {
-            grade.addEntityNotBlocked(named: $0.key, withPrevalence: 1)
+        loadedTrackers.forEach { tracker in
+            grade.addEntityBlocked(named: tracker.owner ?? "", withPrevalence: tracker.prevalence)
         }
 
         if let url = url {
@@ -70,30 +65,8 @@ public struct PageData {
             grade.setParentEntity(named: entity?.name, withPrevalence: entity?.prevalence)
         }
 
+        self.grade = grade
         return grade.scores
-    }
-
-    private func merge(resources: Resources, intoExisting existing: Resources) -> Resources {
-        var updated = existing
-        resources.forEach {
-            updated[$0.key, default: 0] += $0.value
-        }
-        return updated
-    }
-
-    private func countTrackers(initialValue: Int, next: (key: String, value: Resources)) -> Int {
-        return initialValue + next.value.reduce(0, { $0 + $1.value })
-    }
-
-    private func update(_ entities: Entities, withEntities newEntities: Entities) -> Entities {
-        var updated = entities
-        newEntities.forEach {
-            let entity = $0
-            $1.forEach {
-                updated[entity, default: [:]][$0, default: 0] += $1
-            }
-        }
-        return updated
     }
 
 }

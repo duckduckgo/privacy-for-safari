@@ -1,6 +1,6 @@
 //
 //  URLExtension.swift
-//  DuckDuckGo
+//  Shared
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,16 +18,14 @@
 //
 
 import Foundation
-import os
 
 extension URL {
     
     init?(withSearch search: String) {
-        guard let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            os_log("encodedSearch is nil")
-            return nil
-        }
-        self.init(string: "https://duckduckgo.com/?q=\(encodedSearch)")
+        guard var components = URLComponents(string: "https://duckduckgo.com") else { return nil }
+        components.queryItems = [ URLQueryItem(name: "q", value: search) ]
+        guard let string = components.string else { return nil }
+        self.init(string: string)
     }
-        
+    
 }

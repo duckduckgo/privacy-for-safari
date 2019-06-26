@@ -19,11 +19,15 @@
 
 import Foundation
 import TrackerBlocking
+import Statistics
+import SafariServices
 
 class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
 
     func beginRequest(with context: NSExtensionContext) {
-        NSLog("ContentBlockerRequestHandler beginRequest")
+        
+        updateRetentionData()
+        
         var items = [Any]()
 
         let blockerListUrl = Dependencies.shared.blockerListManager.blockerListUrl
@@ -33,8 +37,15 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
             items.append(item)
         }
 
-        context.completeRequest(returningItems: items) { expire in
-            NSLog("ContentBlockerRequestHandler \(expire)")
+        context.completeRequest(returningItems: items)
+    }
+
+    func updateRetentionData() {
+        let bundle = Bundle(for: type(of: self))
+        SFContentBlockerManager.getStateOfContentBlocker(withIdentifier: bundle.bundleIdentifier!) { state, _ in
+            if state?.isEnabled ?? false {
+                Statistics.Dependencies.shared.statisticsLoader.refreshAppRetentionAtb(atLocation: "cbrh", completion: nil)
+            }
         }
     }
     

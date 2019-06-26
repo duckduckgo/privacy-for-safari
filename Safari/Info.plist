@@ -32,6 +32,10 @@
 		<string>com.apple.Safari.extension</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).SafariExtensionHandler</string>
+		<key>SFSafariAssociatedContentBlockers</key>
+		<array>
+			<string>com.duckduckgo.macos.PrivacyEssentials.ContentBlockerExtension</string>
+		</array>
 		<key>SFSafariContentScript</key>
 		<array>
 			<dict>

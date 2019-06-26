@@ -17,7 +17,6 @@
 //  limitations under the License.
 //
 
-import os
 import Cocoa
 import SafariServices
 import TrackerBlocking
@@ -58,8 +57,32 @@ class MainDashboardViewController: NSViewController {
     }
 
     private func updateUI() {
+        
+        class R {
+            
+            var entities = [String: [String]]()
+            
+        }
+        
+        func reduce(result: R, tracker: DetectedTracker) -> R {
+            let entityName = tracker.owner ?? "<unknown>"
+            var resources = result.entities[entityName, default: [String]()]
+            resources.append(tracker.resource.absoluteString)
+            result.entities[entityName] = resources
+            return result
+        }
+        
+        func entitiesMapper(tracker: DetectedTracker) -> String? {
+            return tracker.owner
+        }
+        
         urlLabel.stringValue = pageData.url?.host ?? "No URL"
-        entities.string = String(describing: pageData.notBlockedEntities)
+        entities.string = "Enhanced from " + String(describing: pageData.calculateGrade().site.grade.rawValue)
+            + " to " + String(describing: pageData.calculateGrade().enhanced.grade.rawValue)
+            + "\n\nNOT BLOCKED: "
+            + String(describing: pageData.loadedTrackers.reduce(R(), reduce).entities)
+            + "\n\nBLOCKED: "
+            + String(describing: pageData.blockedTrackers.reduce(R(), reduce).entities)
     }
 
 }

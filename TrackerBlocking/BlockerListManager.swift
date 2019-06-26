@@ -8,6 +8,7 @@
 
 import Foundation
 import SafariServices
+import os
 
 public protocol BlockerListManager {
 
@@ -28,16 +29,15 @@ public class DefaultBlockerListManager: BlockerListManager {
     }
     
     public func update(completion: () -> Void) {
-        NSLog("BlockerList update")
-
         let dataManager = Dependencies.shared.trackerDataManager
         try? dataManager.load()
         
-        let rules = dataManager.contentBlockerRules(withTrustedSites: Dependencies.shared.trustedSitesManager.allDomains())
-        guard let encoded = try? JSONEncoder().encode(rules) else {
-            NSLog("failed to encode content blocker rules")
-            return
+        var rules = dataManager.contentBlockerRules().map { $0.rules }.flatMap { $0 }
+        if let whitelistRule = dataManager.rule(forTrustedSites: Dependencies.shared.trustedSitesManager.allDomains()) {
+            rules += [ whitelistRule ]
         }
+        
+        guard let encoded = try? JSONEncoder().encode(rules) else { return }
         
         writeBlockerList(data: encoded)
         
@@ -45,19 +45,15 @@ public class DefaultBlockerListManager: BlockerListManager {
     }
 
     public func reloadExtension() {
-        NSLog("reload content blocker")
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: "com.duckduckgo.macos.ContentBlocker") { error in
-            if let error = error {
-                NSLog("Failed to reload content blocker \(error)")
-            }
-        }
+        let id = (Bundle.main.bundleIdentifier ?? "") + ".ContentBlockingExtension"
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: id)
     }
     
     private func writeBlockerList(data: Data) {
         do {
             try data.write(to: blockerListUrl, options: .atomicWrite)
         } catch {
-            NSLog("Failed to write blocker list")
+            os_log("Failed to create blocker list %{public}s", type: .error, error.localizedDescription)
         }
     }
 

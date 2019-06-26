@@ -19,7 +19,7 @@
 
 import TrackerBlocking
 import SafariServices
-import os
+import Statistics
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
     
@@ -47,18 +47,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         tabs.selectedTabViewItem?.viewController?.viewWillAppear()
+        Statistics.Dependencies.shared.statisticsLoader.refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
     }
 
     @IBAction func performSearch(sender: Any) {
-        guard !searchField.stringValue.isEmpty else {
-            os_log("searchField stringValue is empty")
-            return
-        }
+        guard !searchField.stringValue.isEmpty else { return }
 
-        guard let url = URL(withSearch: searchField.stringValue) else {
-            os_log("unable to create search url")
-            return
-        }
+        guard let url = URL(withSearch: searchField.stringValue) else { return }
         
         NSWorkspace.shared.open(url)
         dismissPopover()

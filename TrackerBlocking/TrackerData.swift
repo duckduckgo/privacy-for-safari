@@ -18,8 +18,16 @@
 //
 
 import Foundation
+import os
 
 public struct TrackerData: Codable {
+    
+    public struct TrackerRules {
+        
+        let tracker: KnownTracker
+        let rules: [ContentBlockerRule]
+        
+    }
     
     public let trackers: [KnownTracker]
     public let entities: [Entity]
@@ -29,40 +37,25 @@ public struct TrackerData: Codable {
         self.entities = entities
     }
 
-    public func contentBlockerRules(withTrustedSites trustedSites: [String]) -> [ContentBlockerRule] {
-        
-        var rules = trackers.compactMap { $0.contentBlockerRules(entitiesByName: entitiesByName() ) }.flatMap { $0 }
-        
-        if !trustedSites.isEmpty {
-            rules.append(ContentBlockerRule(trigger: .trigger(urlFilter: ".*", ifDomain: trustedSites), action: .ignorePreviousRules()))
+    public func contentBlockerRules() -> [TrackerRules] {
+        let entities = entitiesByName()
+        return trackers.compactMap { tracker -> TrackerRules? in
+            guard let rules = tracker.contentBlockerRules(entitiesByName: entities) else { return nil }
+            return TrackerRules(tracker: tracker, rules: rules)
         }
-        
-        return rules
     }
 
-    func trackersByRegex() -> [NSRegularExpression: KnownTracker] {
-
+    public func trackersByRegex() -> [NSRegularExpression: KnownTracker] {
         var trackers = [NSRegularExpression: KnownTracker]()
-
-        func addRegexRule(pattern: String, tracker: KnownTracker) {
-            do {
-                trackers[try NSRegularExpression(pattern: pattern, options: [])] = tracker
-            } catch {
-                NSLog("Failed to compile regex \(pattern) \(error)")
-            }
-        }
-
-        self.trackers.forEach { tracker in
-            if let trackerRules = tracker.rules {
-                trackerRules.forEach { rule in
-                    addRegexRule(pattern: rule.rule, tracker: tracker)
+        contentBlockerRules().forEach { trackerRules in
+            trackerRules.rules.forEach { rule in
+                do {
+                    trackers[try NSRegularExpression(pattern: rule.trigger.urlFilter, options: [])] = trackerRules.tracker
+                } catch {
+                    os_log("Failed to compile regex %{public}s %{public}s", type: .error, rule.trigger.urlFilter, error.localizedDescription)
                 }
-            } else {
-                let domain = tracker.domain.replacingOccurrences(of: ".", with: "\\.")
-                addRegexRule(pattern: domain, tracker: tracker)
             }
         }
-
         return trackers
     }
     
@@ -113,7 +106,7 @@ fileprivate extension KnownTracker {
         
         return domains.map {
             let domain = $0.replacingOccurrences(of: ".", with: "\\.")
-            let normalizedRule = "^https?://\(domain)/"
+            let normalizedRule = normalizeRule(rule: "\(domain)/")
             return ContentBlockerRule(
                 trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions),
                 action: .block())
@@ -127,7 +120,7 @@ fileprivate extension KnownTracker {
         
         let ruleDomainExceptions = rule.exceptions?.domains ?? []
         
-        let normalizedRule = "^https?://\(rule.rule)"
+        let normalizedRule = normalizeRule(rule: rule.rule)
         
         rules.append(ContentBlockerRule(
             trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions + ruleDomainExceptions),
@@ -138,7 +131,7 @@ fileprivate extension KnownTracker {
             let resourceTypes = types.compactMap { KnownTracker.resourceTypeMapping[$0] }
             
             if resourceTypes.count != types.count {
-                NSLog("Unable to map all resource types in \(types)")
+                os_log("Unable to map all resource types in %{public}s", type: .error, String(describing: types))
             }
             
             rules.append(ContentBlockerRule(
@@ -148,6 +141,10 @@ fileprivate extension KnownTracker {
         }
         
         return rules
+    }
+    
+    private func normalizeRule(rule: String) -> String {
+        return "^https?://(.*[.])*" + rule
     }
     
 }

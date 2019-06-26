@@ -18,14 +18,18 @@
 //
 
 import Foundation
+@testable import Core
 @testable import TrackerBlocking
+@testable import Statistics
 
 class MockTrackerDetection: TrackerDetection {
-
-    func detectTracker(forResource resource: String, ofType type: String, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
+    func detectTrackerFor(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
         return nil
     }
     
+    func detectedTrackerFrom(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker {
+        return DetectedTracker(resource: resourceUrl, page: pageUrl, owner: nil, prevalence: 1.0, isFirstParty: false)
+    }
 }
 
 struct MockPrivacyPracticesManager: PrivacyPracticesManager {
@@ -86,10 +90,6 @@ class MockTrackerDataManager: TrackerDataManager {
     func forEachTracker(_ result: (KnownTracker) -> Void) {
     }
 
-    func contentBlockerRules(withTrustedSites: [String]) -> [ContentBlockerRule] {
-        return []
-    }
-
     func entity(forUrl url: URL) -> Entity? {
         return returnEntity
     }
@@ -100,6 +100,14 @@ class MockTrackerDataManager: TrackerDataManager {
 
     func update(completion: () -> Void) {
         completion()
+    }
+    
+    func contentBlockerRules() -> [TrackerData.TrackerRules] {
+        return []
+    }
+    
+    func rule(forTrustedSites trustedSites: [String]) -> ContentBlockerRule? {
+        return nil
     }
     
 }
@@ -117,7 +125,7 @@ class MockBlockerListManager: BlockerListManager {
     
 }
 
-struct MockDependencies: TrackerBlockerDependencies {
+struct MockTrackerBlockingDependencies: TrackerBlockingDependencies {
 
     let trustedSitesManager: TrustedSitesManager
     let trackerDetection: TrackerDetection
@@ -138,4 +146,66 @@ struct MockDependencies: TrackerBlockerDependencies {
         self.blockerListManager = blockerListManager
     }
 
+}
+
+class MockAPIRequest: APIRequest {
+    
+    struct Response {
+        
+        let data: Data?
+        let response: HTTPURLResponse?
+        let error: Error?
+        
+    }
+    
+    struct Get {
+        
+        let path: String
+        let params: [String: String]?
+        
+    }
+    
+    let dummyUrl = URL(string: "http://www.example.com")!
+    
+    private var responses = [Response]()
+    var requests = [Get]()
+    
+    func get(_ path: String, withParams params: [String: String]?, completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)) {
+        requests.append(Get(path: path, params: params))
+        guard responses.count > 0 else { return }
+        let response = responses.remove(at: 0)
+        completion(response.data, response.response, response.error)
+    }
+    
+    func addResponse(_ statusCode: Int, body: String? = nil) {
+        let httpResponse = HTTPURLResponse(url: dummyUrl, statusCode: statusCode, httpVersion: nil, headerFields: nil)
+        let data: Data? = body?.data(using: .utf8)
+        responses.append(Response(data: data, response: httpResponse, error: nil))
+    }
+    
+}
+
+class MockStatisticsStore: StatisticsStore {
+    
+    var installDate: Date?
+    
+    var installAtb: String?
+    
+    var searchRetentionAtb: String?
+    
+    var appRetentionAtb: String?
+    
+}
+
+class MockStatisticsDependencies: StatisticsDependencies {
+    
+    var statisticsLoader: StatisticsLoader
+    
+    var statisticsStore: StatisticsStore
+    
+    init(statisticsStore: StatisticsStore = DefaultStatisticsStore(), statisticsLoader: StatisticsLoader = DefaultStatisticsLoader()) {
+        self.statisticsStore = statisticsStore
+        self.statisticsLoader = statisticsLoader
+    }
+    
 }

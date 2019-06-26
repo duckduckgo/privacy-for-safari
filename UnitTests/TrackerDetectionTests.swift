@@ -26,6 +26,7 @@ class TrackerDetectionTests: XCTestCase {
     struct URLs {
         
         static let example = URL(string: "http://example.com")!
+        static let resource = URL(string: "http://tracker.com/tracker.js")!
         
     }
     
@@ -35,15 +36,14 @@ class TrackerDetectionTests: XCTestCase {
         let tracker = KnownTracker(domain: "other.com", owner: nil, rules: nil, prevalence: 1.0, defaultAction: nil, subdomains: nil)
         let mockTrackerDataManager = MockTrackerDataManager(returnEntity: entity, returnTracker: tracker)
 
-        Dependencies.shared = MockDependencies(trackerDataManager: mockTrackerDataManager)
+        Dependencies.shared = MockTrackerBlockingDependencies(trackerDataManager: mockTrackerDataManager)
         
         let pageUrl = URLs.example
-        let resource = "//other.com/resource"
-        let type = "test"
+        let resourceUrl = URLs.resource
         
         let detection = DefaultTrackerDetection()
-        let actual = detection.detectTracker(forResource: resource, ofType: type, onPageWithUrl: pageUrl)
-        let expected = DetectedTracker(resource: resource, type: type, page: pageUrl, owner: nil, prevalence: 1.0, isFirstParty: false)
+        let actual = detection.detectTrackerFor(resourceUrl: resourceUrl, onPageWithUrl: pageUrl)
+        let expected = DetectedTracker(resource: resourceUrl, page: pageUrl, owner: nil, prevalence: 1.0, isFirstParty: false)
         XCTAssertEqual(actual, expected)
     }
 

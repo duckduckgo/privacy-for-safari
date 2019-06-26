@@ -21,8 +21,7 @@ import Foundation
 
 public struct DetectedTracker: Equatable {
     
-    public let resource: String
-    public let type: String
+    public let resource: URL
     public let page: URL
     public let owner: String?
     public let prevalence: Double

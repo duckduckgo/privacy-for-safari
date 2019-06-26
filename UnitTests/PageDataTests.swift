@@ -23,41 +23,28 @@ import XCTest
 class PageDataTests: XCTestCase {
 
     struct URLs {
-        static let example = URL(string: "https://example.com")!
+        static let page = URL(string: "https://example.com")!
+        static let resource = URL(string: "https://tracker.com/tracker.js")!
     }
 
-    func testWhenEntitiesUpdatedThenTrackerCountsAreUpdated() {
-        var pageData = PageData()
-        pageData = pageData.updateEntities(blocked: ["Entity": ["Resource": 1]],
-                                           notBlocked: ["Entity": ["Resource": 1]])
-        XCTAssertEqual(1, pageData.notBlockedTrackerCount)
-        XCTAssertEqual(1, pageData.blockedTrackerCount)
+    func testWhenTrackersAreUpdatedThenScoreIsRecalculated() {
+        let pageData = PageData()
+        let defaultGrade = pageData.calculateGrade()
+        
+        pageData.blockedTrackers = [DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "None", prevalence: 1.0, isFirstParty: false)]
+        let blockedTrackersGrade = pageData.calculateGrade()
+        XCTAssertNotEqual(defaultGrade.site.score, blockedTrackersGrade.site.score)
 
-        pageData = pageData.updateEntities(blocked: ["Entity": ["Resource": 1]],
-                                           notBlocked: [:])
-        XCTAssertEqual(1, pageData.notBlockedTrackerCount)
-        XCTAssertEqual(2, pageData.blockedTrackerCount)
-
-        pageData = pageData.updateEntities(blocked: [:],
-                                           notBlocked: ["Entity": ["Resource": 1]])
-        XCTAssertEqual(2, pageData.notBlockedTrackerCount)
-        XCTAssertEqual(2, pageData.blockedTrackerCount)
+        pageData.loadedTrackers = [DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "None", prevalence: 10.0, isFirstParty: false)]
+        let loadedTrackersGrade = pageData.calculateGrade()
+        XCTAssertNotEqual(blockedTrackersGrade.site.score, loadedTrackersGrade.site.score)
     }
-
-    func testWhenEntitiesUpdatedThenURLIsRetained() {
-        var pageData = PageData(url: URLs.example)
-        pageData = pageData.updateEntities(blocked: ["Entity": ["Resource": 1]], notBlocked: [:])
-        XCTAssertEqual(pageData.url, pageData.url)
-
-        pageData = pageData.updateEntities(blocked: [:], notBlocked: ["Entity": ["Resource": 1]])
-        XCTAssertEqual(pageData.url, pageData.url)
-    }
-
+    
     func testDefaultConstructor() {
         let pageData = PageData()
         XCTAssertNil(pageData.url)
-        XCTAssertTrue(pageData.blockedEntities.isEmpty)
-        XCTAssertTrue(pageData.notBlockedEntities.isEmpty)
+        XCTAssertTrue(pageData.blockedTrackers.isEmpty)
+        XCTAssertTrue(pageData.loadedTrackers.isEmpty)
     }
 
 }

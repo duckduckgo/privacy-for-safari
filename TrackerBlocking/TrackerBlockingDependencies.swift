@@ -1,5 +1,5 @@
 //
-//  Dependencies.swift
+//  TrackerBlockingDependencies.swift
 //  TrackerBlocking
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
@@ -19,7 +19,7 @@
 
 import Foundation
 
-public protocol TrackerBlockerDependencies {
+public protocol TrackerBlockingDependencies {
 
     var trustedSitesManager: TrustedSitesManager { get }
     var trackerDetection: TrackerDetection { get }
@@ -29,9 +29,9 @@ public protocol TrackerBlockerDependencies {
     
 }
 
-public class Dependencies: TrackerBlockerDependencies {
+public class Dependencies: TrackerBlockingDependencies {
     
-    public static var shared: TrackerBlockerDependencies = Dependencies()
+    public static var shared: TrackerBlockingDependencies = Dependencies()
 
     public let trustedSitesManager: TrustedSitesManager = DefaultTrustedSitesManager()
     public let trackerDetection: TrackerDetection = DefaultTrackerDetection()

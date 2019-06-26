@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ContentBlockerRule: Codable {
+public struct ContentBlockerRule: Codable, Hashable {
 
     public enum ResourceType: String {
         
@@ -24,7 +24,7 @@ public struct ContentBlockerRule: Codable {
         
     }
     
-    public struct Trigger: Codable {
+    public struct Trigger: Codable, Hashable {
 
         let urlFilter: String
         let unlessDomain: [String]?
@@ -54,7 +54,7 @@ public struct ContentBlockerRule: Codable {
 
     }
 
-    public struct Action: Codable {
+    public struct Action: Codable, Hashable {
 
         let type: String
         
@@ -71,4 +71,9 @@ public struct ContentBlockerRule: Codable {
     let trigger: Trigger
     let action: Action
 
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(trigger)
+        hasher.combine(action)
+    }
+    
 }

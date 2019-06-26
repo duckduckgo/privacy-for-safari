@@ -19,23 +19,28 @@
 
 import Cocoa
 import TrackerBlocking
+import Statistics
 import SafariServices
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        guard !ProcessInfo().arguments.contains("testing") else { return }
         
-        Dependencies.shared.trackerDataManager.update {
-            Dependencies.shared.blockerListManager.update {
-                Dependencies.shared.blockerListManager.reloadExtension()
+        let statistics = Statistics.Dependencies.shared
+        let trackerBlocking = TrackerBlocking.Dependencies.shared
+        
+        statistics.statisticsLoader.refreshAppRetentionAtb(atLocation: "ad") {
+            print(#function, "atb refreshed")
+        }
+        
+        trackerBlocking.trackerDataManager.update {
+            trackerBlocking.blockerListManager.update {
+                trackerBlocking.blockerListManager.reloadExtension()
             }
         }
         
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
 
 }
