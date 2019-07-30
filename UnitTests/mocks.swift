@@ -41,34 +41,45 @@ struct MockPrivacyPracticesManager: PrivacyPracticesManager {
 }
 
 struct MockTrustedSitesManager: TrustedSitesManager {
-
-    var count: Int {
-        return 0
-    }
-
+    
+    var count: Int = 0
+    
     func addDomain(_ domain: String) {
+     
     }
-
+    
+    func addDomain(forUrl url: URL) {
+     
+    }
+    
     func allDomains() -> [String] {
         return []
     }
-
+    
     func clear() {
+     
     }
-
+    
     func removeDomain(at index: Int) {
+     
     }
-
+    
+    func removeDomain(forUrl url: URL) {
+     
+    }
+    
     func load() {
+        
     }
-
+    
     func save() {
+        
     }
     
     func isTrusted(url: URL) -> Bool {
         return false
     }
-
+    
 }
 
 class MockTrackerDataManager: TrackerDataManager {
@@ -79,9 +90,6 @@ class MockTrackerDataManager: TrackerDataManager {
     init(returnEntity entity: Entity? = nil, returnTracker tracker: KnownTracker? = nil) {
         returnEntity = entity
         returnTracker = tracker
-    }
-
-    func load() {
     }
 
     func forEachEntity(_ result: (Entity) -> Void) {
@@ -116,36 +124,8 @@ class MockBlockerListManager: BlockerListManager {
     
     var blockerListUrl: URL { return URL(fileURLWithPath: "blockerList.json") }
     
-    func update(completion: () -> Void) {
-        completion()
-    }
+    func updateAndReload() { }
     
-    func reloadExtension() {
-    }
-    
-}
-
-struct MockTrackerBlockingDependencies: TrackerBlockingDependencies {
-
-    let trustedSitesManager: TrustedSitesManager
-    let trackerDetection: TrackerDetection
-    let privacyPracticesManager: PrivacyPracticesManager
-    let trackerDataManager: TrackerDataManager
-    let blockerListManager: BlockerListManager
-    
-    init(trustedSitesManager: TrustedSitesManager = MockTrustedSitesManager(),
-         trackerDetection: TrackerDetection = MockTrackerDetection(),
-         privacyPracticesManager: PrivacyPracticesManager = MockPrivacyPracticesManager(),
-         trackerDataManager: TrackerDataManager = MockTrackerDataManager(),
-         blockerListManager: BlockerListManager = MockBlockerListManager()) {
-
-        self.trustedSitesManager = trustedSitesManager
-        self.trackerDetection = trackerDetection
-        self.privacyPracticesManager = privacyPracticesManager
-        self.trackerDataManager = trackerDataManager
-        self.blockerListManager = blockerListManager
-    }
-
 }
 
 class MockAPIRequest: APIRequest {
@@ -199,13 +179,10 @@ class MockStatisticsStore: StatisticsStore {
 
 class MockStatisticsDependencies: StatisticsDependencies {
     
-    var statisticsLoader: StatisticsLoader
-    
     var statisticsStore: StatisticsStore
     
-    init(statisticsStore: StatisticsStore = DefaultStatisticsStore(), statisticsLoader: StatisticsLoader = DefaultStatisticsLoader()) {
+    init(statisticsStore: StatisticsStore = DefaultStatisticsStore()) {
         self.statisticsStore = statisticsStore
-        self.statisticsLoader = statisticsLoader
     }
     
 }

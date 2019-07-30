@@ -15,8 +15,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "85417D5F226605E60062A081"
-               BuildableName = "DuckDuckGo.app"
-               BlueprintName = "DuckDuckGo"
+               BuildableName = "DuckDuckGo Privacy Essentials.app"
+               BlueprintName = "DuckDuckGo Privacy Essentials"
+               ReferencedContainer = "container:DuckDuckGo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "859914F8227CCC4D0023C1F2"
+               BuildableName = "TrackersBuilder"
+               BlueprintName = "TrackersBuilder"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,11 +45,17 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo.app"
-            BlueprintName = "DuckDuckGo"
+            BuildableName = "DuckDuckGo Privacy Essentials.app"
+            BlueprintName = "DuckDuckGo Privacy Essentials"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "testing"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -48,23 +68,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo.app"
-            BlueprintName = "DuckDuckGo"
-            ReferencedContainer = "container:DuckDuckGo.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "testing"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -81,8 +84,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo.app"
-            BlueprintName = "DuckDuckGo"
+            BuildableName = "DuckDuckGo Privacy Essentials.app"
+            BlueprintName = "DuckDuckGo Privacy Essentials"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -98,8 +101,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo.app"
-            BlueprintName = "DuckDuckGo"
+            BuildableName = "DuckDuckGo Privacy Essentials.app"
+            BlueprintName = "DuckDuckGo Privacy Essentials"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

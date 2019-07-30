@@ -36,12 +36,10 @@ class TrackerDetectionTests: XCTestCase {
         let tracker = KnownTracker(domain: "other.com", owner: nil, rules: nil, prevalence: 1.0, defaultAction: nil, subdomains: nil)
         let mockTrackerDataManager = MockTrackerDataManager(returnEntity: entity, returnTracker: tracker)
 
-        Dependencies.shared = MockTrackerBlockingDependencies(trackerDataManager: mockTrackerDataManager)
-        
         let pageUrl = URLs.example
         let resourceUrl = URLs.resource
         
-        let detection = DefaultTrackerDetection()
+        let detection = DefaultTrackerDetection(trackerDataManager: { mockTrackerDataManager })
         let actual = detection.detectTrackerFor(resourceUrl: resourceUrl, onPageWithUrl: pageUrl)
         let expected = DetectedTracker(resource: resourceUrl, page: pageUrl, owner: nil, prevalence: 1.0, isFirstParty: false)
         XCTAssertEqual(actual, expected)

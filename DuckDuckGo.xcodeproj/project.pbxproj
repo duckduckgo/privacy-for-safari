@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85008B3422C9581B00A2CFB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85008B3322C9581B00A2CFB0 /* Localizable.strings */; };
 		8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */; };
 		8510B257226F3BFB0015D406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8510B256226F3BFB0015D406 /* Assets.xcassets */; };
 		8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */; };
@@ -49,7 +50,8 @@
 		854A9F542271CB01008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
 		854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
 		854A9F562271CB0B008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
-		8587A68C2278901400F622AF /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
+		8560B55A22CE613C0071CC72 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8560B55B22CE61C70071CC72 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
 		8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587A6922278901400F622AF /* TrackerDetectionTests.swift */; };
 		8587A6952278901400F622AF /* TrackerBlocking.h in Headers */ = {isa = PBXBuildFile; fileRef = 8587A6852278901300F622AF /* TrackerBlocking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8587A6982278901400F622AF /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
@@ -57,6 +59,19 @@
 		8587A6A22278903700F622AF /* TrackerDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587A6742278591D00F622AF /* TrackerDetection.swift */; };
 		8587A6A32278905600F622AF /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
 		8587A6A42278905900F622AF /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
+		8587FD5522C67CD70072F47F /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8587FD5422C67CD70072F47F /* Localizable.stringsdict */; };
+		8587FD5722C67D2D0072F47F /* UserText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8587FD5622C67D2D0072F47F /* UserText.swift */; };
+		8590F40B22CE563300B7473A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8590F40C22CE563800B7473A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8590F40D22CE563900B7473A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8590F40E22CE563A00B7473A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8590F40F22CE563A00B7473A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8590F41122CE563C00B7473A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
+		8590F41222CE564600B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
+		8590F41322CE564600B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
+		8590F41422CE564600B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
+		8590F41522CE564700B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
+		8590F41622CE564F00B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
 		859914D12278946A0023C1F2 /* TrackerBlockingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D02278946A0023C1F2 /* TrackerBlockingDependencies.swift */; };
 		859914D3227895F40023C1F2 /* DetectedTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D2227895F40023C1F2 /* DetectedTracker.swift */; };
 		859914D92278A3DA0023C1F2 /* mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D82278A3DA0023C1F2 /* mocks.swift */; };
@@ -92,6 +107,10 @@
 		85A527DF227F85CF00233FDF /* TrackerBlockingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D02278946A0023C1F2 /* TrackerBlockingDependencies.swift */; };
 		85A527E0227F85D200233FDF /* ContentBlockerRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A527C8227F634600233FDF /* ContentBlockerRule.swift */; };
 		85A527E1227F85D500233FDF /* BlockerListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A527BF227F2E8000233FDF /* BlockerListManager.swift */; };
+		85C7AC5C22CCDB3500619302 /* TrackersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */; };
+		85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */; };
+		85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CFD4C022CB98D600C8B1AA /* NavigationController.swift */; };
+		85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5017A22C4322B005DDF47 /* Clickables.swift */; };
 		85E9520C22AFC7590071281E /* Statistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 85E9520A22AFC7590071281E /* Statistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		85E9520F22AFC7590071281E /* Statistics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9520822AFC7590071281E /* Statistics.framework */; };
 		85E9521022AFC7590071281E /* Statistics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9520822AFC7590071281E /* Statistics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -127,7 +146,14 @@
 			remoteGlobalIDString = 85417DA7226762E40062A081;
 			remoteInfo = ContentBlocker;
 		};
-		8587A68D2278901400F622AF /* PBXContainerItemProxy */ = {
+		85488E3322CEA2C3005C8BCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85417D8A226762870062A081;
+			remoteInfo = SafariAppExtension;
+		};
+		85488E3522CEA399005C8BCE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85417D58226605E60062A081 /* Project object */;
 			proxyType = 1;
@@ -147,13 +173,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8587A6822278901300F622AF;
 			remoteInfo = TrackerBlocking;
-		};
-		859F13D7227A486200EDE40A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85417D58226605E60062A081 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 85417D8A226762870062A081;
-			remoteInfo = "Safari App Extension";
 		};
 		85E9520D22AFC7590071281E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -216,6 +235,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		85008B3322C9581B00A2CFB0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		8510B256226F3BFB0015D406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogoToolbarItemIcon.pdf; sourceTree = "<group>"; };
@@ -225,7 +245,7 @@
 		8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardViewController.swift; sourceTree = "<group>"; };
 		8540D8CF22BBA356009A2FF4 /* SectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionButton.swift; sourceTree = "<group>"; };
 		8540D8F122BBE264009A2FF4 /* HomeSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionViewController.swift; sourceTree = "<group>"; };
-		85417D60226605E60062A081 /* DuckDuckGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckDuckGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85417D60226605E60062A081 /* DuckDuckGo Privacy Essentials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DuckDuckGo Privacy Essentials.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85417D63226605E60062A081 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85417D65226605E60062A081 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		85417D67226605E60062A081 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -261,6 +281,9 @@
 		8587A68B2278901300F622AF /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8587A6922278901400F622AF /* TrackerDetectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDetectionTests.swift; sourceTree = "<group>"; };
 		8587A6942278901400F622AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8587FD5422C67CD70072F47F /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		8587FD5622C67D2D0072F47F /* UserText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserText.swift; sourceTree = "<group>"; };
+		8590F40A22CE563300B7473A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		859914D02278946A0023C1F2 /* TrackerBlockingDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerBlockingDependencies.swift; sourceTree = "<group>"; };
 		859914D2227895F40023C1F2 /* DetectedTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedTracker.swift; sourceTree = "<group>"; };
 		859914D82278A3DA0023C1F2 /* mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mocks.swift; sourceTree = "<group>"; };
@@ -282,6 +305,10 @@
 		85A527BF227F2E8000233FDF /* BlockerListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerListManager.swift; sourceTree = "<group>"; };
 		85A527C3227F4FA500233FDF /* KnownTrackerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownTrackerExtension.swift; sourceTree = "<group>"; };
 		85A527C8227F634600233FDF /* ContentBlockerRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRule.swift; sourceTree = "<group>"; };
+		85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersDetailViewController.swift; sourceTree = "<group>"; };
+		85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PrivacyProtection.xcassets; sourceTree = "<group>"; };
+		85CFD4C022CB98D600C8B1AA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		85D5017A22C4322B005DDF47 /* Clickables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clickables.swift; sourceTree = "<group>"; };
 		85E9520822AFC7590071281E /* Statistics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Statistics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E9520A22AFC7590071281E /* Statistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statistics.h; sourceTree = "<group>"; };
 		85E9520B22AFC7590071281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -342,7 +369,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8587A68C2278901400F622AF /* TrackerBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +404,7 @@
 				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
 				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
 				85E9521E22AFDB220071281E /* URLExtension.swift */,
+				8590F40A22CE563300B7473A /* StringExtension.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -385,16 +412,16 @@
 		85417D57226605E60062A081 = {
 			isa = PBXGroup;
 			children = (
-				85417DAA226762E40062A081 /* ContentBlocker */,
-				85417D62226605E60062A081 /* DuckDuckGo */,
+				85417D62226605E60062A081 /* App */,
+				85417DAA226762E40062A081 /* ContentBlockerExtension */,
+				85E9522C22B0FDE80071281E /* CoreFramework */,
 				854A9F32227067ED008F2A93 /* Fonts */,
-				85E9520922AFC7590071281E /* Statistics */,
-				85E9522C22B0FDE80071281E /* Core */,
 				85417D8C226762870062A081 /* Frameworks */,
 				85417D61226605E60062A081 /* Products */,
-				85417D8F226762870062A081 /* Safari */,
+				85417D8F226762870062A081 /* SafariAppExtension */,
 				8510B261226F5A110015D406 /* Shared */,
-				8587A6842278901300F622AF /* TrackerBlocking */,
+				85E9520922AFC7590071281E /* StatisticsFramework */,
+				8587A6842278901300F622AF /* TrackerBlockingFramework */,
 				859914FA227CCC4D0023C1F2 /* TrackersBuilder */,
 				8587A6912278901400F622AF /* UnitTests */,
 			);
@@ -403,7 +430,7 @@
 		85417D61226605E60062A081 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				85417D60226605E60062A081 /* DuckDuckGo.app */,
+				85417D60226605E60062A081 /* DuckDuckGo Privacy Essentials.app */,
 				85417D8B226762870062A081 /* SafariAppExtension.appex */,
 				85417DA8226762E40062A081 /* ContentBlockerExtension.appex */,
 				8587A6832278901300F622AF /* TrackerBlocking.framework */,
@@ -415,7 +442,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		85417D62226605E60062A081 /* DuckDuckGo */ = {
+		85417D62226605E60062A081 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				85417D63226605E60062A081 /* AppDelegate.swift */,
@@ -428,7 +455,7 @@
 				85417D65226605E60062A081 /* MainViewController.swift */,
 				8540D8CF22BBA356009A2FF4 /* SectionButton.swift */,
 			);
-			path = DuckDuckGo;
+			path = App;
 			sourceTree = "<group>";
 		};
 		85417D8C226762870062A081 /* Frameworks */ = {
@@ -439,33 +466,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		85417D8F226762870062A081 /* Safari */ = {
+		85417D8F226762870062A081 /* SafariAppExtension */ = {
 			isa = PBXGroup;
 			children = (
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
+				85D5017A22C4322B005DDF47 /* Clickables.swift */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
 				85417D97226762870062A081 /* Info.plist */,
+				85008B3322C9581B00A2CFB0 /* Localizable.strings */,
+				8587FD5422C67CD70072F47F /* Localizable.stringsdict */,
 				8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */,
 				8510B263226F5A840015D406 /* MainDashboardViewController.swift */,
+				85CFD4C022CB98D600C8B1AA /* NavigationController.swift */,
+				85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */,
 				85417D9C226762870062A081 /* Safari.entitlements */,
 				85417D90226762870062A081 /* SafariExtensionHandler.swift */,
 				85417D92226762870062A081 /* SafariExtensionViewController.swift */,
 				85417D94226762870062A081 /* SafariExtensionViewController.xib */,
 				8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */,
 				85417D98226762870062A081 /* script.js */,
+				85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */,
+				8587FD5622C67D2D0072F47F /* UserText.swift */,
 			);
-			path = Safari;
+			path = SafariAppExtension;
 			sourceTree = "<group>";
 		};
-		85417DAA226762E40062A081 /* ContentBlocker */ = {
+		85417DAA226762E40062A081 /* ContentBlockerExtension */ = {
 			isa = PBXGroup;
 			children = (
 				85417DAD226762E40062A081 /* ContentBlockerRequestHandler.swift */,
 				85417DAF226762E40062A081 /* Info.plist */,
 				85417DB0226762E40062A081 /* ContentBlocker.entitlements */,
 			);
-			path = ContentBlocker;
+			path = ContentBlockerExtension;
 			sourceTree = "<group>";
 		};
 		854A9F32227067ED008F2A93 /* Fonts */ = {
@@ -480,7 +514,7 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		8587A6842278901300F622AF /* TrackerBlocking */ = {
+		8587A6842278901300F622AF /* TrackerBlockingFramework */ = {
 			isa = PBXGroup;
 			children = (
 				85A527BF227F2E8000233FDF /* BlockerListManager.swift */,
@@ -501,7 +535,7 @@
 				8587A6742278591D00F622AF /* TrackerDetection.swift */,
 				854A9F4622708783008F2A93 /* TrustedSitesManager.swift */,
 			);
-			path = TrackerBlocking;
+			path = TrackerBlockingFramework;
 			sourceTree = "<group>";
 		};
 		8587A6912278901400F622AF /* UnitTests */ = {
@@ -525,7 +559,7 @@
 			path = TrackersBuilder;
 			sourceTree = "<group>";
 		};
-		85E9520922AFC7590071281E /* Statistics */ = {
+		85E9520922AFC7590071281E /* StatisticsFramework */ = {
 			isa = PBXGroup;
 			children = (
 				85E9520B22AFC7590071281E /* Info.plist */,
@@ -535,10 +569,10 @@
 				85E9521822AFC8F10071281E /* StatisticsStore.swift */,
 				85E9521C22AFCE7A0071281E /* Atb.swift */,
 			);
-			path = Statistics;
+			path = StatisticsFramework;
 			sourceTree = "<group>";
 		};
-		85E9522C22B0FDE80071281E /* Core */ = {
+		85E9522C22B0FDE80071281E /* CoreFramework */ = {
 			isa = PBXGroup;
 			children = (
 				85E9522D22B0FDE80071281E /* Core.h */,
@@ -547,7 +581,7 @@
 				85E9522422B0FCE10071281E /* APIHeaders.swift */,
 				85E9522E22B0FDE80071281E /* Info.plist */,
 			);
-			path = Core;
+			path = CoreFramework;
 			sourceTree = "<group>";
 		};
 		85E9524222B13BB40071281E /* TrackerBlocking */ = {
@@ -601,9 +635,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		85417D5F226605E60062A081 /* DuckDuckGo */ = {
+		85417D5F226605E60062A081 /* DuckDuckGo Privacy Essentials */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo" */;
+			buildConfigurationList = 85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo Privacy Essentials" */;
 			buildPhases = (
 				854A9F3022706478008F2A93 /* Install Fonts */,
 				85417D73226613900062A081 /* Swiftlint */,
@@ -622,9 +656,9 @@
 				85E9520E22AFC7590071281E /* PBXTargetDependency */,
 				85E9523122B0FDE80071281E /* PBXTargetDependency */,
 			);
-			name = DuckDuckGo;
+			name = "DuckDuckGo Privacy Essentials";
 			productName = DuckDuckGo;
-			productReference = 85417D60226605E60062A081 /* DuckDuckGo.app */;
+			productReference = 85417D60226605E60062A081 /* DuckDuckGo Privacy Essentials.app */;
 			productType = "com.apple.product-type.application";
 		};
 		85417D8A226762870062A081 /* SafariAppExtension */ = {
@@ -690,9 +724,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				859F13D8227A486200EDE40A /* PBXTargetDependency */,
-				8587A68E2278901400F622AF /* PBXTargetDependency */,
+				85488E3622CEA399005C8BCE /* PBXTargetDependency */,
 				8587A6902278901400F622AF /* PBXTargetDependency */,
+				85488E3422CEA2C3005C8BCE /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = TrackerBlockingTests;
@@ -837,7 +871,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				85417D5F226605E60062A081 /* DuckDuckGo */,
+				85417D5F226605E60062A081 /* DuckDuckGo Privacy Essentials */,
 				85417D8A226762870062A081 /* SafariAppExtension */,
 				85417DA7226762E40062A081 /* ContentBlockerExtension */,
 				85E9522A22B0FDE80071281E /* Core */,
@@ -870,6 +904,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */,
 				8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */,
 				8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */,
 				854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */,
@@ -879,9 +914,11 @@
 				854A9F3F22706817008F2A93 /* proximanova-light.otf in Resources */,
 				85417D96226762870062A081 /* SafariExtensionViewController.xib in Resources */,
 				854A9F512271B0BA008F2A93 /* Shared.xcassets in Resources */,
+				85008B3422C9581B00A2CFB0 /* Localizable.strings in Resources */,
 				8510B257226F3BFB0015D406 /* Assets.xcassets in Resources */,
 				85417D99226762870062A081 /* script.js in Resources */,
 				854A9F4122706817008F2A93 /* proximanova-semibold.otf in Resources */,
+				8587FD5522C67CD70072F47F /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,6 +1010,7 @@
 				85E9522122AFDB5C0071281E /* URLExtension.swift in Sources */,
 				85417D66226605E60062A081 /* MainViewController.swift in Sources */,
 				85417D64226605E60062A081 /* AppDelegate.swift in Sources */,
+				8590F40B22CE563300B7473A /* StringExtension.swift in Sources */,
 				8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */,
 				8540D8F222BBE264009A2FF4 /* HomeSectionViewController.swift in Sources */,
 				8540D8D022BBA356009A2FF4 /* SectionButton.swift in Sources */,
@@ -986,10 +1024,15 @@
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,
 				8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */,
+				85C7AC5C22CCDB3500619302 /* TrackersDetailViewController.swift in Sources */,
 				85417D93226762870062A081 /* SafariExtensionViewController.swift in Sources */,
+				85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */,
 				8510B262226F5A3B0015D406 /* NSViewControllerExtension.swift in Sources */,
 				8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */,
+				8590F40C22CE563800B7473A /* StringExtension.swift in Sources */,
+				85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */,
 				85417D91226762870062A081 /* SafariExtensionHandler.swift in Sources */,
+				8587FD5722C67D2D0072F47F /* UserText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -997,7 +1040,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8590F40D22CE563900B7473A /* StringExtension.swift in Sources */,
 				85417DAE226762E40062A081 /* ContentBlockerRequestHandler.swift in Sources */,
+				8590F41222CE564600B7473A /* URLExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1054,7 @@
 				859F13DB227A4BE100EDE40A /* PageData.swift in Sources */,
 				859914E1227B0C1C0023C1F2 /* PrivacyPractice.swift in Sources */,
 				85A527CA227F667B00233FDF /* TrustedSitesManager.swift in Sources */,
+				8560B55A22CE613C0071CC72 /* StringExtension.swift in Sources */,
 				85991510228036AD0023C1F2 /* TrackerDataManager.swift in Sources */,
 				859914D3227895F40023C1F2 /* DetectedTracker.swift in Sources */,
 				859914D12278946A0023C1F2 /* TrackerBlockingDependencies.swift in Sources */,
@@ -1017,6 +1063,7 @@
 				8599150E227D00B70023C1F2 /* TrackerData.swift in Sources */,
 				859F13D0227A3A2100EDE40A /* Grade.swift in Sources */,
 				859914E5227B4FA00023C1F2 /* Entity.swift in Sources */,
+				8590F41522CE564700B7473A /* URLExtension.swift in Sources */,
 				859914DD2278B8430023C1F2 /* KnownTracker.swift in Sources */,
 				859914DF227B08EC0023C1F2 /* PrivacyPracticesManager.swift in Sources */,
 			);
@@ -1030,6 +1077,8 @@
 				859F13D2227A3B2C00EDE40A /* GradeTests.swift in Sources */,
 				8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */,
 				859914D92278A3DA0023C1F2 /* mocks.swift in Sources */,
+				8590F41122CE563C00B7473A /* StringExtension.swift in Sources */,
+				8590F41622CE564F00B7473A /* URLExtension.swift in Sources */,
 				8541840F2283A54300DD2900 /* TrackerDataManagerTests.swift in Sources */,
 				85E9524822B284710071281E /* StatisticsStoreTests.swift in Sources */,
 				85E9524622B13E790071281E /* StatisticsLoaderTests.swift in Sources */,
@@ -1054,6 +1103,7 @@
 				85991511228037F40023C1F2 /* TrackerDataManager.swift in Sources */,
 				85A527DE227F85CC00233FDF /* DetectedTracker.swift in Sources */,
 				85A527D3227F85A600233FDF /* TrustedSitesManager.swift in Sources */,
+				8560B55B22CE61C70071CC72 /* StringExtension.swift in Sources */,
 				859914FC227CCC4D0023C1F2 /* main.swift in Sources */,
 				85A527E0227F85D200233FDF /* ContentBlockerRule.swift in Sources */,
 				85A527D4227F85A900233FDF /* TrackerDetection.swift in Sources */,
@@ -1066,8 +1116,10 @@
 			files = (
 				85E9521522AFC7C20071281E /* StatisticsLoader.swift in Sources */,
 				85E9521722AFC7FB0071281E /* StatisticsDependencies.swift in Sources */,
+				8590F40F22CE563A00B7473A /* StringExtension.swift in Sources */,
 				85E9521D22AFCE7A0071281E /* Atb.swift in Sources */,
 				85E9521922AFC8F10071281E /* StatisticsStore.swift in Sources */,
+				8590F41422CE564600B7473A /* URLExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1127,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8590F41322CE564600B7473A /* URLExtension.swift in Sources */,
+				8590F40E22CE563A00B7473A /* StringExtension.swift in Sources */,
 				85E9523922B0FDFB0071281E /* AppVersion.swift in Sources */,
 				85E9523722B0FDFB0071281E /* APIRequest.swift in Sources */,
 				85E9523822B0FDFB0071281E /* APIHeaders.swift in Sources */,
@@ -1094,25 +1148,25 @@
 			target = 85417DA7226762E40062A081 /* ContentBlockerExtension */;
 			targetProxy = 85417DB1226762E40062A081 /* PBXContainerItemProxy */;
 		};
-		8587A68E2278901400F622AF /* PBXTargetDependency */ = {
+		85488E3422CEA2C3005C8BCE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 85417D8A226762870062A081 /* SafariAppExtension */;
+			targetProxy = 85488E3322CEA2C3005C8BCE /* PBXContainerItemProxy */;
+		};
+		85488E3622CEA399005C8BCE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8587A6822278901300F622AF /* TrackerBlocking */;
-			targetProxy = 8587A68D2278901400F622AF /* PBXContainerItemProxy */;
+			targetProxy = 85488E3522CEA399005C8BCE /* PBXContainerItemProxy */;
 		};
 		8587A6902278901400F622AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 85417D5F226605E60062A081 /* DuckDuckGo */;
+			target = 85417D5F226605E60062A081 /* DuckDuckGo Privacy Essentials */;
 			targetProxy = 8587A68F2278901400F622AF /* PBXContainerItemProxy */;
 		};
 		8587A6972278901400F622AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8587A6822278901300F622AF /* TrackerBlocking */;
 			targetProxy = 8587A6962278901400F622AF /* PBXContainerItemProxy */;
-		};
-		859F13D8227A486200EDE40A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 85417D8A226762870062A081 /* SafariAppExtension */;
-			targetProxy = 859F13D7227A486200EDE40A /* PBXContainerItemProxy */;
 		};
 		85E9520E22AFC7590071281E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1271,13 +1325,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DuckDuckGo/DuckDuckGo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/DuckDuckGo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DuckDuckGo/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1295,13 +1349,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DuckDuckGo/DuckDuckGo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/DuckDuckGo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DuckDuckGo/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1318,12 +1372,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Safari/Safari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Safari/Info.plist;
+				INFOPLIST_FILE = SafariAppExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1342,12 +1396,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Safari/Safari.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = Safari/Info.plist;
+				INFOPLIST_FILE = SafariAppExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1366,12 +1420,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ContentBlocker/ContentBlocker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = ContentBlocker/Info.plist;
+				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1390,12 +1444,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ContentBlocker/ContentBlocker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = ContentBlocker/Info.plist;
+				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1424,7 +1478,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = TrackerBlocking/Info.plist;
+				INFOPLIST_FILE = TrackerBlockingFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1455,7 +1509,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = TrackerBlocking/Info.plist;
+				INFOPLIST_FILE = TrackerBlockingFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1488,7 +1542,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo.app/Contents/MacOS/DuckDuckGo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo Privacy Essentials.app/Contents/MacOS/DuckDuckGo Privacy Essentials";
 			};
 			name = Debug;
 		};
@@ -1508,7 +1562,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo.app/Contents/MacOS/DuckDuckGo";
 			};
 			name = Release;
 		};
@@ -1548,8 +1601,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FINFOPLIST_FILE = StatisticsFramework/Info.plist;
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Statistics/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/StatisticsFramework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1582,7 +1636,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Statistics/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/StatisticsFramework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1613,7 +1667,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Core/Info.plist;
+				INFOPLIST_FILE = CoreFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1644,7 +1698,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Core/Info.plist;
+				INFOPLIST_FILE = CoreFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1673,7 +1727,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo" */ = {
+		85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo Privacy Essentials" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85417D71226605E60062A081 /* Debug */,

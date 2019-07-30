@@ -70,7 +70,7 @@ do {
     print("Failed to write tracker data", error)
 }
 
-let contentBlockingRules = trackerData.contentBlockerRules(withTrustedSites: ["example.com"])
+let contentBlockingRules = trackerData.contentBlockerRules().flatMap { $0.rules }
 print("Writing \(contentBlockingRules.count) rules to \(blockerRulesOutputFile.absoluteString)")
 do {
     let contentBlockingRulesEncoded = try JSONEncoder().encode(contentBlockingRules)

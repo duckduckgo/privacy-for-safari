@@ -27,5 +27,9 @@ extension URL {
         guard let string = components.string else { return nil }
         self.init(string: string)
     }
+
+    var isEncrypted: Bool {
+        return scheme == "https"
+    }
     
 }

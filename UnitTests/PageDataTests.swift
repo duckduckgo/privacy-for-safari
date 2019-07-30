@@ -19,14 +19,65 @@
 
 import XCTest
 @testable import TrackerBlocking
+@testable import SafariAppExtension
 
 class PageDataTests: XCTestCase {
 
     struct URLs {
         static let page = URL(string: "https://example.com")!
         static let resource = URL(string: "https://tracker.com/tracker.js")!
+        static let resource2 = URL(string: "https://tracker2.com/tracker.js")!
+        static let resource3 = URL(string: "https://tracker3.com/tracker.js")!
     }
 
+    func testWhenPageHasLoadedTrackersThenLoadedTrackersByEntityCanBeGenerated() {
+        let pageData = PageData()
+        
+        pageData.loadedTrackers = [
+            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            
+            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            
+            DetectedTracker(resource: URLs.resource3, page: URLs.page, owner: "Facebook", prevalence: 10, isFirstParty: false)
+        ]
+        
+        let trackersByEntity = pageData.loadedTrackersByEntity()
+
+        XCTAssertEqual(trackersByEntity.count, 2)
+        XCTAssertEqual(trackersByEntity[0].entityName, "Facebook")
+        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker3.com" ])
+
+        XCTAssertEqual(trackersByEntity[1].entityName, "Google")
+        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker.com", "tracker2.com" ])
+
+    }
+    
+    func testWhenPageHasBlockedTrackersThenBlockedTrackersByEntityCanBeGenerated() {
+        let pageData = PageData()
+        
+        pageData.blockedTrackers = [
+            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            
+            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
+            
+            DetectedTracker(resource: URLs.resource3, page: URLs.page, owner: "Facebook", prevalence: 10, isFirstParty: false)
+        ]
+        
+        let trackersByEntity = pageData.blockedTrackersByEntity()
+        
+        XCTAssertEqual(trackersByEntity.count, 2)
+        XCTAssertEqual(trackersByEntity[0].entityName, "Facebook")
+        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker3.com" ])
+
+        XCTAssertEqual(trackersByEntity[1].entityName, "Google")
+        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker.com", "tracker2.com" ])
+
+    }
+    
     func testWhenTrackersAreUpdatedThenScoreIsRecalculated() {
         let pageData = PageData()
         let defaultGrade = pageData.calculateGrade()

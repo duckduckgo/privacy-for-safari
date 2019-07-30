@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  DuckDuckGo
+
+  Created by Christopher Brind on 30/06/2019.
+  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.
+*/
+
+"privacy.encryption.enabled" = "Encrypted Connection";
+"privacy.encryption.disabled" = "Unencrypted Connection";
