@@ -15,7 +15,9 @@ class SectionButton: NSBox {
 
     func deselected() {
         fillColor = NSColor.clear
-        label.textColor = nil
+
+        // TODO change this this back to nil when we're not disabling the sections
+        label.textColor = NSColor.disabledControlTextColor
         emphasis.isHidden = true
     }
     

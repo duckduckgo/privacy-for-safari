@@ -340,7 +340,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="521" height="50"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-JS-Wgp">
-                                                                    <rect key="frame" x="0.0" y="33" width="141" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="33" width="154" height="17"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8qN-kZ-dVB">
                                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
@@ -348,8 +348,8 @@
                                                                             <color key="contentTintColor" name="ItemTitleInverse"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="urB-Oh-x1S">
-                                                                            <rect key="frame" x="30" y="1" width="113" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Added to Whitelist" id="wnA-0a-BaX">
+                                                                            <rect key="frame" x="30" y="1" width="126" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Added to Exceptions" id="wnA-0a-BaX">
                                                                                 <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                                 <color key="textColor" name="ItemTitleInverse"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -366,7 +366,7 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-m3-TFt">
-                                                                    <rect key="frame" x="0.0" y="16" width="173" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="16" width="186" height="17"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E9h-Z0-zMh">
                                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
@@ -374,8 +374,8 @@
                                                                             <color key="contentTintColor" name="ItemTitleInverse"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="efC-4d-6e7">
-                                                                            <rect key="frame" x="30" y="1" width="145" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Removed from Whitelist" id="7EW-Gx-uDT">
+                                                                            <rect key="frame" x="30" y="1" width="158" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Removed from Exceptions" id="7EW-Gx-uDT">
                                                                                 <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                                 <color key="textColor" name="ItemTitleInverse"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -458,7 +458,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aa7-te-r5B" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                    <rect key="frame" x="88" y="17" width="111" height="16"/>
+                                                                    <rect key="frame" x="82" y="17" width="123" height="16"/>
                                                                     <gestureRecognizers>
                                                                         <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="dQu-cS-Z6k">
                                                                             <connections>
@@ -466,7 +466,7 @@
                                                                             </connections>
                                                                         </clickGestureRecognizer>
                                                                     </gestureRecognizers>
-                                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Manage Whitelist" id="ufp-Zw-je3">
+                                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Manage Exceptions" id="ufp-Zw-je3">
                                                                         <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                         <color key="textColor" name="ItemTitle"/>
                                                                         <color key="backgroundColor" name="ItemTitleInverse"/>

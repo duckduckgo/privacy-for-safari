@@ -23,7 +23,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSExtension</key>
@@ -63,6 +63,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Duck Duck Go, Inc. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>The Privacy Dashboard - track who&apos;s tracking you.</string>
+	<string>The Privacy Dashboard - track who's tracking you.</string>
 </dict>
 </plist>

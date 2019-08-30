@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		85008B3422C9581B00A2CFB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85008B3322C9581B00A2CFB0 /* Localizable.strings */; };
+		8503858E22F1A0BD002259DB /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8503858D22F1A0BD002259DB /* Onboarding.storyboard */; };
+		8503859022F1A280002259DB /* OnboardingPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503858F22F1A280002259DB /* OnboardingPageController.swift */; };
+		8503859622F2FE28002259DB /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8503859522F2FE28002259DB /* Colours.xcassets */; };
+		8503859822F3041F002259DB /* CircleIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503859722F3041F002259DB /* CircleIndicatorView.swift */; };
+		8503859A22F332B6002259DB /* ExtensionsStateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503859922F332B6002259DB /* ExtensionsStateWatcher.swift */; };
+		850385F922F85797002259DB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850385F822F85797002259DB /* Settings.swift */; };
+		850385FB22F86481002259DB /* AppLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850385FA22F86481002259DB /* AppLinks.swift */; };
+		850385FC22F864BE002259DB /* AppLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850385FA22F86481002259DB /* AppLinks.swift */; };
 		8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */; };
 		8510B257226F3BFB0015D406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8510B256226F3BFB0015D406 /* Assets.xcassets */; };
 		8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */; };
@@ -44,7 +52,6 @@
 		854A9F3F22706817008F2A93 /* proximanova-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3422706805008F2A93 /* proximanova-light.otf */; };
 		854A9F4022706817008F2A93 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3322706805008F2A93 /* proximanova-regular.otf */; };
 		854A9F4122706817008F2A93 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F3722706805008F2A93 /* proximanova-semibold.otf */; };
-		854A9F45227080F7008F2A93 /* DomainPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F44227080F7008F2A93 /* DomainPromptViewController.swift */; };
 		854A9F502271B078008F2A93 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F4F2271B078008F2A93 /* Shared.xcassets */; };
 		854A9F512271B0BA008F2A93 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F4F2271B078008F2A93 /* Shared.xcassets */; };
 		854A9F542271CB01008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
@@ -129,6 +136,10 @@
 		85E9523E22B0FF100071281E /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
 		85E9524622B13E790071281E /* StatisticsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9524522B13E790071281E /* StatisticsLoaderTests.swift */; };
 		85E9524822B284710071281E /* StatisticsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9524722B284710071281E /* StatisticsStoreTests.swift */; };
+		85F087B1230828360041D733 /* OnboardingSetDefaultSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B0230828360041D733 /* OnboardingSetDefaultSearchController.swift */; };
+		85F087B3230828610041D733 /* OnboardingEnableExtensionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */; };
+		85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B4230828870041D733 /* OnboardingGetStartedController.swift */; };
+		85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B6230828C40041D733 /* OnboardingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +247,13 @@
 
 /* Begin PBXFileReference section */
 		85008B3322C9581B00A2CFB0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		8503858D22F1A0BD002259DB /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		8503858F22F1A280002259DB /* OnboardingPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageController.swift; sourceTree = "<group>"; };
+		8503859522F2FE28002259DB /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
+		8503859722F3041F002259DB /* CircleIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIndicatorView.swift; sourceTree = "<group>"; };
+		8503859922F332B6002259DB /* ExtensionsStateWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsStateWatcher.swift; sourceTree = "<group>"; };
+		850385F822F85797002259DB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		850385FA22F86481002259DB /* AppLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLinks.swift; sourceTree = "<group>"; };
 		8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		8510B256226F3BFB0015D406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogoToolbarItemIcon.pdf; sourceTree = "<group>"; };
@@ -270,7 +288,6 @@
 		854A9F3522706805008F2A93 /* proximanova-extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-extrabold.otf"; path = "fonts/licensed/proximanova-extrabold.otf"; sourceTree = "<group>"; };
 		854A9F3622706805008F2A93 /* proximanova-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-bold.otf"; path = "fonts/licensed/proximanova-bold.otf"; sourceTree = "<group>"; };
 		854A9F3722706805008F2A93 /* proximanova-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "proximanova-semibold.otf"; path = "fonts/licensed/proximanova-semibold.otf"; sourceTree = "<group>"; };
-		854A9F44227080F7008F2A93 /* DomainPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainPromptViewController.swift; sourceTree = "<group>"; };
 		854A9F4622708783008F2A93 /* TrustedSitesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesManager.swift; sourceTree = "<group>"; };
 		854A9F4F2271B078008F2A93 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		854A9F532271CB01008F2A93 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
@@ -325,6 +342,10 @@
 		85E9522E22B0FDE80071281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85E9524522B13E790071281E /* StatisticsLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsLoaderTests.swift; sourceTree = "<group>"; };
 		85E9524722B284710071281E /* StatisticsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsStoreTests.swift; sourceTree = "<group>"; };
+		85F087B0230828360041D733 /* OnboardingSetDefaultSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSetDefaultSearchController.swift; sourceTree = "<group>"; };
+		85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEnableExtensionsController.swift; sourceTree = "<group>"; };
+		85F087B4230828870041D733 /* OnboardingGetStartedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGetStartedController.swift; sourceTree = "<group>"; };
+		85F087B6230828C40041D733 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,10 +422,11 @@
 			isa = PBXGroup;
 			children = (
 				854A9F532271CB01008F2A93 /* AppIcon.xcassets */,
+				850385FA22F86481002259DB /* AppLinks.swift */,
 				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
 				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
-				85E9521E22AFDB220071281E /* URLExtension.swift */,
 				8590F40A22CE563300B7473A /* StringExtension.swift */,
+				85E9521E22AFDB220071281E /* URLExtension.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -445,15 +467,19 @@
 		85417D62226605E60062A081 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				85F087AF230828060041D733 /* Onboarding */,
 				85417D63226605E60062A081 /* AppDelegate.swift */,
 				85417D67226605E60062A081 /* Assets.xcassets */,
-				854A9F44227080F7008F2A93 /* DomainPromptViewController.swift */,
+				8503859722F3041F002259DB /* CircleIndicatorView.swift */,
+				8503859522F2FE28002259DB /* Colours.xcassets */,
 				85417D6D226605E60062A081 /* DuckDuckGo.entitlements */,
+				8503859922F332B6002259DB /* ExtensionsStateWatcher.swift */,
 				8540D8F122BBE264009A2FF4 /* HomeSectionViewController.swift */,
 				85417D6C226605E60062A081 /* Info.plist */,
 				85417D69226605E60062A081 /* Main.storyboard */,
 				85417D65226605E60062A081 /* MainViewController.swift */,
 				8540D8CF22BBA356009A2FF4 /* SectionButton.swift */,
+				850385F822F85797002259DB /* Settings.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -603,6 +629,19 @@
 				85E9524722B284710071281E /* StatisticsStoreTests.swift */,
 			);
 			name = Statistics;
+			sourceTree = "<group>";
+		};
+		85F087AF230828060041D733 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8503858D22F1A0BD002259DB /* Onboarding.storyboard */,
+				85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */,
+				85F087B4230828870041D733 /* OnboardingGetStartedController.swift */,
+				8503858F22F1A280002259DB /* OnboardingPageController.swift */,
+				85F087B6230828C40041D733 /* OnboardingScreen.swift */,
+				85F087B0230828360041D733 /* OnboardingSetDefaultSearchController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -889,7 +928,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				854A9F3C22706805008F2A93 /* proximanova-semibold.otf in Resources */,
+				8503858E22F1A0BD002259DB /* Onboarding.storyboard in Resources */,
 				85417D68226605E60062A081 /* Assets.xcassets in Resources */,
+				8503859622F2FE28002259DB /* Colours.xcassets in Resources */,
 				854A9F542271CB01008F2A93 /* AppIcon.xcassets in Resources */,
 				854A9F502271B078008F2A93 /* Shared.xcassets in Resources */,
 				854A9F3B22706805008F2A93 /* proximanova-bold.otf in Resources */,
@@ -1006,14 +1047,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				854A9F45227080F7008F2A93 /* DomainPromptViewController.swift in Sources */,
 				85E9522122AFDB5C0071281E /* URLExtension.swift in Sources */,
 				85417D66226605E60062A081 /* MainViewController.swift in Sources */,
 				85417D64226605E60062A081 /* AppDelegate.swift in Sources */,
 				8590F40B22CE563300B7473A /* StringExtension.swift in Sources */,
+				85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */,
 				8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */,
+				85F087B3230828610041D733 /* OnboardingEnableExtensionsController.swift in Sources */,
+				8503859A22F332B6002259DB /* ExtensionsStateWatcher.swift in Sources */,
 				8540D8F222BBE264009A2FF4 /* HomeSectionViewController.swift in Sources */,
 				8540D8D022BBA356009A2FF4 /* SectionButton.swift in Sources */,
+				8503859822F3041F002259DB /* CircleIndicatorView.swift in Sources */,
+				85F087B1230828360041D733 /* OnboardingSetDefaultSearchController.swift in Sources */,
+				850385F922F85797002259DB /* Settings.swift in Sources */,
+				8503859022F1A280002259DB /* OnboardingPageController.swift in Sources */,
+				850385FB22F86481002259DB /* AppLinks.swift in Sources */,
+				85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1078,7 @@
 				85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */,
 				8510B262226F5A3B0015D406 /* NSViewControllerExtension.swift in Sources */,
 				8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */,
+				850385FC22F864BE002259DB /* AppLinks.swift in Sources */,
 				8590F40C22CE563800B7473A /* StringExtension.swift in Sources */,
 				85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */,
 				85417D91226762870062A081 /* SafariExtensionHandler.swift in Sources */,
@@ -1326,9 +1376,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/DuckDuckGo.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -1336,7 +1387,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1350,9 +1401,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/DuckDuckGo.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -1360,7 +1412,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1373,8 +1425,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -1397,8 +1450,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -1421,8 +1475,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
@@ -1445,8 +1500,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;

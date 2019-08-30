@@ -124,7 +124,7 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     @IBAction func manageWhitelist(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "ddg://manageWhitelist")!)
+        NSWorkspace.shared.open(URL(string: AppLinks.manageWhitelist)!)
     }
 
     @IBAction func clearBrokenYesNo(_ sender: Any) {

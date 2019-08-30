@@ -41,6 +41,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func application(_ application: NSApplication, open urls: [URL]) {
         print(#function, urls)
+        
+        guard urls.count > 0 else { return }
+        
+        if urls[0].absoluteString == AppLinks.manageWhitelist {
+            guard let controller = application.keyWindow?.windowController?.contentViewController as? MainViewController else { return }
+            controller.selectSendFeedback(self)
+        }
+        
     }
 
 }

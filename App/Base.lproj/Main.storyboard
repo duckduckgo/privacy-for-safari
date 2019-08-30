@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,21 +24,10 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Hide DuckDuckGo" keyEquivalent="h" id="Olw-nP-bQN">
-                                            <connections>
-                                                <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Show All" id="Kd2-mp-pUS">
+                                        <menuItem title="Reset Onboarding" id="Kd2-mp-pUS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
+                                                <action selector="resetOnboarding:" target="Ady-hI-5gd" id="HPE-hW-PAL"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
@@ -74,7 +63,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuckDuckGo" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,7 +95,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="MainViewController" customModule="DuckDuckGo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="MainViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -145,7 +134,7 @@
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-0X-7wL">
                                 <rect key="frame" x="0.0" y="260" width="210" height="240"/>
                                 <subviews>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-2m-qQh" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo" customModuleProvider="target">
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-2m-qQh" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="180" width="210" height="60"/>
                                         <view key="contentView" id="bX0-Hx-0fO">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
@@ -194,57 +183,8 @@
                                             <outlet property="label" destination="Hb0-ib-rpC" id="sM9-b4-Zn2"/>
                                         </connections>
                                     </box>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sfB-pB-4F4" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo" customModuleProvider="target">
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="frq-VV-Mx4" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="120" width="210" height="60"/>
-                                        <view key="contentView" id="ugv-il-D4k">
-                                            <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2Bh-Gf-bfw">
-                                                    <rect key="frame" x="0.0" y="-1" width="210" height="5"/>
-                                                </box>
-                                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="yDf-7U-URk">
-                                                    <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
-                                                </box>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OGJ-5a-nbM">
-                                                    <rect key="frame" x="18" y="20" width="135" height="21"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Send Feedback" id="GmJ-LU-FKd">
-                                                        <font key="font" metaFont="systemSemibold" size="18"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="OGJ-5a-nbM" firstAttribute="leading" secondItem="ugv-il-D4k" secondAttribute="leading" constant="20" id="3io-r8-9pX"/>
-                                                <constraint firstItem="yDf-7U-URk" firstAttribute="width" secondItem="ugv-il-D4k" secondAttribute="width" id="9nE-vX-MaT"/>
-                                                <constraint firstItem="OGJ-5a-nbM" firstAttribute="centerY" secondItem="ugv-il-D4k" secondAttribute="centerY" id="FCe-cR-nfw"/>
-                                                <constraint firstItem="yDf-7U-URk" firstAttribute="top" secondItem="2Bh-Gf-bfw" secondAttribute="bottom" id="MRA-OO-r4H"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OGJ-5a-nbM" secondAttribute="trailing" constant="10" id="PCl-I1-Q2t"/>
-                                                <constraint firstItem="2Bh-Gf-bfw" firstAttribute="width" secondItem="yDf-7U-URk" secondAttribute="width" id="T0u-mx-A3t"/>
-                                                <constraint firstAttribute="bottom" secondItem="yDf-7U-URk" secondAttribute="bottom" id="cGl-c6-wQw"/>
-                                                <constraint firstItem="2Bh-Gf-bfw" firstAttribute="centerX" secondItem="yDf-7U-URk" secondAttribute="centerX" id="pL5-f4-TA6"/>
-                                                <constraint firstItem="yDf-7U-URk" firstAttribute="centerX" secondItem="ugv-il-D4k" secondAttribute="centerX" id="vJZ-Zr-kOt"/>
-                                            </constraints>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="72Z-xn-rk2"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Lnx-9T-Hty"/>
-                                        </constraints>
-                                        <gestureRecognizers>
-                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="ead-XN-msJ">
-                                                <connections>
-                                                    <action selector="selectSendFeedback:" target="XfG-lQ-9wD" id="m9g-jW-z0e"/>
-                                                </connections>
-                                            </clickGestureRecognizer>
-                                        </gestureRecognizers>
-                                        <connections>
-                                            <outlet property="emphasis" destination="2Bh-Gf-bfw" id="cgF-0j-ia2"/>
-                                            <outlet property="label" destination="OGJ-5a-nbM" id="65d-Ke-cTE"/>
-                                        </connections>
-                                    </box>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="frq-VV-Mx4" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="210" height="60"/>
                                         <view key="contentView" id="T9t-mq-j6j">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,10 +196,10 @@
                                                     <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LRK-Bb-bIP">
-                                                    <rect key="frame" x="18" y="20" width="107" height="21"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Global Stats" id="uXz-JB-Zrb">
+                                                    <rect key="frame" x="18" y="20" width="117" height="21"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Tracker Stats" id="uXz-JB-Zrb">
                                                         <font key="font" metaFont="systemSemibold" size="18"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -281,7 +221,7 @@
                                             <constraint firstAttribute="height" constant="60" id="pf7-uD-dGc"/>
                                         </constraints>
                                         <gestureRecognizers>
-                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PQ0-Qz-7Ca">
+                                            <clickGestureRecognizer enabled="NO" delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PQ0-Qz-7Ca">
                                                 <connections>
                                                     <action selector="selectGlobalStats:" target="XfG-lQ-9wD" id="LCf-od-1X2"/>
                                                 </connections>
@@ -292,8 +232,8 @@
                                             <outlet property="label" destination="LRK-Bb-bIP" id="nfg-8Q-iid"/>
                                         </connections>
                                     </box>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ryO-Y9-5T6" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ryO-Y9-5T6" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="210" height="60"/>
                                         <view key="contentView" id="UDQ-4l-MkG">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,10 +245,10 @@
                                                     <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-oR-IZE">
-                                                    <rect key="frame" x="18" y="20" width="116" height="21"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Trusted Sites" id="PCA-Tc-qMw">
+                                                    <rect key="frame" x="18" y="20" width="97" height="21"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Exceptions" id="PCA-Tc-qMw">
                                                         <font key="font" metaFont="systemSemibold" size="18"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -330,7 +270,7 @@
                                             <constraint firstAttribute="height" constant="60" id="nlh-2r-rtO"/>
                                         </constraints>
                                         <gestureRecognizers>
-                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="XSP-Ob-GeN">
+                                            <clickGestureRecognizer enabled="NO" delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="XSP-Ob-GeN">
                                                 <connections>
                                                     <action selector="selectTrustedSites:" target="XfG-lQ-9wD" id="tjo-rR-96S"/>
                                                 </connections>
@@ -339,6 +279,55 @@
                                         <connections>
                                             <outlet property="emphasis" destination="rnn-2N-68j" id="aIq-2i-gQB"/>
                                             <outlet property="label" destination="gyh-oR-IZE" id="rpC-MA-jRg"/>
+                                        </connections>
+                                    </box>
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sfB-pB-4F4" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
+                                        <view key="contentView" id="ugv-il-D4k">
+                                            <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2Bh-Gf-bfw">
+                                                    <rect key="frame" x="0.0" y="-1" width="210" height="5"/>
+                                                </box>
+                                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="yDf-7U-URk">
+                                                    <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
+                                                </box>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OGJ-5a-nbM">
+                                                    <rect key="frame" x="18" y="20" width="135" height="21"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Send Feedback" id="GmJ-LU-FKd">
+                                                        <font key="font" metaFont="systemSemibold" size="18"/>
+                                                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OGJ-5a-nbM" firstAttribute="leading" secondItem="ugv-il-D4k" secondAttribute="leading" constant="20" id="3io-r8-9pX"/>
+                                                <constraint firstItem="yDf-7U-URk" firstAttribute="width" secondItem="ugv-il-D4k" secondAttribute="width" id="9nE-vX-MaT"/>
+                                                <constraint firstItem="OGJ-5a-nbM" firstAttribute="centerY" secondItem="ugv-il-D4k" secondAttribute="centerY" id="FCe-cR-nfw"/>
+                                                <constraint firstItem="yDf-7U-URk" firstAttribute="top" secondItem="2Bh-Gf-bfw" secondAttribute="bottom" id="MRA-OO-r4H"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OGJ-5a-nbM" secondAttribute="trailing" constant="10" id="PCl-I1-Q2t"/>
+                                                <constraint firstItem="2Bh-Gf-bfw" firstAttribute="width" secondItem="yDf-7U-URk" secondAttribute="width" id="T0u-mx-A3t"/>
+                                                <constraint firstAttribute="bottom" secondItem="yDf-7U-URk" secondAttribute="bottom" id="cGl-c6-wQw"/>
+                                                <constraint firstItem="2Bh-Gf-bfw" firstAttribute="centerX" secondItem="yDf-7U-URk" secondAttribute="centerX" id="pL5-f4-TA6"/>
+                                                <constraint firstItem="yDf-7U-URk" firstAttribute="centerX" secondItem="ugv-il-D4k" secondAttribute="centerX" id="vJZ-Zr-kOt"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="72Z-xn-rk2"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="Lnx-9T-Hty"/>
+                                        </constraints>
+                                        <gestureRecognizers>
+                                            <clickGestureRecognizer enabled="NO" delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="ead-XN-msJ">
+                                                <connections>
+                                                    <action selector="selectSendFeedback:" target="XfG-lQ-9wD" id="m9g-jW-z0e"/>
+                                                </connections>
+                                            </clickGestureRecognizer>
+                                        </gestureRecognizers>
+                                        <connections>
+                                            <outlet property="emphasis" destination="2Bh-Gf-bfw" id="cgF-0j-ia2"/>
+                                            <outlet property="label" destination="OGJ-5a-nbM" id="65d-Ke-cTE"/>
                                         </connections>
                                     </box>
                                 </subviews>
@@ -390,192 +379,216 @@
         <!--Home Section View Controller-->
         <scene sceneID="shx-PK-0ea">
             <objects>
-                <viewController storyboardIdentifier="Home" id="qwz-P2-EMQ" customClass="HomeSectionViewController" customModule="DuckDuckGo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="qwz-P2-EMQ" customClass="HomeSectionViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="aPx-Gh-pvp">
                         <rect key="frame" x="0.0" y="0.0" width="690" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kAl-eJ-8gn">
-                                <rect key="frame" x="0.0" y="500" width="690" height="0.0"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="dug-58-Ul2"/>
-                                </constraints>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lSx-8T-9Q7">
+                                <rect key="frame" x="320" y="225" width="50" height="50"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="Waiting" id="EMw-zh-vh1"/>
+                            </imageView>
+                            <stackView hidden="YES" distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="S1w-9c-AMZ">
+                                <rect key="frame" x="70" y="103" width="550" height="294"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9CZ-tD-pMq">
+                                        <rect key="frame" x="206" y="164" width="139" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="6I3-Yh-5kr"/>
+                                            <constraint firstAttribute="width" constant="139" id="fFd-Y7-kDs"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EssentialsDisabled" id="Fay-EV-bsm"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRF-dK-Od9">
+                                        <rect key="frame" x="129" y="108" width="293" height="48"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BzL-9G-AHo">
+                                                <rect key="frame" x="-2" y="11" width="198" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Privacy Essentials:" id="eIZ-1k-MkR">
+                                                    <font key="font" metaFont="systemBold" size="22"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cw6-XQ-mza">
+                                                <rect key="frame" x="200" y="11" width="95" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Disabled" id="BFP-LW-zot">
+                                                    <font key="font" metaFont="systemBold" size="22"/>
+                                                    <color key="textColor" name="HomeEssentialsStateDisabled"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Giy-rB-C2V">
+                                        <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="pwb-Ew-bgV">
+                                            <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" selectable="NO" drawsBackground="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1HX-Ca-qTR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="HomeEssentialsStateMessage"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="550" height="100"/>
+                                                    <size key="maxSize" width="550" height="10000000"/>
+                                                    <attributedString key="textStorage">
+                                                        <fragment>
+                                                            <string key="content">Without Privacy Protection enabled, youre not protected from third-party tracking. Open Safari &gt; Preferences &gt; Extensions to enable.</string>
+                                                            <attributes>
+                                                                <color key="NSColor" name="HomeEssentialsStateMessage"/>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="cWc-gH-ux4"/>
+                                            <constraint firstAttribute="width" constant="550" id="tU4-aL-THl"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="2ep-RT-ezq">
+                                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="haY-u7-2Jg">
+                                            <rect key="frame" x="534" y="0.0" width="16" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <stackView hidden="YES" distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="WqM-YD-kHD">
+                                <rect key="frame" x="118" y="104" width="454" height="292"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tyq-dO-tGO">
+                                        <rect key="frame" x="157" y="162" width="140" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="1fO-HU-qrL"/>
+                                            <constraint firstAttribute="width" constant="140" id="KGD-vO-gdu"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EssentialsEnabled" id="nZb-PY-rtW"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kqg-s3-pCg">
+                                        <rect key="frame" x="84" y="108" width="286" height="46"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PYM-JI-nnf">
+                                                <rect key="frame" x="-2" y="10" width="198" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Privacy Essentials:" id="wVu-dV-8vO">
+                                                    <font key="font" metaFont="systemBold" size="22"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-Nn-GZH">
+                                                <rect key="frame" x="200" y="10" width="88" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enabled" id="7vp-I6-tdj">
+                                                    <font key="font" metaFont="systemBold" size="22"/>
+                                                    <color key="textColor" name="HomeEssentialsStateEnabled"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jb3-8n-7dN">
+                                        <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="j3g-kf-CNd">
+                                            <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2Ay-Nl-yFH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="HomeEssentialsStateMessage"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="454" height="100"/>
+                                                    <size key="maxSize" width="454" height="10000000"/>
+                                                    <attributedString key="textStorage">
+                                                        <fragment>
+                                                            <string key="content">DuckDuckGo Privacy Essentials is equipped with both Privacy Protection and the Privacy Dashboard so your online data is more private by default.</string>
+                                                            <attributes>
+                                                                <color key="NSColor" name="HomeEssentialsStateMessage"/>
+                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="454" id="cCd-sP-zIr"/>
+                                            <constraint firstAttribute="height" constant="100" id="gXZ-9O-QfB"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="EYD-qt-GTZ">
+                                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kR9-DK-NUo">
+                                            <rect key="frame" x="438" y="0.0" width="16" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="kAl-eJ-8gn" secondAttribute="trailing" id="Dv7-5I-rNH"/>
-                            <constraint firstItem="kAl-eJ-8gn" firstAttribute="top" secondItem="aPx-Gh-pvp" secondAttribute="top" id="dmg-3S-AWL"/>
-                            <constraint firstItem="kAl-eJ-8gn" firstAttribute="leading" secondItem="aPx-Gh-pvp" secondAttribute="leading" id="lzc-8X-Rpx"/>
+                            <constraint firstItem="lSx-8T-9Q7" firstAttribute="centerY" secondItem="aPx-Gh-pvp" secondAttribute="centerY" id="COc-VV-H1s"/>
+                            <constraint firstItem="lSx-8T-9Q7" firstAttribute="centerX" secondItem="aPx-Gh-pvp" secondAttribute="centerX" id="IsJ-va-fPU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="homeButtonsView" destination="cvh-9u-cih" id="g6V-lp-MPc"/>
-                        <outlet property="homeDiscoverView" destination="AtO-aJ-MVM" id="5z0-Z1-w0r"/>
-                        <outlet property="homeProtectedView" destination="gQw-TL-njg" id="TjQ-h1-cWz"/>
-                        <outlet property="homeThanksView" destination="8NR-7D-mlx" id="xpF-se-DN7"/>
-                        <outlet property="protectionButton" destination="qwQ-DN-v1z" id="sTu-Y1-Rw2"/>
-                        <outlet property="stack" destination="kAl-eJ-8gn" id="jKw-7y-zWY"/>
-                        <outlet property="stackHeight" destination="dug-58-Ul2" id="9ue-NU-Zt1"/>
+                        <outlet property="disabledStateView" destination="S1w-9c-AMZ" id="R3W-Na-8ro"/>
+                        <outlet property="enabledStateView" destination="WqM-YD-kHD" id="eZT-bW-60s"/>
+                        <outlet property="unknownStateView" destination="lSx-8T-9Q7" id="Aad-QA-Re8"/>
                     </connections>
                 </viewController>
-                <view id="cvh-9u-cih">
-                    <rect key="frame" x="0.0" y="0.0" width="690" height="60"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <subviews>
-                        <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jk9-ln-3Kq">
-                            <rect key="frame" x="0.0" y="0.0" width="690" height="60"/>
-                            <middleViews>
-                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwQ-DN-v1z">
-                                    <rect key="frame" x="158" y="13" width="195" height="32"/>
-                                    <buttonCell key="cell" type="push" title="Add to Safari Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uM0-m6-6le">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="showPrivacyPreferences:" target="qwz-P2-EMQ" id="5Z1-PK-EWL"/>
-                                    </connections>
-                                </button>
-                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Qr-vg-i6Y">
-                                    <rect key="frame" x="349" y="13" width="183" height="32"/>
-                                    <buttonCell key="cell" type="push" title="Enable Global Statistics" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RH7-CY-n3O">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="showDashboardPreferences:" target="qwz-P2-EMQ" id="0R3-cA-dTD"/>
-                                    </connections>
-                                </button>
-                            </middleViews>
-                            <visibilityPriorities>
-                                <integer value="1000"/>
-                                <integer value="1000"/>
-                            </visibilityPriorities>
-                            <customSpacing>
-                                <real value="3.4028234663852886e+38"/>
-                                <real value="3.4028234663852886e+38"/>
-                            </customSpacing>
-                        </stackView>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Jk9-ln-3Kq" secondAttribute="bottom" id="cZp-oH-xMe"/>
-                        <constraint firstItem="Jk9-ln-3Kq" firstAttribute="leading" secondItem="cvh-9u-cih" secondAttribute="leading" id="eya-0K-sIz"/>
-                        <constraint firstItem="Jk9-ln-3Kq" firstAttribute="top" secondItem="cvh-9u-cih" secondAttribute="top" id="fyN-3c-yif"/>
-                        <constraint firstAttribute="trailing" secondItem="Jk9-ln-3Kq" secondAttribute="trailing" id="zaJ-02-DUS"/>
-                    </constraints>
-                </view>
-                <view id="8NR-7D-mlx">
-                    <rect key="frame" x="0.0" y="0.0" width="690" height="401"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qty-fK-RMJ">
-                            <rect key="frame" x="105" y="109" width="480" height="238"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HomeDefault" id="1C0-mP-YsR"/>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bxS-eA-O4e">
-                            <rect key="frame" x="69" y="57" width="552" height="26"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="Thanks for installing DuckDuckGo Privacy Essentials!" id="f44-d6-JpB">
-                                <font key="font" metaFont="systemBold" size="22"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-47-irO">
-                            <rect key="frame" x="87" y="28" width="516" height="19"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="Before we can continue, you need to add us in your Safari Preferences." id="nJc-ca-dm5">
-                                <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="qty-fK-RMJ" firstAttribute="top" secondItem="8NR-7D-mlx" secondAttribute="top" constant="54" id="HxL-8r-xeN"/>
-                        <constraint firstItem="AdB-47-irO" firstAttribute="centerX" secondItem="8NR-7D-mlx" secondAttribute="centerX" id="mgU-nu-3Ws"/>
-                        <constraint firstItem="bxS-eA-O4e" firstAttribute="top" secondItem="qty-fK-RMJ" secondAttribute="bottom" constant="26" id="mmg-k0-zn5"/>
-                        <constraint firstItem="qty-fK-RMJ" firstAttribute="centerX" secondItem="8NR-7D-mlx" secondAttribute="centerX" id="ove-H3-D0T"/>
-                        <constraint firstItem="AdB-47-irO" firstAttribute="top" secondItem="bxS-eA-O4e" secondAttribute="bottom" constant="10" id="qT0-i5-2Ii"/>
-                        <constraint firstItem="bxS-eA-O4e" firstAttribute="centerX" secondItem="8NR-7D-mlx" secondAttribute="centerX" id="xok-P6-mK8"/>
-                    </constraints>
-                </view>
-                <view id="AtO-aJ-MVM">
-                    <rect key="frame" x="0.0" y="0.0" width="690" height="322"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tjo-eN-r6w">
-                            <rect key="frame" x="160" y="105" width="370" height="158"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HomeDiscover" id="2ce-cG-jgc"/>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vWX-9J-ODN">
-                            <rect key="frame" x="52" y="58" width="587" height="26"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="Discover who’s trying to follow you with our Global Stats!" id="mW0-P2-aMZ">
-                                <font key="font" metaFont="systemBold" size="22"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uig-1Q-e8P">
-                            <rect key="frame" x="87" y="29" width="516" height="19"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="Before we can continue, you need to add us in your Safari Preferences." id="ukq-7V-TgD">
-                                <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="vWX-9J-ODN" firstAttribute="centerX" secondItem="AtO-aJ-MVM" secondAttribute="centerX" id="4MG-HZ-AdY"/>
-                        <constraint firstItem="uig-1Q-e8P" firstAttribute="centerX" secondItem="AtO-aJ-MVM" secondAttribute="centerX" id="GKc-Yu-Oo1"/>
-                        <constraint firstItem="uig-1Q-e8P" firstAttribute="top" secondItem="vWX-9J-ODN" secondAttribute="bottom" constant="10" id="H9B-mm-xOi"/>
-                        <constraint firstItem="tjo-eN-r6w" firstAttribute="centerX" secondItem="AtO-aJ-MVM" secondAttribute="centerX" id="PDS-sa-ly4"/>
-                        <constraint firstItem="vWX-9J-ODN" firstAttribute="top" secondItem="tjo-eN-r6w" secondAttribute="bottom" constant="21" id="cth-M8-SaV"/>
-                        <constraint firstItem="tjo-eN-r6w" firstAttribute="top" secondItem="AtO-aJ-MVM" secondAttribute="top" constant="59" id="jCa-vX-Nsw"/>
-                    </constraints>
-                </view>
                 <customObject id="LCz-Hi-LTx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customView id="gQw-TL-njg">
-                    <rect key="frame" x="0.0" y="0.0" width="690" height="250"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qMY-eL-drJ">
-                            <rect key="frame" x="59" y="51" width="166" height="159"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HomeProtected" id="Rbo-RS-Dck"/>
-                        </imageView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xOz-Wf-t2o">
-                            <rect key="frame" x="258" y="130" width="363" height="52"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="359" id="sVU-nY-SDJ"/>
-                            </constraints>
-                            <textFieldCell key="cell" title="You're fully protected with DuckDuckGo Privacy Essentials" id="vt1-Jj-V9k">
-                                <font key="font" metaFont="systemBold" size="22"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ud9-ao-I83">
-                            <rect key="frame" x="258" y="63" width="391" height="57"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="387" id="edk-PG-Vux"/>
-                            </constraints>
-                            <textFieldCell key="cell" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis at elit ac luctus. Donec lacinia velit ante." id="AYR-Gl-jZ3">
-                                <font key="font" metaFont="system" size="16"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="xOz-Wf-t2o" firstAttribute="top" secondItem="gQw-TL-njg" secondAttribute="top" constant="68" id="HRc-7y-18l"/>
-                        <constraint firstItem="qMY-eL-drJ" firstAttribute="leading" secondItem="gQw-TL-njg" secondAttribute="leading" constant="59" id="L9Z-4a-bL0"/>
-                        <constraint firstItem="ud9-ao-I83" firstAttribute="top" secondItem="xOz-Wf-t2o" secondAttribute="bottom" constant="10" id="N4R-mc-ADb"/>
-                        <constraint firstItem="ud9-ao-I83" firstAttribute="leading" secondItem="xOz-Wf-t2o" secondAttribute="leading" id="Puk-kx-ztm"/>
-                        <constraint firstItem="xOz-Wf-t2o" firstAttribute="leading" secondItem="qMY-eL-drJ" secondAttribute="trailing" constant="35" id="QI3-k5-JAa"/>
-                        <constraint firstAttribute="trailing" secondItem="xOz-Wf-t2o" secondAttribute="trailing" constant="71" id="lcq-U3-qA1"/>
-                        <constraint firstAttribute="trailing" secondItem="ud9-ao-I83" secondAttribute="trailing" constant="43" id="p6E-j8-hl5"/>
-                        <constraint firstItem="qMY-eL-drJ" firstAttribute="top" secondItem="gQw-TL-njg" secondAttribute="top" constant="40" id="tBx-0D-KRr"/>
-                    </constraints>
-                </customView>
             </objects>
-            <point key="canvasLocation" x="-220" y="2787"/>
+            <point key="canvasLocation" x="-152" y="2786"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6KS-NO-xBy">
@@ -678,16 +691,25 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HomeDefault" width="480" height="238"/>
-        <image name="HomeDiscover" width="370" height="158"/>
-        <image name="HomeProtected" width="166" height="159"/>
+        <image name="EssentialsDisabled" width="139" height="95"/>
+        <image name="EssentialsEnabled" width="140" height="88"/>
         <image name="Logo" width="119" height="119"/>
         <image name="LogoHorizontalText" width="140" height="38"/>
+        <image name="Waiting" width="50" height="50"/>
+        <namedColor name="HomeEssentialsStateDisabled">
+            <color red="0.87058823529411766" green="0.34509803921568627" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="HomeEssentialsStateEnabled">
+            <color red="0.40392156862745099" green="0.5607843137254902" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="HomeEssentialsStateMessage">
+            <color red="0.42699998617172241" green="0.42699998617172241" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SelectedBackground">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.13300000131130219" green="0.14499999582767487" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UnselectedBackground">
-            <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.24300000071525574" green="0.24699999392032623" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

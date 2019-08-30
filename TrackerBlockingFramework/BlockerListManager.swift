@@ -53,8 +53,11 @@ public class DefaultBlockerListManager: BlockerListManager {
     }
 
     private func reloadExtension() {
-        let id = (Bundle.main.bundleIdentifier ?? "") + ".ContentBlockingExtension"
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: id)
+        let id = (Bundle.main.bundleIdentifier ?? "") + ".ContentBlockerExtension"
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: id) { error in
+            guard let error = error else { return }
+            os_log("Failed to reload extension %{public}s", type: .error, error.localizedDescription)
+        }
     }
     
     private func writeBlockerList(data: Data) {

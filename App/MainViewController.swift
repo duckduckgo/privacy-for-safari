@@ -27,13 +27,11 @@ class MainViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setSectionButtonSelected(atIndex: 0)
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Home", fromStoryboardNamed: "Main")))
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "SendFeedback", fromStoryboardNamed: "Main")))
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "TrustedSites", fromStoryboardNamed: "Main")))
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "GlobalStats", fromStoryboardNamed: "Main")))
-
+        if Settings().onboardingShown {
+            initTabs()
+        } else {
+            showOnboarding()
+        }
     }
     
     override func viewDidAppear() {
@@ -42,39 +40,38 @@ class MainViewController: NSViewController {
         StatisticsLoader().refreshAppRetentionAtb(atLocation: "mvc", completion: nil)
     }
 
-    @IBAction func selectHome(_ sender: NSClickGestureRecognizer) {
+    @IBAction func selectHome(_ sender: Any) {
         print(#function, sender)
         deselectAllSectionButtons()
-        selectSectionButton(from: sender)
         tabs.selectTabViewItem(at: 0)
+        setSectionButtonSelected(atIndex: 0)
     }
 
-    @IBAction func selectSendFeedback(_ sender: NSClickGestureRecognizer) {
+    @IBAction func selectSendFeedback(_ sender: Any) {
         print(#function, sender)
         deselectAllSectionButtons()
-        selectSectionButton(from: sender)
-        tabs.selectTabViewItem(at: 1)
-    }
-
-    @IBAction func selectGlobalStats(_ sender: NSClickGestureRecognizer) {
-        print(#function, sender)
-        deselectAllSectionButtons()
-        selectSectionButton(from: sender)
-        tabs.selectTabViewItem(at: 2)
-    }
-
-    @IBAction func selectTrustedSites(_ sender: NSClickGestureRecognizer) {
-        print(#function, sender)
-        deselectAllSectionButtons()
-        selectSectionButton(from: sender)
         tabs.selectTabViewItem(at: 3)
+        setSectionButtonSelected(atIndex: 3)
     }
 
-    private func selectSectionButton(from gestureRecognizer: NSClickGestureRecognizer) {
-        let button = gestureRecognizer.view as? SectionButton
-        button?.selected()
+    @IBAction func selectGlobalStats(_ sender: Any) {
+        print(#function, sender)
+        deselectAllSectionButtons()
+        tabs.selectTabViewItem(at: 1)
+        setSectionButtonSelected(atIndex: 1)
+    }
+
+    @IBAction func selectTrustedSites(_ sender: Any) {
+        print(#function, sender)
+        deselectAllSectionButtons()
+        tabs.selectTabViewItem(at: 2)
+        setSectionButtonSelected(atIndex: 2)
     }
     
+    @IBAction func resetOnboarding(_ sender: Any) {
+        Settings().onboardingShown = false
+    }
+
     private func deselectAllSectionButtons() {
         sectionButtons.arrangedSubviews.compactMap { $0 as? SectionButton }.forEach { sectionButton in
             sectionButton.deselected()
@@ -84,6 +81,26 @@ class MainViewController: NSViewController {
     private func setSectionButtonSelected(atIndex index: Int) {
         (sectionButtons.arrangedSubviews[index] as? SectionButton)?.selected()
     }
+    
+    private func initTabs() {
+        setSectionButtonSelected(atIndex: 0)
+        
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Home", fromStoryboardNamed: "Main")))
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "GlobalStats", fromStoryboardNamed: "Main")))
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "TrustedSites", fromStoryboardNamed: "Main")))
+        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "SendFeedback", fromStoryboardNamed: "Main")))
+    }
+    
+    private func showOnboarding() {
+        let onboardingStoryboard = NSStoryboard(name: NSStoryboard.Name("Onboarding"), bundle: nil)
+        guard let onboardingVC = onboardingStoryboard.instantiateInitialController() as? OnboardingPageController else {
+            fatalError("Failed to load OnboardingPageController")
+        }
+        view.addSubview(onboardingVC.view)
+        addChild(onboardingVC)
+        onboardingVC.finishedDelegate = self
+    }
+    
 }
 
 extension MainViewController: NSWindowDelegate {
@@ -95,6 +112,17 @@ extension MainViewController: NSWindowDelegate {
     func windowDidBecomeMain(_ notification: Notification) {
         guard let item = tabs.selectedTabViewItem else { return }
         item.viewController?.viewDidAppear()
+    }
+    
+}
+
+extension MainViewController: OnboardingFinishedDelegate {
+    
+    func finished(onboardingVC: OnboardingPageController) {
+        onboardingVC.view.removeFromSuperview()
+        onboardingVC.removeFromParent()
+        initTabs()
+        Settings().onboardingShown = true
     }
     
 }
