@@ -21,8 +21,8 @@ import Foundation
 
 public struct Entity: Codable, Hashable {
     
-    public let name: String
-    public let properties: [String]
+    public let displayName: String?
+    public let domains: [String]?
     public let prevalence: Double?
     
 }

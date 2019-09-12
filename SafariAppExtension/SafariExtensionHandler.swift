@@ -23,7 +23,7 @@ import Statistics
 
 // See https://developer.apple.com/videos/play/wwdc2019/720/
 class SafariExtensionHandler: SFSafariExtensionHandler {
-
+    
     class Data {
         
         static let shared = Data()
@@ -38,6 +38,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         func trackers(_ trackers: [DetectedTracker], loadedOnPage page: SFSafariPage) {
+            DiagnosticSupport.dump(trackers, blocked: false)
             var pageTrackers = trackersPerPage[page, default: Trackers()]
             pageTrackers.loaded += trackers
             trackersPerPage[page] = pageTrackers
@@ -45,8 +46,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 refreshDashboard()
             }
         }
-
+        
         func trackers(_ trackers: [DetectedTracker], blockedOnPage page: SFSafariPage) {
+            DiagnosticSupport.dump(trackers, blocked: true)
             var pageTrackers = trackersPerPage[page, default: Trackers()]
             pageTrackers.blocked += trackers
             trackersPerPage[page] = pageTrackers
@@ -54,29 +56,31 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 refreshDashboard()
             }
         }
-
+        
         func setCurrentPage(to page: SFSafariPage?, withUrl url: URL?) {
             pageData = PageData(url: url)
             
             guard let page = page else { return }
-
+            
             currentPage = page
-
+            
             let trackers = trackersPerPage[page, default: Trackers()]
             pageData.loadedTrackers = trackers.loaded
             pageData.blockedTrackers = trackers.blocked
             
             refreshDashboard()
         }
-
+        
         func clear(_ page: SFSafariPage) {
             NSLog("Clearing data for page \(page as Any)")
+            
             trackersPerPage.removeValue(forKey: page)
+            
             if page == currentPage {
                 currentPage = nil
             }
         }
-
+                
         private func refreshDashboard(_ function: StaticString = #function) {
             NSLog("refreshing dashboard from \(function)")
             DispatchQueue.main.async {
@@ -93,7 +97,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         var loaded = [DetectedTracker]()
         var blocked = [DetectedTracker]()
     }
-
+    
     override func beginRequest(with context: NSExtensionContext) {
         super.beginRequest(with: context)
         updateRetentionData()
@@ -106,9 +110,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let trackerDetection = Dependencies.shared.trackerDetection
             Data.shared.trackers(urls.map { trackerDetection.detectedTrackerFrom(resourceUrl: $0, onPageWithUrl: pageUrl) }, blockedOnPage: page)
         }
-    
+        
     }
     
+    // This doesn't appear to get called when the page is closed though
     override func page(_ page: SFSafariPage, willNavigateTo url: URL?) {
         Data.shared.clear(page)
     }
@@ -123,14 +128,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             handleResourceLoadedMessage(userInfo, onPage: page)
         }
     }
-
+    
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         NSLog("validateToolbarItem")
         
         validationHandler(true, "")
         
         Data.shared.setCurrentPage(to: nil, withUrl: nil)
-
+        
         updateToolbar()
     }
     
@@ -157,13 +162,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         SafariExtensionViewController.shared.pageData = Data.shared.pageData
         SafariExtensionViewController.shared.viewWillAppear()
     }
-
+    
     override func popoverViewController() -> SFSafariExtensionViewController {
         return SafariExtensionViewController.shared
     }
-
+    
     private func handleResourceLoadedMessage(_ userInfo: [String: Any]?, onPage page: SFSafariPage) {
-        guard let resources = userInfo?["resources"] as? [String] else {
+        guard let resources = userInfo?["resources"] as? [[String: String]] else {
             return
         }
         
@@ -177,10 +182,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
             var detectedTrackers = [DetectedTracker]()
             resources.forEach { resource in
-                if let resourceUrl = URL(withResource: resource, relativeTo: pageUrl),
-                    let tracker = trackerDetection.detectTrackerFor(resourceUrl: resourceUrl, onPageWithUrl: pageUrl),
-                    !tracker.isFirstParty {
-                    detectedTrackers.append(tracker)
+                if let url = resource["url"],
+                    let resourceUrl = URL(withResource: url, relativeTo: pageUrl),
+                    let detectedTracker = trackerDetection.detectTrackerFor(resourceUrl: resourceUrl,
+                                                                    onPageWithUrl: pageUrl,
+                                                                    asResourceType: resource["type"]) {
+                    detectedTrackers.append(detectedTracker)
                 }
             }
             
@@ -192,7 +199,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
     }
-
+    
     private func update(_ toolbarItem: SFSafariToolbarItem) {
         guard let url = Data.shared.pageData.url else {
             toolbarItem.setImage(NSImage(named: NSImage.Name("LogoToolbarItemIcon")))
@@ -202,7 +209,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let grade = Data.shared.pageData.calculateGrade()
         let site = Dependencies.shared.trustedSitesManager.isTrusted(url: url) ? grade.site : grade.enhanced
         let grading = site.grade
-
+        
         NSLog("Setting toolbar to \(grade)")
         toolbarItem.setImage(grading.image)
     }
@@ -215,11 +222,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
         }
     }
-
+    
 }
 
 extension Grade.Grading {
-
+    
     static let images: [Grade.Grading: NSImage] = [
         .a: NSImage(named: "PP Indicator Grade A")!,
         .bPlus: NSImage(named: "PP Indicator Grade B Plus")!,
@@ -229,7 +236,7 @@ extension Grade.Grading {
         .d: NSImage(named: "PP Indicator Grade D")!,
         .dMinus: NSImage(named: "PP Indicator Grade D")!
     ]
-
+    
     var image: NSImage? {
         return Grade.Grading.images[self]
     }

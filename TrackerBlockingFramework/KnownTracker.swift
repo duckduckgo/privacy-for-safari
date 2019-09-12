@@ -19,11 +19,16 @@
 
 import Foundation
 
-public struct KnownTracker: Codable {
-    
+public struct KnownTracker: Codable, Equatable {
+
+    public static func == (lhs: KnownTracker, rhs: KnownTracker) -> Bool {
+        return lhs.domain == rhs.domain
+    }
+
     public struct Owner: Codable {
         
         public let name: String?
+        public let displayName: String?
         
         func isEntity(named name: String?) -> Bool {
             guard let name = name else { return false }
@@ -32,19 +37,28 @@ public struct KnownTracker: Codable {
         
     }
     
-    public struct Exception: Codable, Hashable {
+    public struct Rule: Codable, Hashable, Equatable {
         
-        public let domains: [String]?
-        public let types: [String]?
+        // swiftlint:disable nesting
+        public struct Matching: Codable, Hashable {
+
+            public let domains: [String]?
+            public let types: [String]?
+
+        }
+        // swiftlint:enable nesting
+
+        public let rule: String?
+        public let surrogate: String?
+        public let action: ActionType?
+        public let options: Matching?
+        public let exceptions: Matching?
         
     }
     
-    public struct Rule: Codable, Hashable {
-        
-        public let rule: String
-        public let action: String?
-        public let exceptions: Exception?
-
+    public enum ActionType: String, Codable {
+        case block
+        case ignore
     }
     
     enum CodingKeys: String, CodingKey {
@@ -56,11 +70,11 @@ public struct KnownTracker: Codable {
         case subdomains
     }
 
-    public let domain: String
+    public let domain: String?
+    public let defaultAction: ActionType?
     public let owner: Owner?
-    public let rules: [Rule]?
-    public let prevalence: Double
-    public let defaultAction: String?
+    public let prevalence: Double?
     public let subdomains: [String]?
-    
+    public let rules: [Rule]?
+
 }

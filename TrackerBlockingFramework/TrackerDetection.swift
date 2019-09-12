@@ -20,8 +20,10 @@
 import Foundation
 
 public protocol TrackerDetection {
-    
-    func detectTrackerFor(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker?
+
+    func detectTrackerFor(resourceUrl: URL,
+                          onPageWithUrl pageUrl: URL,
+                          asResourceType resourceType: String?) -> DetectedTracker?
     
     func detectedTrackerFrom(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker
     
@@ -35,32 +37,56 @@ class DefaultTrackerDetection: TrackerDetection {
         self.trackerDataManager = trackerDataManager
     }
     
-    func detectTrackerFor(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
-        guard let knownTracker = trackerDataManager().knownTracker(forUrl: resourceUrl) else { return nil }
-        return buildTracker(forResourceUrl: resourceUrl,
-                            onPageWithUrl: pageUrl,
-                            andKnownTracker: knownTracker)
+    func detectTrackerFor(resourceUrl: URL,
+                          onPageWithUrl pageUrl: URL,
+                          asResourceType resourceType: String?) -> DetectedTracker? {
+
+        guard let tracker = trackerDataManager().knownTracker(forUrl: resourceUrl) else { return nil }
+        guard let action = actionFor(tracker, withResourceUrl: resourceUrl, onPageWithUrl: pageUrl, asResourceType: resourceType) else { return nil }
+        return buildTracker(forResourceUrl: resourceUrl, onPageWithUrl: pageUrl, andKnownTracker: tracker, withAction: action)
     }
  
     func detectedTrackerFrom(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker {
-        let knownTracker = trackerDataManager().knownTracker(forUrl: resourceUrl)
+        let tracker = trackerDataManager().knownTracker(forUrl: resourceUrl)
         return buildTracker(forResourceUrl: resourceUrl,
                             onPageWithUrl: pageUrl,
-                            andKnownTracker: knownTracker)
+                            andKnownTracker: tracker,
+                            withAction: .block)
     }
     
     private func buildTracker(forResourceUrl resourceUrl: URL,
                               onPageWithUrl pageUrl: URL,
-                              andKnownTracker knownTracker: KnownTracker?) -> DetectedTracker {
+                              andKnownTracker tracker: KnownTracker?,
+                              withAction action: DetectedTracker.Action) -> DetectedTracker {
         
         let pageOwner = trackerDataManager().entity(forUrl: pageUrl)
-        let resourceOwner = knownTracker?.owner
-        return DetectedTracker(resource: resourceUrl,
+        let resourceOwner = tracker?.owner
+        return DetectedTracker(matchedTracker: tracker,
+                               resource: resourceUrl,
                                page: pageUrl,
                                owner: resourceOwner?.name,
-                               prevalence: knownTracker?.prevalence ?? 0,
-                               isFirstParty: resourceOwner?.isEntity(named: pageOwner?.name) ?? false)
+                               prevalence: tracker?.prevalence ?? 0,
+                               isFirstParty: resourceOwner?.isEntity(named: pageOwner?.displayName) ?? false,
+                               action: action)
 
+    }
+
+    private func actionFor(_ tracker: KnownTracker,
+                           withResourceUrl resourceUrl: URL,
+                           onPageWithUrl pageUrl: URL,
+                           asResourceType resourceType: String?) -> DetectedTracker.Action? {
+        guard let trackerData = trackerDataManager().trackerData else { return nil }
+        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(from: tracker)
+
+        var action: DetectedTracker.Action = .ignore
+        rules.enumerated().forEach { rule in
+            let triggerResourceType = ContentBlockerRulesBuilder.resourceMapping[resourceType ?? ""]
+            if rule.element.matches(resourceUrl: resourceUrl, onPageWithUrl: pageUrl, ofType: triggerResourceType) {
+                action = rule.element.action.type == .block ? .block : .ignore
+            }
+        }
+
+        return action
     }
     
 }

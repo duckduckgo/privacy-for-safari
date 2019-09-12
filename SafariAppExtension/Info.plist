@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>DuckDuckGo Privacy Dashboard</string>
+	<string>Privacy Dashboard</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconName</key>
@@ -63,6 +63,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Duck Duck Go, Inc. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>The Privacy Dashboard - track who's tracking you.</string>
+	<string>DuckDuckGo Privacy Dashboard - track who we caught trying to track you.</string>
 </dict>
 </plist>

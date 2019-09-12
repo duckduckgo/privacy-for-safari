@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>DuckDuckGo Privacy Protection</string>
+	<string>Privacy Protection</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconName</key>
@@ -34,6 +34,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Duck Duck Go, Inc. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>Privacy Protection - blocks all the 3rd party trackers we can find for a more private browsing experience.</string>
+	<string>DuckDuckGo Privacy Protection - blocks all the 3rd party trackers we can find for a more private browsing experience.</string>
 </dict>
 </plist>

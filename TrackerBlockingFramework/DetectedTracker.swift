@@ -20,11 +20,18 @@
 import Foundation
 
 public struct DetectedTracker: Equatable {
-    
+
+    public enum Action {
+        case block
+        case ignore
+    }
+
+    public let matchedTracker: KnownTracker?
     public let resource: URL
     public let page: URL
     public let owner: String?
     public let prevalence: Double
     public let isFirstParty: Bool
-    
+    public let action: Action
+
 }

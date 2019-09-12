@@ -168,13 +168,11 @@ extension PageData {
 
     var trackersText: String {
         if isTrusted {
-            let count = loadedTrackers.count
+            let count = loadedTrackers.uniqueDomains
             return String(format: UserText.trackersFound, count)
-
         } else {
-            let count = blockedTrackers.count
+            let count = blockedTrackers.uniqueDomains
             return String(format: UserText.trackersBlocked, count)
-
         }
 
     }
@@ -187,6 +185,16 @@ extension PageData {
             imageName = "PP Hero Major On"
         }
         return NSImage(named: NSImage.Name(imageName))
+    }
+    
+}
+
+fileprivate extension Array where Element == DetectedTracker {
+    
+    var uniqueDomains: Int {
+        var domains = Set<String>()
+        forEach({ domains.insert($0.resource.host ?? "") })
+        return domains.count
     }
     
 }

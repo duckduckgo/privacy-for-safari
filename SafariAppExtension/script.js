@@ -31,7 +31,7 @@
     }
 
 	function resourceLoaded(resource, type) {
-        resources.push(resource);
+        resources.push({ url: resource, type: type });
 
         debounce(function() {
             console.log(`DDG: checking ${resources.length} resources for trackers`);

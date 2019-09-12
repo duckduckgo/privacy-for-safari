@@ -26,11 +26,22 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
 
     func beginRequest(with context: NSExtensionContext) {
         
+        NSLog("beginRequest")
+        
         updateRetentionData()
         
         var items = [Any]()
 
         let blockerListUrl = Dependencies.shared.blockerListManager.blockerListUrl
+        NSLog("beginRequest [\(blockerListUrl.path)]")
+        
+        do {
+            let json = try String(contentsOf: blockerListUrl)
+            NSLog("beginRequest read \(json.count) characters")
+        } catch {
+            NSLog("beginRequest \(error.localizedDescription)")
+        }
+                
         if let attachment = NSItemProvider(contentsOf: blockerListUrl) {
             let item = NSExtensionItem()
             item.attachments = [attachment]

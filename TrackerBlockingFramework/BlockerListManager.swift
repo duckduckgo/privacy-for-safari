@@ -9,24 +9,25 @@
 import Foundation
 import SafariServices
 import os
+import WebKit
 
 public protocol BlockerListManager {
-
+    
     typealias Factory = (() -> BlockerListManager)
     
     var blockerListUrl: URL { get }
     func updateAndReload()
-
+    
 }
 
 public class DefaultBlockerListManager: BlockerListManager {
-
-    private var containerUrl: URL {
+    
+    public static var containerUrl: URL {
         return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.duckduckgo.BlockerList")!
     }
-
+    
     public var blockerListUrl: URL {
-        return containerUrl.appendingPathComponent("blockerList").appendingPathExtension("json")
+        return DefaultBlockerListManager.containerUrl.appendingPathComponent("blockerList").appendingPathExtension("json")
     }
     
     private let trackerDataManager: TrackerDataManager.Factory
@@ -44,14 +45,27 @@ public class DefaultBlockerListManager: BlockerListManager {
     }
     
     private func buildBlockerListData() -> Data? {
-        let dataManager = trackerDataManager()
-        var rules = dataManager.contentBlockerRules().map { $0.rules }.flatMap { $0 }
-        if let whitelistRule = dataManager.rule(forTrustedSites: trustedSitesManager().allDomains()) {
-            rules += [ whitelistRule ]
-        }        
-        return try? JSONEncoder().encode(rules)
+        guard let trackerData = trackerDataManager().trackerData else {
+            NSLog("No tracker data!")
+            return nil
+        }
+        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedSitesManager().allDomains())
+        
+        guard let data = try? JSONEncoder().encode(rules) else {
+            NSLog("Failed to encode content blocker rules")
+            return nil
+        }
+        
+        if let store = WKContentRuleListStore.default() {
+            store.compileContentRuleList(forIdentifier: "XXX", encodedContentRuleList: String(data: data, encoding: .utf8)!) {
+                NSLog("compileContentRuleList \($0 as Any) \($1 as Any)")
+            }
+        } else {
+            NSLog("compileContentRuleList NO STORE")
+        }
+        return data
     }
-
+    
     private func reloadExtension() {
         let id = (Bundle.main.bundleIdentifier ?? "") + ".ContentBlockerExtension"
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: id) { error in
@@ -67,5 +81,5 @@ public class DefaultBlockerListManager: BlockerListManager {
             os_log("Failed to create blocker list %{public}s", type: .error, error.localizedDescription)
         }
     }
-
+    
 }

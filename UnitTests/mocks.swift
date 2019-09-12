@@ -23,12 +23,23 @@ import Foundation
 @testable import Statistics
 
 class MockTrackerDetection: TrackerDetection {
-    func detectTrackerFor(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker? {
+
+    var matchedTracker: KnownTracker?
+
+    func detectTrackerFor(resourceUrl: URL,
+                          onPageWithUrl pageUrl: URL,
+                          asResourceType resourceType: String?) -> DetectedTracker? {
         return nil
     }
-    
+
     func detectedTrackerFrom(resourceUrl: URL, onPageWithUrl pageUrl: URL) -> DetectedTracker {
-        return DetectedTracker(resource: resourceUrl, page: pageUrl, owner: nil, prevalence: 1.0, isFirstParty: false)
+        return DetectedTracker(matchedTracker: matchedTracker,
+                               resource: resourceUrl,
+                               page: pageUrl,
+                               owner: nil,
+                               prevalence: 1.0,
+                               isFirstParty: false,
+                               action: .block)
     }
 }
 
@@ -83,6 +94,8 @@ struct MockTrustedSitesManager: TrustedSitesManager {
 }
 
 class MockTrackerDataManager: TrackerDataManager {
+
+    var trackerData: TrackerData?
 
     private var returnEntity: Entity?
     private var returnTracker: KnownTracker?

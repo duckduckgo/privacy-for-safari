@@ -23,12 +23,12 @@ import os
 public protocol TrackerDataManager {
     
     typealias Factory = (() -> TrackerDataManager)
-    
+
+    var trackerData: TrackerData? { get }
+
     func update(completion: () -> Void)
     func forEachEntity(_ result: (Entity) -> Void)
     func forEachTracker(_ result: (KnownTracker) -> Void)
-    func contentBlockerRules() -> [TrackerData.TrackerRules]
-    func rule(forTrustedSites trustedSites: [String]) -> ContentBlockerRule?
     func entity(forUrl url: URL) -> Entity?
     func knownTracker(forUrl url: URL) -> KnownTracker?
     
@@ -44,30 +44,12 @@ public class DefaultTrackerDataManager: TrackerDataManager {
         return containerUrl.appendingPathComponent("trackerData").appendingPathExtension("json")
     }
     
-    var trackerData: TrackerData?
-    var trackersByRegex = [NSRegularExpression: KnownTracker]()
-    var entities = [String: Entity]()
+    public var trackerData: TrackerData?
 
     init() {
         load()
     }
-    
-    private func load() {
-        do {
-            
-            let data = try Data(contentsOf: trackerDataUrl)
-            let trackerData = try JSONDecoder().decode(TrackerData.self, from: data)
-
-            self.trackerData = trackerData
-            self.trackersByRegex = trackerData.trackersByRegex()
-            self.entities = trackerData.entitiesByDomain()
-
-            os_log("loaded %d rules for %d entities", trackersByRegex.count, entities.count)
-        } catch {
-            os_log("Failed to load tracker data %{public}s", type: .error, error.localizedDescription)
-        }
-    }
-    
+        
     /// Install default tracker data if there currently is none, or download the latest from the endpoint.
     public func update(completion: () -> Void) {
         installDefaultTrackerData()
@@ -77,21 +59,17 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     }
     
     public func forEachEntity(_ result: (Entity) -> Void) {
-        trackerData?.entities.forEach(result)
+        trackerData?.entities.values.forEach(result)
     }
     
     public func forEachTracker(_ result: (KnownTracker) -> Void) {
-        trackerData?.trackers.forEach(result)
-    }
-    
-    public func contentBlockerRules() -> [TrackerData.TrackerRules] {
-        return trackerData?.contentBlockerRules() ?? []
+        trackerData?.trackers.values.forEach(result)
     }
 
     public func entity(forUrl url: URL) -> Entity? {
         guard let variations = url.hostVariations else { return nil }
         for host in variations {
-            if let entity = entities[host] {
+            if let entity = trackerData?.entities[host] {
                 return entity
             }
         }
@@ -99,19 +77,15 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     }
 
     public func knownTracker(forUrl url: URL) -> KnownTracker? {
-        let url = url.absoluteString
-        return trackersByRegex.first(where: {
-            return !$0.key.matches(in: url, options: [ .anchored ], range: NSRange(url.startIndex..., in: url)).isEmpty
-        }).map { $0.value }
+        for domain in url.hostVariations ?? [] {
+            if let tracker = trackerData?.trackers[domain] {
+                return tracker
+            }
+        }
+        return nil
     }
-    
-    public func rule(forTrustedSites trustedSites: [String]) -> ContentBlockerRule? {
-        guard !trustedSites.isEmpty else { return nil }
-        return ContentBlockerRule(trigger: ContentBlockerRule.Trigger.trigger(urlFilter: ".*", ifDomain: trustedSites.map { "*" + $0 }),
-                                  action: ContentBlockerRule.Action.ignorePreviousRules())
-    }
-    
-    private func installDefaultTrackerData() {
+
+    func installDefaultTrackerData() {
         guard let defaultTrackerDataUrl = Bundle(for: type(of: self)).url(forResource: "trackerData", withExtension: "json") else {
             os_log("Failed to determine url for writing trackerData.json", type: .error)
             return
@@ -124,21 +98,9 @@ public class DefaultTrackerDataManager: TrackerDataManager {
         }
     }
 
-}
-
-extension URL {
-
-    var hostVariations: [String]? {
-        guard let host = self.host else { return nil }
-        var parts = host.split(separator: ".")
-        var variations = [String]()
-
-        while parts.count > 1 {
-            variations.append(parts.joined(separator: "."))
-            parts = [String.SubSequence](parts.dropFirst())
-        }
-
-        return variations
+    func load() {
+        self.trackerData = TrackerData.decode(contentsOf: trackerDataUrl)
+        os_log("loaded %d trackers and %d entities", trackerData?.trackers.count ?? -1, trackerData?.entities.count ?? -1)
     }
 
 }

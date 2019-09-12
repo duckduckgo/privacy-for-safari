@@ -74,7 +74,7 @@ public class PageData {
             grade.privacyScore = privacyPractices.findPrivacyPractice(forUrl: url).score
             
             let entity = trackerDataManager.entity(forUrl: url)
-            grade.setParentEntity(named: entity?.name, withPrevalence: entity?.prevalence)
+            grade.setParentEntity(named: entity?.displayName, withPrevalence: entity?.prevalence)
         }
 
         NSLog("Setting grade to \(grade.scores.site) vs \(grade.scores.site)")

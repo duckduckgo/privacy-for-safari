@@ -31,5 +31,16 @@ extension URL {
     var isEncrypted: Bool {
         return scheme == "https"
     }
-    
+
+    var hostVariations: [String]? {
+        guard var parts = host?.components(separatedBy: ".") else { return nil }
+        var domains = [String]()
+        while parts.count > 1 {
+            let domain = parts.joined(separator: ".")
+            domains.append(domain)
+            parts.removeFirst()
+        }
+        return domains
+    }
+
 }

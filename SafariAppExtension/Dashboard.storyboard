@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -703,7 +703,7 @@
                 </viewController>
                 <customObject id="Rfg-uq-ha4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375" y="1234"/>
+            <point key="canvasLocation" x="-14" y="1111"/>
         </scene>
         <!--Score Card View Controller-->
         <scene sceneID="90j-RB-tM9">
@@ -738,12 +738,12 @@
                 </viewController>
                 <customObject id="Ecc-ai-GQq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375" y="1684"/>
+            <point key="canvasLocation" x="-378" y="1111"/>
         </scene>
-        <!--Score Card View Controller-->
+        <!--Report Broken Site Controller-->
         <scene sceneID="j2b-jG-Gg7">
             <objects>
-                <viewController storyboardIdentifier="ReportBrokenWebsite" id="YMj-4S-pCf" customClass="ScoreCardViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportBrokenWebsite" id="YMj-4S-pCf" customClass="ReportBrokenSiteController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="t4Z-QY-57E">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -768,12 +768,31 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-Zd-EVP" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
+                                <rect key="frame" x="18" y="433" width="119" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <gestureRecognizers>
+                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="TEs-UZ-Dqm">
+                                        <connections>
+                                            <action selector="startTestsWithSender:" target="YMj-4S-pCf" id="W8n-IG-DOS"/>
+                                        </connections>
+                                    </clickGestureRecognizer>
+                                </gestureRecognizers>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Run Blocking Tests" id="oeq-zr-CxM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="ItemTitle"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="runTestsView" destination="cXc-Zd-EVP" id="hcA-nZ-BkG"/>
+                    </connections>
                 </viewController>
                 <customObject id="PUx-oB-4Fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375" y="2266"/>
+            <point key="canvasLocation" x="348" y="1111"/>
         </scene>
         <!--Trackers Detail View Controller-->
         <scene sceneID="hLn-ju-cIt">

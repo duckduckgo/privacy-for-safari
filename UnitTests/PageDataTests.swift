@@ -34,13 +34,11 @@ class PageDataTests: XCTestCase {
         let pageData = PageData()
         
         pageData.loadedTrackers = [
-            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            
-            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            
-            DetectedTracker(resource: URLs.resource3, page: URLs.page, owner: "Facebook", prevalence: 10, isFirstParty: false)
+            detectedTracker(resource: URLs.resource, owner: "Google"),
+            detectedTracker(resource: URLs.resource2, owner: "Google"),
+            detectedTracker(resource: URLs.resource, owner: "Google"),
+            detectedTracker(resource: URLs.resource2, owner: "Google"),
+            detectedTracker(resource: URLs.resource3, owner: "Facebook")
         ]
         
         let trackersByEntity = pageData.loadedTrackersByEntity()
@@ -58,13 +56,11 @@ class PageDataTests: XCTestCase {
         let pageData = PageData()
         
         pageData.blockedTrackers = [
-            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            
-            DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            DetectedTracker(resource: URLs.resource2, page: URLs.page, owner: "Google", prevalence: 10, isFirstParty: false),
-            
-            DetectedTracker(resource: URLs.resource3, page: URLs.page, owner: "Facebook", prevalence: 10, isFirstParty: false)
+            detectedTracker(resource: URLs.resource, owner: "Google"),
+            detectedTracker(resource: URLs.resource2, owner: "Google"),
+            detectedTracker(resource: URLs.resource, owner: "Google"),
+            detectedTracker(resource: URLs.resource2, owner: "Google"),
+            detectedTracker(resource: URLs.resource3, owner: "Facebook")
         ]
         
         let trackersByEntity = pageData.blockedTrackersByEntity()
@@ -82,11 +78,23 @@ class PageDataTests: XCTestCase {
         let pageData = PageData()
         let defaultGrade = pageData.calculateGrade()
         
-        pageData.blockedTrackers = [DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "None", prevalence: 1.0, isFirstParty: false)]
+        pageData.blockedTrackers = [DetectedTracker(matchedTracker: nil,
+                                                    resource: URLs.resource,
+                                                    page: URLs.page,
+                                                    owner: "None",
+                                                    prevalence: 1.0,
+                                                    isFirstParty: false,
+                                                    action: .ignore)]
         let blockedTrackersGrade = pageData.calculateGrade()
         XCTAssertNotEqual(defaultGrade.site.score, blockedTrackersGrade.site.score)
 
-        pageData.loadedTrackers = [DetectedTracker(resource: URLs.resource, page: URLs.page, owner: "None", prevalence: 10.0, isFirstParty: false)]
+        pageData.loadedTrackers = [DetectedTracker(matchedTracker: nil,
+                                                   resource: URLs.resource,
+                                                   page: URLs.page,
+                                                   owner: "None",
+                                                   prevalence: 10.0,
+                                                   isFirstParty: false,
+                                                   action: .ignore)]
         let loadedTrackersGrade = pageData.calculateGrade()
         XCTAssertNotEqual(blockedTrackersGrade.site.score, loadedTrackersGrade.site.score)
     }
@@ -96,6 +104,16 @@ class PageDataTests: XCTestCase {
         XCTAssertNil(pageData.url)
         XCTAssertTrue(pageData.blockedTrackers.isEmpty)
         XCTAssertTrue(pageData.loadedTrackers.isEmpty)
+    }
+
+    private func detectedTracker(resource: URL, owner: String) -> DetectedTracker {
+        return DetectedTracker(matchedTracker: nil,
+                               resource: resource,
+                               page: URLs.page,
+                               owner: owner,
+                               prevalence: 10,
+                               isFirstParty: false,
+                               action: .ignore)
     }
 
 }

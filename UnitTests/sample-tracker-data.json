@@ -1,0 +1,120 @@
+{
+    "trackers": {
+        "example.com": {
+            "domain": "example.com",
+            "default": "block",
+            "owner": {
+                "name": "Example Inc.",
+                "displayName": "Example",
+                "privacyPolicy": "https://www.example.com/privacy-policy.html",
+                "url": "http://example.com"
+            },
+            "source": [
+                "DDG"
+            ],
+            "prevalence": 0.006,
+            "fingerprinting": 0,
+            "cookies": 0,
+            "performance": {
+                "time": 1,
+                "size": 1,
+                "cpu": 1,
+                "cache": 3
+            },
+            "categories": [
+                "Ad Motivated Tracking",
+                "Analytics",
+                "Audience Measurement",
+                "Third-Party Analytics Marketing",
+                "Action Pixels"
+            ],
+            "rules": [
+                {
+                    "rule": "example\\.com",
+                    "surrogate": "surrogate.js",
+                    "exceptions": {
+                        "domains": [
+                            "tennislink.usta.com",
+                            "kiplinger.com",
+                            "dunesvillage.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "example\\.net/logo.png",
+                    "options": {
+                        "domains": [ "test1.com" ],
+                        "types": [ "image", "script", "xmlhttprequest" ]
+                    },
+                    "action": "ignore"
+                },
+                {
+                    "rule": "example\\.net/tracker.png",
+                    "action": "block"
+                }
+            ]
+        },
+        "ignore.com": {
+            "domain": "ignore.com",
+            "default": "ignore",
+            "owner": {
+                "name": "Ignore Inc.",
+                "displayName": "Ignore",
+                "privacyPolicy": "https://www.ignore.com/privacy-policy.html",
+                "url": "http://ignore.com"
+            },
+            "source": [
+                "DDG"
+            ],
+            "prevalence": 0.006,
+            "fingerprinting": 0,
+            "cookies": 0,
+            "performance": {
+                "time": 1,
+                "size": 1,
+                "cpu": 1,
+                "cache": 3
+            },
+            "categories": [
+                "Ad Motivated Tracking",
+                "Analytics",
+                "Audience Measurement",
+                "Third-Party Analytics Marketing",
+                "Action Pixels"
+            ],
+            "rules": [
+                {
+                    "rule": "example\\.com",
+                    "exceptions": {
+                        "domains": [
+                            "tennislink.usta.com",
+                            "kiplinger.com",
+                            "dunesvillage.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "entities": {
+        "Example, Inc.": {
+            "domains": [
+                "example.com",
+                "example.net"
+            ],
+            "displayName": "Example",
+            "prevalence": 3.592
+        }
+    },
+    "domains": {
+        "example.com": "Example, Inc.",
+        "example.net": "Example, Inc.",
+        "ignore.com": "Ignore, Inc."
+    }
+}

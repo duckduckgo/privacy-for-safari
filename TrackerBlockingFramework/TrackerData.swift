@@ -21,135 +21,42 @@ import Foundation
 import os
 
 public struct TrackerData: Codable {
-    
+
+    public typealias EntityName = String
+    public typealias TrackerDomain = String
+
     public struct TrackerRules {
         
         let tracker: KnownTracker
-        let rules: [ContentBlockerRule]
         
     }
     
-    public let trackers: [KnownTracker]
-    public let entities: [Entity]
+    public let trackers: [TrackerDomain: KnownTracker]
+    public let entities: [EntityName: Entity]
+    public let domains: [TrackerDomain: EntityName]
     
-    public init(trackers: [KnownTracker], entities: [Entity]) {
+    public init(trackers: [String: KnownTracker], entities: [String: Entity], domains: [String: String]) {
         self.trackers = trackers
         self.entities = entities
+        self.domains = domains
     }
 
-    public func contentBlockerRules() -> [TrackerRules] {
-        let entities = entitiesByName()
-        return trackers.compactMap { tracker -> TrackerRules? in
-            guard let rules = tracker.contentBlockerRules(entitiesByName: entities) else { return nil }
-            return TrackerRules(tracker: tracker, rules: rules)
-        }
+    func relatedDomains(for owner: KnownTracker.Owner?) -> [String]? {
+        return entities[owner?.name ?? ""]?.domains
     }
 
-    public func trackersByRegex() -> [NSRegularExpression: KnownTracker] {
-        var trackers = [NSRegularExpression: KnownTracker]()
-        contentBlockerRules().forEach { trackerRules in
-            trackerRules.rules.forEach { rule in
-                do {
-                    trackers[try NSRegularExpression(pattern: rule.trigger.urlFilter, options: [])] = trackerRules.tracker
-                } catch {
-                    os_log("Failed to compile regex %{public}s %{public}s", type: .error, rule.trigger.urlFilter, error.localizedDescription)
-                }
-            }
-        }
-        return trackers
-    }
-    
-    func entitiesByName() -> [String: Entity] {
-        var entitiesByName = [String: Entity]()
-        entities.forEach { entity in
-            entitiesByName[entity.name] = entity
-        }
-        return entitiesByName
-    }
-    
-    func entitiesByDomain() -> [String: Entity] {
-        var entitiesByDomain = [String: Entity]()
-        self.entities.forEach { entity in
-            entity.properties.forEach { domain in
-                entitiesByDomain[domain] = entity
-            }
-        }
-        return entitiesByDomain
-    }
-    
-}
-
-fileprivate extension KnownTracker {
-    
-    static let resourceTypeMapping: [String: ContentBlockerRule.ResourceType] = [
-        "script": .script,
-        "xmlhttprequest": .raw,
-        "subdocument": .document,
-        "image": .image,
-        "stylesheet": .styleSheet
-    ]
-    
-    func contentBlockerRules(entitiesByName: [String: Entity]) -> [ContentBlockerRule]? {
-        
-        // FIXME:
-        //  ignore - match against the rules and ignore everything else from that domain
-        //  block - match against the rules but block everything else from that domain
-        
-        guard defaultAction != "ignore" else { return nil }
-        
-        let trackerExceptions = (entitiesByName[owner?.name ?? ""]?.properties ?? [domain]).map { "*" + $0 }
-        
-        if let trackerRules = rules {
-            return trackerRules.map { contentBlockerRules(forTrackerRule: $0, withTrackerDomainExceptions: trackerExceptions) }.flatMap { $0 }
-        } else {
-            return contentBlockerRulesFromDomains(withTrackerDomainExceptions: trackerExceptions)
-        }
-    }
-    
-    private func contentBlockerRulesFromDomains(withTrackerDomainExceptions trackerExceptions: [String]) -> [ContentBlockerRule] {
-        let domains = [domain] + (subdomains?.map { "\($0).\(domain)" } ?? [])
-        
-        return domains.map {
-            let domain = $0.replacingOccurrences(of: ".", with: "\\.")
-            let normalizedRule = normalizeRule(rule: "\(domain)/")
-            return ContentBlockerRule(
-                trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions),
-                action: .block())
-        }
-    }
-    
-    private func contentBlockerRules(forTrackerRule rule: KnownTracker.Rule,
-                                     withTrackerDomainExceptions trackerExceptions: [String]) -> [ContentBlockerRule] {
-        
-        var rules = [ContentBlockerRule]()
-        
-        let ruleDomainExceptions = rule.exceptions?.domains ?? []
-        
-        let normalizedRule = normalizeRule(rule: rule.rule)
-        
-        rules.append(ContentBlockerRule(
-            trigger: .trigger(urlFilter: normalizedRule, unlessDomain: trackerExceptions + ruleDomainExceptions),
-            action: .block()))
-        
-        if let types = rule.exceptions?.types?.map({ $0 }) {
-
-            let resourceTypes = types.compactMap { KnownTracker.resourceTypeMapping[$0] }
-            
-            if resourceTypes.count != types.count {
-                os_log("Unable to map all resource types in %{public}s", type: .error, String(describing: types))
-            }
-            
-            rules.append(ContentBlockerRule(
-                trigger: .trigger(urlFilter: normalizedRule, resourceType: resourceTypes),
-                action: .ignorePreviousRules()))
-
+    static func decode(contentsOf url: URL) -> TrackerData? {
+        guard let data = try? Data(contentsOf: url) else {
+            os_log("Failed to load tracker data: %{public}s", type: .error, url.path)
+            return nil
         }
         
-        return rules
-    }
-    
-    private func normalizeRule(rule: String) -> String {
-        return "^https?://" + rule
+        do {
+            return try JSONDecoder().decode(TrackerData.self, from: data)
+        } catch {
+            os_log("Failed to decode tracker data: %{public}s", type: .error, error.localizedDescription)
+        }
+        return nil
     }
     
 }
