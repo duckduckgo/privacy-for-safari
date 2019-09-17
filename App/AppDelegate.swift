@@ -28,14 +28,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard !ProcessInfo().arguments.contains("testing") else { return }
         
-        let trackerBlocking = TrackerBlocking.Dependencies.shared
+        if Settings().firstRun {
+            let trackerBlocking = TrackerBlocking.Dependencies.shared
+            trackerBlocking.blockerListManager.updateAndReload()
+        }
+        
+        LoginItemLauncher.launchSyncService()
         
         StatisticsLoader().refreshAppRetentionAtb(atLocation: "ad") {
             print(#function, "atb refreshed")
-        }
-        
-        trackerBlocking.trackerDataManager.update {
-            trackerBlocking.blockerListManager.updateAndReload()
         }
     }
 
@@ -48,7 +49,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             guard let controller = application.keyWindow?.windowController?.contentViewController as? MainViewController else { return }
             controller.selectSendFeedback(self)
         }
-        
     }
-
 }

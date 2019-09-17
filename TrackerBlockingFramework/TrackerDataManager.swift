@@ -26,7 +26,7 @@ public protocol TrackerDataManager {
 
     var trackerData: TrackerData? { get }
 
-    func update(completion: () -> Void)
+    func load()
     func forEachEntity(_ result: (Entity) -> Void)
     func forEachTracker(_ result: (KnownTracker) -> Void)
     func entity(forUrl url: URL) -> Entity?
@@ -34,28 +34,25 @@ public protocol TrackerDataManager {
     
 }
 
-public class DefaultTrackerDataManager: TrackerDataManager {
-
-    private var containerUrl: URL {
-        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.duckduckgo.TrackerData")!
-    }
+public struct TrackerDataLocation {
     
-    private var trackerDataUrl: URL {
+    public static var groupName: String = "group.com.duckduckgo.TrackerData"
+    
+    static var trackerDataUrl: URL {
         return containerUrl.appendingPathComponent("trackerData").appendingPathExtension("json")
     }
     
+    static private var containerUrl: URL {
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupName)!
+    }
+}
+
+public class DefaultTrackerDataManager: TrackerDataManager {
+
     public var trackerData: TrackerData?
 
     init() {
         load()
-    }
-        
-    /// Install default tracker data if there currently is none, or download the latest from the endpoint.
-    public func update(completion: () -> Void) {
-        installDefaultTrackerData()
-        // TODO download latest and install it
-        load()
-        completion()
     }
     
     public func forEachEntity(_ result: (Entity) -> Void) {
@@ -84,23 +81,26 @@ public class DefaultTrackerDataManager: TrackerDataManager {
         }
         return nil
     }
+    
+    public func load() {
+        if !FileManager.default.fileExists(atPath: TrackerDataLocation.trackerDataUrl.path) {
+            os_log("Tracker data does not exist, loading default", type: .error)
+            installDefaultTrackerData()
+        }
+        self.trackerData = TrackerData.decode(contentsOf: TrackerDataLocation.trackerDataUrl)
+        os_log("loaded %d trackers and %d entities", trackerData?.trackers.count ?? -1, trackerData?.entities.count ?? -1)
+    }
 
-    func installDefaultTrackerData() {
+    private func installDefaultTrackerData() {
         guard let defaultTrackerDataUrl = Bundle(for: type(of: self)).url(forResource: "trackerData", withExtension: "json") else {
             os_log("Failed to determine url for writing trackerData.json", type: .error)
             return
         }
         
         do {
-            try Data(contentsOf: defaultTrackerDataUrl).write(to: trackerDataUrl, options: .atomicWrite)
+            try Data(contentsOf: defaultTrackerDataUrl).write(to: TrackerDataLocation.trackerDataUrl, options: .atomicWrite)
         } catch {
-            os_log("Failed to write trackerData.json to %{public}s", type: .error, trackerDataUrl.absoluteString)
+            os_log("Failed to write trackerData.json to %{public}s", type: .error, TrackerDataLocation.trackerDataUrl.absoluteString)
         }
     }
-
-    func load() {
-        self.trackerData = TrackerData.decode(contentsOf: trackerDataUrl)
-        os_log("loaded %d trackers and %d entities", trackerData?.trackers.count ?? -1, trackerData?.entities.count ?? -1)
-    }
-
 }

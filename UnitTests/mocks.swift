@@ -104,6 +104,9 @@ class MockTrackerDataManager: TrackerDataManager {
         returnEntity = entity
         returnTracker = tracker
     }
+    
+    func load() {
+    }
 
     func forEachEntity(_ result: (Entity) -> Void) {
     }

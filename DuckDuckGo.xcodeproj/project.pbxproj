@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		833FACE4232F9585001F1BC9 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833FACE3232F9585001F1BC9 /* SettingsTests.swift */; };
+		833FACE5232FAE76001F1BC9 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
+		834E5859232C22B700B43C37 /* SyncStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E5858232C22B700B43C37 /* SyncStore.swift */; };
+		834E585D232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */; };
+		834E585F232F365000B43C37 /* SyncRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585E232F365000B43C37 /* SyncRunnerTests.swift */; };
+		837857D9232A7CCC00143219 /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
+		837857DA232A7CCC00143219 /* TrackerBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		837857DD232A7CE800143219 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
+		837857DE232A7CE800143219 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8382B7D6232BDD02002BAD64 /* TrackerDataServiceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382B7D4232B0CC9002BAD64 /* TrackerDataServiceStore.swift */; };
+		838AF8E02326877800522DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838AF8DE2326877800522DD9 /* Main.storyboard */; };
+		838AF8EC2326877800522DD9 /* SyncUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */; };
+		838AF8F8232687F300522DD9 /* DuckDuckGoSync.app in Copy SyncService to LoginItems */ = {isa = PBXBuildFile; fileRef = 838AF8D82326877700522DD9 /* DuckDuckGoSync.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		838AF8FD232688DD00522DD9 /* LoginItemLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */; };
+		838AF8FE232688DD00522DD9 /* SyncScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FA232688DD00522DD9 /* SyncScheduler.swift */; };
+		838AF8FF232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */; };
+		838AF900232688DD00522DD9 /* SyncRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FC232688DD00522DD9 /* SyncRunner.swift */; };
+		838AF9022326D51100522DD9 /* LoginItemLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */; };
+		83DFC259232AAC5300700F87 /* TrackerDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837857DF232A7D8E00143219 /* TrackerDataService.swift */; };
 		85008B3422C9581B00A2CFB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85008B3322C9581B00A2CFB0 /* Localizable.strings */; };
 		8503858E22F1A0BD002259DB /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8503858D22F1A0BD002259DB /* Onboarding.storyboard */; };
 		8503859022F1A280002259DB /* OnboardingPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503858F22F1A280002259DB /* OnboardingPageController.swift */; };
@@ -139,6 +158,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		837857DB232A7CCC00143219 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8587A6822278901300F622AF;
+			remoteInfo = TrackerBlocking;
+		};
+		838AF88F232685A800522DD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83994E48232678F30040F65B;
+			remoteInfo = SyncService;
+		};
+		838AF8E82326877800522DD9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 838AF8D72326877700522DD9;
+			remoteInfo = DuckDuckGoSync;
+		};
+		83994E882326858A0040F65B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83994E48232678F30040F65B;
+			remoteInfo = SyncService;
+		};
 		85417D9D226762870062A081 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85417D58226605E60062A081 /* Project object */;
@@ -226,6 +273,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		838AF8922326860A00522DD9 /* Copy SyncService to LoginItems */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				838AF8F8232687F300522DD9 /* DuckDuckGoSync.app in Copy SyncService to LoginItems */,
+			);
+			name = "Copy SyncService to LoginItems";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		838AF8F7232687A100522DD9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				837857DA232A7CCC00143219 /* TrackerBlocking.framework in Embed Frameworks */,
+				837857DE232A7CE800143219 /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85417DA3226762870062A081 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +344,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		833FACE3232F9585001F1BC9 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		834E5858232C22B700B43C37 /* SyncStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncStore.swift; sourceTree = "<group>"; };
+		834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerDataServiceUserDefaultsTests.swift; sourceTree = "<group>"; };
+		834E585E232F365000B43C37 /* SyncRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncRunnerTests.swift; sourceTree = "<group>"; };
+		837857DF232A7D8E00143219 /* TrackerDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataService.swift; sourceTree = "<group>"; };
+		8382B7D4232B0CC9002BAD64 /* TrackerDataServiceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataServiceStore.swift; sourceTree = "<group>"; };
+		838AF8D82326877700522DD9 /* DuckDuckGoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckDuckGoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		838AF8DF2326877800522DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		838AF8E12326877800522DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		838AF8E22326877800522DD9 /* DuckDuckGoSync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuckDuckGoSync.entitlements; sourceTree = "<group>"; };
+		838AF8E72326877800522DD9 /* DuckDuckGoSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuckDuckGoSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserDefaultsTests.swift; sourceTree = "<group>"; };
+		838AF8ED2326877800522DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginItemLauncher.swift; sourceTree = "<group>"; };
+		838AF8FA232688DD00522DD9 /* SyncScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncScheduler.swift; sourceTree = "<group>"; };
+		838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckDuckGoSyncAppDelegate.swift; sourceTree = "<group>"; };
+		838AF8FC232688DD00522DD9 /* SyncRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRunner.swift; sourceTree = "<group>"; };
+		83994E8023267EC60040F65B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		85008B3322C9581B00A2CFB0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8503858D22F1A0BD002259DB /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		8503858F22F1A280002259DB /* OnboardingPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageController.swift; sourceTree = "<group>"; };
@@ -384,6 +472,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		838AF8D52326877700522DD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				837857D9232A7CCC00143219 /* TrackerBlocking.framework in Frameworks */,
+				837857DD232A7CE800143219 /* Core.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		838AF8E42326877800522DD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85417D5D226605E60062A081 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +560,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		833FACE2232F956D001F1BC9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				833FACE3232F9585001F1BC9 /* SettingsTests.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		838AF8D92326877700522DD9 /* DuckDuckGoSync */ = {
+			isa = PBXGroup;
+			children = (
+				838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */,
+				838AF8FA232688DD00522DD9 /* SyncScheduler.swift */,
+				838AF8FC232688DD00522DD9 /* SyncRunner.swift */,
+				834E5858232C22B700B43C37 /* SyncStore.swift */,
+				838AF8DE2326877800522DD9 /* Main.storyboard */,
+				838AF8E12326877800522DD9 /* Info.plist */,
+				838AF8E22326877800522DD9 /* DuckDuckGoSync.entitlements */,
+			);
+			path = DuckDuckGoSync;
+			sourceTree = "<group>";
+		};
+		838AF8EA2326877800522DD9 /* DuckDuckGoSyncTests */ = {
+			isa = PBXGroup;
+			children = (
+				838AF8ED2326877800522DD9 /* Info.plist */,
+				834E585E232F365000B43C37 /* SyncRunnerTests.swift */,
+				838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */,
+			);
+			path = DuckDuckGoSyncTests;
+			sourceTree = "<group>";
+		};
 		8510B261226F5A110015D406 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +601,7 @@
 				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
 				8590F40A22CE563300B7473A /* StringExtension.swift */,
 				85E9521E22AFDB220071281E /* URLExtension.swift */,
+				838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -476,6 +613,8 @@
 				85417DAA226762E40062A081 /* ContentBlockerExtension */,
 				85E9522C22B0FDE80071281E /* CoreFramework */,
 				854A9F32227067ED008F2A93 /* Fonts */,
+				838AF8D92326877700522DD9 /* DuckDuckGoSync */,
+				838AF8EA2326877800522DD9 /* DuckDuckGoSyncTests */,
 				85417D8C226762870062A081 /* Frameworks */,
 				85417D61226605E60062A081 /* Products */,
 				85417D8F226762870062A081 /* SafariAppExtension */,
@@ -498,6 +637,8 @@
 				85E9520822AFC7590071281E /* Statistics.framework */,
 				85E9522B22B0FDE80071281E /* Core.framework */,
 				85EB7A7B2327E761006CEE2C /* TrackerDetectionValidator */,
+				838AF8D82326877700522DD9 /* DuckDuckGoSync.app */,
+				838AF8E72326877800522DD9 /* DuckDuckGoSyncTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -525,6 +666,7 @@
 		85417D8C226762870062A081 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83994E8023267EC60040F65B /* ServiceManagement.framework */,
 				85417D8D226762870062A081 /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -600,6 +742,8 @@
 				8599150A227CF7E30023C1F2 /* TrackerData.swift */,
 				8599150F228036AD0023C1F2 /* TrackerDataManager.swift */,
 				8587A6742278591D00F622AF /* TrackerDetection.swift */,
+				837857DF232A7D8E00143219 /* TrackerDataService.swift */,
+				8382B7D4232B0CC9002BAD64 /* TrackerDataServiceStore.swift */,
 				854A9F4622708783008F2A93 /* TrustedSitesManager.swift */,
 			);
 			path = TrackerBlockingFramework;
@@ -610,6 +754,7 @@
 			children = (
 				8587A6942278901400F622AF /* Info.plist */,
 				859914D82278A3DA0023C1F2 /* mocks.swift */,
+				833FACE2232F956D001F1BC9 /* App */,
 				85E9524422B13E610071281E /* Statistics */,
 				85E9524222B13BB40071281E /* TrackerBlocking */,
 			);
@@ -654,6 +799,7 @@
 				8541840E2283A54300DD2900 /* TrackerDataManagerTests.swift */,
 				85C55C2A230C5C100030B52A /* TrackerDataTests.swift */,
 				8587A6922278901400F622AF /* TrackerDetectionTests.swift */,
+				834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */,
 			);
 			name = TrackerBlocking;
 			sourceTree = "<group>";
@@ -719,6 +865,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		838AF8D72326877700522DD9 /* DuckDuckGoSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 838AF8EE2326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSync" */;
+			buildPhases = (
+				838AF8D42326877700522DD9 /* Sources */,
+				838AF8D52326877700522DD9 /* Frameworks */,
+				838AF8D62326877700522DD9 /* Resources */,
+				838AF8F7232687A100522DD9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				837857DC232A7CCC00143219 /* PBXTargetDependency */,
+			);
+			name = DuckDuckGoSync;
+			productName = DuckDuckGoSync;
+			productReference = 838AF8D82326877700522DD9 /* DuckDuckGoSync.app */;
+			productType = "com.apple.product-type.application";
+		};
+		838AF8E62326877800522DD9 /* DuckDuckGoSyncTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 838AF8F12326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSyncTests" */;
+			buildPhases = (
+				838AF8E32326877800522DD9 /* Sources */,
+				838AF8E42326877800522DD9 /* Frameworks */,
+				838AF8E52326877800522DD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				838AF8E92326877800522DD9 /* PBXTargetDependency */,
+			);
+			name = DuckDuckGoSyncTests;
+			productName = DuckDuckGoSyncTests;
+			productReference = 838AF8E72326877800522DD9 /* DuckDuckGoSyncTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		85417D5F226605E60062A081 /* DuckDuckGo Privacy Essentials */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo Privacy Essentials" */;
@@ -730,6 +913,7 @@
 				85417D5E226605E60062A081 /* Resources */,
 				85417DA3226762870062A081 /* Embed App Extensions */,
 				8587A69D2278901400F622AF /* Embed Frameworks */,
+				838AF8922326860A00522DD9 /* Copy SyncService to LoginItems */,
 			);
 			buildRules = (
 			);
@@ -739,6 +923,8 @@
 				8587A6972278901400F622AF /* PBXTargetDependency */,
 				85E9520E22AFC7590071281E /* PBXTargetDependency */,
 				85E9523122B0FDE80071281E /* PBXTargetDependency */,
+				83994E892326858A0040F65B /* PBXTargetDependency */,
+				838AF890232685A800522DD9 /* PBXTargetDependency */,
 			);
 			name = "DuckDuckGo Privacy Essentials";
 			productName = DuckDuckGo;
@@ -885,6 +1071,13 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Duck Duck Go, Inc.";
 				TargetAttributes = {
+					838AF8D72326877700522DD9 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					838AF8E62326877800522DD9 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 838AF8D72326877700522DD9;
+					};
 					85417D5F226605E60062A081 = {
 						CreatedOnToolsVersion = 10.2;
 						SystemCapabilities = {
@@ -967,11 +1160,29 @@
 				8587A6822278901300F622AF /* TrackerBlocking */,
 				8587A68A2278901300F622AF /* UnitTests */,
 				85EB7A7A2327E761006CEE2C /* TrackerDetectionValidator */,
+				838AF8D72326877700522DD9 /* DuckDuckGoSync */,
+				838AF8E62326877800522DD9 /* DuckDuckGoSyncTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		838AF8D62326877700522DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				838AF8E02326877800522DD9 /* Main.storyboard in Resources */,
+				833FACE5232FAE76001F1BC9 /* AppIcon.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		838AF8E52326877800522DD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85417D5E226605E60062A081 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1094,6 +1305,27 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		838AF8D42326877700522DD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				838AF8FE232688DD00522DD9 /* SyncScheduler.swift in Sources */,
+				838AF8FD232688DD00522DD9 /* LoginItemLauncher.swift in Sources */,
+				838AF8FF232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift in Sources */,
+				834E5859232C22B700B43C37 /* SyncStore.swift in Sources */,
+				838AF900232688DD00522DD9 /* SyncRunner.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		838AF8E32326877800522DD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				834E585F232F365000B43C37 /* SyncRunnerTests.swift in Sources */,
+				838AF8EC2326877800522DD9 /* SyncUserDefaultsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85417D5C226605E60062A081 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1104,6 +1336,7 @@
 				8590F40B22CE563300B7473A /* StringExtension.swift in Sources */,
 				85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */,
 				8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */,
+				838AF9022326D51100522DD9 /* LoginItemLauncher.swift in Sources */,
 				85F087B3230828610041D733 /* OnboardingEnableExtensionsController.swift in Sources */,
 				8503859A22F332B6002259DB /* ExtensionsStateWatcher.swift in Sources */,
 				8540D8F222BBE264009A2FF4 /* HomeSectionViewController.swift in Sources */,
@@ -1157,10 +1390,12 @@
 				859F13DB227A4BE100EDE40A /* PageData.swift in Sources */,
 				859E7CF7230EFB96007353C0 /* ContentBlockerRulesBuilder.swift in Sources */,
 				859914E1227B0C1C0023C1F2 /* PrivacyPractice.swift in Sources */,
+				8382B7D6232BDD02002BAD64 /* TrackerDataServiceStore.swift in Sources */,
 				85A527CA227F667B00233FDF /* TrustedSitesManager.swift in Sources */,
 				8560B55A22CE613C0071CC72 /* StringExtension.swift in Sources */,
 				85991510228036AD0023C1F2 /* TrackerDataManager.swift in Sources */,
 				859914D3227895F40023C1F2 /* DetectedTracker.swift in Sources */,
+				83DFC259232AAC5300700F87 /* TrackerDataService.swift in Sources */,
 				859914D12278946A0023C1F2 /* TrackerBlockingDependencies.swift in Sources */,
 				85A527C0227F2E8000233FDF /* BlockerListManager.swift in Sources */,
 				8587A6A22278903700F622AF /* TrackerDetection.swift in Sources */,
@@ -1180,7 +1415,9 @@
 				859F13D6227A468600EDE40A /* PageDataTests.swift in Sources */,
 				859F13D2227A3B2C00EDE40A /* GradeTests.swift in Sources */,
 				8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */,
+				834E585D232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift in Sources */,
 				859914D92278A3DA0023C1F2 /* mocks.swift in Sources */,
+				833FACE4232F9585001F1BC9 /* SettingsTests.swift in Sources */,
 				8590F41122CE563C00B7473A /* StringExtension.swift in Sources */,
 				8590F41622CE564F00B7473A /* URLExtension.swift in Sources */,
 				85C55C2B230C5C100030B52A /* TrackerDataTests.swift in Sources */,
@@ -1229,6 +1466,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		837857DC232A7CCC00143219 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8587A6822278901300F622AF /* TrackerBlocking */;
+			targetProxy = 837857DB232A7CCC00143219 /* PBXContainerItemProxy */;
+		};
+		838AF890232685A800522DD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 838AF88F232685A800522DD9 /* PBXContainerItemProxy */;
+		};
+		838AF8E92326877800522DD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 838AF8D72326877700522DD9 /* DuckDuckGoSync */;
+			targetProxy = 838AF8E82326877800522DD9 /* PBXContainerItemProxy */;
+		};
+		83994E892326858A0040F65B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 83994E882326858A0040F65B /* PBXContainerItemProxy */;
+		};
 		85417D9E226762870062A081 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 85417D8A226762870062A081 /* SafariAppExtension */;
@@ -1292,6 +1547,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		838AF8DE2326877800522DD9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				838AF8DF2326877800522DD9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		85417D69226605E60062A081 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1311,6 +1574,94 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		838AF8EF2326877800522DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		838AF8F02326877800522DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSync;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		838AF8F22326877800522DD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				INFOPLIST_FILE = DuckDuckGoSyncTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSyncTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGoSync.app/Contents/MacOS/DuckDuckGoSync";
+			};
+			name = Debug;
+		};
+		838AF8F32326877800522DD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				INFOPLIST_FILE = DuckDuckGoSyncTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSyncTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGoSync.app/Contents/MacOS/DuckDuckGoSync";
+			};
+			name = Release;
+		};
 		85417D6E226605E60062A081 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1642,6 +1993,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HKE973VLUW;
@@ -1662,6 +2014,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = HKE973VLUW;
@@ -1833,6 +2186,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		838AF8EE2326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				838AF8EF2326877800522DD9 /* Debug */,
+				838AF8F02326877800522DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		838AF8F12326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSyncTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				838AF8F22326877800522DD9 /* Debug */,
+				838AF8F32326877800522DD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		85417D5B226605E60062A081 /* Build configuration list for PBXProject "DuckDuckGo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

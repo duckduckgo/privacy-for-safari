@@ -21,9 +21,9 @@ import Foundation
 
 public class APIHeaders {
     
-    struct Name {
-        static let userAgent = "User-Agent"
-        static let etag = "ETag"
+    public struct Name {
+        public static let userAgent = "User-Agent"
+        public static let etag = "ETag"
     }
     
     private let appVersion: AppVersion

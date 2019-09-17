@@ -25,14 +25,26 @@ public protocol APIRequest {
     typealias Completion = ((Data?, HTTPURLResponse?, Error?) -> Void)
     
     func get(_ path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion)
-    
 }
 
-enum APIRequestErrors: Error {
-    
+public enum APIRequestErrors: Error {
     case noHttpResponse
     case invalidResponseCode(code: Int)
-    
+}
+
+public struct ApiBaseUrl {
+    public static let standard = "https://duckduckgo.com"
+    public static let cdn = "https://staticcdn.duckduckgo.com"
+}
+
+struct ParamKey {
+    static let macOS = "macos"
+    static let test = "test"
+}
+
+struct ParamValue {
+    static let macOS = "1"
+    static let test = "1"
 }
 
 public class DefaultAPIRequest: APIRequest {
@@ -43,22 +55,27 @@ public class DefaultAPIRequest: APIRequest {
     let isDebugBuild = false
 #endif
     
-    public init() { }
+    private let baseUrl: String
+    
+    public init(baseUrl: String = ApiBaseUrl.standard) {
+        self.baseUrl = baseUrl
+    }
     
     public func get(_ path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion) {
-        var components = URLComponents(string: "https://duckduckgo.com")
+        var components = URLComponents(string: baseUrl)
         components?.path = path
         components?.queryItems = params?.map { URLQueryItem(name: $0.key, value: $0.value) }
         if isDebugBuild {
             var queryItems = components?.queryItems ?? []
-            queryItems.append(URLQueryItem(name: "test", value: "1"))
-            queryItems.append(URLQueryItem(name: "macos", value: "1"))
+            queryItems.append(URLQueryItem(name: ParamKey.test, value: ParamValue.test))
+            queryItems.append(URLQueryItem(name: ParamKey.macOS, value: ParamValue.macOS))
             components?.queryItems = queryItems
         }
         guard let url = components?.url else { return }
         
         var request = URLRequest(url: url)
         APIHeaders().addHeaders(to: &request)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 completion(nil, nil, error)
@@ -75,12 +92,10 @@ public class DefaultAPIRequest: APIRequest {
                 completion(data, httpResponse, APIRequestErrors.invalidResponseCode(code: statusCode))
                 return
             }
-            
             completion(data, httpResponse, nil)
         }
         task.resume()
     }
-    
 }
 
 extension HTTPURLResponse {

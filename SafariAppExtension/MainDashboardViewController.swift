@@ -75,6 +75,10 @@ class MainDashboardViewController: DashboardNavigationController {
         return pageData?.isTrusted ?? false
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear() {
         NSLog("MDVC viewWillAppear \(pageData as Any)")
         super.viewWillAppear()
