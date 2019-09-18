@@ -311,7 +311,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="543" height="50"/>
                                                     <subviews>
                                                         <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RCD-6U-mVo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="521" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="497" height="50"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-JS-Wgp">
                                                                     <rect key="frame" x="0.0" y="33" width="141" height="17"/>
@@ -385,16 +385,12 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
-                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QgK-1o-uc3">
-                                                            <rect key="frame" x="527" y="16" width="18" height="18"/>
-                                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" state="on" inset="2" id="vRZ-DQ-9bi">
-                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                <font key="font" metaFont="system"/>
-                                                            </buttonCell>
+                                                        <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" state="on" translatesAutoresizingMaskIntoConstraints="NO" id="GT7-Dd-T5H">
+                                                            <rect key="frame" x="503" y="13" width="42" height="24"/>
                                                             <connections>
-                                                                <action selector="toggleProtection:" target="yVf-K8-uRd" id="MmZ-9H-wZ6"/>
+                                                                <action selector="toggleProtection:" target="yVf-K8-uRd" id="HNu-JO-qc3"/>
                                                             </connections>
-                                                        </button>
+                                                        </switch>
                                                     </subviews>
                                                     <visibilityPriorities>
                                                         <integer value="1000"/>
@@ -631,7 +627,7 @@
                         <outlet property="privacyPracticesLabel" destination="iAf-Rj-gBa" id="T3W-bZ-2YS"/>
                         <outlet property="protectionBox" destination="2Cp-NG-aaD" id="ZSn-Jg-LMK"/>
                         <outlet property="protectionMessage" destination="ZyC-IV-hPB" id="LMk-mh-AFC"/>
-                        <outlet property="protectionToggle" destination="QgK-1o-uc3" id="Zax-br-ED3"/>
+                        <outlet property="protectionToggle" destination="GT7-Dd-T5H" id="W3l-me-Xsd"/>
                         <outlet property="regularSitesMessage" destination="0go-gC-ecL" id="XO2-Fn-FsH"/>
                         <outlet property="removedFromWhitelist" destination="i0D-m3-TFt" id="4re-R5-nlN"/>
                         <outlet property="reportBrokenSiteCTA" destination="1gG-LQ-JAK" id="U7n-Ra-2Ll"/>

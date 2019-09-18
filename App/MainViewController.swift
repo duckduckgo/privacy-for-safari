@@ -50,22 +50,15 @@ class MainViewController: NSViewController {
     @IBAction func selectSendFeedback(_ sender: Any) {
         print(#function, sender)
         deselectAllSectionButtons()
-        tabs.selectTabViewItem(at: 3)
-        setSectionButtonSelected(atIndex: 3)
-    }
-
-    @IBAction func selectGlobalStats(_ sender: Any) {
-        print(#function, sender)
-        deselectAllSectionButtons()
-        tabs.selectTabViewItem(at: 1)
-        setSectionButtonSelected(atIndex: 1)
+        tabs.selectTabViewItem(at: 2)
+        setSectionButtonSelected(atIndex: 2)
     }
 
     @IBAction func selectTrustedSites(_ sender: Any) {
         print(#function, sender)
         deselectAllSectionButtons()
-        tabs.selectTabViewItem(at: 2)
-        setSectionButtonSelected(atIndex: 2)
+        tabs.selectTabViewItem(at: 1)
+        setSectionButtonSelected(atIndex: 1)
     }
     
     @IBAction func resetOnboarding(_ sender: Any) {
@@ -86,7 +79,6 @@ class MainViewController: NSViewController {
         setSectionButtonSelected(atIndex: 0)
         
         tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Home", fromStoryboardNamed: "Main")))
-        tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "GlobalStats", fromStoryboardNamed: "Main")))
         tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "TrustedSites", fromStoryboardNamed: "Main")))
         tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "SendFeedback", fromStoryboardNamed: "Main")))
     }

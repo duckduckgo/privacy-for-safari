@@ -55,7 +55,7 @@ class MainDashboardViewController: DashboardNavigationController {
     @IBOutlet weak var fromIcon: NSImageView!
     @IBOutlet weak var toIcon: NSImageView!
 
-    @IBOutlet weak var protectionToggle: NSButton!
+    @IBOutlet weak var protectionToggle: NSSwitch!
     @IBOutlet weak var protectionBox: NSBox!
     @IBOutlet weak var protectionMessage: NSView!
     @IBOutlet weak var addedToWhitelist: NSView!
@@ -81,6 +81,7 @@ class MainDashboardViewController: DashboardNavigationController {
         didSet {
             NSLog("MDVC pageDataSet \(isViewLoaded)")
             if isViewLoaded {
+                updateProtectionToggleState()
                 updateUI()
             }
         }
@@ -91,7 +92,21 @@ class MainDashboardViewController: DashboardNavigationController {
     }
     
     override func viewDidLoad() {
+        NSLog("MDVC viewWillAppear \(pageData as Any)")
         super.viewDidLoad()
+        DistributedNotificationCenter.default().addObserver(self,
+                                                            selector: #selector(onTrustedSitesChanged),
+                                                            name: TrustedSitesManagerUpdatedNotificationName,
+                                                            object: nil)
+    }
+    
+    @objc func onTrustedSitesChanged() {
+        NSLog("MDVC \(#function)")
+        trustedSites.load()
+    }
+    
+    private func updateProtectionToggleState() {
+        protectionToggle.state = isTrusted ? .off : .on
     }
     
     override func viewWillAppear() {
@@ -104,6 +119,7 @@ class MainDashboardViewController: DashboardNavigationController {
         super.viewDidAppear()
         trustedSites.load()
         protection = isTrusted ? .on : .off
+        updateProtectionToggleState()
         updateUI()
     }
 
@@ -122,8 +138,8 @@ class MainDashboardViewController: DashboardNavigationController {
             self.trustedSites.save()
         }
 
-        updateUI()
-        reloadPage()
+        self.updateUI()
+        self.reloadPage()
     }
 
     @IBAction func showTrackers(_ sender: Any) {
@@ -206,11 +222,9 @@ class MainDashboardViewController: DashboardNavigationController {
     private func updateProtectionStatus() {
 
         if isTrusted {
-            protectionBox.fillColor = NSColor.protectionToggleOff
-            (protectionToggle.cell as? NSButtonCell)?.state = .off
+            protectionBox.fillColor = NSColor(named: NSColor.Name("ProtectionToggleOff")) ?? NSColor.red
         } else {
-            protectionBox.fillColor = NSColor.protectionToggleOn
-            (protectionToggle.cell as? NSButtonCell)?.state = .on
+            protectionBox.fillColor = NSColor(named: NSColor.Name("ProtectionToggleOn")) ?? NSColor.red
         }
 
         NSAnimationContext.runAnimationGroup { context in
