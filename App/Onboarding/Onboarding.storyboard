@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="AfP-Og-hqd">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="AfP-Og-hqd">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14854.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -95,37 +95,36 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yBs-RL-7Yp">
-                                <rect key="frame" x="162" y="281" width="577" height="28"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Activate Privacy Essentials for Safari to get started." id="uvo-bI-rWV">
+                                <rect key="frame" x="221" y="235" width="459" height="28"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Activate DuckDuckGo Privacy Essentials" id="uvo-bI-rWV">
                                     <font key="font" metaFont="systemBold" size="24"/>
                                     <color key="textColor" name="OnboardingTitleText"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bl9-8b-G7F">
-                                <rect key="frame" x="414" y="332" width="73" height="73"/>
+                                <rect key="frame" x="370" y="296" width="160" height="108"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="6AM-hn-Cua"/>
-                                    <constraint firstAttribute="width" constant="73" id="eGR-6y-mQC"/>
+                                    <constraint firstAttribute="height" constant="108" id="6AM-hn-Cua"/>
+                                    <constraint firstAttribute="width" constant="160" id="eGR-6y-mQC"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="v6A-vC-VWc"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="OnboardingOpen" id="v6A-vC-VWc"/>
                             </imageView>
                             <scrollView borderType="none" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3w-7J-ThA">
-                                <rect key="frame" x="170" y="195" width="560" height="69"/>
+                                <rect key="frame" x="239" y="148" width="423" height="69"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="2BN-yx-J1C">
-                                    <rect key="frame" x="0.0" y="0.0" width="560" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="423" height="69"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="dVG-tj-mng">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="423" height="69"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="OnboardingBodyText"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="560" height="69"/>
+                                            <size key="minSize" width="423" height="69"/>
                                             <size key="maxSize" width="581" height="10000000"/>
                                             <attributedString key="textStorage">
-                                                <fragment>
-                                                    <string key="content">Before we can start blocking third-party trackers on sites you visit, you’ll need to activate DuckDuckGo’s Privacy Protection and the Privacy Dashboard. Paired with Private Search, your online data will be more private by default.</string>
+                                                <fragment content="Before DuckDuckGo Privacy Essentials will work, you'll need to activate it's features within Safari.">
                                                     <attributes>
                                                         <color key="NSColor" name="OnboardingBodyText"/>
                                                         <font key="NSFont" metaFont="system" size="15"/>
@@ -138,7 +137,7 @@
                                     </subviews>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="560" id="QIT-pC-Ca6"/>
+                                    <constraint firstAttribute="width" constant="423" id="QIT-pC-Ca6"/>
                                     <constraint firstAttribute="height" constant="69" id="esk-l5-keK"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="hAJ-0e-17s">
@@ -146,37 +145,54 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="4DL-zd-bGB">
-                                    <rect key="frame" x="544" y="0.0" width="16" height="69"/>
+                                    <rect key="frame" x="407" y="0.0" width="16" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3aH-wP-8hp">
-                                <rect key="frame" x="344" y="44" width="212" height="32"/>
+                                <rect key="frame" x="354" y="44" width="192" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Esj-Y2-nd5"/>
+                                    <constraint firstAttribute="width" constant="180" id="Esj-Y2-nd5"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Let's Get Started" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qET-Ld-4eB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="getStartedWithSender:" target="f9Y-b3-E89" id="F8z-dX-ntF"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-lN-A6s">
+                                <rect key="frame" x="27" y="442" width="140" height="38"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LogoHorizontalText" id="dhZ-2E-Eae"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UET-kF-jZx">
+                                <rect key="frame" x="690" y="455" width="192" height="13"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="P R I V A C Y   E S S E N T I A L S  1 . 0" id="lGw-WR-7sH">
+                                    <font key="font" metaFont="systemHeavy" size="10"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="bl9-8b-G7F" firstAttribute="top" secondItem="YHX-zc-TUw" secondAttribute="top" constant="95" id="0K2-zi-Ldy"/>
+                            <constraint firstItem="bl9-8b-G7F" firstAttribute="top" secondItem="YHX-zc-TUw" secondAttribute="top" constant="96" id="0K2-zi-Ldy"/>
+                            <constraint firstItem="UET-kF-jZx" firstAttribute="centerY" secondItem="gxl-lN-A6s" secondAttribute="centerY" id="4Ih-OW-i61"/>
                             <constraint firstItem="yBs-RL-7Yp" firstAttribute="centerX" secondItem="YHX-zc-TUw" secondAttribute="centerX" id="5AJ-4Z-JHb"/>
                             <constraint firstAttribute="bottom" secondItem="3aH-wP-8hp" secondAttribute="bottom" constant="51" id="8bE-tv-Lsv"/>
-                            <constraint firstItem="yBs-RL-7Yp" firstAttribute="top" secondItem="bl9-8b-G7F" secondAttribute="bottom" constant="23" id="9NP-b8-kOe"/>
+                            <constraint firstItem="yBs-RL-7Yp" firstAttribute="top" secondItem="bl9-8b-G7F" secondAttribute="bottom" constant="33" id="9NP-b8-kOe"/>
                             <constraint firstItem="3aH-wP-8hp" firstAttribute="centerX" secondItem="YHX-zc-TUw" secondAttribute="centerX" id="FDG-7V-FAq"/>
+                            <constraint firstAttribute="trailing" secondItem="UET-kF-jZx" secondAttribute="trailing" constant="20" id="FdB-Ng-RPo"/>
                             <constraint firstItem="z3w-7J-ThA" firstAttribute="centerX" secondItem="YHX-zc-TUw" secondAttribute="centerX" id="Kxe-AF-Izk"/>
+                            <constraint firstItem="gxl-lN-A6s" firstAttribute="top" secondItem="YHX-zc-TUw" secondAttribute="top" constant="20" id="aNm-Jb-PCr"/>
+                            <constraint firstItem="gxl-lN-A6s" firstAttribute="leading" secondItem="YHX-zc-TUw" secondAttribute="leading" constant="27" id="dNM-Bg-IQQ"/>
                             <constraint firstItem="bl9-8b-G7F" firstAttribute="centerX" secondItem="YHX-zc-TUw" secondAttribute="centerX" id="r8u-x7-6Mg"/>
-                            <constraint firstItem="z3w-7J-ThA" firstAttribute="top" secondItem="yBs-RL-7Yp" secondAttribute="bottom" constant="17" id="ziS-lH-YBZ"/>
+                            <constraint firstItem="z3w-7J-ThA" firstAttribute="top" secondItem="yBs-RL-7Yp" secondAttribute="bottom" constant="18" id="ziS-lH-YBZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="button" destination="3aH-wP-8hp" id="Vei-Ts-3x3"/>
+                        <outlet property="versionLabel" destination="UET-kF-jZx" id="UVF-MV-yT2"/>
                     </connections>
                 </viewController>
                 <customObject id="D0a-3A-EqN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -192,144 +208,114 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4kE-rh-WQJ">
-                                <rect key="frame" x="344" y="44" width="212" height="32"/>
+                                <rect key="frame" x="354" y="44" width="192" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="qKi-EX-hO6"/>
+                                    <constraint firstAttribute="width" constant="180" id="qKi-EX-hO6"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4sN-Pa-Wwl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="buttonPressedWithSender:" target="UPf-Ie-zeu" id="T4L-fP-zZh"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2DC-Ex-dSz">
-                                <rect key="frame" x="50" y="132" width="800" height="230"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ScreenshotExtensions" id="aat-yT-gbr"/>
-                            </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jIR-pB-tTg">
-                                <rect key="frame" x="246" y="433" width="408" height="21"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Activate Privacy Essentials: Enable Extensions" id="v4p-wT-Ivd">
+                                <rect key="frame" x="340" y="433" width="221" height="21"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable Safari Extensions" id="v4p-wT-Ivd">
                                     <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="OnboardingTitleText"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <scrollView borderType="none" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8K2-YH-ABJ">
-                                <rect key="frame" x="73" y="372" width="755" height="50"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dKz-Ad-7fA">
-                                    <rect key="frame" x="0.0" y="0.0" width="755" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="I4s-s3-T8u">
-                                            <rect key="frame" x="0.0" y="0.0" width="755" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="OnboardingBodyText"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="tTH-Vf-ZVt">
+                                <rect key="frame" x="50" y="178" width="800" height="230"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2DC-Ex-dSz">
+                                        <rect key="frame" x="0.0" y="0.0" width="800" height="230"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ScreenshotExtensions" id="aat-yT-gbr"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-mY-vjp">
+                                        <rect key="frame" x="33" y="176" width="202" height="17"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Click the button below to open" id="tPT-dJ-ykt">
+                                            <font key="font" metaFont="menu" size="14"/>
+                                            <color key="textColor" name="OnboardingInstructionsText"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="755" height="50"/>
-                                            <size key="maxSize" width="800" height="10000000"/>
-                                            <attributedString key="textStorage">
-                                                <fragment content="Enable both Privacy Protection and Privacy Dashboard to Activate DuckDuckGo Privacy Essentials for Safari.">
-                                                    <attributes>
-                                                        <color key="NSColor" name="OnboardingBodyText"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        </textView>
-                                    </subviews>
-                                </clipView>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpf-wc-oXX">
+                                        <rect key="frame" x="33" y="157" width="227" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Safari &gt; Preferences &gt; Extensions." id="UXK-9I-Yn6">
+                                            <font key="font" metaFont="systemBold"/>
+                                            <color key="textColor" name="OnboardingInstructionsPathText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxg-HN-2vk">
+                                        <rect key="frame" x="33" y="75" width="240" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Select both checkboxes to activate DuckDuckGo Privacy Protection and the Privacy Dashboard." id="0cl-Cc-zEs">
+                                            <font key="font" metaFont="menu" size="14"/>
+                                            <color key="textColor" name="OnboardingInstructionsText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Cl-uQ-1Zu">
+                                        <rect key="frame" x="33" y="8" width="240" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Return to this window to continue to the final step." id="spy-pv-B1o">
+                                            <font key="font" metaFont="menu" size="14"/>
+                                            <color key="textColor" name="OnboardingInstructionsText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yeu-bq-jYA" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="122" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tint">
+                                                <color key="value" name="OnboardingInstructionsPathText"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-8S-FKd" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="180" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tint">
+                                                <color key="value" name="OnboardingInstructionsPathText"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isd-mU-QBQ" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="56" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tint">
+                                                <color key="value" name="OnboardingInstructionsPathText"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="QnE-hJ-7W3"/>
-                                    <constraint firstAttribute="width" constant="755" id="ZY0-VX-WX9"/>
+                                    <constraint firstItem="2DC-Ex-dSz" firstAttribute="centerX" secondItem="tTH-Vf-ZVt" secondAttribute="centerX" id="Gd8-oN-aot"/>
+                                    <constraint firstAttribute="height" constant="230" id="KXv-PY-qNn"/>
+                                    <constraint firstItem="2DC-Ex-dSz" firstAttribute="centerY" secondItem="tTH-Vf-ZVt" secondAttribute="centerY" id="s6p-Mt-lZ3"/>
+                                    <constraint firstAttribute="width" constant="800" id="xAN-sU-7kG"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="1GG-4j-I0M">
-                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bdK-FE-05w">
-                                    <rect key="frame" x="739" y="0.0" width="16" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpf-wc-oXX">
-                                <rect key="frame" x="83" y="289" width="227" height="16"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Safari &gt; Preferences &gt; Extensions." id="UXK-9I-Yn6">
-                                    <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="OnboardingInstructionsPathText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFE-mY-vjp">
-                                <rect key="frame" x="83" y="308" width="202" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Click the button below to open" id="tPT-dJ-ykt">
-                                    <font key="font" metaFont="menu" size="14"/>
-                                    <color key="textColor" name="OnboardingInstructionsText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxg-HN-2vk">
-                                <rect key="frame" x="83" y="207" width="240" height="59"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" title="Select both checkboxes to activate DuckDuckGo Privacy Protection and the Privacy Dashboard." id="0cl-Cc-zEs">
-                                    <font key="font" metaFont="menu" size="14"/>
-                                    <color key="textColor" name="OnboardingInstructionsText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Cl-uQ-1Zu">
-                                <rect key="frame" x="83" y="140" width="240" height="59"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" title="Return to this window to continue to the final step." id="spy-pv-B1o">
-                                    <font key="font" metaFont="menu" size="14"/>
-                                    <color key="textColor" name="OnboardingInstructionsText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-8S-FKd" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                <rect key="frame" x="67" y="312" width="7" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tint">
-                                        <color key="value" name="OnboardingInstructionsPathText"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yeu-bq-jYA" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                <rect key="frame" x="67" y="254" width="7" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tint">
-                                        <color key="value" name="OnboardingInstructionsPathText"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isd-mU-QBQ" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                <rect key="frame" x="67" y="188" width="7" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tint">
-                                        <color key="value" name="OnboardingInstructionsPathText"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="2DC-Ex-dSz" firstAttribute="centerX" secondItem="Ue2-PN-5ym" secondAttribute="centerX" id="MGU-KT-bW4"/>
                             <constraint firstItem="4kE-rh-WQJ" firstAttribute="centerX" secondItem="Ue2-PN-5ym" secondAttribute="centerX" id="Mhy-br-u77"/>
-                            <constraint firstItem="8K2-YH-ABJ" firstAttribute="top" secondItem="jIR-pB-tTg" secondAttribute="bottom" constant="11" id="NTS-u1-ddJ"/>
                             <constraint firstItem="jIR-pB-tTg" firstAttribute="centerX" secondItem="Ue2-PN-5ym" secondAttribute="centerX" id="PQr-Vu-GbK"/>
-                            <constraint firstItem="2DC-Ex-dSz" firstAttribute="top" secondItem="I4s-s3-T8u" secondAttribute="bottom" constant="10" id="RqO-KE-Af5"/>
-                            <constraint firstItem="8K2-YH-ABJ" firstAttribute="centerX" secondItem="jIR-pB-tTg" secondAttribute="centerX" id="dgo-Pf-qI4"/>
+                            <constraint firstItem="tTH-Vf-ZVt" firstAttribute="top" secondItem="jIR-pB-tTg" secondAttribute="bottom" constant="25" id="f3q-mC-Rc7"/>
                             <constraint firstAttribute="bottom" secondItem="4kE-rh-WQJ" secondAttribute="bottom" constant="51" id="f6k-Li-dEJ"/>
+                            <constraint firstItem="tTH-Vf-ZVt" firstAttribute="centerX" secondItem="Ue2-PN-5ym" secondAttribute="centerX" id="s5E-ez-9xM"/>
                             <constraint firstItem="jIR-pB-tTg" firstAttribute="top" secondItem="Ue2-PN-5ym" secondAttribute="top" constant="46" id="yQV-7t-KXy"/>
                         </constraints>
                     </view>
@@ -349,146 +335,142 @@
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-vd-WS9">
-                                <rect key="frame" x="344" y="44" width="212" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="2ff-ME-Tje"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G6b-zq-F9s">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="buttonPressedWithSender:" target="n26-cz-W7b" id="y09-oB-RF6"/>
-                                </connections>
-                            </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuX-hy-i0i">
-                                <rect key="frame" x="50" y="132" width="800" height="230"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ScreenshotSearchEngine" id="vbD-bU-hkl"/>
-                            </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qKW-ih-IdP">
-                                <rect key="frame" x="205" y="433" width="491" height="21"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Activate Privacy Essentials: Enable DuckDuckGo Search" id="lCZ-4m-L2Z">
+                                <rect key="frame" x="326" y="433" width="249" height="21"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable DuckDuckGo Search" id="lCZ-4m-L2Z">
                                     <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="OnboardingTitleText"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <scrollView borderType="none" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouT-fW-v5F">
-                                <rect key="frame" x="105" y="372" width="690" height="50"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Qqr-06-RQj">
-                                    <rect key="frame" x="0.0" y="0.0" width="690" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="uO3-8T-BCd">
-                                            <rect key="frame" x="0.0" y="0.0" width="690" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="OnboardingBodyText"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="cN8-k2-97U">
+                                <rect key="frame" x="50" y="178" width="800" height="230"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuX-hy-i0i">
+                                        <rect key="frame" x="0.0" y="0.0" width="800" height="230"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ScreenshotSearchEngine" id="vbD-bU-hkl"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-wA-EsM">
+                                        <rect key="frame" x="33" y="154" width="227" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Safari &gt; Preferences &gt; Extensions." id="aYl-Nv-sHG">
+                                            <font key="font" metaFont="systemBold"/>
+                                            <color key="textColor" name="OnboardingInstructionsPathText"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="690" height="50"/>
-                                            <size key="maxSize" width="800" height="10000000"/>
-                                            <attributedString key="textStorage">
-                                                <fragment content="Set DuckDuckGo as your default search engine to keep your search history private.">
-                                                    <attributes>
-                                                        <color key="NSColor" name="OnboardingBodyText"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        </textView>
-                                    </subviews>
-                                </clipView>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xfg-EW-rzN">
+                                        <rect key="frame" x="33" y="176" width="202" height="17"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Click the button below to open" id="3Lp-8f-2sl">
+                                            <font key="font" metaFont="menu" size="14"/>
+                                            <color key="textColor" name="OnboardingInstructionsText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odZ-Tl-5mp" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="180" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tint">
+                                                <color key="value" name="OnboardingInstructionsPathText"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvm-VB-6g0" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="122" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tint">
+                                                <color key="value" name="OnboardingInstructionsPathText"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPY-Ve-ctI">
+                                        <rect key="frame" x="32" y="80" width="272" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Click the search tab and choose DuckDuckGo from the list of search engine options." id="t2L-xb-GPj">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="OnboardingInstructionsText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apx-fY-NGS">
+                                        <rect key="frame" x="30" y="32" width="268" height="35"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Return to this window to finish setup." id="Com-zJ-Qoj">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="OnboardingInstructionsText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ku1-cN-brD" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <rect key="frame" x="17" y="56" width="7" height="7"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tint">
+                                                <color key="value" name="OnboardingInstructionsPathText"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="690" id="1eb-Pd-8Ox"/>
-                                    <constraint firstAttribute="height" constant="50" id="wDe-0C-yQA"/>
+                                    <constraint firstAttribute="height" constant="230" id="8Rs-x3-m06"/>
+                                    <constraint firstItem="IuX-hy-i0i" firstAttribute="centerX" secondItem="cN8-k2-97U" secondAttribute="centerX" id="JOX-b4-0Pt"/>
+                                    <constraint firstItem="IuX-hy-i0i" firstAttribute="centerY" secondItem="cN8-k2-97U" secondAttribute="centerY" id="OfB-53-QLS"/>
+                                    <constraint firstAttribute="width" constant="800" id="VD1-l2-yJb"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="nh2-Mc-ARJ">
-                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="S1m-VZ-A7y">
-                                    <rect key="frame" x="674" y="0.0" width="16" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-wA-EsM">
-                                <rect key="frame" x="83" y="286" width="227" height="16"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Safari &gt; Preferences &gt; Extensions." id="aYl-Nv-sHG">
-                                    <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="OnboardingInstructionsPathText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xfg-EW-rzN">
-                                <rect key="frame" x="83" y="308" width="202" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Click the button below to open" id="3Lp-8f-2sl">
-                                    <font key="font" metaFont="menu" size="14"/>
-                                    <color key="textColor" name="OnboardingInstructionsText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odZ-Tl-5mp" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                <rect key="frame" x="67" y="312" width="7" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tint">
-                                        <color key="value" name="OnboardingInstructionsPathText"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvm-VB-6g0" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                <rect key="frame" x="67" y="254" width="7" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tint">
-                                        <color key="value" name="OnboardingInstructionsPathText"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ku1-cN-brD" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                <rect key="frame" x="67" y="188" width="7" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tint">
-                                        <color key="value" name="OnboardingInstructionsPathText"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPY-Ve-ctI">
-                                <rect key="frame" x="82" y="212" width="272" height="54"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" title="Click the search tab and choose DuckDuckGo from the list of search engine options." id="t2L-xb-GPj">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="OnboardingInstructionsText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="apx-fY-NGS">
-                                <rect key="frame" x="80" y="164" width="268" height="35"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" title="Return to this window to finish setup." id="Com-zJ-Qoj">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="OnboardingInstructionsText"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz8-tZ-khS">
+                                <rect key="frame" x="264" y="51" width="372" height="21"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-vd-WS9">
+                                        <rect key="frame" x="-6" y="-7" width="192" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="2ff-ME-Tje"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Open Safari Preferences" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G6b-zq-F9s">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="12"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openSafariPreferencesWithSender:" target="n26-cz-W7b" id="gDj-zY-sim"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9XQ-xS-ZUb">
+                                        <rect key="frame" x="186" y="-7" width="192" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="Ar2-0z-4Mh"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Finish Setup" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fjv-e6-fTO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="12"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="finishSetupWithSender:" target="n26-cz-W7b" id="3eS-TT-eXg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="IuX-hy-i0i" firstAttribute="top" secondItem="uO3-8T-BCd" secondAttribute="bottom" constant="10" id="Q7e-VH-teP"/>
-                            <constraint firstItem="ouT-fW-v5F" firstAttribute="top" secondItem="qKW-ih-IdP" secondAttribute="bottom" constant="11" id="a27-NS-yPB"/>
-                            <constraint firstItem="Wz2-vd-WS9" firstAttribute="centerX" secondItem="OWq-he-coW" secondAttribute="centerX" id="emH-xz-VSe"/>
+                            <constraint firstAttribute="bottom" secondItem="Iz8-tZ-khS" secondAttribute="bottom" constant="51" id="4Q6-Pv-u0F"/>
+                            <constraint firstItem="Iz8-tZ-khS" firstAttribute="centerX" secondItem="OWq-he-coW" secondAttribute="centerX" id="BfZ-1v-CLR"/>
+                            <constraint firstItem="cN8-k2-97U" firstAttribute="centerX" secondItem="OWq-he-coW" secondAttribute="centerX" id="a8R-sE-bpt"/>
                             <constraint firstItem="qKW-ih-IdP" firstAttribute="top" secondItem="OWq-he-coW" secondAttribute="top" constant="46" id="fc5-gc-yLD"/>
                             <constraint firstItem="qKW-ih-IdP" firstAttribute="centerX" secondItem="OWq-he-coW" secondAttribute="centerX" id="kWP-RY-Lrm"/>
-                            <constraint firstAttribute="bottom" secondItem="Wz2-vd-WS9" secondAttribute="bottom" constant="51" id="keM-aR-kkq"/>
-                            <constraint firstItem="ouT-fW-v5F" firstAttribute="centerX" secondItem="qKW-ih-IdP" secondAttribute="centerX" id="kfj-UI-PXK"/>
-                            <constraint firstItem="IuX-hy-i0i" firstAttribute="centerX" secondItem="OWq-he-coW" secondAttribute="centerX" id="yPn-kq-MOk"/>
+                            <constraint firstItem="cN8-k2-97U" firstAttribute="top" secondItem="qKW-ih-IdP" secondAttribute="bottom" constant="25" id="xjU-6i-lWy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -501,7 +483,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="119" height="119"/>
+        <image name="LogoHorizontalText" width="140" height="38"/>
+        <image name="OnboardingOpen" width="160" height="108"/>
         <image name="ScreenshotExtensions" width="800" height="230"/>
         <image name="ScreenshotSearchEngine" width="800" height="230"/>
         <namedColor name="OnboardingBodyText">

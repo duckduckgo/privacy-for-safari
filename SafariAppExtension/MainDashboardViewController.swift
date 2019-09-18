@@ -222,9 +222,9 @@ class MainDashboardViewController: DashboardNavigationController {
     private func updateProtectionStatus() {
 
         if isTrusted {
-            protectionBox.fillColor = NSColor(named: NSColor.Name("ProtectionToggleOff")) ?? NSColor.red
+            protectionBox.fillColor = NSColor.protectionToggleOff
         } else {
-            protectionBox.fillColor = NSColor(named: NSColor.Name("ProtectionToggleOn")) ?? NSColor.red
+            protectionBox.fillColor = NSColor.protectionToggleOn
         }
 
         NSAnimationContext.runAnimationGroup { context in

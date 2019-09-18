@@ -46,6 +46,8 @@
 		8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8510B265226F5AF30015D406 /* Dashboard.storyboard */; };
 		8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */; };
 		8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */; };
+		8524A3EE23325162001E8856 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		8524A3EF23325173001E8856 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
 		852ABF52230D86120017A95B /* ContentBlockerRulesBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852ABF51230D86120017A95B /* ContentBlockerRulesBuilderTests.swift */; };
 		852AEEB9232FECA1003C1D17 /* TrustedSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AEEB8232FECA1003C1D17 /* TrustedSitesViewController.swift */; };
 		8540D8D022BBA356009A2FF4 /* SectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540D8CF22BBA356009A2FF4 /* SectionButton.swift */; };
@@ -125,6 +127,7 @@
 		85A527C0227F2E8000233FDF /* BlockerListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A527BF227F2E8000233FDF /* BlockerListManager.swift */; };
 		85A527C9227F634600233FDF /* ContentBlockerRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A527C8227F634600233FDF /* ContentBlockerRule.swift */; };
 		85A527CA227F667B00233FDF /* TrustedSitesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A9F4622708783008F2A93 /* TrustedSitesManager.swift */; };
+		85C3512E2331596800D8E78A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C3512D2331596800D8E78A /* Utils.swift */; };
 		85C351322332316000D8E78A /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C351312332316000D8E78A /* NSColorExtension.swift */; };
 		85C351342332321600D8E78A /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C351332332321600D8E78A /* NSColorExtension.swift */; };
 		85C55C2B230C5C100030B52A /* TrackerDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C55C2A230C5C100030B52A /* TrackerDataTests.swift */; };
@@ -399,6 +402,7 @@
 		8510B265226F5AF30015D406 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationDelegate.swift; sourceTree = "<group>"; };
 		8510B269226F7A8D0015D406 /* ScoreCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardViewController.swift; sourceTree = "<group>"; };
+		8524A3E723325063001E8856 /* BundleIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleIds.swift; sourceTree = "<group>"; };
 		852ABF51230D86120017A95B /* ContentBlockerRulesBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRulesBuilderTests.swift; sourceTree = "<group>"; };
 		852AEEB8232FECA1003C1D17 /* TrustedSitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesViewController.swift; sourceTree = "<group>"; };
 		8540D8CF22BBA356009A2FF4 /* SectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionButton.swift; sourceTree = "<group>"; };
@@ -463,6 +467,7 @@
 		859F13D5227A468600EDE40A /* PageDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDataTests.swift; sourceTree = "<group>"; };
 		85A527BF227F2E8000233FDF /* BlockerListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerListManager.swift; sourceTree = "<group>"; };
 		85A527C8227F634600233FDF /* ContentBlockerRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRule.swift; sourceTree = "<group>"; };
+		85C3512D2331596800D8E78A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		85C351312332316000D8E78A /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		85C351332332321600D8E78A /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		85C55C2A230C5C100030B52A /* TrackerDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataTests.swift; sourceTree = "<group>"; };
@@ -626,11 +631,12 @@
 			children = (
 				854A9F532271CB01008F2A93 /* AppIcon.xcassets */,
 				850385FA22F86481002259DB /* AppLinks.swift */,
+				8524A3E723325063001E8856 /* BundleIds.swift */,
+				838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */,
 				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
 				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
 				8590F40A22CE563300B7473A /* StringExtension.swift */,
 				85E9521E22AFDB220071281E /* URLExtension.swift */,
-				838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -690,6 +696,7 @@
 				8540D8CF22BBA356009A2FF4 /* SectionButton.swift */,
 				850385F822F85797002259DB /* Settings.swift */,
 				852AEEB8232FECA1003C1D17 /* TrustedSitesViewController.swift */,
+				85C3512D2331596800D8E78A /* Utils.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1381,6 +1388,7 @@
 				85E9522122AFDB5C0071281E /* URLExtension.swift in Sources */,
 				85417D66226605E60062A081 /* MainViewController.swift in Sources */,
 				852AEEB9232FECA1003C1D17 /* TrustedSitesViewController.swift in Sources */,
+				8524A3EE23325162001E8856 /* BundleIds.swift in Sources */,
 				85417D64226605E60062A081 /* AppDelegate.swift in Sources */,
 				8590F40B22CE563300B7473A /* StringExtension.swift in Sources */,
 				85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */,
@@ -1396,6 +1404,7 @@
 				85C351322332316000D8E78A /* NSColorExtension.swift in Sources */,
 				8503859022F1A280002259DB /* OnboardingPageController.swift in Sources */,
 				850385FB22F86481002259DB /* AppLinks.swift in Sources */,
+				85C3512E2331596800D8E78A /* Utils.swift in Sources */,
 				85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1445,6 +1454,7 @@
 				85A527CA227F667B00233FDF /* TrustedSitesManager.swift in Sources */,
 				8560B55A22CE613C0071CC72 /* StringExtension.swift in Sources */,
 				850AFAFD232A4FF8004C859B /* TermsOfService.swift in Sources */,
+				8524A3EF23325173001E8856 /* BundleIds.swift in Sources */,
 				85991510228036AD0023C1F2 /* TrackerDataManager.swift in Sources */,
 				859914D3227895F40023C1F2 /* DetectedTracker.swift in Sources */,
 				85E8606D232BD9EB007DDE2E /* BrokenSiteReporter.swift in Sources */,

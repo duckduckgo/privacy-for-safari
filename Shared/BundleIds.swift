@@ -1,7 +1,6 @@
 //
-//  OnboardingGetStartedController.swift
+//  AppIds.swift
 //  DuckDuckGo Privacy Essentials
-//
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,19 +17,12 @@
 //  limitations under the License.
 //
 
-import AppKit
+import Foundation
 
-class OnboardingGetStartedController: OnboardingScreen {
-
-    @IBOutlet var versionLabel: NSTextField!
+struct BundleIds {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        versionLabel.attributedStringValue = Utils.versionLabelAttributedString()
-    }
-    
-    @IBAction func getStarted(sender: Any) {
-        delegate?.navigateForward(self)
-    }
+    static let app = "com.duckduckgo.macos.PrivacyEssentials"
+    static let contentBlockerExtension = app + ".ContentBlockerExtension"
+    static let safariAppExtension = app + ".SafariAppExtension"
 
 }

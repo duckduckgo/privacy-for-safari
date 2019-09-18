@@ -2,8 +2,20 @@
 //  TrustedSitesViewController.swift
 //  DuckDuckGo Privacy Essentials
 //
-//  Created by Chris Brind on 16/09/2019.
-//  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.
+//
+//  Copyright © 2019 DuckDuckGo. All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import AppKit
@@ -54,6 +66,7 @@ extension TrustedSitesViewController: NSTableViewDelegate {
             entry.isAlternate = 0 == (row % 2)
             entry.onDelete = {
                 self.trustedSites.removeDomain(at: row - 1)
+                self.trustedSites.save()
                 self.tableView.reloadData()
             }
             return entry
@@ -94,7 +107,7 @@ class WhitelistEntryView: NSTableCellView {
     }
     
     func updateBackground() {
-        box.fillColor = NSColor(named: NSColor.Name(isAlternate ? "TableAlt1" : "TableAlt2")) ?? NSColor.clear
+        box.fillColor = isAlternate ? NSColor.tableAlt1 : NSColor.tableAlt2
     }
     
     @IBAction func deletePressed(sender: Any?) {

@@ -34,8 +34,8 @@ class ExtensionsStateWatcher {
         case unknown, enabled, disabled
     }
     
-    private let contentBlockerExtensionId = (Bundle.main.bundleIdentifier ?? "") + ".ContentBlockerExtension"
-    private let safariAppExtensionId = (Bundle.main.bundleIdentifier ?? "") + ".SafariAppExtension"
+    private let contentBlockerExtensionId = BundleIds.contentBlockerExtension
+    private let safariAppExtensionId = BundleIds.safariAppExtension
     
     private(set) var protectionState = State.unknown
     private(set) var dashboardState = State.unknown

@@ -23,5 +23,7 @@ extension NSColor {
 
     static let selectedBackground = NSColor(named: NSColor.Name("SelectedBackground"))!
     static let selectedText = NSColor(named: NSColor.Name("SelectedText"))!
+    static let tableAlt1 = NSColor(named: NSColor.Name("TableAlt1"))!
+    static let tableAlt2 = NSColor(named: NSColor.Name("TableAlt2"))!
 
 }

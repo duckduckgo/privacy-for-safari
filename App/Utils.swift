@@ -1,5 +1,5 @@
 //
-//  OnboardingGetStartedController.swift
+//  Utils.swift
 //  DuckDuckGo Privacy Essentials
 //
 //
@@ -20,17 +20,22 @@
 
 import AppKit
 
-class OnboardingGetStartedController: OnboardingScreen {
-
-    @IBOutlet var versionLabel: NSTextField!
+struct Utils {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        versionLabel.attributedStringValue = Utils.versionLabelAttributedString()
+    static func versionLabelAttributedString() -> NSAttributedString {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "?.?"
+        return NSAttributedString.withKern(string: "PRIVACY ESSENTIALS \(version)", 2.0)
     }
     
-    @IBAction func getStarted(sender: Any) {
-        delegate?.navigateForward(self)
-    }
+}
 
+extension NSAttributedString {
+    
+    static func withKern(string: String, _ kern: CGFloat) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any]? = [
+            NSAttributedString.Key.kern: kern
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
 }

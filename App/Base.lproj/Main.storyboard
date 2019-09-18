@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -324,220 +325,6 @@
             </objects>
             <point key="canvasLocation" x="75" y="943"/>
         </scene>
-        <!--Home Section View Controller-->
-        <scene sceneID="shx-PK-0ea">
-            <objects>
-                <viewController storyboardIdentifier="Home" id="qwz-P2-EMQ" customClass="HomeSectionViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="aPx-Gh-pvp">
-                        <rect key="frame" x="0.0" y="0.0" width="690" height="500"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lSx-8T-9Q7">
-                                <rect key="frame" x="320" y="225" width="50" height="50"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="Waiting" id="EMw-zh-vh1"/>
-                            </imageView>
-                            <stackView hidden="YES" distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="S1w-9c-AMZ">
-                                <rect key="frame" x="70" y="103" width="550" height="294"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9CZ-tD-pMq">
-                                        <rect key="frame" x="206" y="164" width="139" height="130"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="6I3-Yh-5kr"/>
-                                            <constraint firstAttribute="width" constant="139" id="fFd-Y7-kDs"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EssentialsDisabled" id="Fay-EV-bsm"/>
-                                    </imageView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRF-dK-Od9">
-                                        <rect key="frame" x="129" y="108" width="293" height="48"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BzL-9G-AHo">
-                                                <rect key="frame" x="-2" y="11" width="198" height="26"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Privacy Essentials:" id="eIZ-1k-MkR">
-                                                    <font key="font" metaFont="systemBold" size="22"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cw6-XQ-mza">
-                                                <rect key="frame" x="200" y="11" width="95" height="26"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Disabled" id="BFP-LW-zot">
-                                                    <font key="font" metaFont="systemBold" size="22"/>
-                                                    <color key="textColor" name="HomeEssentialsStateDisabled"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Giy-rB-C2V">
-                                        <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
-                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="pwb-Ew-bgV">
-                                            <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <textView editable="NO" selectable="NO" drawsBackground="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1HX-Ca-qTR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="550" height="100"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="textColor" name="HomeEssentialsStateMessage"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="550" height="100"/>
-                                                    <size key="maxSize" width="550" height="10000000"/>
-                                                    <attributedString key="textStorage">
-                                                        <fragment>
-                                                            <string key="content">Without Privacy Protection enabled, youre not protected from third-party tracking. Open Safari &gt; Preferences &gt; Extensions to enable.</string>
-                                                            <attributes>
-                                                                <color key="NSColor" name="HomeEssentialsStateMessage"/>
-                                                                <font key="NSFont" metaFont="system" size="17"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                </textView>
-                                            </subviews>
-                                        </clipView>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="cWc-gH-ux4"/>
-                                            <constraint firstAttribute="width" constant="550" id="tU4-aL-THl"/>
-                                        </constraints>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="2ep-RT-ezq">
-                                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="haY-u7-2Jg">
-                                            <rect key="frame" x="534" y="0.0" width="16" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <stackView hidden="YES" distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="WqM-YD-kHD">
-                                <rect key="frame" x="118" y="104" width="454" height="292"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tyq-dO-tGO">
-                                        <rect key="frame" x="157" y="162" width="140" height="130"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="1fO-HU-qrL"/>
-                                            <constraint firstAttribute="width" constant="140" id="KGD-vO-gdu"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EssentialsEnabled" id="nZb-PY-rtW"/>
-                                    </imageView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kqg-s3-pCg">
-                                        <rect key="frame" x="84" y="108" width="286" height="46"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PYM-JI-nnf">
-                                                <rect key="frame" x="-2" y="10" width="198" height="26"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Privacy Essentials:" id="wVu-dV-8vO">
-                                                    <font key="font" metaFont="systemBold" size="22"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-Nn-GZH">
-                                                <rect key="frame" x="200" y="10" width="88" height="26"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enabled" id="7vp-I6-tdj">
-                                                    <font key="font" metaFont="systemBold" size="22"/>
-                                                    <color key="textColor" name="HomeEssentialsStateEnabled"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jb3-8n-7dN">
-                                        <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
-                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="j3g-kf-CNd">
-                                            <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2Ay-Nl-yFH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="454" height="100"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="textColor" name="HomeEssentialsStateMessage"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="454" height="100"/>
-                                                    <size key="maxSize" width="454" height="10000000"/>
-                                                    <attributedString key="textStorage">
-                                                        <fragment>
-                                                            <string key="content">DuckDuckGo Privacy Essentials is equipped with both Privacy Protection and the Privacy Dashboard so your online data is more private by default.</string>
-                                                            <attributes>
-                                                                <color key="NSColor" name="HomeEssentialsStateMessage"/>
-                                                                <font key="NSFont" metaFont="system" size="17"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                </textView>
-                                            </subviews>
-                                        </clipView>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="454" id="cCd-sP-zIr"/>
-                                            <constraint firstAttribute="height" constant="100" id="gXZ-9O-QfB"/>
-                                        </constraints>
-                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="EYD-qt-GTZ">
-                                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kR9-DK-NUo">
-                                            <rect key="frame" x="438" y="0.0" width="16" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="lSx-8T-9Q7" firstAttribute="centerY" secondItem="aPx-Gh-pvp" secondAttribute="centerY" id="COc-VV-H1s"/>
-                            <constraint firstItem="lSx-8T-9Q7" firstAttribute="centerX" secondItem="aPx-Gh-pvp" secondAttribute="centerX" id="IsJ-va-fPU"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="disabledStateView" destination="S1w-9c-AMZ" id="R3W-Na-8ro"/>
-                        <outlet property="enabledStateView" destination="WqM-YD-kHD" id="eZT-bW-60s"/>
-                        <outlet property="unknownStateView" destination="lSx-8T-9Q7" id="Aad-QA-Re8"/>
-                    </connections>
-                </viewController>
-                <customObject id="LCz-Hi-LTx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="180" y="2112"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="6KS-NO-xBy">
             <objects>
@@ -814,23 +601,271 @@
             </objects>
             <point key="canvasLocation" x="1067" y="1507"/>
         </scene>
+        <!--Home Section View Controller-->
+        <scene sceneID="KW6-SJ-uCZ">
+            <objects>
+                <viewController storyboardIdentifier="Home" id="4Zn-Kl-PVb" customClass="HomeSectionViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="omw-7N-PNg">
+                        <rect key="frame" x="0.0" y="0.0" width="690" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rKT-0T-Bla">
+                                <rect key="frame" x="268" y="323" width="154" height="122"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="OnboardingLogo" id="ei6-Rw-d6d"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ok5-Tf-GTo">
+                                <rect key="frame" x="249" y="302" width="192" height="13"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="P R I V A C Y   E S S E N T I A L S  1 . 0" id="H7j-Jt-dzE">
+                                    <font key="font" metaFont="systemHeavy" size="10"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJI-1H-589">
+                                <rect key="frame" x="91" y="233" width="508" height="46"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rZP-Y1-M6U">
+                                    <rect key="frame" x="0.0" y="0.0" width="508" height="46"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="oLj-l6-tRG">
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <size key="minSize" width="508" height="46"/>
+                                            <size key="maxSize" width="508" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment>
+                                                    <string key="content">DuckDuckGo Privacy Essentials for Safari helps you seamlessly take control of your personal information. Private search, tracker blocking, and more!</string>
+                                                    <attributes>
+                                                        <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" metaFont="menu" size="14"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="2JD-x3-3NM"/>
+                                    <constraint firstAttribute="width" constant="508" id="gxc-qv-BN0"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HL1-52-I85">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="k0r-pc-Sjw">
+                                    <rect key="frame" x="492" y="0.0" width="16" height="46"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="y39-xW-L0p">
+                                <rect key="frame" x="135" y="102" width="420" height="89"/>
+                                <view key="contentView" id="ZhB-tg-FZD">
+                                    <rect key="frame" x="1" y="1" width="418" height="87"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-bk-yEz">
+                                            <rect key="frame" x="23" y="52" width="14" height="14"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ExtensionActive" id="ljG-Hy-P1k"/>
+                                        </imageView>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7S-mT-sRJ">
+                                            <rect key="frame" x="23" y="24" width="14" height="14"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ExtensionInactive" id="VxX-Oz-BAc"/>
+                                        </imageView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h44-ga-jW6">
+                                            <rect key="frame" x="49" y="51" width="216" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="DuckDuckGo Privacy Protection" id="Cub-mW-cbC">
+                                                <font key="font" metaFont="systemMedium" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bcv-Ip-GrS">
+                                            <rect key="frame" x="49" y="23" width="219" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="DuckDuckGo Privacy Dashboard" id="gjn-nh-xfO">
+                                                <font key="font" metaFont="systemMedium" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kly-RK-eKj">
+                                            <rect key="frame" x="298" y="42" width="111" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="99" id="3G3-Qp-I5E"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Enable" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xc5-xC-ATI">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="showProtectionPrefences:" target="4Zn-Kl-PVb" id="jlK-EV-VMA"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-fs-gyY">
+                                            <rect key="frame" x="298" y="14" width="111" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="99" id="l0C-xO-bzg"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Enable" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5jR-M7-Qzf">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="showDashboardPreferences:" target="4Zn-Kl-PVb" id="cC2-cP-W4t"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-OX-Hbd">
+                                            <rect key="frame" x="319" y="51" width="68" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="ENABLED" id="Zpy-9L-JBV">
+                                                <font key="font" metaFont="systemHeavy" size="13"/>
+                                                <color key="textColor" name="HomeEssentialsStateEnabled"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-xD-oXa">
+                                            <rect key="frame" x="319" y="23" width="68" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="ENABLED" id="4i6-uG-8zO">
+                                                <font key="font" metaFont="systemHeavy" size="13"/>
+                                                <color key="textColor" name="HomeEssentialsStateEnabled"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OlT-xD-oXa" firstAttribute="centerX" secondItem="VTF-fs-gyY" secondAttribute="centerX" id="1Id-Rh-edm"/>
+                                        <constraint firstItem="VTF-fs-gyY" firstAttribute="centerY" secondItem="Bcv-Ip-GrS" secondAttribute="centerY" id="5wc-ku-oSk"/>
+                                        <constraint firstItem="kly-RK-eKj" firstAttribute="centerY" secondItem="h44-ga-jW6" secondAttribute="centerY" id="7NO-rR-IGf"/>
+                                        <constraint firstItem="f7S-mT-sRJ" firstAttribute="centerX" secondItem="Wht-bk-yEz" secondAttribute="centerX" id="BPF-GM-xKk"/>
+                                        <constraint firstItem="TL2-OX-Hbd" firstAttribute="centerX" secondItem="kly-RK-eKj" secondAttribute="centerX" id="C4j-Cm-ptg"/>
+                                        <constraint firstItem="Bcv-Ip-GrS" firstAttribute="leading" secondItem="f7S-mT-sRJ" secondAttribute="trailing" constant="14" id="RYo-y7-9XD"/>
+                                        <constraint firstItem="Wht-bk-yEz" firstAttribute="top" secondItem="ZhB-tg-FZD" secondAttribute="top" constant="21" id="TKy-b3-76W"/>
+                                        <constraint firstItem="h44-ga-jW6" firstAttribute="leading" secondItem="Wht-bk-yEz" secondAttribute="trailing" constant="14" id="cy5-SG-Hyb"/>
+                                        <constraint firstItem="OlT-xD-oXa" firstAttribute="centerY" secondItem="Bcv-Ip-GrS" secondAttribute="centerY" id="g56-C2-0Rr"/>
+                                        <constraint firstAttribute="trailing" secondItem="VTF-fs-gyY" secondAttribute="trailing" constant="15.5" id="gpr-R7-4NK"/>
+                                        <constraint firstItem="h44-ga-jW6" firstAttribute="centerY" secondItem="Wht-bk-yEz" secondAttribute="centerY" id="kkb-vx-p4M"/>
+                                        <constraint firstItem="f7S-mT-sRJ" firstAttribute="top" secondItem="Wht-bk-yEz" secondAttribute="bottom" constant="14" id="o4H-ro-b7T"/>
+                                        <constraint firstItem="TL2-OX-Hbd" firstAttribute="centerY" secondItem="Wht-bk-yEz" secondAttribute="centerY" id="sKD-MH-Jwt"/>
+                                        <constraint firstAttribute="trailing" secondItem="kly-RK-eKj" secondAttribute="trailing" constant="15.5" id="vDu-we-ENi"/>
+                                        <constraint firstItem="Wht-bk-yEz" firstAttribute="leading" secondItem="ZhB-tg-FZD" secondAttribute="leading" constant="23" id="xcO-Ie-viF"/>
+                                        <constraint firstItem="Bcv-Ip-GrS" firstAttribute="centerY" secondItem="f7S-mT-sRJ" secondAttribute="centerY" id="zi4-jM-014"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="ZaG-5m-PED"/>
+                                    <constraint firstAttribute="width" constant="420" id="jrj-jm-eU7"/>
+                                </constraints>
+                                <color key="borderColor" name="HomeScreenBorder"/>
+                                <color key="fillColor" name="HomeScreenFill"/>
+                            </box>
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="lHt-jp-tUY">
+                                <rect key="frame" x="135" y="54" width="420" height="49"/>
+                                <view key="contentView" id="IVi-6S-oql">
+                                    <rect key="frame" x="1" y="1" width="418" height="47"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gRb-Pl-uXJ">
+                                            <rect key="frame" x="23" y="17" width="14" height="14"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SearchExtension" id="PXC-zh-UDS"/>
+                                        </imageView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9vj-ag-i0u">
+                                            <rect key="frame" x="49" y="15" width="191" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="DuckDuckGo Private Search" id="3wU-JW-i4w">
+                                                <font key="font" metaFont="systemMedium" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-ks-BHN">
+                                            <rect key="frame" x="299" y="6" width="110" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="98" id="qty-DP-27T"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucc-Ii-7wt">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="showProtectionPrefences:" target="4Zn-Kl-PVb" id="z85-hx-oP6"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gRb-Pl-uXJ" firstAttribute="leading" secondItem="IVi-6S-oql" secondAttribute="leading" constant="23" id="MjK-0b-MDA"/>
+                                        <constraint firstItem="9vj-ag-i0u" firstAttribute="leading" secondItem="gRb-Pl-uXJ" secondAttribute="trailing" constant="14" id="NLC-0d-m2Z"/>
+                                        <constraint firstItem="gRb-Pl-uXJ" firstAttribute="centerY" secondItem="IVi-6S-oql" secondAttribute="centerY" id="f2z-rX-Ole"/>
+                                        <constraint firstItem="Kyc-ks-BHN" firstAttribute="centerY" secondItem="9vj-ag-i0u" secondAttribute="centerY" id="fzF-ES-DLQ"/>
+                                        <constraint firstItem="9vj-ag-i0u" firstAttribute="centerY" secondItem="gRb-Pl-uXJ" secondAttribute="centerY" id="sAr-to-DUt"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kyc-ks-BHN" secondAttribute="trailing" constant="15.5" id="wtr-yE-NWB"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="4h2-Ew-JBn"/>
+                                    <constraint firstAttribute="width" constant="420" id="Ow9-hU-OOB"/>
+                                </constraints>
+                                <color key="borderColor" name="HomeScreenBorder"/>
+                                <color key="fillColor" name="HomeScreenFill"/>
+                            </box>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-5a-asi">
+                                <rect key="frame" x="565" y="64" width="25" height="25"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SSc-Dd-hfP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="help:" target="4Zn-Kl-PVb" id="gSR-gg-waC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="SMy-5a-asi" firstAttribute="centerY" secondItem="IVi-6S-oql" secondAttribute="centerY" id="1hR-cu-Svb"/>
+                            <constraint firstItem="rKT-0T-Bla" firstAttribute="centerX" secondItem="omw-7N-PNg" secondAttribute="centerX" id="GGX-Kg-cPE"/>
+                            <constraint firstItem="y39-xW-L0p" firstAttribute="top" secondItem="oLj-l6-tRG" secondAttribute="bottom" constant="42" id="M8L-FW-DAr"/>
+                            <constraint firstItem="FJI-1H-589" firstAttribute="centerX" secondItem="omw-7N-PNg" secondAttribute="centerX" id="Spe-QY-fC6"/>
+                            <constraint firstItem="SMy-5a-asi" firstAttribute="leading" secondItem="IVi-6S-oql" secondAttribute="trailing" constant="13" id="YEq-Xs-RsW"/>
+                            <constraint firstItem="Ok5-Tf-GTo" firstAttribute="top" secondItem="rKT-0T-Bla" secondAttribute="bottom" constant="8" id="aTy-vl-NCe"/>
+                            <constraint firstItem="y39-xW-L0p" firstAttribute="centerX" secondItem="omw-7N-PNg" secondAttribute="centerX" id="eLA-Bs-voe"/>
+                            <constraint firstItem="rKT-0T-Bla" firstAttribute="top" secondItem="omw-7N-PNg" secondAttribute="top" constant="55" id="gxZ-9C-2j9"/>
+                            <constraint firstItem="lHt-jp-tUY" firstAttribute="centerX" secondItem="ZhB-tg-FZD" secondAttribute="centerX" id="hb7-ei-OTf"/>
+                            <constraint firstItem="FJI-1H-589" firstAttribute="top" secondItem="Ok5-Tf-GTo" secondAttribute="bottom" constant="23" id="sn6-ji-GtA"/>
+                            <constraint firstItem="Ok5-Tf-GTo" firstAttribute="centerX" secondItem="omw-7N-PNg" secondAttribute="centerX" id="vnU-rB-pzX"/>
+                            <constraint firstItem="lHt-jp-tUY" firstAttribute="top" secondItem="ZhB-tg-FZD" secondAttribute="bottom" id="zDQ-OG-a67"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dashboardEnableButton" destination="VTF-fs-gyY" id="qwK-kI-74e"/>
+                        <outlet property="dashboardEnabledLabel" destination="OlT-xD-oXa" id="z5Z-S7-15J"/>
+                        <outlet property="dashboardStateIcon" destination="f7S-mT-sRJ" id="7wA-Hl-DNW"/>
+                        <outlet property="protectionEnableButton" destination="kly-RK-eKj" id="VRW-fi-ucZ"/>
+                        <outlet property="protectionEnabledLabel" destination="TL2-OX-Hbd" id="b6u-kA-P84"/>
+                        <outlet property="protectionStateIcon" destination="Wht-bk-yEz" id="obD-9d-0gZ"/>
+                        <outlet property="versionLabel" destination="Ok5-Tf-GTo" id="OpP-GK-yBX"/>
+                    </connections>
+                </viewController>
+                <customObject id="JfV-6Z-Alr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179" y="2277"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="EssentialsDisabled" width="139" height="95"/>
-        <image name="EssentialsEnabled" width="140" height="88"/>
         <image name="Exceptions" width="50" height="50"/>
+        <image name="ExtensionActive" width="14" height="14"/>
+        <image name="ExtensionInactive" width="14" height="14"/>
         <image name="Logo" width="119" height="119"/>
         <image name="LogoHorizontalText" width="140" height="38"/>
+        <image name="OnboardingLogo" width="154" height="122"/>
         <image name="RemoveEntry" width="24" height="24"/>
-        <image name="Waiting" width="50" height="50"/>
-        <namedColor name="HomeEssentialsStateDisabled">
-            <color red="0.87058823529411766" green="0.34509803921568627" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="SearchExtension" width="14" height="14"/>
         <namedColor name="HomeEssentialsStateEnabled">
             <color red="0.40392156862745099" green="0.5607843137254902" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="HomeEssentialsStateMessage">
-            <color red="0.42699998617172241" green="0.42699998617172241" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="HomeScreenBorder">
+            <color red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="HomeScreenFill">
+            <color red="0.10588235294117647" green="0.11372549019607843" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SelectedBackground">
             <color red="0.13300000131130219" green="0.14499999582767487" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

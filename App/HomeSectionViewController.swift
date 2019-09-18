@@ -20,16 +20,27 @@ import AppKit
 import SafariServices
 
 class HomeSectionViewController: NSViewController {
+        
+    @IBOutlet weak var versionLabel: NSTextField!
     
-    @IBOutlet weak var enabledStateView: NSView!
-    @IBOutlet weak var disabledStateView: NSView!
-    @IBOutlet weak var unknownStateView: NSView!
+    @IBOutlet weak var protectionStateIcon: NSImageView!
+    @IBOutlet weak var protectionEnabledLabel: NSTextField!
+    @IBOutlet weak var protectionEnableButton: NSButton!
+    
+    @IBOutlet weak var dashboardStateIcon: NSImageView!
+    @IBOutlet weak var dashboardEnabledLabel: NSTextField!
+    @IBOutlet weak var dashboardEnableButton: NSButton!
     
     var extensionsState: ExtensionsStateWatcher?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let string = dashboardEnabledLabel.stringValue
+        dashboardEnabledLabel.attributedStringValue = NSAttributedString.withKern(string: string, 1.5)
+        protectionEnabledLabel.attributedStringValue = dashboardEnabledLabel.attributedStringValue
+        
+        versionLabel.attributedStringValue = Utils.versionLabelAttributedString()
         extensionsState = ExtensionsStateWatcher(delegate: self)
     }
     
@@ -39,14 +50,34 @@ class HomeSectionViewController: NSViewController {
         refreshUI()
     }
     
+    @IBAction func showProtectionPrefences(_ sender: Any?) {
+        extensionsState?.showContentBlockerExtensionPreferences()
+    }
+
+    @IBAction func showDashboardPreferences(_ sender: Any?) {
+        extensionsState?.showSafariExtensionPreferences()
+    }
+    
+    @IBAction func help(_ sender: Any?) {
+        NSWorkspace.shared.open(URL(string: "https://help.duckduckgo.com/duckduckgo-help-pages/desktop/adding-duckduckgo-to-your-browser/")!)
+    }
+
     private func refreshUI() {
         
-        guard let state = extensionsState else { return }
-    
-        unknownStateView.isHidden = state.allKnown
-        enabledStateView.isHidden = !state.allKnown || !state.allEnabled
-        disabledStateView.isHidden = !state.allKnown || state.allEnabled
+        protectionStateIcon.image = activeIcon(extensionsState?.protectionState == .some(.enabled))
+        dashboardStateIcon.image = activeIcon(extensionsState?.dashboardState == .some(.enabled))
         
+        protectionEnableButton.isHidden = extensionsState?.protectionState == .some(.enabled)
+        protectionEnabledLabel.isHidden = extensionsState?.protectionState != .some(.enabled)
+
+        dashboardEnableButton.isHidden = extensionsState?.dashboardState == .some(.enabled)
+        dashboardEnabledLabel.isHidden = extensionsState?.dashboardState != .some(.enabled)
+
+    }
+    
+    private func activeIcon(_ enabled: Bool) -> NSImage? {
+        let state = enabled ? "Active" : "Inactive"
+        return NSImage(named: NSImage.Name("Extension" + state))
     }
     
 }
