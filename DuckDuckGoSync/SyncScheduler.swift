@@ -28,7 +28,7 @@ public class SyncScheduler {
     
     private struct SyncInterval {
         static let minimum: TimeInterval = 2 // 2 seconds is lowest we can use as we need to exceed minimum tolerance of 1
-        static let defaultInterval: TimeInterval = 12 * 60 * 60 // 12 hours
+        static let defaultInterval: TimeInterval = 30 * 60 // 30 minutes
     }
     
     private let activity = NSBackgroundActivityScheduler(identifier: Constants.backgroundActivityId)
