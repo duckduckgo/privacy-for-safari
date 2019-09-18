@@ -202,3 +202,9 @@ class MockStatisticsDependencies: StatisticsDependencies {
     }
     
 }
+
+struct MockTrackerDataServiceStore: TrackerDataServiceStore {
+    
+    var etag: String?
+
+}

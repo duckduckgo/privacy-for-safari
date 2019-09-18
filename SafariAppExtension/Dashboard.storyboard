@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="575" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="YBF-ON-sRb" customClass="ClickableView" customModule="SafariAppExtension" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="YBF-ON-sRb">
                                 <rect key="frame" x="0.0" y="254" width="575" height="246"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPl-kJ-Ago" userLabel="Header Stack">
@@ -127,26 +127,13 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EPs-2p-ss8">
-                                        <rect key="frame" x="549" y="115" width="10" height="16"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PP Arrow Forward" id="Nbq-Wi-gqo"/>
-                                    </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="EPs-2p-ss8" secondAttribute="trailing" constant="16" id="IKi-a8-Fbp"/>
                                     <constraint firstItem="VPl-kJ-Ago" firstAttribute="width" secondItem="YBF-ON-sRb" secondAttribute="width" id="WxC-wu-hcd"/>
                                     <constraint firstAttribute="height" constant="246" id="YWy-Nj-jwd"/>
                                     <constraint firstItem="VPl-kJ-Ago" firstAttribute="centerX" secondItem="YBF-ON-sRb" secondAttribute="centerX" id="a0a-X8-Cg6"/>
-                                    <constraint firstItem="EPs-2p-ss8" firstAttribute="centerY" secondItem="YBF-ON-sRb" secondAttribute="centerY" id="b5n-bc-eS5"/>
                                     <constraint firstItem="VPl-kJ-Ago" firstAttribute="centerY" secondItem="YBF-ON-sRb" secondAttribute="centerY" id="iX2-t1-dID"/>
                                 </constraints>
-                                <gestureRecognizers>
-                                    <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="mtG-Sv-iXw">
-                                        <connections>
-                                            <action selector="showScoreCard:" target="yVf-K8-uRd" id="zqo-WG-dwY"/>
-                                        </connections>
-                                    </clickGestureRecognizer>
-                                </gestureRecognizers>
                             </customView>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEX-r8-b3F" userLabel="Items Stack">
                                 <rect key="frame" x="0.0" y="-58" width="575" height="312"/>
@@ -265,7 +252,7 @@
                                         <color key="borderColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
-                                    <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-XI-WQh" userLabel="Privacy Practices Box" customClass="ClickableBox" customModule="SafariAppExtension" customModuleProvider="target">
+                                    <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-XI-WQh" userLabel="Privacy Practices Box">
                                         <rect key="frame" x="0.0" y="160" width="575" height="50"/>
                                         <view key="contentView" id="Xuu-OF-qpi">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
@@ -283,25 +270,19 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PP Icon Privacy Bad Off" id="fqN-p2-yqj"/>
                                                         </imageView>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iAf-Rj-gBa">
-                                                            <rect key="frame" x="34" y="17" width="493" height="16"/>
+                                                            <rect key="frame" x="34" y="17" width="511" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Unknown Privacy Practices" id="0RS-Vk-d7a">
                                                                 <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                 <color key="textColor" name="ItemTitle"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <imageView horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-1c-eWz">
-                                                            <rect key="frame" x="533" y="17" width="10" height="16"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PP Arrow Forward" id="GMZ-Tp-L9S"/>
-                                                        </imageView>
                                                     </subviews>
                                                     <visibilityPriorities>
                                                         <integer value="1000"/>
                                                         <integer value="1000"/>
-                                                        <integer value="1000"/>
                                                     </visibilityPriorities>
                                                     <customSpacing>
-                                                        <real value="3.4028234663852886e+38"/>
                                                         <real value="3.4028234663852886e+38"/>
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
@@ -317,13 +298,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gt5-X7-x7g"/>
                                         </constraints>
-                                        <gestureRecognizers>
-                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="608-tb-3jE">
-                                                <connections>
-                                                    <action selector="showPrivacyPracties:" target="yVf-K8-uRd" id="Pq9-yH-ZQA"/>
-                                                </connections>
-                                            </clickGestureRecognizer>
-                                        </gestureRecognizers>
                                         <color key="borderColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
@@ -340,7 +314,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="521" height="50"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-JS-Wgp">
-                                                                    <rect key="frame" x="0.0" y="33" width="154" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="33" width="141" height="17"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8qN-kZ-dVB">
                                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
@@ -348,8 +322,8 @@
                                                                             <color key="contentTintColor" name="ItemTitleInverse"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="urB-Oh-x1S">
-                                                                            <rect key="frame" x="30" y="1" width="126" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Added to Exceptions" id="wnA-0a-BaX">
+                                                                            <rect key="frame" x="30" y="1" width="113" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Added to Whitelist" id="wnA-0a-BaX">
                                                                                 <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                                 <color key="textColor" name="ItemTitleInverse"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -366,7 +340,7 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-m3-TFt">
-                                                                    <rect key="frame" x="0.0" y="16" width="186" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="16" width="173" height="17"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E9h-Z0-zMh">
                                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
@@ -374,8 +348,8 @@
                                                                             <color key="contentTintColor" name="ItemTitleInverse"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="efC-4d-6e7">
-                                                                            <rect key="frame" x="30" y="1" width="158" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Removed from Exceptions" id="7EW-Gx-uDT">
+                                                                            <rect key="frame" x="30" y="1" width="145" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Removed from Whitelist" id="7EW-Gx-uDT">
                                                                                 <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                                 <color key="textColor" name="ItemTitleInverse"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -458,7 +432,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aa7-te-r5B" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                    <rect key="frame" x="82" y="17" width="123" height="16"/>
+                                                                    <rect key="frame" x="88" y="17" width="111" height="16"/>
                                                                     <gestureRecognizers>
                                                                         <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="dQu-cS-Z6k">
                                                                             <connections>
@@ -466,7 +440,7 @@
                                                                             </connections>
                                                                         </clickGestureRecognizer>
                                                                     </gestureRecognizers>
-                                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Manage Exceptions" id="ufp-Zw-je3">
+                                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Manage Whitelist" id="ufp-Zw-je3">
                                                                         <font key="font" size="13" name="ProximaNova-Bold"/>
                                                                         <color key="textColor" name="ItemTitle"/>
                                                                         <color key="backgroundColor" name="ItemTitleInverse"/>
@@ -670,76 +644,6 @@
             </objects>
             <point key="canvasLocation" x="-237.5" y="-88"/>
         </scene>
-        <!--Score Card View Controller-->
-        <scene sceneID="Mhf-1M-tUX">
-            <objects>
-                <viewController storyboardIdentifier="PrivacyPractices" id="qIr-Qd-srW" customClass="ScoreCardViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Nwb-8p-Vqy">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jEc-cD-4SI">
-                                <rect key="frame" x="20" y="457" width="23" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PP Arrow Back" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="S9n-gf-iKF">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="backWithSender:" target="qIr-Qd-srW" id="7qS-6n-9pG"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KAW-dj-IR4">
-                                <rect key="frame" x="49" y="460" width="109" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Privacy Practices" id="ClW-gA-vdy">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="ItemTitle"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="Rfg-uq-ha4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-14" y="1111"/>
-        </scene>
-        <!--Score Card View Controller-->
-        <scene sceneID="90j-RB-tM9">
-            <objects>
-                <viewController storyboardIdentifier="ScoreCard" id="k1F-Gd-b4y" customClass="ScoreCardViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="BmB-Xb-zdM">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-fC-EqI">
-                                <rect key="frame" x="20" y="457" width="23" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PP Arrow Back" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="pgv-5X-uUi">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="backWithSender:" target="k1F-Gd-b4y" id="NDS-OY-XPW"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qNb-MW-6hz">
-                                <rect key="frame" x="49" y="460" width="72" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Score Card" id="fkd-02-4wx">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="ItemTitle"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="Ecc-ai-GQq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-378" y="1111"/>
-        </scene>
         <!--Report Broken Site Controller-->
         <scene sceneID="j2b-jG-Gg7">
             <objects>
@@ -748,29 +652,141 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3C-jY-jh1">
-                                <rect key="frame" x="20" y="457" width="23" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PP Arrow Back" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Hga-MX-XXz">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="backWithSender:" target="YMj-4S-pCf" id="nkt-6P-frj"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-IZ-8fA">
-                                <rect key="frame" x="49" y="460" width="209" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Report Broken Website" id="jZ4-O9-FuS">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="ItemTitle"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-Zd-EVP" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
-                                <rect key="frame" x="18" y="433" width="119" height="16"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="lXU-YU-zaQ">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+                                <view key="contentView" id="D9s-vt-pTy">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nKu-pP-cZA">
+                                            <rect key="frame" x="70" y="302" width="160" height="170"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="170" id="KmK-ML-Ad4"/>
+                                                <constraint firstAttribute="width" constant="160" id="qex-NA-ww7"/>
+                                            </constraints>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="BrokenSite" id="4Ia-db-qH8"/>
+                                        </imageView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UjQ-XZ-yTe">
+                                            <rect key="frame" x="129" y="280" width="43" height="22"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Title" id="osB-Ew-icF">
+                                                <font key="font" size="18" name="ProximaNova-Semibold"/>
+                                                <color key="textColor" name="BrokenSiteHeader"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yee-je-exL">
+                                            <rect key="frame" x="19" y="255" width="262" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="258" id="gQX-OY-Q0z"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" selectable="YES" enabled="NO" alignment="center" title="Message" id="UPF-6J-izG">
+                                                <font key="font" size="14" name="ProximaNova-Semibold"/>
+                                                <color key="textColor" name="BrokenSiteText"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0NY-B0-wjy">
+                                            <rect key="frame" x="14" y="222" width="165" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Describe What Happened" id="XTr-U1-fa6">
+                                                <font key="font" size="14" name="ProximaNova-Semibold"/>
+                                                <color key="textColor" name="BrokenSiteHeader"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Uoy-0B-4KZ">
+                                            <rect key="frame" x="16" y="193" width="33" height="21"/>
+                                            <view key="contentView" id="45f-3F-Tj2">
+                                                <rect key="frame" x="0.0" y="0.0" width="33" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MXb-3d-U8T">
+                                                        <rect key="frame" x="-2" y="-3" width="38" height="25"/>
+                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="r7b-VY-n5G">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <menu key="menu" id="air-7a-5tM"/>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="selectionChangedWithSender:" target="YMj-4S-pCf" id="NOf-un-lrb"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstItem="MXb-3d-U8T" firstAttribute="width" secondItem="Uoy-0B-4KZ" secondAttribute="width" id="C9F-rw-df8"/>
+                                                <constraint firstItem="MXb-3d-U8T" firstAttribute="height" secondItem="Uoy-0B-4KZ" secondAttribute="height" id="DGi-h7-qGN"/>
+                                                <constraint firstItem="MXb-3d-U8T" firstAttribute="centerX" secondItem="Uoy-0B-4KZ" secondAttribute="centerX" id="Mjm-lz-Esv"/>
+                                                <constraint firstItem="MXb-3d-U8T" firstAttribute="centerY" secondItem="Uoy-0B-4KZ" secondAttribute="centerY" id="aEl-B0-Rsn"/>
+                                            </constraints>
+                                            <color key="fillColor" name="HeaderMessage"/>
+                                        </box>
+                                        <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="POF-2E-P6o" customClass="ClickableBox" customModule="SafariAppExtension" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="134" width="268" height="47"/>
+                                            <view key="contentView" id="2gA-nJ-1A4">
+                                                <rect key="frame" x="0.0" y="0.0" width="268" height="47"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="emK-bC-miL">
+                                                        <rect key="frame" x="94" y="16" width="80" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Send Report" drawsBackground="YES" id="KWX-Dj-ZrX">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="SearchInputText"/>
+                                                            <color key="backgroundColor" red="1" green="0.99997597930000004" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="emK-bC-miL" firstAttribute="centerY" secondItem="2gA-nJ-1A4" secondAttribute="centerY" id="agD-Sa-OD1"/>
+                                                    <constraint firstItem="emK-bC-miL" firstAttribute="centerX" secondItem="2gA-nJ-1A4" secondAttribute="centerX" id="otB-JU-0RD"/>
+                                                </constraints>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="47" id="e4s-8S-V6r"/>
+                                            </constraints>
+                                            <gestureRecognizers>
+                                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="LGQ-7F-60T">
+                                                    <connections>
+                                                        <action selector="submitClickedWithSender:" target="YMj-4S-pCf" id="ORc-yZ-KOD"/>
+                                                    </connections>
+                                                </clickGestureRecognizer>
+                                            </gestureRecognizers>
+                                            <color key="fillColor" name="HeaderMessage"/>
+                                        </box>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YYQ-av-c2F">
+                                            <rect key="frame" x="6" y="75" width="288" height="42"/>
+                                            <textFieldCell key="cell" selectable="YES" enabled="NO" alignment="center" id="g7e-hT-YSa">
+                                                <font key="font" size="12" name="ProximaNova-Regular"/>
+                                                <string key="title">Reports sent to DuckDuckGo are 100% anonymous and only include your selection above, the URL, and a list of trackers we found on the site.</string>
+                                                <color key="textColor" name="BrokenSiteText"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nKu-pP-cZA" firstAttribute="top" secondItem="D9s-vt-pTy" secondAttribute="top" constant="28" id="4oq-KU-zBv"/>
+                                        <constraint firstItem="POF-2E-P6o" firstAttribute="top" secondItem="Uoy-0B-4KZ" secondAttribute="bottom" constant="12" id="ACO-Pw-TcA"/>
+                                        <constraint firstItem="nKu-pP-cZA" firstAttribute="centerX" secondItem="D9s-vt-pTy" secondAttribute="centerX" id="BjT-Cl-njK"/>
+                                        <constraint firstItem="0NY-B0-wjy" firstAttribute="top" secondItem="yee-je-exL" secondAttribute="bottom" constant="16" id="NEp-zQ-0HJ"/>
+                                        <constraint firstItem="Uoy-0B-4KZ" firstAttribute="leading" secondItem="D9s-vt-pTy" secondAttribute="leading" constant="16" id="Nxo-06-N6f"/>
+                                        <constraint firstItem="0NY-B0-wjy" firstAttribute="leading" secondItem="D9s-vt-pTy" secondAttribute="leading" constant="16" id="SpS-Xm-Jga"/>
+                                        <constraint firstItem="YYQ-av-c2F" firstAttribute="centerX" secondItem="D9s-vt-pTy" secondAttribute="centerX" id="XAk-VA-TRP"/>
+                                        <constraint firstItem="YYQ-av-c2F" firstAttribute="top" secondItem="2gA-nJ-1A4" secondAttribute="bottom" constant="17" id="XsB-4M-yCv"/>
+                                        <constraint firstItem="UjQ-XZ-yTe" firstAttribute="centerX" secondItem="D9s-vt-pTy" secondAttribute="centerX" id="ZXa-LM-vCU"/>
+                                        <constraint firstItem="Uoy-0B-4KZ" firstAttribute="top" secondItem="0NY-B0-wjy" secondAttribute="bottom" constant="8" id="bp5-oW-wml"/>
+                                        <constraint firstItem="YYQ-av-c2F" firstAttribute="width" secondItem="D9s-vt-pTy" secondAttribute="width" constant="-16" id="cfo-zr-yjd"/>
+                                        <constraint firstItem="yee-je-exL" firstAttribute="centerX" secondItem="D9s-vt-pTy" secondAttribute="centerX" id="gSf-xT-qJX"/>
+                                        <constraint firstItem="UjQ-XZ-yTe" firstAttribute="top" secondItem="nKu-pP-cZA" secondAttribute="bottom" id="sNx-ME-H5d"/>
+                                        <constraint firstItem="yee-je-exL" firstAttribute="top" secondItem="UjQ-XZ-yTe" secondAttribute="bottom" constant="8" id="x7u-0g-N8A"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="POF-2E-P6o" firstAttribute="centerX" secondItem="lXU-YU-zaQ" secondAttribute="centerX" id="FqA-fQ-SUy"/>
+                                    <constraint firstItem="POF-2E-P6o" firstAttribute="width" secondItem="lXU-YU-zaQ" secondAttribute="width" constant="-32" id="KcN-vE-flj"/>
+                                </constraints>
+                                <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-Zd-EVP" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
+                                <rect key="frame" x="18" y="464" width="119" height="16"/>
                                 <gestureRecognizers>
                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="TEs-UZ-Dqm">
                                         <connections>
@@ -784,15 +800,42 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="s3C-jY-jh1">
+                                <rect key="frame" x="256" y="456" width="24" height="24"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Close" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Hga-MX-XXz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backWithSender:" target="YMj-4S-pCf" id="nkt-6P-frj"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="lXU-YU-zaQ" firstAttribute="width" secondItem="t4Z-QY-57E" secondAttribute="width" id="4KN-FZ-z4c"/>
+                            <constraint firstAttribute="trailing" secondItem="s3C-jY-jh1" secondAttribute="trailing" constant="20" symbolic="YES" id="5Ig-uE-dB8"/>
+                            <constraint firstItem="lXU-YU-zaQ" firstAttribute="centerY" secondItem="t4Z-QY-57E" secondAttribute="centerY" id="5Tj-UQ-k1I"/>
+                            <constraint firstItem="lXU-YU-zaQ" firstAttribute="centerX" secondItem="t4Z-QY-57E" secondAttribute="centerX" id="Adw-D3-75a"/>
+                            <constraint firstItem="lXU-YU-zaQ" firstAttribute="height" secondItem="t4Z-QY-57E" secondAttribute="height" id="Izy-uF-eqg"/>
+                            <constraint firstItem="s3C-jY-jh1" firstAttribute="top" secondItem="t4Z-QY-57E" secondAttribute="top" constant="20" symbolic="YES" id="TyR-xf-blX"/>
+                            <constraint firstItem="cXc-Zd-EVP" firstAttribute="leading" secondItem="t4Z-QY-57E" secondAttribute="leading" constant="20" symbolic="YES" id="ofQ-Tx-D8T"/>
+                            <constraint firstItem="cXc-Zd-EVP" firstAttribute="top" secondItem="t4Z-QY-57E" secondAttribute="top" constant="20" symbolic="YES" id="xH2-I7-kpe"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="bodyLabel" destination="yee-je-exL" id="Aue-8n-Qnx"/>
+                        <outlet property="describeLabel" destination="0NY-B0-wjy" id="yx2-y5-1cQ"/>
+                        <outlet property="infoLabel" destination="YYQ-av-c2F" id="C9D-eS-ikJ"/>
+                        <outlet property="popupBackground" destination="Uoy-0B-4KZ" id="GmL-V1-ge2"/>
+                        <outlet property="popupMenu" destination="MXb-3d-U8T" id="qXU-oS-Oiu"/>
                         <outlet property="runTestsView" destination="cXc-Zd-EVP" id="hcA-nZ-BkG"/>
+                        <outlet property="submitButton" destination="POF-2E-P6o" id="rDk-kL-2t6"/>
+                        <outlet property="titleLabel" destination="UjQ-XZ-yTe" id="cnC-mq-piy"/>
                     </connections>
                 </viewController>
                 <customObject id="PUx-oB-4Fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="1111"/>
+            <point key="canvasLocation" x="-10" y="524"/>
         </scene>
         <!--Trackers Detail View Controller-->
         <scene sceneID="hLn-ju-cIt">
@@ -1095,6 +1138,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BrokenSite" width="248" height="248"/>
+        <image name="Close" width="24" height="24"/>
         <image name="DashboardCheck" width="24" height="24"/>
         <image name="DashboardShield" width="24" height="24"/>
         <image name="PP Arrow Back" width="10" height="16"/>
@@ -1107,6 +1152,12 @@
         <image name="PP Inline B Plus" width="24" height="24"/>
         <image name="PP Inline D" width="24" height="24"/>
         <image name="PP Network Icon google" width="24" height="24"/>
+        <namedColor name="BrokenSiteHeader">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BrokenSiteText">
+            <color red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="DashboardBackground">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1121,6 +1172,9 @@
         </namedColor>
         <namedColor name="ProtectionToggleOn">
             <color red="0.24705882352941178" green="0.63137254901960782" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SearchInputText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SiteTitle">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

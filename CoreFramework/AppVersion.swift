@@ -28,9 +28,9 @@ public struct AppVersion {
         static let versionNumber = "CFBundleShortVersionString"
     }
     
-    private let bundle: Bundle
+    private let bundle: InfoBundle
     
-    public init(bundle: Bundle = Bundle.main) {
+    public init(bundle: InfoBundle = Bundle.main) {
         self.bundle = bundle
     }
     
@@ -50,4 +50,11 @@ public struct AppVersion {
         return bundle.object(forInfoDictionaryKey: Keys.buildNumber) as? String ?? ""
     }
     
+}
+
+public protocol InfoBundle {
+    func object(forInfoDictionaryKey key: String) -> Any?
+}
+
+extension Bundle: InfoBundle {
 }

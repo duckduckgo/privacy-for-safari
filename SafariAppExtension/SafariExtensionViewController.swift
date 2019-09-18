@@ -87,7 +87,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     private func initSearchPlaceholder() {
-        let color = NSColor(named: NSColor.Name("SearchPlaceholderText"))
+        let color = NSColor.searchPlaceholderText
         let cell = searchField.cell as? NSTextFieldCell
         let font = NSFont(name: "Proxima Nova Regular", size: 16) ?? NSFont.systemFont(ofSize: 16)
         let attrs = [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]

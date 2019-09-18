@@ -25,7 +25,6 @@ enum DashboardControllers: String {
     case main = "MainDashboard"
     case scoreCard = "ScoreCard"
     case trackersDetail = "TrackersDetail"
-    case privacyPractices = "PrivacyPractices"
     case reportBrokenWebsite = "ReportBrokenWebsite"
 }
 
@@ -43,7 +42,11 @@ class DashboardNavigationController: NSViewController {
 protocol DashboardNavigationDelegate: NSObjectProtocol {
     
     func push(controller: DashboardControllers)
-    
+
     func popController()
+
+    func present(controller: DashboardControllers)
+
+    func closeController()
     
 }

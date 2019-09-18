@@ -41,12 +41,27 @@ class NavigationController: NSPageController {
 
 extension NavigationController: DashboardNavigationDelegate {
 
+    func present(controller: DashboardControllers) {
+        NSLog("\(self) \(#function)")
+        arrangedObjects.append(controller)
+        self.selectedIndex += 1
+        DispatchQueue.main.async {
+            self.updateSelectedViewController()
+            self.selectedViewController?.viewDidAppear()
+        }
+    }
+
+    func closeController() {
+        popController()
+    }
+
     func push(controller: DashboardControllers) {
         NSLog("\(self) \(#function)")
         arrangedObjects.append(controller)
         navigateForward(self)
         DispatchQueue.main.async {
             self.updateSelectedViewController()
+            self.selectedViewController?.viewDidAppear()
         }
     }
 
@@ -80,13 +95,18 @@ extension NavigationController: NSPageControllerDelegate {
 
     func pageController(_ pageController: NSPageController,
                         viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        NSLog("\(self) \(#function)")
-        guard let controller = storyboard?.instantiateController(withIdentifier: identifier) as? DashboardNavigationController else {
-            fatalError("instantiateController DashboardNavigationController failed")
+        NSLog("\(self) \(#function) \(identifier)")
+
+        guard let controller = storyboard?.instantiateController(withIdentifier: identifier) else {
+            fatalError("instantiateController with identifier \(identifier) failed")
         }
-        controller.pageData = pageData
-        controller.navigationDelegate = self
-        return controller
+
+        guard let navController = controller as? DashboardNavigationController else {
+            fatalError("failed to convert \(controller) to DashboardNavigationController")
+        }
+        navController.pageData = pageData
+        navController.navigationDelegate = self
+        return navController
     }
 
 }

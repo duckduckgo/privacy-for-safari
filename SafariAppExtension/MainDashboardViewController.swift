@@ -32,7 +32,22 @@ class MainDashboardViewController: DashboardNavigationController {
 
     }
 
+    let privacyPracticesImages: [PrivacyPractice.Summary: NSImage] = [
+        .unknown: #imageLiteral(resourceName: "PP Icon Privacy Bad Off"),
+        .poor: #imageLiteral(resourceName: "PP Icon Privacy Bad On"),
+        .mixed: #imageLiteral(resourceName: "PP Icon Privacy Good Off"),
+        .good: #imageLiteral(resourceName: "PP Icon Privacy Good On")
+    ]
+
+    let privacyPracticesText: [PrivacyPractice.Summary: String] = [
+        .unknown: UserText.dashboardTOSUnknown,
+        .good: UserText.dashboardTOSGood,
+        .mixed: UserText.dashboardTOSMixed,
+        .poor: UserText.dashboardTOSPoor
+    ]
+
     let trustedSites: TrustedSitesManager = Dependencies.shared.trustedSitesManager
+    let privacyPracticesManager: PrivacyPracticesManager = Dependencies.shared.privacyPracticesManager
 
     @IBOutlet weak var siteTitle: NSTextField!
     @IBOutlet weak var enhancedStatementStack: NSView!
@@ -111,20 +126,12 @@ class MainDashboardViewController: DashboardNavigationController {
         reloadPage()
     }
 
-    @IBAction func showScoreCard(_ sender: Any) {
-        navigationDelegate?.push(controller: .scoreCard)
-    }
-
     @IBAction func showTrackers(_ sender: Any) {
         navigationDelegate?.push(controller: .trackersDetail)
     }
 
-    @IBAction func showPrivacyPracties(_ sender: Any) {
-        navigationDelegate?.push(controller: .privacyPractices)
-    }
-
     @IBAction func reportBrokenSite(_ sender: Any) {
-        navigationDelegate?.push(controller: .reportBrokenWebsite)
+        navigationDelegate?.present(controller: .reportBrokenWebsite)
     }
 
     @IBAction func manageWhitelist(_ sender: Any) {
@@ -144,6 +151,17 @@ class MainDashboardViewController: DashboardNavigationController {
         updateProtectionStatus()
         updateGradeIcon()
         updateTrackersFound()
+        updatePrivacyPractices()
+    }
+
+    private func updatePrivacyPractices() {
+        privacyPracticesLabel.stringValue = "Unkonwn Privacy Practices"
+        privacyPracticesIcon.image = privacyPracticesImages[.unknown]
+
+        guard let url = pageData?.url else { return }
+        let practices = privacyPracticesManager.findPrivacyPractice(forUrl: url)
+        privacyPracticesIcon.image = privacyPracticesImages[practices.summary]
+        privacyPracticesLabel.stringValue = privacyPracticesText[practices.summary] ?? ""
     }
 
     private func updateEncryptionStatus() {
@@ -188,10 +206,10 @@ class MainDashboardViewController: DashboardNavigationController {
     private func updateProtectionStatus() {
 
         if isTrusted {
-            protectionBox.fillColor = NSColor(named: NSColor.Name("ProtectionToggleOff")) ?? NSColor.red
+            protectionBox.fillColor = NSColor.protectionToggleOff
             (protectionToggle.cell as? NSButtonCell)?.state = .off
         } else {
-            protectionBox.fillColor = NSColor(named: NSColor.Name("ProtectionToggleOn")) ?? NSColor.red
+            protectionBox.fillColor = NSColor.protectionToggleOn
             (protectionToggle.cell as? NSButtonCell)?.state = .on
         }
 
@@ -266,12 +284,12 @@ extension Grade.Grading {
     ]
 
     static let icons: [Grade.Grading: String] = [
-        .a: "PP Grade A ",
-        .bPlus: "PP Grade B Plus ",
-        .b: "PP Grade B ",
-        .cPlus: "PP Grade C Plus ",
-        .c: "PP Grade C ",
-        .d: "PP Grade D ",
+        .a: "PP Grade A",
+        .bPlus: "PP Grade B Plus",
+        .b: "PP Grade B",
+        .cPlus: "PP Grade C Plus",
+        .c: "PP Grade C",
+        .d: "PP Grade D",
         .dMinus: "PP Grade D"
     ]
     
@@ -285,7 +303,7 @@ extension Grade.Grading {
             return nil
         }
         let suffix = trusted ? "Off" : "On"
-        let name = iconName + suffix
+        let name = iconName + " " + suffix
         NSLog("heroImage named \(name)")
         return NSImage(named: NSImage.Name(name))
     }

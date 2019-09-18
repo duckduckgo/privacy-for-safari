@@ -1,5 +1,5 @@
 //
-//  AppUrls.swift
+//  NSColorExtension.swift
 //  DuckDuckGo Privacy Essentials
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
@@ -17,10 +17,11 @@
 //  limitations under the License.
 //
 
-import Foundation
+import AppKit
 
-struct AppLinks {
-    
-    static let manageWhitelist = "ddg://manageWhitelist"
-    
+extension NSColor {
+
+    static let selectedBackground = NSColor(named: NSColor.Name("SelectedBackground"))!
+    static let selectedText = NSColor(named: NSColor.Name("SelectedText"))!
+
 }

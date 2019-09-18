@@ -91,6 +91,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     enum Messages: String {
         case resourceLoaded
+        case beforeUnload
     }
     
     struct Trackers {
@@ -126,7 +127,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         switch message {
         case .resourceLoaded:
             handleResourceLoadedMessage(userInfo, onPage: page)
+            
+        case .beforeUnload:
+            handleBeforeUnloadMessage(onPage: page)
         }
+    }
+
+    func handleBeforeUnloadMessage(onPage page: SFSafariPage) {
+        NSLog("\(#function)")
+        Data.shared.clear(page)
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {

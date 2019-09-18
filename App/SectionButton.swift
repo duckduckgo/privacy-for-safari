@@ -2,8 +2,19 @@
 //  SectionButton.swift
 //  DuckDuckGo
 //
-//  Created by Chris Brind on 20/06/2019.
-//  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.
+//  Copyright © 2019 DuckDuckGo. All rights reserved.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import AppKit
@@ -24,11 +35,11 @@ class SectionButton: NSBox {
     func selected() {
         emphasis.isHidden = false
 
-        fillColor = NSColor(named: NSColor.Name("SelectedBackground"))!
+        fillColor = NSColor.selectedBackground
         if #available(OSX 10.14, *) {
             label.textColor = NSColor.controlAccentColor
         } else {
-            label.textColor = NSColor(named: NSColor.Name("SelectedText"))
+            label.textColor = NSColor.selectedText
         }
         
     }

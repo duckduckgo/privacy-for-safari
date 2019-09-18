@@ -46,7 +46,7 @@ public class Dependencies: TrackerBlockingDependencies {
         var trackerDataManager: TrackerDataManager!
         var blockerListManager: BlockerListManager!
         
-        privacyPracticesManager = DefaultPrivacyPracticesManager()
+        privacyPracticesManager = DefaultPrivacyPracticesManager(trackerDataManager: { trackerDataManager })
         trackerDataManager = DefaultTrackerDataManager()
         trackerDetection = DefaultTrackerDetection(trackerDataManager: { trackerDataManager })
         blockerListManager = DefaultBlockerListManager(trackerDataManager: { trackerDataManager }, trustedSitesManager: { trustedSitesManager })

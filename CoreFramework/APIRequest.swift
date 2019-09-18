@@ -32,9 +32,10 @@ public enum APIRequestErrors: Error {
     case invalidResponseCode(code: Int)
 }
 
-public struct ApiBaseUrl {
-    public static let standard = "https://duckduckgo.com"
-    public static let cdn = "https://staticcdn.duckduckgo.com"
+public enum ApiBaseUrl: String {
+    case standard = "https://duckduckgo.com"
+    case cdn = "https://staticcdn.duckduckgo.com"
+    case improving = "https://improving.duckduckgo.com"
 }
 
 struct ParamKey {
@@ -55,14 +56,14 @@ public class DefaultAPIRequest: APIRequest {
     let isDebugBuild = false
 #endif
     
-    private let baseUrl: String
+    private let baseUrl: ApiBaseUrl
     
-    public init(baseUrl: String = ApiBaseUrl.standard) {
+    public init(baseUrl: ApiBaseUrl = .standard) {
         self.baseUrl = baseUrl
     }
     
     public func get(_ path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion) {
-        var components = URLComponents(string: baseUrl)
+        var components = URLComponents(string: baseUrl.rawValue)
         components?.path = path
         components?.queryItems = params?.map { URLQueryItem(name: $0.key, value: $0.value) }
         if isDebugBuild {

@@ -47,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if urls[0].absoluteString == AppLinks.manageWhitelist {
             guard let controller = application.keyWindow?.windowController?.contentViewController as? MainViewController else { return }
-            controller.selectSendFeedback(self)
+            controller.selectTrustedSites(self)
         }
     }
 }

@@ -8,3 +8,24 @@
 
 "privacy.encryption.enabled" = "Encrypted Connection";
 "privacy.encryption.disabled" = "Unencrypted Connection";
+
+"dashboard.tos.unknown" = "Unknown Privacy Practices";
+"dashboard.tos.good" = "Good Privacy Practices";
+"dashboard.tos.mixed" = "Mixed Privacy Practices";
+"dashboard.tos.poor" = "Poor Privacy Practices";
+
+"dashboard.brokensite.submit.title" = "Something broken?";
+"dashboard.brokensite.submit.body" = "Submitting an anonymous broken site report helps us debug these issues and improve the extension.";
+
+"dashboard.brokensite.thankyou.title" = "Thank You!";
+"dashboard.brokensite.thankyou.body" = "Your report will help improve the extension and make the experience better for other people.";
+
+"dashboard.brokensite.category.images" = "Images didn't load";
+"dashboard.brokensite.category.paywall" = "The site asked me to disable";
+"dashboard.brokensite.category.comments" = "Comments didn't load";
+"dashboard.brokensite.category.videos" = "Video didn't play";
+"dashboard.brokensite.category.links" = "Links or buttons don't work";
+"dashboard.brokensite.category.content" = "Content is missing";
+"dashboard.brokensite.category.login" = "I can't login";
+"dashboard.brokensite.category.other" = "Something else";
+"dashboard.brokensite.category.select" = "Pick your issue from the list...";

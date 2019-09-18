@@ -39,7 +39,7 @@ public class DefaultTrackerDataService: TrackerDataService {
     private let trackerDataManager: TrackerDataManager
     private let blockingListManager: BlockerListManager
     
-    public init(apiRequest: @escaping APIRequest.Factory = { DefaultAPIRequest(baseUrl: ApiBaseUrl.cdn) },
+    public init(apiRequest: @escaping APIRequest.Factory = { DefaultAPIRequest(baseUrl: .cdn) },
                 trackerDataServiceStore: TrackerDataServiceStore = TrackerDataServiceUserDefaults(),
                 trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager,
                 blockingListManager: BlockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager) {
