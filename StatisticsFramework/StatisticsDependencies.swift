@@ -18,11 +18,13 @@
 //
 
 import Foundation
+import Core
 
 public protocol StatisticsDependencies {
     
     var statisticsStore: StatisticsStore { get }
     
+    var pixel: Pixel { get }
 }
 
 public class Dependencies: StatisticsDependencies {
@@ -31,4 +33,9 @@ public class Dependencies: StatisticsDependencies {
     
     public var statisticsStore: StatisticsStore = DefaultStatisticsStore()
     
+    public var pixel: Pixel
+    
+    init() {
+        pixel = DefaultPixel(statisticsStore: statisticsStore, apiRequest: { DefaultAPIRequest(baseUrl: .improving) })
+    }
 }

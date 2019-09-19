@@ -25,6 +25,8 @@ class MainViewController: NSViewController {
     @IBOutlet var tabs: NSTabView!
     @IBOutlet var sectionButtons: NSStackView!
     
+    private let pixel = Dependencies.shared.pixel
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if Settings().onboardingShown {
@@ -42,6 +44,7 @@ class MainViewController: NSViewController {
 
     @IBAction func selectHome(_ sender: Any) {
         print(#function, sender)
+        pixel.fire(.homeShown)
         deselectAllSectionButtons()
         tabs.selectTabViewItem(at: 0)
         setSectionButtonSelected(atIndex: 0)
@@ -56,6 +59,7 @@ class MainViewController: NSViewController {
 
     @IBAction func selectTrustedSites(_ sender: Any) {
         print(#function, sender)
+        pixel.fire(.homeWhitelistOpened)
         deselectAllSectionButtons()
         tabs.selectTabViewItem(at: 1)
         setSectionButtonSelected(atIndex: 1)
@@ -77,7 +81,7 @@ class MainViewController: NSViewController {
     
     private func initTabs() {
         setSectionButtonSelected(atIndex: 0)
-        
+        pixel.fire(.homeShown)
         tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "Home", fromStoryboardNamed: "Main")))
         tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "TrustedSites", fromStoryboardNamed: "Main")))
         tabs.addTabViewItem(NSTabViewItem(viewController: NSViewController.loadController(named: "SendFeedback", fromStoryboardNamed: "Main")))

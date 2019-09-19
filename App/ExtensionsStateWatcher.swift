@@ -81,5 +81,4 @@ class ExtensionsStateWatcher {
             self.delegate?.stateUpdated(watcher: self)
         }
     }
-    
 }

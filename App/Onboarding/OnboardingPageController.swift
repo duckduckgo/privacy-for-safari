@@ -45,10 +45,6 @@ class OnboardingPageController: NSPageController {
         transitionStyle = .horizontalStrip
         arrangedObjects = [ "GetStarted", "EnableExtensions", "SetDefaultSearch" ]
     }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-    }
         
 }
 

@@ -1,7 +1,6 @@
 //
-//  OnboardingScreen.swift
-//  DuckDuckGo Privacy Essentials
-//
+//  FireOncePixel.swift
+//  Statistics
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,16 +17,27 @@
 //  limitations under the License.
 //
 
-import AppKit
+import Foundation
 
-class OnboardingScreen: NSViewController {
-
-    @IBOutlet weak var button: NSButton!
-
-    weak var delegate: OnboardingScreenDelegate?
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        view.window?.defaultButtonCell = button.cell as? NSButtonCell
+///
+/// Sends a pixel the first time fire is called. Subsequent calls do not resend the pixel
+///
+public class FireOncePixel {
+    
+    private let pixel: Pixel
+    private let pixelName: PixelName
+    private(set) var canFire = true
+    
+    public init(pixel: Pixel, pixelName: PixelName) {
+        self.pixel = pixel
+        self.pixelName = pixelName
     }
+    
+    public func fire() {
+        if canFire {
+            pixel.fire(pixelName)
+            canFire = false
+        }
+    }
+    
 }

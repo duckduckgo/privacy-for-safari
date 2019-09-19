@@ -98,7 +98,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         var loaded = [DetectedTracker]()
         var blocked = [DetectedTracker]()
     }
-    
+
+    private let pixel: Pixel = Dependencies.shared.pixel
+
     override func beginRequest(with context: NSExtensionContext) {
         super.beginRequest(with: context)
         updateRetentionData()
@@ -168,6 +170,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func popoverWillShow(in window: SFSafariWindow) {
         NSLog("popoverWillShow \(Data.shared.pageData.url?.absoluteString ?? "<no url>")")
+        pixel.fire(.dashboardPopupOpened)
         SafariExtensionViewController.shared.pageData = Data.shared.pageData
         SafariExtensionViewController.shared.viewWillAppear()
     }

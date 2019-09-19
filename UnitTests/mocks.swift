@@ -173,10 +173,10 @@ class MockAPIRequest: APIRequest {
         completion(response.data, response.response, response.error)
     }
     
-    func addResponse(_ statusCode: Int, body: String? = nil) {
+    func addResponse(_ statusCode: Int, body: String? = nil, error: Error? = nil) {
         let httpResponse = HTTPURLResponse(url: dummyUrl, statusCode: statusCode, httpVersion: nil, headerFields: nil)
         let data: Data? = body?.data(using: .utf8)
-        responses.append(Response(data: data, response: httpResponse, error: nil))
+        responses.append(Response(data: data, response: httpResponse, error: error))
     }
     
 }
@@ -193,14 +193,22 @@ class MockStatisticsStore: StatisticsStore {
     
 }
 
+class MockPixel: Pixel {
+    func fire(_ pixel: PixelName, withParams params: [String: String], onComplete: @escaping PixelCompletion) {
+        onComplete(nil)
+    }
+}
+
 class MockStatisticsDependencies: StatisticsDependencies {
+    
+    var pixel: Pixel
     
     var statisticsStore: StatisticsStore
     
     init(statisticsStore: StatisticsStore = DefaultStatisticsStore()) {
         self.statisticsStore = statisticsStore
+        self.pixel = DefaultPixel(statisticsStore: statisticsStore, apiRequest: { MockAPIRequest() })
     }
-    
 }
 
 struct MockTrackerDataServiceStore: TrackerDataServiceStore {
@@ -208,3 +216,25 @@ struct MockTrackerDataServiceStore: TrackerDataServiceStore {
     var etag: String?
 
 }
+
+class MockBundle: InfoBundle {
+    
+    private var mockEntries = [String: Any]()
+    
+    func object(forInfoDictionaryKey key: String) -> Any? {
+        return mockEntries[key]
+    }
+    
+    func add(name: String, value: Any) {
+        mockEntries[name] = value
+    }
+}
+
+struct MockAppVersion: AppVersion {
+    var name: String = ""
+    var identifier: String = ""
+    var versionNumber: String = ""
+    var buildNumber: String = ""
+}
+
+struct MockError: Error {}

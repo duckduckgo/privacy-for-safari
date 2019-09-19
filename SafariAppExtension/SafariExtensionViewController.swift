@@ -41,6 +41,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             updateUI()
         }
     }
+    
+    private let pixel: Pixel = Dependencies.shared.pixel
 
     override func viewDidLoad() {
         NSLog("SEVC viewDidLoad")
@@ -66,11 +68,24 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         updateSearchFieldCaretColor()
     }
 
-    @IBAction func performSearch(sender: Any) {
+    @IBAction func openMenu(sender: Any) {
+        pixel.fire(.dashboardMenuOpened)
+    }
+
+    @IBAction func performSearchFromLoupe(sender: Any) {
+        performSearch(pixelName: .dashboardSearchInPopupSubmittedWithLoupe)
+    }
+
+    @IBAction func performSearchFromKeyboard(sender: Any) {
+        performSearch(pixelName: .dashboardSearchInPopupSubmittedWithEnter)
+    }
+    
+    private func performSearch(pixelName: PixelName) {
         guard !searchField.stringValue.isEmpty else { return }
 
         guard let url = URL(withSearch: searchField.stringValue) else { return }
         
+        pixel.fire(pixelName)
         NSWorkspace.shared.open(url)
         dismissPopover()
     }

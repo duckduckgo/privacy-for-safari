@@ -18,6 +18,7 @@
 //
 import AppKit
 import SafariServices
+import Statistics
 
 class HomeSectionViewController: NSViewController {
         
@@ -32,6 +33,10 @@ class HomeSectionViewController: NSViewController {
     @IBOutlet weak var dashboardEnableButton: NSButton!
     
     var extensionsState: ExtensionsStateWatcher?
+    
+    private let pixel = Dependencies.shared.pixel
+    private var dashboardEnabled: Bool?
+    private var cbEnabled: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,14 +56,22 @@ class HomeSectionViewController: NSViewController {
     }
     
     @IBAction func showProtectionPrefences(_ sender: Any?) {
+        pixel.fire(.homeOpenSafariToEnableCb)
         extensionsState?.showContentBlockerExtensionPreferences()
     }
 
     @IBAction func showDashboardPreferences(_ sender: Any?) {
+        pixel.fire(.homeOpenSafariToEnableDashboard)
+        extensionsState?.showSafariExtensionPreferences()
+    }
+    
+    @IBAction func showSearchPreferences(_ sender: Any?) {
+        pixel.fire(.homeOpenSafariForSearch)
         extensionsState?.showSafariExtensionPreferences()
     }
     
     @IBAction func help(_ sender: Any?) {
+        pixel.fire(.homeHelpOpened)
         NSWorkspace.shared.open(URL(string: "https://help.duckduckgo.com/duckduckgo-help-pages/desktop/adding-duckduckgo-to-your-browser/")!)
     }
 
@@ -80,14 +93,39 @@ class HomeSectionViewController: NSViewController {
         return NSImage(named: NSImage.Name("Extension" + state))
     }
     
+    func sendStateChangePixels(dashboardEnabled: Bool, cbEnabled: Bool) {
+        
+        defer {
+            self.dashboardEnabled = dashboardEnabled
+            self.cbEnabled = cbEnabled
+        }
+        
+        guard let previousDashboardEnabled = self.dashboardEnabled, let previousCbEnabled = self.cbEnabled else {
+            return
+        }
+        
+        if previousDashboardEnabled && !dashboardEnabled {
+            pixel.fire(.homeDashboardDisabled)
+        }
+        if !previousDashboardEnabled && dashboardEnabled {
+            pixel.fire(.homeDashboardEnabled)
+        }
+        if previousCbEnabled && !cbEnabled {
+            pixel.fire(.homeCbDisabled)
+        }
+        if !previousCbEnabled && cbEnabled {
+            pixel.fire(.homeCbEnabled)
+        }
+    }
 }
 
 extension HomeSectionViewController: ExtensionsStateWatcher.Delegate {
     
     func stateUpdated(watcher: ExtensionsStateWatcher) {
         DispatchQueue.main.async {
+            self.sendStateChangePixels(dashboardEnabled: watcher.dashboardState  == .enabled, cbEnabled: watcher.protectionState  == .enabled)
             self.refreshUI()
         }
-    }
     
+    }
 }

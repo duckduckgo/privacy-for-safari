@@ -19,7 +19,20 @@
 
 import Foundation
 
-public struct AppVersion {
+public protocol AppVersion {
+    var name: String { get }
+    var identifier: String { get }
+    var versionNumber: String { get }
+    var buildNumber: String { get }
+}
+
+extension AppVersion {
+    public var fullVersion: String {
+        return "\(versionNumber).\(buildNumber)"
+    }
+}
+
+public struct DefaultAppVersion: AppVersion {
     
     struct Keys {
         static let name = kCFBundleNameKey as String
@@ -49,7 +62,6 @@ public struct AppVersion {
     public var buildNumber: String {
         return bundle.object(forInfoDictionaryKey: Keys.buildNumber) as? String ?? ""
     }
-    
 }
 
 public protocol InfoBundle {

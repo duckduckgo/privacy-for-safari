@@ -1,7 +1,6 @@
 //
-//  OnboardingScreen.swift
-//  DuckDuckGo Privacy Essentials
-//
+//  FireOncePixelTests.swift
+//  UnitTests
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,16 +17,22 @@
 //  limitations under the License.
 //
 
-import AppKit
+import XCTest
+@testable import Statistics
+@testable import Core
 
-class OnboardingScreen: NSViewController {
+class FireOncePixelTests: XCTestCase {
+    
+    let pixel: Pixel = MockPixel()
 
-    @IBOutlet weak var button: NSButton!
+    func testWhenPixelNotFiredThenCanFireIsTrue() {
+        let fireOncePixel = FireOncePixel(pixel: pixel, pixelName: .onboardingGetStartedShown)
+        XCTAssertTrue(fireOncePixel.canFire)
+    }
 
-    weak var delegate: OnboardingScreenDelegate?
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        view.window?.defaultButtonCell = button.cell as? NSButtonCell
+    func testWhenPixelHasFiredThenCallingFireDoesNotSendIt() {
+        let fireOncePixel = FireOncePixel(pixel: pixel, pixelName: .onboardingGetStartedShown)
+        fireOncePixel.fire()
+        XCTAssertFalse(fireOncePixel.canFire)
     }
 }

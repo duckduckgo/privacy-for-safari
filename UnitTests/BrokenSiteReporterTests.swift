@@ -34,7 +34,7 @@ class BrokenSiteReporterTests: XCTestCase {
         
         let trackerDataServiceStore = MockTrackerDataServiceStore(etag: "etag666")
     
-        let appVersion = AppVersion(bundle: self)
+        let appVersion = DefaultAppVersion(bundle: self)
         
         let reporter = BrokenSiteReporter(statisticsStore: { statisticsStore },
                                           trackerDataServiceStore: trackerDataServiceStore,

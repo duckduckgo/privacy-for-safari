@@ -28,7 +28,7 @@ public class APIHeaders {
     
     private let appVersion: AppVersion
     
-    public init(appVersion: AppVersion = AppVersion()) {
+    public init(appVersion: AppVersion = DefaultAppVersion()) {
         self.appVersion = appVersion
     }
     
@@ -44,8 +44,7 @@ public class APIHeaders {
     }
     
     public var userAgent: String {
-        let fullVersion = "\(appVersion.versionNumber).\(appVersion.buildNumber)"
-        return "ddg_macos/\(fullVersion) (\(appVersion.identifier); macOS \(osVersion))"
+        return "ddg_macos/\(appVersion.fullVersion) (\(appVersion.identifier); macOS \(osVersion))"
     }
     
     public func addHeaders(to request: inout URLRequest) {

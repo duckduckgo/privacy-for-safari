@@ -31,7 +31,7 @@ public class BrokenSiteReporter {
     public init(statisticsStore: @escaping StatisticsStore.Factory = { Statistics.Dependencies.shared.statisticsStore },
                 trackerDataServiceStore: TrackerDataServiceStore = TrackerDataServiceUserDefaults(),
                 apiRequest: @escaping APIRequest.Factory = { DefaultAPIRequest(baseUrl: .improving) },
-                appVersion: AppVersion = AppVersion()) {
+                appVersion: AppVersion = DefaultAppVersion()) {
         self.statisticsStore = statisticsStore
         self.trackerDataServiceStore = trackerDataServiceStore
         self.apiRequest = apiRequest

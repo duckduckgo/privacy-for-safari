@@ -34,39 +34,26 @@ class AppVersionTests: XCTestCase {
 
     override func setUp() {
         mockBundle = MockBundle()
-        testee = AppVersion(bundle: mockBundle)
+        testee = DefaultAppVersion(bundle: mockBundle)
     }
 
     func testName() {
-        mockBundle.add(name: AppVersion.Keys.name, value: Constants.name)
+        mockBundle.add(name: DefaultAppVersion.Keys.name, value: Constants.name)
         XCTAssertEqual(Constants.name, testee.name)
     }
     
     func testVersionNumber() {
-        mockBundle.add(name: AppVersion.Keys.versionNumber, value: Constants.version)
+        mockBundle.add(name: DefaultAppVersion.Keys.versionNumber, value: Constants.version)
         XCTAssertEqual(Constants.version, testee.versionNumber)
     }
 
     func testIdentifier() {
-        mockBundle.add(name: AppVersion.Keys.identifier, value: Constants.identifier)
+        mockBundle.add(name: DefaultAppVersion.Keys.identifier, value: Constants.identifier)
         XCTAssertEqual(Constants.identifier, testee.identifier)
     }
 
     func testBuildNumber() {
-        mockBundle.add(name: AppVersion.Keys.buildNumber, value: Constants.build)
+        mockBundle.add(name: DefaultAppVersion.Keys.buildNumber, value: Constants.build)
         XCTAssertEqual(Constants.build, testee.buildNumber)
-    }
-}
-
-class MockBundle: InfoBundle {
-
-    private var mockEntries = [String: Any]()
-
-    func object(forInfoDictionaryKey key: String) -> Any? {
-        return mockEntries[key]
-    }
-
-    func add(name: String, value: Any) {
-        mockEntries[name] = value
     }
 }

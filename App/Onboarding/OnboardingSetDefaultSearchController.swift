@@ -19,17 +19,31 @@
 //
 
 import AppKit
+import Statistics
 
 class OnboardingSetDefaultSearchController: OnboardingScreen {
 
     var watcher = ExtensionsStateWatcher()
+    var openSafariStartTime: TimeInterval = 0
 
+    private let pixel = Dependencies.shared.pixel
+    private let slideShownPixel = FireOncePixel(pixel: Dependencies.shared.pixel, pixelName: .onboardingEnableDDGSearchShown)
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        slideShownPixel.fire()
+    }
+    
     @IBAction func openSafariPreferences(sender: Any) {
+        pixel.fire(.onboardingEnableDDGSearchSafariPressed)
         watcher.showSafariExtensionPreferences()
+        openSafariStartTime = Date().timeIntervalSince1970
     }
     
     @IBAction func finishSetup(sender: Any) {
+        let elapsedTime = openSafariStartTime > 0 ? Date().timeIntervalSince1970 - openSafariStartTime : 0
+        let params: [String: String] = [PixelParameters.elapsed: String(format: "%.2f", elapsedTime)]
+        pixel.fire(.onboardingEnableDDGSearchTime, withParams: params)
         delegate?.finish()
-    }
-
+    }   
 }

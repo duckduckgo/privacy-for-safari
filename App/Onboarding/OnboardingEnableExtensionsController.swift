@@ -19,21 +19,27 @@
 //
 
 import AppKit
+import Statistics
 
 class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWatcher.Delegate {
 
     var watcher: ExtensionsStateWatcher?
     var detectionTimer: Timer?
 
+    private let pixel = Dependencies.shared.pixel
+    private let slideShownPixel = FireOncePixel(pixel: Dependencies.shared.pixel, pixelName: .onboardingEnableExtensionsShown)
+    
     override func viewDidAppear() {
         super.viewDidAppear()
         watcher = ExtensionsStateWatcher(delegate: self)
+        slideShownPixel.fire()
     }
 
     @IBAction func buttonPressed(sender: Any) {
-
+        
+        pixel.fire(PixelName.onboardingEnableExtensionshSafariPressed)
+        
         guard let watcher = watcher else { return }
-
         if watcher.protectionState != .enabled {
             watcher.showContentBlockerExtensionPreferences()
         } else if watcher.dashboardState != .enabled {
@@ -43,6 +49,7 @@ class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWat
 
     func stateUpdated(watcher: ExtensionsStateWatcher) {
         print(#function, watcher.allEnabled)
+                
         if watcher.allEnabled {
             killTimer()
             nextScreen()
@@ -70,6 +77,7 @@ class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWat
 
     func nextScreen() {
         print(#function)
+        
         DispatchQueue.main.async {
             self.view.window?.orderFrontRegardless()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -77,5 +85,4 @@ class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWat
             }
         }
     }
-
 }

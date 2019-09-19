@@ -19,18 +19,28 @@
 //
 
 import AppKit
+import Statistics
 
 class OnboardingGetStartedController: OnboardingScreen {
-
-    @IBOutlet var versionLabel: NSTextField!
     
+    @IBOutlet var versionLabel: NSTextField!
+
+    private let pixel = Dependencies.shared.pixel
+    private let slideShownPixel = FireOncePixel(pixel: Dependencies.shared.pixel, pixelName: .onboardingGetStartedShown)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         versionLabel.attributedStringValue = Utils.versionLabelAttributedString()
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        slideShownPixel.fire()
+    }
+    
     @IBAction func getStarted(sender: Any) {
+        pixel.fire(PixelName.onboardingGetStartedPressed)
         delegate?.navigateForward(self)
     }
-
+    
 }

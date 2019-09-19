@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		833FACE4232F9585001F1BC9 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833FACE3232F9585001F1BC9 /* SettingsTests.swift */; };
 		833FACE5232FAE76001F1BC9 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
+		8347D38E23325E13006AB02A /* FireOncePixelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8347D38D23325E13006AB02A /* FireOncePixelTests.swift */; };
 		834E5859232C22B700B43C37 /* SyncStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E5858232C22B700B43C37 /* SyncStore.swift */; };
 		834E585D232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */; };
 		834E585F232F365000B43C37 /* SyncRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585E232F365000B43C37 /* SyncRunnerTests.swift */; };
+		8358675E23322836001776B0 /* FireOncePixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358675C23322748001776B0 /* FireOncePixel.swift */; };
+		8358676023323FA0001776B0 /* PixelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358675F23323FA0001776B0 /* PixelTests.swift */; };
 		837857D9232A7CCC00143219 /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
 		837857DA232A7CCC00143219 /* TrackerBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		837857DD232A7CE800143219 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
@@ -25,6 +28,7 @@
 		838AF8FF232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */; };
 		838AF900232688DD00522DD9 /* SyncRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FC232688DD00522DD9 /* SyncRunner.swift */; };
 		838AF9022326D51100522DD9 /* LoginItemLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */; };
+		83D3300423310CF900DFEAF2 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3300323310CF900DFEAF2 /* Pixel.swift */; };
 		83DFC259232AAC5300700F87 /* TrackerDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837857DF232A7D8E00143219 /* TrackerDataService.swift */; };
 		85008B3422C9581B00A2CFB0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85008B3322C9581B00A2CFB0 /* Localizable.strings */; };
 		8503858E22F1A0BD002259DB /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8503858D22F1A0BD002259DB /* Onboarding.storyboard */; };
@@ -367,9 +371,12 @@
 
 /* Begin PBXFileReference section */
 		833FACE3232F9585001F1BC9 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		8347D38D23325E13006AB02A /* FireOncePixelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireOncePixelTests.swift; sourceTree = "<group>"; };
 		834E5858232C22B700B43C37 /* SyncStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncStore.swift; sourceTree = "<group>"; };
 		834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerDataServiceUserDefaultsTests.swift; sourceTree = "<group>"; };
 		834E585E232F365000B43C37 /* SyncRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncRunnerTests.swift; sourceTree = "<group>"; };
+		8358675C23322748001776B0 /* FireOncePixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireOncePixel.swift; sourceTree = "<group>"; };
+		8358675F23323FA0001776B0 /* PixelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelTests.swift; sourceTree = "<group>"; };
 		837857DF232A7D8E00143219 /* TrackerDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataService.swift; sourceTree = "<group>"; };
 		8382B7D4232B0CC9002BAD64 /* TrackerDataServiceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataServiceStore.swift; sourceTree = "<group>"; };
 		838AF8D82326877700522DD9 /* DuckDuckGoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckDuckGoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,6 +391,7 @@
 		838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckDuckGoSyncAppDelegate.swift; sourceTree = "<group>"; };
 		838AF8FC232688DD00522DD9 /* SyncRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRunner.swift; sourceTree = "<group>"; };
 		83994E8023267EC60040F65B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		83D3300323310CF900DFEAF2 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
 		85008B3322C9581B00A2CFB0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		8503858D22F1A0BD002259DB /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		8503858F22F1A280002259DB /* OnboardingPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageController.swift; sourceTree = "<group>"; };
@@ -822,6 +830,8 @@
 				85E9521422AFC7C20071281E /* StatisticsLoader.swift */,
 				85E9521822AFC8F10071281E /* StatisticsStore.swift */,
 				85E9521C22AFCE7A0071281E /* Atb.swift */,
+				83D3300323310CF900DFEAF2 /* Pixel.swift */,
+				8358675C23322748001776B0 /* FireOncePixel.swift */,
 			);
 			path = StatisticsFramework;
 			sourceTree = "<group>";
@@ -862,6 +872,8 @@
 			children = (
 				85E9524522B13E790071281E /* StatisticsLoaderTests.swift */,
 				85E9524722B284710071281E /* StatisticsStoreTests.swift */,
+				8358675F23323FA0001776B0 /* PixelTests.swift */,
+				8347D38D23325E13006AB02A /* FireOncePixelTests.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -1478,6 +1490,7 @@
 				859F13D6227A468600EDE40A /* PageDataTests.swift in Sources */,
 				859F13D2227A3B2C00EDE40A /* GradeTests.swift in Sources */,
 				8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */,
+				8347D38E23325E13006AB02A /* FireOncePixelTests.swift in Sources */,
 				850AFB01232A50DF004C859B /* PrivacyPracticesTests.swift in Sources */,
 				834E585D232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift in Sources */,
 				859914D92278A3DA0023C1F2 /* mocks.swift in Sources */,
@@ -1487,6 +1500,7 @@
 				85C55C2B230C5C100030B52A /* TrackerDataTests.swift in Sources */,
 				8562FF09230E2BA100CACECE /* ContentBlockerRuleOutputTests.swift in Sources */,
 				8541840F2283A54300DD2900 /* TrackerDataManagerTests.swift in Sources */,
+				8358676023323FA0001776B0 /* PixelTests.swift in Sources */,
 				85E86066232BD112007DDE2E /* AppVersionTests.swift in Sources */,
 				852ABF52230D86120017A95B /* ContentBlockerRulesBuilderTests.swift in Sources */,
 				85E9524822B284710071281E /* StatisticsStoreTests.swift in Sources */,
@@ -1499,7 +1513,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D3300423310CF900DFEAF2 /* Pixel.swift in Sources */,
 				85E9521522AFC7C20071281E /* StatisticsLoader.swift in Sources */,
+				8358675E23322836001776B0 /* FireOncePixel.swift in Sources */,
 				85E9521722AFC7FB0071281E /* StatisticsDependencies.swift in Sources */,
 				8590F40F22CE563A00B7473A /* StringExtension.swift in Sources */,
 				85E9521D22AFCE7A0071281E /* Atb.swift in Sources */,

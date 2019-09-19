@@ -20,6 +20,7 @@
 import Cocoa
 import SafariServices
 import TrackerBlocking
+import Statistics
 
 class MainDashboardViewController: DashboardNavigationController {
 
@@ -91,6 +92,8 @@ class MainDashboardViewController: DashboardNavigationController {
         return pageData?.isTrusted ?? false
     }
     
+    private var pixel = Dependencies.shared.pixel
+    
     override func viewDidLoad() {
         NSLog("MDVC viewWillAppear \(pageData as Any)")
         super.viewDidLoad()
@@ -127,9 +130,11 @@ class MainDashboardViewController: DashboardNavigationController {
         guard let url = pageData?.url else { return }
         
         if isTrusted {
+            pixel.fire(.dashboardPrivacyProtectionToggleOn)
             trustedSites.removeDomain(forUrl: url)
             protection = .enabled
         } else {
+            pixel.fire(.dashboardPrivacyProtectionToggleOff)
             trustedSites.addDomain(forUrl: url)
             protection = .disabled
         }
@@ -143,6 +148,7 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     @IBAction func showTrackers(_ sender: Any) {
+        pixel.fire(.dashboardTrackerNetworksOpened)
         navigationDelegate?.push(controller: .trackersDetail)
     }
 
@@ -151,6 +157,7 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     @IBAction func manageWhitelist(_ sender: Any) {
+        pixel.fire(.dashboardWhitelistOpened)
         NSWorkspace.shared.open(URL(string: AppLinks.manageWhitelist)!)
     }
 
