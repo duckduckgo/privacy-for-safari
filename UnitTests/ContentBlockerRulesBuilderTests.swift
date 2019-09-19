@@ -33,10 +33,13 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
         ContentBlockerRulesBuilder.Constants.domainMatchSuffix
     }
     
-    func testWhenNoTrackersThenGeneratesNoContentBlockingRules() {
+    func testWhenNoTrackersThenGeneratesSingleBlockingRuleForInstallButton() {
         let trackerData = TrackerData(trackers: [:], entities: [:], domains: [:])
-        let cbrs = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(0, cbrs.count)
+        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
+        XCTAssertEqual(1, rules.count)
+        assert(rules,
+               containsTrackerWithUrlFilter: subdomainPrefix + "duckduckgo\\.com" + domainSuffix,
+               action: .cssDisplayNone(selector: ".ddg-extension-hide"))
     }
     
     // MARK: profiles
@@ -47,7 +50,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
         
         let trackerData = TrackerData(trackers: facebook, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
         assert(rules, containsTrackerWithUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
     }
 
@@ -60,7 +63,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/trackit.js", action: .block())
     }
@@ -77,7 +80,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(3, rules.count)
+        XCTAssertEqual(4, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/trackit.js", action: .ignorePreviousRules())
@@ -96,7 +99,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/trackit.js", action: .ignorePreviousRules())
@@ -114,7 +117,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/trackit.js", action: .ignorePreviousRules(),
@@ -132,7 +135,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/trackit.js", action: .ignorePreviousRules(),
@@ -152,7 +155,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(4, rules.count)
+        XCTAssertEqual(5, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/trackit.js", action: .ignorePreviousRules())
@@ -172,7 +175,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(0, rules.count)
+        XCTAssertEqual(1, rules.count)
 
     }
 
@@ -187,7 +190,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .block())
 
@@ -205,7 +208,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .block(),
                ifDomain: [ "*example.com" ], resourceType: [ .image ])
@@ -224,7 +227,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .ignorePreviousRules(),
@@ -245,7 +248,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .block(),
                ifDomain: [ "*example.com" ], resourceType: [ .image ])
@@ -265,7 +268,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .ignorePreviousRules(),
@@ -284,7 +287,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/ad.js", action: .ignorePreviousRules())
@@ -308,7 +311,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
         print(#function, rules)
-        XCTAssertEqual(7, rules.count)
+        XCTAssertEqual(8, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: subdomainPrefix + "facebook\\.com/.*/login.png", action: .ignorePreviousRules())
@@ -327,7 +330,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
         
         let trackerData = TrackerData(trackers: facebook, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: ["brokensite.com", "othersite.com"])
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
         assert(rules[1], matchesUrlFilter: ".*", action: .ignorePreviousRules(), ifDomain: ["brokensite.com", "othersite.com"])
     }
@@ -337,7 +340,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
         let entities = ["Facebook, Inc.": Entity(displayName: "Facebook", domains: ["instagram.com", "whatsapp.com"], prevalence: 1.0)]
         let trackerData = TrackerData(trackers: facebook, entities: entities, domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
         assert(rules,
                containsTrackerWithUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix,
                action: .block(),
@@ -349,7 +352,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
         let facebook = ["Facebook": KnownTracker.build(domain: "facebook.com", subdomains: [ "img", "tracker", "cdn" ])]
         let trackerData = TrackerData(trackers: facebook, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
         assert(rules, containsTrackerWithUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
     }
     
@@ -362,7 +365,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(2, rules.count)
+        XCTAssertEqual(3, rules.count)
         assert(rules, containsTrackerWithUrlFilter: subdomainPrefix + "google\\.com" + domainSuffix, action: .block())
         assert(rules, containsTrackerWithUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
     }
@@ -376,7 +379,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
         assert(rules, containsTrackerWithUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())
     }
 
@@ -389,7 +392,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: [])
-        XCTAssertEqual(1, rules.count)
+        XCTAssertEqual(2, rules.count)
     }
     
     func testWhenResourceContainsMatchingTrackerInUrlThenDoesNotMatch() {

@@ -39,12 +39,18 @@ public struct ContentBlockerRule: Codable, Hashable {
             case popup
 
         }
+        
+        public enum LoadType: String, Codable {
+         
+            case thirdParty = "third-party"
+            
+        }
 
         let urlFilter: String
         let unlessDomain: [String]?
         let ifDomain: [String]?
         let resourceType: [ResourceType]?
-        let loadType = [ "third-party" ]
+        let loadType: [LoadType]?
 
         enum CodingKeys: String, CodingKey {
             case urlFilter = "url-filter"
@@ -54,23 +60,24 @@ public struct ContentBlockerRule: Codable, Hashable {
             case loadType = "load-type"
         }
 
-        private init(urlFilter: String, unlessDomain: [String]?, ifDomain: [String]?, resourceType: [ResourceType]?) {
+        private init(urlFilter: String, unlessDomain: [String]?, ifDomain: [String]?, resourceType: [ResourceType]?, loadType: [LoadType]?) {
             self.urlFilter = urlFilter
             self.unlessDomain = unlessDomain
             self.ifDomain = ifDomain
             self.resourceType = resourceType
+            self.loadType = loadType
         }
         
-        static func trigger(urlFilter filter: String) -> Trigger {
-            return Trigger(urlFilter: filter, unlessDomain: nil, ifDomain: nil, resourceType: nil)
+        static func trigger(urlFilter filter: String, loadType: [LoadType]? = [ .thirdParty ]) -> Trigger {
+            return Trigger(urlFilter: filter, unlessDomain: nil, ifDomain: nil, resourceType: nil, loadType: loadType)
         }
         
         static func trigger(urlFilter filter: String, unlessDomain urls: [String]?) -> Trigger {
-            return Trigger(urlFilter: filter, unlessDomain: urls, ifDomain: nil, resourceType: nil)
+            return Trigger(urlFilter: filter, unlessDomain: urls, ifDomain: nil, resourceType: nil, loadType: [ .thirdParty ])
         }
 
         static func trigger(urlFilter filter: String, ifDomain domains: [String]?, resourceType types: [ResourceType]?) -> Trigger {
-            return Trigger(urlFilter: filter, unlessDomain: nil, ifDomain: domains, resourceType: types)
+            return Trigger(urlFilter: filter, unlessDomain: nil, ifDomain: domains, resourceType: types, loadType: [ .thirdParty ])
         }
     }
 
@@ -80,17 +87,23 @@ public struct ContentBlockerRule: Codable, Hashable {
             
             case block
             case ignorePreviousRules = "ignore-previous-rules"
+            case cssDisplayNone = "css-display-none"
             
         }
         
         public let type: ActionType
+        public let selector: String?
 
         static func block() -> Action {
-            return Action(type: .block)
+            return Action(type: .block, selector: nil)
         }
         
         static func ignorePreviousRules() -> Action {
-            return Action(type: .ignorePreviousRules)
+            return Action(type: .ignorePreviousRules, selector: nil)
+        }
+        
+        static func cssDisplayNone(selector: String) -> Action {
+            return Action(type: .cssDisplayNone, selector: selector)
         }
         
     }
