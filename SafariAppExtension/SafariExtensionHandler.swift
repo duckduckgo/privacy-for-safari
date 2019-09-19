@@ -92,6 +92,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     enum Messages: String {
         case resourceLoaded
         case beforeUnload
+        case userAgent
     }
     
     struct Trackers {
@@ -132,9 +133,23 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
         case .beforeUnload:
             handleBeforeUnloadMessage(onPage: page)
+            
+        case .userAgent:
+            handleUserAgentMessage(userInfo)
         }
     }
 
+    func handleUserAgentMessage(_ userInfo: [String: Any]?) {
+        guard let userAgent = userInfo?["userAgent"] as? String else { return }
+        let values = userAgent.components(separatedBy: " ")
+        guard let version = values.first(where: { $0.hasPrefix("Version/") }) else { return }
+        let components = version.components(separatedBy: "/")
+        guard components.count > 1 else { return }
+        let safariVersion = components[1]
+        var store = Statistics.Dependencies.shared.statisticsStore
+        store.browserVersion = safariVersion
+    }
+    
     func handleBeforeUnloadMessage(onPage page: SFSafariPage) {
         NSLog("\(#function)")
         Data.shared.clear(page)

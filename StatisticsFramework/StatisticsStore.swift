@@ -27,6 +27,7 @@ public protocol StatisticsStore {
     var installAtb: String? { get set }
     var searchRetentionAtb: String? { get set }
     var appRetentionAtb: String? { get set }
+    var browserVersion: String? { get set }
     
 }
 
@@ -38,7 +39,8 @@ public class DefaultStatisticsStore: StatisticsStore {
         static let installAtb = "installAtb"
         static let searchRetentionAtb = "searchRetentionAtb"
         static let appRetentionAtb = "appRetentionAtb"
-        
+        static let browserVersion = "browserVersion"
+
     }
 
     public var installDate: Date? {
@@ -75,6 +77,15 @@ public class DefaultStatisticsStore: StatisticsStore {
         }
         get {
             return userDefaults?.string(forKey: Keys.appRetentionAtb)
+        }
+    }
+
+    public var browserVersion: String? {
+        set {
+            userDefaults?.set(newValue, forKey: Keys.browserVersion)
+        }
+        get {
+            return userDefaults?.string(forKey: Keys.browserVersion)
         }
     }
 

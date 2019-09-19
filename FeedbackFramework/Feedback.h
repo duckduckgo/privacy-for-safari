@@ -1,6 +1,6 @@
 //
-//  AppUrls.swift
-//  DuckDuckGo Privacy Essentials
+//  Feedback.h
+//  Feedback
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -17,11 +17,14 @@
 //  limitations under the License.
 //
 
-import Foundation
+#import <Foundation/Foundation.h>
 
-struct AppLinks {
-    
-    static let home = "ddg://home"
-    static let manageWhitelist = "ddg://manageWhitelist"
-    
-}
+//! Project version number for Feedback.
+FOUNDATION_EXPORT double FeedbackVersionNumber;
+
+//! Project version string for Feedback.
+FOUNDATION_EXPORT const unsigned char FeedbackVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <Feedback/PublicHeader.h>
+
+

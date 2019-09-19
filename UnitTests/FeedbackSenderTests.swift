@@ -22,11 +22,9 @@ import Core
 @testable import Feedback
 @testable import TrackerBlocking
 
-class BrokenSiteReporterTests: XCTestCase {
+class FeedbackSenderTests: XCTestCase {
 
     func test() {
-        let url = URL(string: "http://www.example.com")!
-        let trackers = [ tracker("google.com/gtm.js"), tracker("facebook.com/sneaky.png") ]
         
         let apiRequest = MockAPIRequest()
         let statisticsStore = MockStatisticsStore()
@@ -36,25 +34,29 @@ class BrokenSiteReporterTests: XCTestCase {
     
         let appVersion = DefaultAppVersion(bundle: self)
         
-        let reporter = BrokenSiteReporter(statisticsStore: { statisticsStore },
+        let sender = FeedbackSender(statisticsStore: { statisticsStore },
                                           trackerDataServiceStore: trackerDataServiceStore,
                                           apiRequest: { apiRequest },
-                                          appVersion: appVersion)
+                                          appVersion: appVersion,
+                                          browserVersionProvider: self)
         
-        reporter.reportBreakageOn(url: url, withBlockedTrackers: trackers, inCategory: "Other")
+        let comment = "This app is awesome!"
+        
+        sender.send(feedback: comment)
         
         XCTAssertEqual(1, apiRequest.requests.count)
-        XCTAssertEqual("/t/epbf_safari", apiRequest.requests[0].path)
-        XCTAssertEqual(apiRequest.requests[0].method, .get)
+        XCTAssertEqual("/feedback.js", apiRequest.requests[0].path)
+        XCTAssertEqual(apiRequest.requests[0].method, .post)
         XCTAssertEqual([
-            "category": "Other",
-            "upgradedHttps": "false",
-            "siteUrl": "http://www.example.com",
-            "blockedTrackers": "google.com,facebook.com",
-            "surrogates": "",
-            "extensionVersion": "2.0",
+            "reason": "general",
+            "url": "", // not needed
+            "comment": comment,
+            "browser": "Safari",
+            "browser_version": "99",
+            "v": "2.0",
             "atb": "v66-1",
-            "tds": "etag666"
+            "tds": "etag666",
+            "type": "extension-feedback"
         ], apiRequest.requests[0].params)
         
     }
@@ -67,9 +69,17 @@ class BrokenSiteReporterTests: XCTestCase {
     
 }
 
-extension BrokenSiteReporterTests: InfoBundle {
+extension FeedbackSenderTests: InfoBundle {
     
     func object(forInfoDictionaryKey key: String) -> Any? {
         return "2.0"
     }
+}
+
+extension FeedbackSenderTests: BrowserVersionProvider {
+    
+    func browserVersion() -> String {
+        return "99"
+    }
+    
 }

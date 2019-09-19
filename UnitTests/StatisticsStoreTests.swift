@@ -39,6 +39,7 @@ class StatisticsStoreTests: XCTestCase {
         XCTAssertNil(store.appRetentionAtb)
         XCTAssertNil(store.searchRetentionAtb)
         XCTAssertNil(store.installDate)
+        XCTAssertNil(store.browserVersion)
 
     }
     
@@ -49,17 +50,20 @@ class StatisticsStoreTests: XCTestCase {
         store.appRetentionAtb = "appRetentionAtb"
         store.searchRetentionAtb = "searchRetentionAtb"
         store.installDate = Date(timeIntervalSince1970: 5.0)
+        store.browserVersion = "browserVersion"
         
         XCTAssertEqual("installAtb", store.installAtb)
         XCTAssertEqual("appRetentionAtb", store.appRetentionAtb)
         XCTAssertEqual("searchRetentionAtb", store.searchRetentionAtb)
         XCTAssertEqual(Date(timeIntervalSince1970: 5.0), store.installDate)
+        XCTAssertEqual("browserVersion", store.browserVersion)
 
         store = DefaultStatisticsStore(userDefaults: userDefaults)
         XCTAssertEqual("installAtb", store.installAtb)
         XCTAssertEqual("appRetentionAtb", store.appRetentionAtb)
         XCTAssertEqual("searchRetentionAtb", store.searchRetentionAtb)
         XCTAssertEqual(Date(timeIntervalSince1970: 5.0), store.installDate)
+        XCTAssertEqual("browserVersion", store.browserVersion)
 
     }
     

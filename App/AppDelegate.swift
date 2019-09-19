@@ -44,10 +44,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print(#function, urls)
         
         guard urls.count > 0 else { return }
-        
-        if urls[0].absoluteString == AppLinks.manageWhitelist {
-            guard let controller = application.keyWindow?.windowController?.contentViewController as? MainViewController else { return }
+        guard let controller = application.keyWindow?.windowController?.contentViewController as? MainViewController else { return }
+
+        switch urls[0].absoluteString {
+            
+        case AppLinks.manageWhitelist:
             controller.selectTrustedSites(self)
+            
+        default:
+            controller.selectHome(self)
+            
         }
+        
     }
 }

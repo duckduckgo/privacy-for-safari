@@ -18,8 +18,9 @@
 //
 
 import Foundation
-import Statistics
 import Core
+import Statistics
+import TrackerBlocking
 
 public class BrokenSiteReporter {
 

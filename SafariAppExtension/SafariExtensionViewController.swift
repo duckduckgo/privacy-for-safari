@@ -70,6 +70,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     @IBAction func openMenu(sender: Any) {
         pixel.fire(.dashboardMenuOpened)
+        NSWorkspace.shared.open(URL(string: AppLinks.home)!)
     }
 
     @IBAction func performSearchFromLoupe(sender: Any) {

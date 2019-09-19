@@ -20,6 +20,8 @@
 import AppKit
 import Core
 import TrackerBlocking
+import Statistics
+import Feedback
 
 class ReportBrokenSiteController: DashboardNavigationController {
     

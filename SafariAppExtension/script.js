@@ -20,6 +20,10 @@
 // MARK: Detection Methods
 (function() {
 
+    safari.extension.dispatchMessage("userAgent", {
+        "userAgent": navigator.userAgent
+    });
+ 
     var resources = [];
     var timeout;
 

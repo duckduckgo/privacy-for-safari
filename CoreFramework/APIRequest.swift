@@ -25,6 +25,7 @@ public protocol APIRequest {
     typealias Completion = ((Data?, HTTPURLResponse?, Error?) -> Void)
     
     func get(_ path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion)
+    func post(_ path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion)
 }
 
 public enum APIRequestErrors: Error {
@@ -36,6 +37,13 @@ public enum ApiBaseUrl: String {
     case standard = "https://duckduckgo.com"
     case cdn = "https://staticcdn.duckduckgo.com"
     case improving = "https://improving.duckduckgo.com"
+}
+
+public enum HttpMethod: String {
+    
+    case get = "GET"
+    case post = "POST"
+    
 }
 
 struct ParamKey {
@@ -62,10 +70,18 @@ public class DefaultAPIRequest: APIRequest {
         self.baseUrl = baseUrl
     }
     
-    public func get(_ path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion) {
+    public func get(_ path: String, withParams params: [String: String]?, completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)) {
+        execute(method: .get, path: path, withParams: params, completion: completion)
+    }
+    
+    public func post(_ path: String, withParams params: [String: String]?, completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)) {
+        execute(method: .post, path: path, withParams: params, completion: completion)
+    }
+    
+    private func execute(method: HttpMethod, path: String, withParams params: [String: String]?, completion: @escaping APIRequest.Completion) {
         var components = URLComponents(string: baseUrl.rawValue)
         components?.path = path
-        components?.queryItems = params?.map { URLQueryItem(name: $0.key, value: $0.value) }
+        components?.queryItems = method == .get ? params?.map { URLQueryItem(name: $0.key, value: $0.value) } : []
         if isDebugBuild {
             var queryItems = components?.queryItems ?? []
             queryItems.append(URLQueryItem(name: ParamKey.test, value: ParamValue.test))
@@ -75,8 +91,18 @@ public class DefaultAPIRequest: APIRequest {
         guard let url = components?.url else { return }
         
         var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+                
+        if method == .post && !(params?.isEmpty ?? true) {
+            appendFormParameters(&request, params: params)
+        }
+        
         APIHeaders().addHeaders(to: &request)
-
+        
+        execute(request, completion: completion)
+    }
+    
+    private func execute(_ request: URLRequest, completion: @escaping APIRequest.Completion) {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 completion(nil, nil, error)
@@ -96,6 +122,20 @@ public class DefaultAPIRequest: APIRequest {
             completion(data, httpResponse, nil)
         }
         task.resume()
+    }
+    
+    private func appendFormParameters(_ request: inout URLRequest, params: [String: String]?) {
+        var body = ""
+        params?.forEach {
+            if !body.isEmpty {
+                body += "&"
+            }
+            body += $0.key
+            body += "="
+            body += $0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        }
+        request.httpBody = body.data(using: .utf8)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     }
 }
 

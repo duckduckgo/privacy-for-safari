@@ -154,20 +154,26 @@ class MockAPIRequest: APIRequest {
         
     }
     
-    struct Get {
-        
+    struct Request {
+        let method: HttpMethod
         let path: String
         let params: [String: String]?
-        
     }
     
     let dummyUrl = URL(string: "http://www.example.com")!
     
     private var responses = [Response]()
-    var requests = [Get]()
+    var requests = [Request]()
     
     func get(_ path: String, withParams params: [String: String]?, completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)) {
-        requests.append(Get(path: path, params: params))
+        requests.append(Request(method: .get, path: path, params: params))
+        guard responses.count > 0 else { return }
+        let response = responses.remove(at: 0)
+        completion(response.data, response.response, response.error)
+    }
+    
+    func post(_ path: String, withParams params: [String: String]?, completion: @escaping ((Data?, HTTPURLResponse?, Error?) -> Void)) {
+        requests.append(Request(method: .post, path: path, params: params))
         guard responses.count > 0 else { return }
         let response = responses.remove(at: 0)
         completion(response.data, response.response, response.error)
@@ -190,6 +196,8 @@ class MockStatisticsStore: StatisticsStore {
     var searchRetentionAtb: String?
     
     var appRetentionAtb: String?
+    
+    var browserVersion: String?
     
 }
 
