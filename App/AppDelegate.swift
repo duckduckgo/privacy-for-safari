@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         LoginItemLauncher.launchSyncService()
         
-        StatisticsLoader().refreshAppRetentionAtb(atLocation: "ad") {
+        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "ad") {
             print(#function, "atb refreshed")
         }
         

@@ -26,7 +26,8 @@ class DeepDetectionTests: XCTestCase {
         
         static let example = URL(string: "http://example.com")!
         static let ddg = URL(string: "https://duckduckgo.com")!
-        
+        static let ddgSearch = URL(string: "https://duckduckgo.com/?q=hello")!
+
     }
     
     func testWhenResourceIsNilThenNoPixel() {
@@ -85,6 +86,19 @@ class DeepDetectionTests: XCTestCase {
         let detection = DeepDetection(pixel: pixel)
         detection.check(resource: "/notdeep.js?q=ehello&l=wt-wt&s=0&a=osx&ct=GB&ss_mkt=us", onPage: Urls.ddg)
         XCTAssertEqual(0, pixel.pixels.count)
+
+    }
+
+    func testWhenResourceIsDeepAndPageIsSearchThenSearchAtbIsSent() {
+    
+        let loader = MockStatisticsLoader()
+        
+        let pixel = MockPixel()
+        let detection = DeepDetection(pixel: pixel, statisticsLoader: loader)
+        detection.check(resource: "/d.js?q=ehello&l=wt-wt&s=0&a=osx&ct=GB&ss_mkt=us", onPage: Urls.ddgSearch)
+        XCTAssertEqual(1, pixel.pixels.count)
+        XCTAssertFalse(loader.refreshAppRetentionAtbFired)
+        XCTAssertTrue(loader.refreshSearchRetentionAtbFired)
 
     }
 

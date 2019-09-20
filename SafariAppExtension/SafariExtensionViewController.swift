@@ -59,7 +59,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         NSLog("SEVC viewWillAppear")
         super.viewWillAppear()
         tabs.selectedTabViewItem?.viewController?.viewWillAppear()
-        StatisticsLoader().refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
+        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
     }
     
     override func viewDidAppear() {

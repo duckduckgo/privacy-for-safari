@@ -36,11 +36,11 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
         
-        let loader = StatisticsLoader(apiRequest: { apiRequest })
+        let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
         loader.refreshAppRetentionAtb(atLocation: "test") { }
         
         XCTAssertEqual(1, apiRequest.requests.count)
-        XCTAssertEqual(apiRequest.requests[0].path, StatisticsLoader.Paths.atb)
+        XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
             "at": "app_use",
             "atb": "v173-2",
@@ -63,11 +63,11 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
         
-        let loader = StatisticsLoader(apiRequest: { apiRequest })
+        let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
         loader.refreshSearchRetentionAtb(atLocation: "test", completion: nil)
         
         XCTAssertEqual(1, apiRequest.requests.count)
-        XCTAssertEqual(apiRequest.requests[0].path, StatisticsLoader.Paths.atb)
+        XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
             "at": "search",
             "atb": "v173-2",
@@ -90,11 +90,11 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
 
-        let loader = StatisticsLoader(apiRequest: { apiRequest })
+        let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
         loader.refreshAppRetentionAtb(atLocation: "test") { }
         
         XCTAssertEqual(1, apiRequest.requests.count)
-        XCTAssertEqual(apiRequest.requests[0].path, StatisticsLoader.Paths.atb)
+        XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
             "at": "app_use",
             "atb": "v173-2"
@@ -114,11 +114,11 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
         
-        let loader = StatisticsLoader(apiRequest: { apiRequest })
+        let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
         loader.refreshSearchRetentionAtb(atLocation: "test", completion: nil)
         
         XCTAssertEqual(1, apiRequest.requests.count)
-        XCTAssertEqual(apiRequest.requests[0].path, StatisticsLoader.Paths.atb)
+        XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
             "at": "search",
             "atb": "v173-2"
@@ -137,15 +137,15 @@ class StatisticsLoaderTests: XCTestCase {
         apiRequest.addResponse(200, body: "{ \"version\": \"v173-1\" }")
         apiRequest.addResponse(200)
         
-        let loader = StatisticsLoader(apiRequest: { apiRequest })
+        let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
         loader.refreshAppRetentionAtb(atLocation: "test") { }
 
         XCTAssertEqual(2, apiRequest.requests.count)
 
-        XCTAssertEqual(apiRequest.requests[0].path, StatisticsLoader.Paths.atb)
+        XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertNil(apiRequest.requests[0].params)
         
-        XCTAssertEqual(apiRequest.requests[1].path, StatisticsLoader.Paths.exti)
+        XCTAssertEqual(apiRequest.requests[1].path, DefaultStatisticsLoader.Paths.exti)
         XCTAssertEqual(apiRequest.requests[1].params, ["atb": "v173-1", "l": "test"])
         
         XCTAssertEqual("v173-1", store.installAtb)

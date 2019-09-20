@@ -21,11 +21,22 @@ import Foundation
 import Core
 
 public class DeepDetection {
+
+    struct Params {
+        
+        static let country = "ct"
+        static let affiliate = "a"
+        static let query = "q"
+        
+    }
     
     private let pixel: Pixel
+    private let statisticsLoader: StatisticsLoader
     
-    public init(pixel: Pixel = Dependencies.shared.pixel) {
+    public init(pixel: Pixel = Dependencies.shared.pixel,
+                statisticsLoader: StatisticsLoader = DefaultStatisticsLoader()) {
         self.pixel = pixel
+        self.statisticsLoader = statisticsLoader
     }
     
     public func check(resource: String?, onPage pageUrl: URL) {
@@ -37,15 +48,23 @@ public class DeepDetection {
         guard components.path == "/d.js" else { return }
         
         var params = [String: String]()
-        if let ct = components.queryItems?.first(where: { $0.name == "ct" })?.value {
-            params["ct"] = ct
+        if let ct = components.queryItems?.first(where: { $0.name == Params.country })?.value {
+            params[Params.country] = ct
         }
 
-        if let a = components.queryItems?.first(where: { $0.name == "a" })?.value {
-            params["a"] = a
+        if let a = components.queryItems?.first(where: { $0.name == Params.affiliate })?.value {
+            params[Params.affiliate] = a
         }
 
         pixel.fire(.safariBrowserExtensionSearch, withParams: params)
+     
+        checkForSearch(pageUrl)
+    }
+    
+    private func checkForSearch(_ url: URL) {
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        guard components?.queryItems?.contains(where: { $0.name == Params.query  }) ?? false else { return }
+        statisticsLoader.refreshSearchRetentionAtb(atLocation: "dd", completion: nil)
     }
     
 }

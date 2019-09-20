@@ -258,3 +258,17 @@ struct MockAppVersion: AppVersion {
 }
 
 struct MockError: Error {}
+
+class MockStatisticsLoader: StatisticsLoader {
+    
+    var refreshSearchRetentionAtbFired = false
+    var refreshAppRetentionAtbFired = false
+    
+    func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
+        refreshSearchRetentionAtbFired = true
+    }
+    
+    func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
+        refreshAppRetentionAtbFired = true
+    }
+}

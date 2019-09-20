@@ -21,7 +21,16 @@ import Foundation
 import Core
 import os
 
-public class StatisticsLoader {
+public typealias StatisticsLoaderCompletion = () -> Void
+
+public protocol StatisticsLoader {
+ 
+    func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?)
+    func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?)
+    
+}
+
+public class DefaultStatisticsLoader: StatisticsLoader {
 
     public typealias Completion = (() -> Void)
 
@@ -41,14 +50,14 @@ public class StatisticsLoader {
         self.apiRequest = apiRequest
     }
     
-    public func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoader.Completion?) {
+    public func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
         var store = statisticsStore()
         refreshRetention(forType: .search, withSetAtb: store.searchRetentionAtb, atLocation: location, storeResult: { atb in
             store.searchRetentionAtb = atb.version
         }, completion: completion)
     }
     
-    public func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoader.Completion?) {
+    public func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
         var store = statisticsStore()
         refreshRetention(forType: .app, withSetAtb: store.appRetentionAtb, atLocation: location, storeResult: { atb in
             store.appRetentionAtb = atb.version

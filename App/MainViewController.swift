@@ -39,7 +39,7 @@ class MainViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.delegate = self
-        StatisticsLoader().refreshAppRetentionAtb(atLocation: "mvc", completion: nil)
+        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "mvc", completion: nil)
     }
 
     @IBAction func selectHome(_ sender: Any) {
