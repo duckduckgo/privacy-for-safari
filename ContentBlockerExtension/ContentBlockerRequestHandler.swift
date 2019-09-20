@@ -32,7 +32,7 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
         
         var items = [Any]()
 
-        let blockerListUrl = Dependencies.shared.blockerListManager.blockerListUrl
+        let blockerListUrl = BlockerListLocation.blockerListUrl
         NSLog("beginRequest [\(blockerListUrl.path)]")
         
         do {

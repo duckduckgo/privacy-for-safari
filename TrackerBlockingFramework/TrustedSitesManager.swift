@@ -19,9 +19,9 @@
 
 import Foundation
 
-// swiftlint:disable identifier_name
-public let TrustedSitesManagerUpdatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
-// swiftlint:enable identifier_name
+public struct TrustedSitesNotification {
+    public static let sitesUpdatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
+}
 
 public protocol TrustedSitesManager {
     
@@ -31,6 +31,7 @@ public protocol TrustedSitesManager {
     func addDomain(_ domain: String)
     func addDomain(forUrl url: URL)
     func allDomains() -> [String]
+    func whitelistedDomains() -> [String]
     func clear()
     func removeDomain(at index: Int)
     func removeDomain(forUrl url: URL)
@@ -47,20 +48,23 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     }
     
     private var domains = [String]()
-    
-    private let userDefaults: UserDefaults?
+    private var tempWhitelist = [String]()
     
     public var count: Int {
         return domains.count
     }
     
     private let blockerListManager: BlockerListManager.Factory
-    
+    private let userDefaults: UserDefaults?
+    private let tempWhitelistUrl: URL
+
     public init(blockerListManager: @escaping BlockerListManager.Factory,
-                userDefaults: UserDefaults? = UserDefaults(suiteName: "group.com.duckduckgo.TrustedSites")) {
+                userDefaults: UserDefaults? = UserDefaults(suiteName: TempWhitelistDataLocation.groupName),
+                tempWhitelistUrl: URL = TempWhitelistDataLocation.dataUrl) {
         
         self.blockerListManager = blockerListManager
         self.userDefaults = userDefaults
+        self.tempWhitelistUrl = tempWhitelistUrl
         load()
     }
     
@@ -77,7 +81,11 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     public func allDomains() -> [String] {
         return domains
     }
-     
+    
+    public func whitelistedDomains() -> [String] {
+        return tempWhitelist
+    }
+    
     public func clear() {
         domains = []
         save()
@@ -103,6 +111,21 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         if let domains = userDefaults?.array(forKey: Keys.domains) as? [String] {
             self.domains = domains
         }
+        
+        loadTemporaryWhitelist()
+    }
+    
+    private func loadTemporaryWhitelist() {
+        
+        tempWhitelist = [String]()
+        guard let whitelist = try? String(contentsOf: tempWhitelistUrl) else {
+            return
+        }
+
+        tempWhitelist = whitelist.components(separatedBy: "\n").compactMap({
+            let trimmed = $0.trimmingCharacters(in: .whitespaces)
+            return trimmed.isEmpty ? nil : trimmed
+        })
     }
     
     public func save() {
@@ -110,11 +133,25 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         
         blockerListManager().updateAndReload()
         
-        DistributedNotificationCenter.default().postNotificationName(TrustedSitesManagerUpdatedNotificationName,
+        DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
                                                                      object: nil,
                                                                      userInfo: nil,
                                                                      deliverImmediately: true)
 
     }
  
+}
+
+public struct TempWhitelistDataLocation {
+    
+    public static var groupName = "group.com.duckduckgo.TrustedSites"
+    
+    public static var dataUrl: URL {
+        return containerUrl.appendingPathComponent("temporary-whitelist").appendingPathExtension("txt")
+    }
+    
+    static private var containerUrl: URL {
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupName)!
+    }
+    
 }

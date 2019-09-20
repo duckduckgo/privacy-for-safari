@@ -23,10 +23,8 @@ import os
 
 public protocol TrackerDataService {
 
-    func updateData(completion: @escaping TrackerDataCompletion)
+    func updateData(completion: @escaping DataCompletion)
 }
-
-public typealias TrackerDataCompletion = (_ success: Bool, _ newData: Bool) -> Void
 
 public class DefaultTrackerDataService: TrackerDataService {
     
@@ -36,22 +34,16 @@ public class DefaultTrackerDataService: TrackerDataService {
     
     private let apiRequest: APIRequest.Factory
     private var trackerDataServiceStore: TrackerDataServiceStore
-    private let trackerDataManager: TrackerDataManager
-    private let blockingListManager: BlockerListManager
     
     public init(apiRequest: @escaping APIRequest.Factory = { DefaultAPIRequest(baseUrl: .cdn) },
-                trackerDataServiceStore: TrackerDataServiceStore = TrackerDataServiceUserDefaults(),
-                trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager,
-                blockingListManager: BlockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager) {
+                trackerDataServiceStore: TrackerDataServiceStore = TrackerDataServiceUserDefaults()) {
 
         self.apiRequest = apiRequest
         self.trackerDataServiceStore = trackerDataServiceStore
-        self.trackerDataManager = trackerDataManager
-        self.blockingListManager = blockingListManager
     }
     
-    public func updateData(completion: @escaping TrackerDataCompletion) {
-        os_log("Sync starting")
+    public func updateData(completion: @escaping DataCompletion) {
+        os_log("TDS update starting")
         
         apiRequest().get(Paths.tds, withParams: nil) { data, response, error in
             
@@ -80,8 +72,6 @@ public class DefaultTrackerDataService: TrackerDataService {
             }
 
             self.trackerDataServiceStore.etag = response?.strongEtag()
-            self.trackerDataManager.load()
-            self.blockingListManager.updateAndReload()
             completion(true, true)
         }
     }
@@ -96,19 +86,5 @@ public class DefaultTrackerDataService: TrackerDataService {
             os_log("TDS data failed to persist to %{public}s %{public}s", type: .error, url.absoluteString, error.localizedDescription)
             return false
         }
-    }
-}
-
-extension  HTTPURLResponse {
-    
-    func strongEtag() -> String? {
-        var etag = headerValue(for: APIHeaders.Name.etag)
-        etag = etag?.dropPrefix("W/")
-        return etag
-    }
-    
-    func headerValue(for name: String) -> String? {
-        let lname = name.lowercased()
-        return allHeaderFields.filter { ($0.key as? String)?.lowercased() == lname }.first?.value as? String
     }
 }

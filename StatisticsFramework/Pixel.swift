@@ -49,6 +49,8 @@ public enum PixelName: String {
     case dashboardWhitelistOpened = "epw"
     case dashboardSearchInPopupSubmittedWithEnter = "epq_e"
     case dashboardSearchInPopupSubmittedWithLoupe = "epq_l"
+    
+    case safariBrowserExtensionSearch = "sbes"
 }
 
 public typealias PixelCompletion = (Error?) -> Void

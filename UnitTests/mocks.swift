@@ -55,6 +55,10 @@ struct MockTrustedSitesManager: TrustedSitesManager {
     
     var count: Int = 0
     
+    // swiftlint:disable identifier_name
+    var _whitelistedDomains = [String]()
+    // swiftlint:enable identifier_name
+
     func addDomain(_ domain: String) {
      
     }
@@ -65,6 +69,10 @@ struct MockTrustedSitesManager: TrustedSitesManager {
     
     func allDomains() -> [String] {
         return []
+    }
+    
+    func whitelistedDomains() -> [String] {
+        return _whitelistedDomains
     }
     
     func clear() {
@@ -202,7 +210,11 @@ class MockStatisticsStore: StatisticsStore {
 }
 
 class MockPixel: Pixel {
+    
+    var pixels = [(name: PixelName, params: [String: String]?)]()
+    
     func fire(_ pixel: PixelName, withParams params: [String: String], onComplete: @escaping PixelCompletion) {
+        pixels.append((name: pixel, params: params))
         onComplete(nil)
     }
 }

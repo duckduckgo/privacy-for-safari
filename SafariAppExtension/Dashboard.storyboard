@@ -830,7 +830,7 @@
                 </viewController>
                 <customObject id="PUx-oB-4Fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="524"/>
+            <point key="canvasLocation" x="23" y="524"/>
         </scene>
         <!--Trackers Detail View Controller-->
         <scene sceneID="hLn-ju-cIt">

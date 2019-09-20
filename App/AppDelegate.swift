@@ -25,6 +25,8 @@ import SafariServices
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var debugMenu: NSMenuItem!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard !ProcessInfo().arguments.contains("testing") else { return }
         
@@ -38,6 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         StatisticsLoader().refreshAppRetentionAtb(atLocation: "ad") {
             print(#function, "atb refreshed")
         }
+        
+        #if DEBUG
+        debugMenu.isHidden = false
+        #endif        
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {
@@ -57,4 +63,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
     }
+    
+    @IBAction func resetOnboarding(_ sender: Any) {
+        Settings().onboardingShown = false
+    }
+    
+    @IBAction func disableSyncService(_ sender: Any) {
+        LoginItemLauncher.disable()
+    }
+
 }

@@ -23,8 +23,8 @@ import SafariServices
 
 class DiagnosticSupport {
     
-    static let reportFileUrl = DefaultBlockerListManager.containerUrl.appendingPathComponent("report").appendingPathExtension("csv")
-    static let domainsListFileUrl = DefaultBlockerListManager.containerUrl.appendingPathComponent("top-sites").appendingPathExtension("json")
+    static let reportFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("report").appendingPathExtension("csv")
+    static let domainsListFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("top-sites").appendingPathExtension("json")
 
     public static func dump(_ trackers: [DetectedTracker], blocked: Bool) {
         #if DEBUG

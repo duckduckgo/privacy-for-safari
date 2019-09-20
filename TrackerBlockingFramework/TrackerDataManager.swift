@@ -36,7 +36,7 @@ public protocol TrackerDataManager {
 
 public struct TrackerDataLocation {
     
-    public static var groupName: String = "group.com.duckduckgo.TrackerData"
+    public static var groupName = "group.com.duckduckgo.TrackerData"
     
     static var trackerDataUrl: URL {
         return containerUrl.appendingPathComponent("trackerData").appendingPathExtension("json")

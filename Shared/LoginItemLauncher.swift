@@ -32,6 +32,10 @@ class LoginItemLauncher {
         launchLoginItem(serviceId: ServiceId.syncService)
     }
     
+    static func disable() {
+        SMLoginItemSetEnabled(ServiceId.syncService as CFString, false)
+    }
+    
     private static func launchLoginItem(serviceId: String) {
         let enabled = SMLoginItemSetEnabled(serviceId as CFString, true)
         os_log("Login service was %{public}s", type: .debug, enabled ? "launched" : "not launched")

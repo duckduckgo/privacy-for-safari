@@ -26,23 +26,46 @@ public struct SyncNotification {
 }
 
 class SyncRunner {
-    
+
     typealias SyncCompletion = (_ success: Bool) -> Void
     
     private let trackerDataService: TrackerDataService
+    private let tempWhitelistDataService: TempWhitelistDataService
+    private let trackerDataManager: TrackerDataManager
+    private let blockerListManager: BlockerListManager
     
-    init(trackerDataService: TrackerDataService = DefaultTrackerDataService()) {
+    init(trackerDataService: TrackerDataService = DefaultTrackerDataService(),
+         tempWhitelistDataService: TempWhitelistDataService = DefaultTempWhitelistDataService(),
+         trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager,
+         blockerListManager: BlockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager) {
+        
         self.trackerDataService = trackerDataService
+        self.tempWhitelistDataService = tempWhitelistDataService
+        self.trackerDataManager = trackerDataManager
+        self.blockerListManager = blockerListManager
     }
     
     public func sync(completion: @escaping SyncCompletion) {
         os_log("Sync is starting")
-        trackerDataService.updateData { success, newData in
-            if success && newData {
-                self.sendNewDataNotification()
-            }
-            completion(success)
+        
+        let group = DispatchGroup()
+        
+        let trackerData = ServiceWrapper(group: group)
+        let tempWhitelistData = ServiceWrapper(group: group)
+        
+        trackerDataService.updateData(completion: trackerData.start())
+        tempWhitelistDataService.updateData(completion: tempWhitelistData.start())
+        
+        group.wait()
+                        
+        if trackerData.newData || tempWhitelistData.newData {
+            self.trackerDataManager.load()
+            self.blockerListManager.updateAndReload()
+            self.sendNewDataNotification()
         }
+        
+        // if either fail, don't store the sync time - we need that data!
+        completion(trackerData.success && tempWhitelistData.success)
     }
     
     private func sendNewDataNotification() {
@@ -51,4 +74,28 @@ class SyncRunner {
                                                                      userInfo: nil,
                                                                      deliverImmediately: true)
     }
+}
+
+class ServiceWrapper {
+    
+    let group: DispatchGroup
+    
+    var newData: Bool = false
+    var success: Bool = false
+    
+    init(group: DispatchGroup) {
+        self.group = group
+    }
+    
+    func start() -> DataCompletion {
+        group.enter()
+        return completion
+    }
+    
+    private func completion(success: Bool, newData: Bool) {
+        self.newData = newData
+        self.success = success
+        group.leave()
+    }
+    
 }

@@ -8,6 +8,7 @@
 	<array>
 		<string>group.com.duckduckgo.BlockerList</string>
 		<string>group.com.duckduckgo.TrackerData</string>
+		<string>group.com.duckduckgo.TrustedSites</string>
 	</array>
 	<key>com.apple.security.files.user-selected.read-only</key>
 	<true/>

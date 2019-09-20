@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -16,21 +16,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="DuckDuckGo" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About DuckDuckGo" id="5kV-Vb-QxS">
+                                        <menuItem title="About" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Reset Onboarding" id="Kd2-mp-pUS">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="resetOnboarding:" target="Ady-hI-5gd" id="HPE-hW-PAL"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit DuckDuckGo" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -38,23 +31,69 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="dMs-cI-mzQ">
+                            <menuItem title="Edit" id="Lsn-vb-cQV">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="efO-DF-N0c">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="WKR-d8-YcP">
+                                            <connections>
+                                                <action selector="undo:" target="Ady-hI-5gd" id="II3-lO-cik"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="g9c-rV-Hau">
+                                            <connections>
+                                                <action selector="redo:" target="Ady-hI-5gd" id="JnW-MG-Fwb"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="JVl-1t-xgz"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="4tu-2I-qD1">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="i1u-Q1-KRA"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="8wI-kr-wxm">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="F9S-b7-Mje"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="TYQ-m9-ABV">
+                                            <connections>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="wWb-Nf-iwm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Delete" id="qf8-FZ-hT7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="delete:" target="Ady-hI-5gd" id="GRl-xv-Odq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="b4F-pY-oM8">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="YIZ-mW-xYE"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                             </menuItem>
-                            <menuItem title="Edit" id="5QF-Oa-p0T">
+                            <menuItem title="Debug" hidden="YES" id="wpr-3q-Mcd">
+                                <attributedString key="attributedTitle"/>
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Format" id="jxT-CU-nIS">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="View" id="H8h-7b-M4v">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Window" id="aUF-d1-5bR">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Help" id="wpr-3q-Mcd">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Debug" id="FK5-lh-U5C">
+                                    <items>
+                                        <menuItem title="Reset Onboarding" id="Kd2-mp-pUS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="resetOnboarding:" target="Voe-Tx-rLC" id="cbz-kX-fFr"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Disable Sync Service" id="qpi-Lv-lOD">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="disableSyncService:" target="Voe-Tx-rLC" id="G5e-gz-hnN"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                             </menuItem>
                         </items>
                     </menu>
@@ -62,7 +101,11 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                    <connections>
+                        <outlet property="debugMenu" destination="wpr-3q-Mcd" id="GSQ-Gk-xZj"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,7 +436,7 @@
                                     </scrollView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qsl-9j-tBO">
                                         <rect key="frame" x="47" y="180" width="146" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Submit Feedback" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bHN-sH-lDc">
+                                        <buttonCell key="cell" type="push" title="Submit Feedback" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bHN-sH-lDc">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>

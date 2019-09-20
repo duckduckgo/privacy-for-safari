@@ -1,7 +1,6 @@
 //
-//  TrackerDataTests.swift
-//  UnitTests
-//
+//  HTTPURLResponseExtension.swift
+//  DuckDuckGo Privacy Essentials
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,18 +17,20 @@
 //  limitations under the License.
 //
 
-import XCTest
-@testable import TrackerBlocking
+import Foundation
+import Core
 
-class TrackerDataTests: XCTestCase {
-
-    func testLoadData() {
-        let url = Bundle(for: TrackerDataTests.self).url(forResource: "sample-tracker-data", withExtension: "json")!
-        let trackerData = TrackerData.decode(contentsOf: url)
-        XCTAssertNotNil(trackerData)
-        XCTAssertEqual(2, trackerData?.trackers.count)
-        XCTAssertEqual(1, trackerData?.entities.count)
-        XCTAssertEqual(3, trackerData?.domains.count)        
+extension HTTPURLResponse {
+    
+    func strongEtag() -> String? {
+        var etag = headerValue(for: APIHeaders.Name.etag)
+        etag = etag?.dropPrefix("W/")
+        return etag
     }
-        
+    
+    func headerValue(for name: String) -> String? {
+        let lname = name.lowercased()
+        return allHeaderFields.filter { ($0.key as? String)?.lowercased() == lname }.first?.value as? String
+    }
+    
 }

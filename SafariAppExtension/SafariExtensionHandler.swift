@@ -101,6 +101,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     private let pixel: Pixel = Dependencies.shared.pixel
+    private let deepDetection = DeepDetection()
 
     override func beginRequest(with context: NSExtensionContext) {
         super.beginRequest(with: context)
@@ -187,7 +188,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         NSLog("popoverWillShow \(Data.shared.pageData.url?.absoluteString ?? "<no url>")")
         pixel.fire(.dashboardPopupOpened)
         SafariExtensionViewController.shared.pageData = Data.shared.pageData
-        SafariExtensionViewController.shared.viewWillAppear()
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
@@ -209,6 +209,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             
             var detectedTrackers = [DetectedTracker]()
             resources.forEach { resource in
+                self.deepDetection.check(resource: resource["url"], onPage: pageUrl)
+                
                 if let url = resource["url"],
                     let resourceUrl = URL(withResource: url, relativeTo: pageUrl),
                     let detectedTracker = trackerDetection.detectTrackerFor(resourceUrl: resourceUrl,

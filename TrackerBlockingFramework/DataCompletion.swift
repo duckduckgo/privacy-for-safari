@@ -1,7 +1,6 @@
 //
-//  TrackerDataTests.swift
-//  UnitTests
-//
+//  DataCompletion.swift
+//  DuckDuckGo Privacy Essentials
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,18 +17,6 @@
 //  limitations under the License.
 //
 
-import XCTest
-@testable import TrackerBlocking
+import Foundation
 
-class TrackerDataTests: XCTestCase {
-
-    func testLoadData() {
-        let url = Bundle(for: TrackerDataTests.self).url(forResource: "sample-tracker-data", withExtension: "json")!
-        let trackerData = TrackerData.decode(contentsOf: url)
-        XCTAssertNotNil(trackerData)
-        XCTAssertEqual(2, trackerData?.trackers.count)
-        XCTAssertEqual(1, trackerData?.entities.count)
-        XCTAssertEqual(3, trackerData?.domains.count)        
-    }
-        
-}
+public typealias DataCompletion = (_ success: Bool, _ newData: Bool) -> Void

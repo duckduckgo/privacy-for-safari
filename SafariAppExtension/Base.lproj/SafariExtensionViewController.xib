@@ -44,7 +44,7 @@
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="6FX-ne-XAu"/>
                         </imageView>
                         <textField focusRingType="none" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-K7-EcN">
-                            <rect key="frame" x="30" y="6" width="187" height="19"/>
+                            <rect key="frame" x="30" y="6" width="181" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" focusRingType="none" placeholderString="Search DuckDuckGo" id="T1m-Ma-6Rg">
                                 <font key="font" size="16" name="ProximaNova-Regular"/>
                                 <color key="textColor" name="SearchInputText"/>
@@ -55,7 +55,7 @@
                             </connections>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="4sM-Fe-yOe">
-                            <rect key="frame" x="223" y="0.0" width="19" height="30"/>
+                            <rect key="frame" x="217" y="0.0" width="19" height="30"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarSearchTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fol-nQ-O59">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -66,8 +66,8 @@
                             <color key="contentTintColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                         </button>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="41x-ag-NTP">
-                            <rect key="frame" x="250" y="0.0" width="18" height="30"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarListViewTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Jyu-wn-FSA">
+                            <rect key="frame" x="244" y="3" width="24" height="24"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Settings" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Jyu-wn-FSA">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -130,8 +130,8 @@
     </objects>
     <resources>
         <image name="Logo" width="119" height="119"/>
-        <image name="NSTouchBarListViewTemplate" width="18" height="30"/>
         <image name="NSTouchBarSearchTemplate" width="19" height="30"/>
+        <image name="Settings" width="24" height="24"/>
         <namedColor name="DashboardBackground">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

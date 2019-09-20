@@ -26,27 +26,22 @@ public protocol BlockerListManager {
     
     typealias Factory = (() -> BlockerListManager)
     
-    var blockerListUrl: URL { get }
     func updateAndReload()
     
 }
 
 public class DefaultBlockerListManager: BlockerListManager {
-    
-    public static var containerUrl: URL {
-        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.duckduckgo.BlockerList")!
-    }
-    
-    public var blockerListUrl: URL {
-        return DefaultBlockerListManager.containerUrl.appendingPathComponent("blockerList").appendingPathExtension("json")
-    }
-    
+        
     private let trackerDataManager: TrackerDataManager.Factory
     private let trustedSitesManager: TrustedSitesManager.Factory
+    private let blockerListUrl: URL
     
-    init(trackerDataManager: @escaping TrackerDataManager.Factory, trustedSitesManager: @escaping TrustedSitesManager.Factory) {
+    init(trackerDataManager: @escaping TrackerDataManager.Factory,
+         trustedSitesManager: @escaping TrustedSitesManager.Factory,
+         blockerListUrl: URL = BlockerListLocation.blockerListUrl) {        
         self.trackerDataManager = trackerDataManager
         self.trustedSitesManager = trustedSitesManager
+        self.blockerListUrl = blockerListUrl
     }
     
     public func updateAndReload() {
@@ -60,7 +55,9 @@ public class DefaultBlockerListManager: BlockerListManager {
             NSLog("No tracker data!")
             return nil
         }
-        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedSitesManager().allDomains())
+        
+        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedSitesManager().allDomains(),
+                                                                                    andTemporaryWhitelist: trustedSitesManager().whitelistedDomains())
         
         guard let data = try? JSONEncoder().encode(rules) else {
             NSLog("Failed to encode content blocker rules")
@@ -93,4 +90,14 @@ public class DefaultBlockerListManager: BlockerListManager {
         }
     }
     
+}
+
+public struct BlockerListLocation {
+    
+    public static let groupName = "group.com.duckduckgo.BlockerList"
+    
+    public static let containerUrl = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupName)!
+    
+    public static let blockerListUrl = containerUrl.appendingPathComponent("blockerList").appendingPathExtension("json")
+
 }

@@ -64,10 +64,6 @@ class MainViewController: NSViewController {
         tabs.selectTabViewItem(at: 1)
         setSectionButtonSelected(atIndex: 1)
     }
-    
-    @IBAction func resetOnboarding(_ sender: Any) {
-        Settings().onboardingShown = false
-    }
 
     private func deselectAllSectionButtons() {
         sectionButtons.arrangedSubviews.compactMap { $0 as? SectionButton }.forEach { sectionButton in

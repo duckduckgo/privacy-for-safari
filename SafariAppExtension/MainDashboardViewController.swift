@@ -99,7 +99,7 @@ class MainDashboardViewController: DashboardNavigationController {
         super.viewDidLoad()
         DistributedNotificationCenter.default().addObserver(self,
                                                             selector: #selector(onTrustedSitesChanged),
-                                                            name: TrustedSitesManagerUpdatedNotificationName,
+                                                            name: TrustedSitesNotification.sitesUpdatedNotificationName,
                                                             object: nil)
     }
     

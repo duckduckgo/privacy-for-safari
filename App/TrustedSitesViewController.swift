@@ -33,7 +33,7 @@ class TrustedSitesViewController: NSViewController {
         
         DistributedNotificationCenter.default().addObserver(self,
                                                             selector: #selector(onTrustedSitesChanged),
-                                                            name: TrustedSitesManagerUpdatedNotificationName,
+                                                            name: TrustedSitesNotification.sitesUpdatedNotificationName,
                                                             object: nil)
         
     }
