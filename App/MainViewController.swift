@@ -43,7 +43,6 @@ class MainViewController: NSViewController {
     }
 
     @IBAction func selectHome(_ sender: Any) {
-        print(#function, sender)
         pixel.fire(.homeShown)
         deselectAllSectionButtons()
         tabs.selectTabViewItem(at: 0)
@@ -51,14 +50,12 @@ class MainViewController: NSViewController {
     }
 
     @IBAction func selectSendFeedback(_ sender: Any) {
-        print(#function, sender)
         deselectAllSectionButtons()
         tabs.selectTabViewItem(at: 2)
         setSectionButtonSelected(atIndex: 2)
     }
 
     @IBAction func selectTrustedSites(_ sender: Any) {
-        print(#function, sender)
         pixel.fire(.homeWhitelistOpened)
         deselectAllSectionButtons()
         tabs.selectTabViewItem(at: 1)

@@ -47,14 +47,14 @@ public struct TrackerData: Codable {
 
     static func decode(contentsOf url: URL) -> TrackerData? {
         guard let data = try? Data(contentsOf: url) else {
-            os_log("Failed to load tracker data: %{public}s", type: .error, url.path)
+            os_log("Failed to load tracker data: %{public}s", log: generalLog, type: .error, url.path)
             return nil
         }
         
         do {
             return try JSONDecoder().decode(TrackerData.self, from: data)
         } catch {
-            os_log("Failed to decode tracker data: %{public}s", type: .error, error.localizedDescription)
+            os_log("Failed to decode tracker data: %{public}s", log: generalLog, type: .error, error.localizedDescription)
         }
         return nil
     }

@@ -80,7 +80,6 @@ class MainDashboardViewController: DashboardNavigationController {
 
     override var pageData: PageData? {
         didSet {
-            NSLog("MDVC pageDataSet \(isViewLoaded)")
             if isViewLoaded {
                 updateProtectionToggleState()
                 updateUI()
@@ -95,7 +94,6 @@ class MainDashboardViewController: DashboardNavigationController {
     private var pixel = Dependencies.shared.pixel
     
     override func viewDidLoad() {
-        NSLog("MDVC viewWillAppear \(pageData as Any)")
         super.viewDidLoad()
         DistributedNotificationCenter.default().addObserver(self,
                                                             selector: #selector(onTrustedSitesChanged),
@@ -104,7 +102,6 @@ class MainDashboardViewController: DashboardNavigationController {
     }
     
     @objc func onTrustedSitesChanged() {
-        NSLog("MDVC \(#function)")
         trustedSites.load()
     }
     
@@ -112,13 +109,7 @@ class MainDashboardViewController: DashboardNavigationController {
         protectionToggle.state = isTrusted ? .off : .on
     }
     
-    override func viewWillAppear() {
-        NSLog("MDVC viewWillAppear \(pageData as Any)")
-        super.viewWillAppear()
-    }
-    
     override func viewDidAppear() {
-        NSLog("MDVC viewDidAppear \(pageData as Any)")
         super.viewDidAppear()
         trustedSites.load()
         protection = isTrusted ? .on : .off
@@ -167,7 +158,6 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     private func updateUI() {
-        NSLog("MDVC updateUI")
         updateEncryptionStatus()
         updateStatement()
         updateTitle()
@@ -270,12 +260,8 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     private func updateGradeIcon() {
-        NSLog("updateGradeIcon")
         gradeIcon.image = NSImage(named: NSImage.Name("PP Grade Null"))
-        guard let grade = pageData?.calculateGrade(), pageData?.url != nil else {
-            NSLog("updateGradeIcon -> null")
-            return
-        }
+        guard let grade = pageData?.calculateGrade(), pageData?.url != nil else { return }
         
         let trusted = isTrusted
         gradeIcon.image = trusted ? grade.site.grade.iconImage(trusted: trusted) : grade.enhanced.grade.iconImage(trusted: trusted)
@@ -319,13 +305,9 @@ extension Grade.Grading {
     }
     
     func iconImage(trusted: Bool) -> NSImage? {
-        guard let iconName = Grade.Grading.icons[self] else {
-            NSLog("No image for \(self)")
-            return nil
-        }
+        guard let iconName = Grade.Grading.icons[self] else { return nil }
         let suffix = trusted ? "Off" : "On"
         let name = iconName + " " + suffix
-        NSLog("heroImage named \(name)")
         return NSImage(named: NSImage.Name(name))
     }
     

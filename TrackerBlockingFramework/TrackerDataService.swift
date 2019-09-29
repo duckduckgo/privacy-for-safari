@@ -43,25 +43,26 @@ public class DefaultTrackerDataService: TrackerDataService {
     }
     
     public func updateData(completion: @escaping DataCompletion) {
-        os_log("TDS update starting")
+        os_log("TDS update starting", log: generalLog)
         
         apiRequest().get(Paths.tds, withParams: nil) { data, response, error in
             
             if let error = error {
-                os_log("TDS request failed with error %{private}s", type: .error, error.localizedDescription)
+                os_log("TDS request failed with error %{private}s", log: generalLog, type: .error, error.localizedDescription)
                 completion(false, false)
                 return
             }
             
             guard let data = data else {
-                os_log("TDS request returned with no data", type: .error)
+                os_log("TDS request returned with no data", log: generalLog, type: .error)
                 completion(false, false)
                 return
             }
             
             let newData = self.trackerDataServiceStore.etag != response?.strongEtag()
             guard newData else {
-                os_log("TDS request returned with cached data", type: .error)
+                os_log("TDS request returned with cached data, etag: %{public}s", log: generalLog, type: .error,
+                       self.trackerDataServiceStore.etag ?? "unknown")
                 completion(true, false)
                 return
             }
@@ -72,6 +73,7 @@ public class DefaultTrackerDataService: TrackerDataService {
             }
 
             self.trackerDataServiceStore.etag = response?.strongEtag()
+            os_log("TDS new data with etag: %{public}s", log: generalLog, type: .error, self.trackerDataServiceStore.etag ?? "unknown")
             completion(true, true)
         }
     }
@@ -80,10 +82,12 @@ public class DefaultTrackerDataService: TrackerDataService {
         let url = TrackerDataLocation.trackerDataUrl
         do {
             try data.write(to: url, options: .atomic)
-            os_log("TDS update persisted to %{public}s", type: .info, url.absoluteString)
+            os_log("TDS update persisted to %{public}s", log: generalLog, type: .default, url.absoluteString)
             return true
         } catch {
-            os_log("TDS data failed to persist to %{public}s %{public}s", type: .error, url.absoluteString, error.localizedDescription)
+            os_log("TDS data failed to persist to %{public}s %{public}s", log: generalLog, type: .error,
+                   url.absoluteString,
+                   error.localizedDescription)
             return false
         }
     }

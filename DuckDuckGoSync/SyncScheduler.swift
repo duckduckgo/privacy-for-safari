@@ -46,13 +46,13 @@ public class SyncScheduler {
         activity.repeats = true
         activity.qualityOfService = .background
         activity.interval = nextSync()
-        os_log("Scheduling sync in %{public}gs", type: .info, activity.interval)
+        os_log("Scheduling sync in %{public}gs", log: generalLog, type: .default, activity.interval)
 
         activity.schedule { result in
             
-            os_log("Sync scheduled", type: .debug)
+            os_log("Sync scheduled", log: generalLog, type: .debug)
             self.syncRunner.sync { success in
-                os_log("Sync was %{public}s", type: .info, success ? "successful" : "unsuccessful")
+                os_log("Sync was %{public}s", log: generalLog, type: .default, success ? "successful" : "unsuccessful")
                 if success {
                     self.syncStore.lastSyncTimestamp = Date().timeIntervalSince1970
                 }

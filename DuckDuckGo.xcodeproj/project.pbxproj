@@ -109,7 +109,21 @@
 		854EFAE32333BB4D00A6BDC3 /* BlockerListManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAE22333BB4D00A6BDC3 /* BlockerListManagerTests.swift */; };
 		855205C22333C9D4003E5640 /* DeepDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C02333C9BB003E5640 /* DeepDetection.swift */; };
 		855205C42333C9DE003E5640 /* DeepDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C32333C9DE003E5640 /* DeepDetectionTests.swift */; };
-		855C129223192443005B21FC /* DaignosticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C129123192443005B21FC /* DaignosticSupport.swift */; };
+		855205C62334FF5F003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205C72334FFF6003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205C82334FFF6003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205C92334FFF7003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205CA2334FFF7003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205CB2334FFF8003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205CC2334FFF8003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205CD2334FFFC003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		855205CE23350163003E5640 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855205CF23350164003E5640 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855205D023350164003E5640 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855205D123350165003E5640 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855205D223350166003E5640 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855205D32335016D003E5640 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855C129223192443005B21FC /* DiagnosticSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C129123192443005B21FC /* DiagnosticSupport.swift */; };
 		855C129423193225005B21FC /* ReportBrokenSiteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C129323193225005B21FC /* ReportBrokenSiteController.swift */; };
 		8560B55A22CE613C0071CC72 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8590F40A22CE563300B7473A /* StringExtension.swift */; };
 		8562FF09230E2BA100CACECE /* ContentBlockerRuleOutputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8562FF08230E2BA100CACECE /* ContentBlockerRuleOutputTests.swift */; };
@@ -527,7 +541,8 @@
 		854EFAE22333BB4D00A6BDC3 /* BlockerListManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerListManagerTests.swift; sourceTree = "<group>"; };
 		855205C02333C9BB003E5640 /* DeepDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDetection.swift; sourceTree = "<group>"; };
 		855205C32333C9DE003E5640 /* DeepDetectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDetectionTests.swift; sourceTree = "<group>"; };
-		855C129123192443005B21FC /* DaignosticSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaignosticSupport.swift; sourceTree = "<group>"; };
+		855205C52334FF5F003E5640 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		855C129123192443005B21FC /* DiagnosticSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticSupport.swift; sourceTree = "<group>"; };
 		855C129323193225005B21FC /* ReportBrokenSiteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBrokenSiteController.swift; sourceTree = "<group>"; };
 		8562FF08230E2BA100CACECE /* ContentBlockerRuleOutputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRuleOutputTests.swift; sourceTree = "<group>"; };
 		8576BB7023100FF5005DAB06 /* tracker-cases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tracker-cases.json"; sourceTree = "<group>"; };
@@ -736,6 +751,7 @@
 				854A9F532271CB01008F2A93 /* AppIcon.xcassets */,
 				850385FA22F86481002259DB /* AppLinks.swift */,
 				8524A3E723325063001E8856 /* BundleIds.swift */,
+				855205C52334FF5F003E5640 /* Logging.swift */,
 				838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */,
 				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
 				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
@@ -842,7 +858,7 @@
 			children = (
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
 				85D5017A22C4322B005DDF47 /* Clickables.swift */,
-				855C129123192443005B21FC /* DaignosticSupport.swift */,
+				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
 				85417D97226762870062A081 /* Info.plist */,
@@ -1546,7 +1562,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				838AF8FE232688DD00522DD9 /* SyncScheduler.swift in Sources */,
+				855205CD2334FFFC003E5640 /* Logging.swift in Sources */,
 				838AF8FD232688DD00522DD9 /* LoginItemLauncher.swift in Sources */,
+				855205D32335016D003E5640 /* BundleIds.swift in Sources */,
 				838AF8FF232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift in Sources */,
 				834E5859232C22B700B43C37 /* SyncStore.swift in Sources */,
 				838AF900232688DD00522DD9 /* SyncRunner.swift in Sources */,
@@ -1566,7 +1584,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855205D123350165003E5640 /* BundleIds.swift in Sources */,
 				8524A41823327584001E8856 /* BrokenSiteReporter.swift in Sources */,
+				855205CA2334FFF7003E5640 /* Logging.swift in Sources */,
 				8524A429233277BA001E8856 /* FeedbackSender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1576,6 +1596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8524A3F12332651A001E8856 /* SendFeedbackViewController.swift in Sources */,
+				855205C62334FF5F003E5640 /* Logging.swift in Sources */,
 				85E9522122AFDB5C0071281E /* URLExtension.swift in Sources */,
 				85417D66226605E60062A081 /* MainViewController.swift in Sources */,
 				852AEEB9232FECA1003C1D17 /* TrustedSitesViewController.swift in Sources */,
@@ -1607,7 +1628,8 @@
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,
 				8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */,
-				855C129223192443005B21FC /* DaignosticSupport.swift in Sources */,
+				855C129223192443005B21FC /* DiagnosticSupport.swift in Sources */,
+				855205C72334FFF6003E5640 /* Logging.swift in Sources */,
 				85C7AC5C22CCDB3500619302 /* TrackersDetailViewController.swift in Sources */,
 				85417D93226762870062A081 /* SafariExtensionViewController.swift in Sources */,
 				85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */,
@@ -1615,6 +1637,7 @@
 				8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */,
 				850385FC22F864BE002259DB /* AppLinks.swift in Sources */,
 				8590F40C22CE563800B7473A /* StringExtension.swift in Sources */,
+				855205CE23350163003E5640 /* BundleIds.swift in Sources */,
 				855C129423193225005B21FC /* ReportBrokenSiteController.swift in Sources */,
 				85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */,
 				85417D91226762870062A081 /* SafariExtensionHandler.swift in Sources */,
@@ -1628,8 +1651,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8590F40D22CE563900B7473A /* StringExtension.swift in Sources */,
+				855205CF23350164003E5640 /* BundleIds.swift in Sources */,
 				85417DAE226762E40062A081 /* ContentBlockerRequestHandler.swift in Sources */,
 				8590F41222CE564600B7473A /* URLExtension.swift in Sources */,
+				855205C82334FFF6003E5640 /* Logging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1648,6 +1673,7 @@
 				850AFAFD232A4FF8004C859B /* TermsOfService.swift in Sources */,
 				8524A3EF23325173001E8856 /* BundleIds.swift in Sources */,
 				85991510228036AD0023C1F2 /* TrackerDataManager.swift in Sources */,
+				855205CC2334FFF8003E5640 /* Logging.swift in Sources */,
 				859914D3227895F40023C1F2 /* DetectedTracker.swift in Sources */,
 				83DFC259232AAC5300700F87 /* TrackerDataService.swift in Sources */,
 				859914D12278946A0023C1F2 /* TrackerBlockingDependencies.swift in Sources */,
@@ -1700,12 +1726,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D3300423310CF900DFEAF2 /* Pixel.swift in Sources */,
+				855205CB2334FFF8003E5640 /* Logging.swift in Sources */,
 				85E9521522AFC7C20071281E /* StatisticsLoader.swift in Sources */,
 				8358675E23322836001776B0 /* FireOncePixel.swift in Sources */,
 				85E9521722AFC7FB0071281E /* StatisticsDependencies.swift in Sources */,
 				855205C22333C9D4003E5640 /* DeepDetection.swift in Sources */,
 				8590F40F22CE563A00B7473A /* StringExtension.swift in Sources */,
 				85E9521D22AFCE7A0071281E /* Atb.swift in Sources */,
+				855205D223350166003E5640 /* BundleIds.swift in Sources */,
 				85E9521922AFC8F10071281E /* StatisticsStore.swift in Sources */,
 				8590F41422CE564600B7473A /* URLExtension.swift in Sources */,
 			);
@@ -1716,7 +1744,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8590F41322CE564600B7473A /* URLExtension.swift in Sources */,
+				855205C92334FFF7003E5640 /* Logging.swift in Sources */,
 				8590F40E22CE563A00B7473A /* StringExtension.swift in Sources */,
+				855205D023350164003E5640 /* BundleIds.swift in Sources */,
 				85E9523922B0FDFB0071281E /* AppVersion.swift in Sources */,
 				85E9523722B0FDFB0071281E /* APIRequest.swift in Sources */,
 				85E9523822B0FDFB0071281E /* APIHeaders.swift in Sources */,
@@ -2141,7 +2171,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2149,7 +2179,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "1.0-beta1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2166,7 +2196,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2174,7 +2204,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "1.0-beta1";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

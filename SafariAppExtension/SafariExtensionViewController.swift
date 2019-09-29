@@ -45,7 +45,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     private let pixel: Pixel = Dependencies.shared.pixel
 
     override func viewDidLoad() {
-        NSLog("SEVC viewDidLoad")
         super.viewDidLoad()
         
         initSearchPlaceholder()
@@ -56,14 +55,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     override func viewWillAppear() {
-        NSLog("SEVC viewWillAppear")
         super.viewWillAppear()
         tabs.selectedTabViewItem?.viewController?.viewWillAppear()
         DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
     }
     
     override func viewDidAppear() {
-        NSLog("SEVC viewDidAppear")
         super.viewDidAppear()
         updateSearchFieldCaretColor()
     }
@@ -124,7 +121,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     private func updateUI() {
-        NSLog("SEVC \(#function) \(navigationController as Any)")
         navigationController?.pageData = pageData
     }
     

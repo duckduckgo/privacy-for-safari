@@ -56,7 +56,6 @@ class TrackersDetailViewController: DashboardNavigationController {
     
     private func updateUI() {
         dataItems = [ .pageHeader ] + (pageData?.trackerBreakdown() ?? [])
-        NSLog("dataItems \(dataItems)")
         outline.reloadData()
     }
 

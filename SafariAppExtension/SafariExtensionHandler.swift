@@ -20,6 +20,7 @@
 import SafariServices
 import TrackerBlocking
 import Statistics
+import os
 
 // See https://developer.apple.com/videos/play/wwdc2019/720/
 class SafariExtensionHandler: SFSafariExtensionHandler {
@@ -49,6 +50,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         func trackers(_ trackers: [DetectedTracker], blockedOnPage page: SFSafariPage) {
             DiagnosticSupport.dump(trackers, blocked: true)
+            
+            trackers.forEach {
+                os_log("BLOCKED %{public}s on %s", log: generalLog, type: .default, $0.resource.absoluteString, $0.page.absoluteString)
+            }
+                        
             var pageTrackers = trackersPerPage[page, default: Trackers()]
             pageTrackers.blocked += trackers
             trackersPerPage[page] = pageTrackers
@@ -72,17 +78,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         func clear(_ page: SFSafariPage) {
-            NSLog("Clearing data for page \(page as Any)")
-            
             trackersPerPage.removeValue(forKey: page)
-            
             if page == currentPage {
                 currentPage = nil
             }
         }
                 
         private func refreshDashboard(_ function: StaticString = #function) {
-            NSLog("refreshing dashboard from \(function)")
             DispatchQueue.main.async {
                 SafariExtensionViewController.shared.pageData = self.pageData
             }
@@ -152,17 +154,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func handleBeforeUnloadMessage(onPage page: SFSafariPage) {
-        NSLog("\(#function)")
         Data.shared.clear(page)
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-        NSLog("validateToolbarItem")
-        
         validationHandler(true, "")
-        
         Data.shared.setCurrentPage(to: nil, withUrl: nil)
-        
         updateToolbar()
     }
     
@@ -185,7 +182,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverWillShow(in window: SFSafariWindow) {
-        NSLog("popoverWillShow \(Data.shared.pageData.url?.absoluteString ?? "<no url>")")
         pixel.fire(.dashboardPopupOpened)
         SafariExtensionViewController.shared.pageData = Data.shared.pageData
     }
@@ -195,17 +191,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     private func handleResourceLoadedMessage(_ userInfo: [String: Any]?, onPage page: SFSafariPage) {
-        guard let resources = userInfo?["resources"] as? [[String: String]] else {
-            return
-        }
-        
-        NSLog("checking \(resources.count) resources ")
-        
+        guard let resources = userInfo?["resources"] as? [[String: String]] else { return }
+                
         page.getPropertiesWithCompletionHandler { properties in
             let trackerDetection = Dependencies.shared.trackerDetection
             guard let pageUrl = properties?.url else { return }
-            
-            NSLog("\(resources.count) found on \(pageUrl)")
             
             var detectedTrackers = [DetectedTracker]()
             resources.forEach { resource in
@@ -219,8 +209,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     detectedTrackers.append(detectedTracker)
                 }
             }
-            
-            NSLog("\(detectedTrackers.count) detected trackers")
             
             guard !detectedTrackers.isEmpty else { return }
             Data.shared.trackers(detectedTrackers, loadedOnPage: page)
@@ -239,7 +227,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let site = Dependencies.shared.trustedSitesManager.isTrusted(url: url) ? grade.site : grade.enhanced
         let grading = site.grade
         
-        NSLog("Setting toolbar to \(grade)")
         toolbarItem.setImage(grading.image)
     }
     

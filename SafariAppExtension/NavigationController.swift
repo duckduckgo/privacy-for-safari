@@ -24,27 +24,23 @@ class NavigationController: NSPageController {
 
     var pageData: PageData? {
         didSet {
-            NSLog("\(self) didSet pageData \(pageData as Any)")
             updateSelectedViewController()
         }
     }
 
     override func viewDidLoad() {
-        NSLog("\(self) \(#function)")
         super.viewDidLoad()
         delegate = self
         transitionStyle = .horizontalStrip
     }
     
     override func viewWillAppear() {
-        NSLog("\(self) \(#function)")
         super.viewWillAppear()
         arrangedObjects = [ DashboardControllers.main ]
         updateSelectedViewController()
     }
 
     private func updateSelectedViewController() {
-        NSLog("\(self) \(#function)")
         (selectedViewController as? DashboardNavigationController)?.pageData = pageData
     }
 
@@ -53,7 +49,6 @@ class NavigationController: NSPageController {
 extension NavigationController: DashboardNavigationDelegate {
 
     func present(controller: DashboardControllers) {
-        NSLog("\(self) \(#function)")
         arrangedObjects.append(controller)
         self.selectedIndex += 1
         DispatchQueue.main.async {
@@ -67,7 +62,6 @@ extension NavigationController: DashboardNavigationDelegate {
     }
 
     func push(controller: DashboardControllers) {
-        NSLog("\(self) \(#function)")
         arrangedObjects.append(controller)
         navigateForward(self)
         DispatchQueue.main.async {
@@ -77,7 +71,6 @@ extension NavigationController: DashboardNavigationDelegate {
     }
 
     func popController() {
-        NSLog("\(self) \(#function)")
         guard arrangedObjects.count > 1 else { return }
         navigateBack(self)
         DispatchQueue.main.async {
@@ -91,13 +84,11 @@ extension NavigationController: DashboardNavigationDelegate {
 extension NavigationController: NSPageControllerDelegate {
 
     func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
-        NSLog("\(self) \(#function)")
         completeTransition()
         updateSelectedViewController()
     }
 
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
-        NSLog("\(self) \(#function)")
         guard let controllerId = object as? DashboardControllers else {
             fatalError("Unexpected object \(object)")
         }
@@ -106,7 +97,6 @@ extension NavigationController: NSPageControllerDelegate {
 
     func pageController(_ pageController: NSPageController,
                         viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        NSLog("\(self) \(#function) \(identifier)")
 
         guard let controller = storyboard?.instantiateController(withIdentifier: identifier) else {
             fatalError("instantiateController with identifier \(identifier) failed")

@@ -67,7 +67,6 @@ extension OnboardingPageController: NSPageControllerDelegate {
     func pageController(_ pageController: NSPageController,
                         viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
         
-        NSLog("\(self) \(#function)")
         guard let controller = storyboard?.instantiateController(withIdentifier: identifier) as? OnboardingScreen else {
             fatalError("Failed to load \(identifier) controller")
         }

@@ -37,7 +37,6 @@ public class PageData {
     private var grade: Grade?
     
     public init(url: URL? = nil) {
-        NSLog("PageData.init \(url?.absoluteString ?? "<no url>")")
         self.url = url
         
         if let url = url {
@@ -77,7 +76,6 @@ public class PageData {
             grade.setParentEntity(named: entity?.displayName, withPrevalence: entity?.prevalence)
         }
 
-        NSLog("Setting grade to \(grade.scores.site) vs \(grade.scores.site)")
         return grade.scores
     }
 

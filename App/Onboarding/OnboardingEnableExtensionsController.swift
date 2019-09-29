@@ -48,7 +48,6 @@ class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWat
     }
 
     func stateUpdated(watcher: ExtensionsStateWatcher) {
-        print(#function, watcher.allEnabled)
                 
         if watcher.allEnabled {
             killTimer()
@@ -59,12 +58,10 @@ class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWat
     }
 
     func startTimer() {
-        print(#function)
         killTimer()
 
         DispatchQueue.main.async {
             self.detectionTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in
-                print("timer fired")
                 self.watcher?.refresh()
             })
         }
@@ -76,7 +73,6 @@ class OnboardingEnableExtensionsController: OnboardingScreen, ExtensionsStateWat
     }
 
     func nextScreen() {
-        print(#function)
         
         DispatchQueue.main.async {
             self.view.window?.orderFrontRegardless()

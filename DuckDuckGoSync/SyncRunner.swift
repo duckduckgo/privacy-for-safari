@@ -46,7 +46,7 @@ class SyncRunner {
     }
     
     public func sync(completion: @escaping SyncCompletion) {
-        os_log("Sync is starting")
+        os_log("Sync is starting", log: generalLog)
         
         let group = DispatchGroup()
         

@@ -37,9 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         LoginItemLauncher.launchSyncService()
         
-        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "ad") {
-            print(#function, "atb refreshed")
-        }
+        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "ad", completion: nil)
         
         #if DEBUG
         debugMenu.isHidden = false
@@ -47,7 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {
-        print(#function, urls)
         
         guard urls.count > 0 else { return }
         guard let controller = application.keyWindow?.windowController?.contentViewController as? MainViewController else { return }

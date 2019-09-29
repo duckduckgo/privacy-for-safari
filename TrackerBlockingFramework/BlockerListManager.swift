@@ -52,7 +52,7 @@ public class DefaultBlockerListManager: BlockerListManager {
     
     private func buildBlockerListData() -> Data? {
         guard let trackerData = trackerDataManager().trackerData else {
-            NSLog("No tracker data!")
+            os_log("No trackers found", log: generalLog, type: .error)
             return nil
         }
         
@@ -60,16 +60,18 @@ public class DefaultBlockerListManager: BlockerListManager {
                                                                                     andTemporaryWhitelist: trustedSitesManager().whitelistedDomains())
         
         guard let data = try? JSONEncoder().encode(rules) else {
-            NSLog("Failed to encode content blocker rules")
+            os_log("Failed to encode rules", log: generalLog, type: .error)
             return nil
         }
         
         if let store = WKContentRuleListStore.default() {
-            store.compileContentRuleList(forIdentifier: "XXX", encodedContentRuleList: String(data: data, encoding: .utf8)!) {
-                NSLog("compileContentRuleList \($0 as Any) \($1 as Any)")
+            store.compileContentRuleList(forIdentifier: "XXX", encodedContentRuleList: String(data: data, encoding: .utf8)!) { _, error in
+                if let error = error {
+                    os_log("Failed to to compile rules %{public}s", log: generalLog, type: .error, error.localizedDescription)
+                }
             }
         } else {
-            NSLog("compileContentRuleList NO STORE")
+            os_log("Failed to access the default WKContentRuleListStore for rules compiliation checking", log: generalLog, type: .error)
         }
         return data
     }
@@ -78,7 +80,7 @@ public class DefaultBlockerListManager: BlockerListManager {
         let id = BundleIds.contentBlockerExtension
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: id) { error in
             guard let error = error else { return }
-            os_log("Failed to reload extension %{public}s", type: .error, error.localizedDescription)
+            os_log("Failed to reload extension %{public}s", log: generalLog, type: .error, error.localizedDescription)
         }
     }
     
@@ -86,7 +88,7 @@ public class DefaultBlockerListManager: BlockerListManager {
         do {
             try data.write(to: blockerListUrl, options: .atomicWrite)
         } catch {
-            os_log("Failed to create blocker list %{public}s", type: .error, error.localizedDescription)
+            os_log("Failed to create blocker list %{public}s", log: generalLog, type: .error, error.localizedDescription)
         }
     }
     

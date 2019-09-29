@@ -1,5 +1,5 @@
 //
-//  DaignosticSupport.swift
+//  DiagnosticSupport.swift
 //  SafariAppExtension
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
@@ -20,34 +20,31 @@
 import Foundation
 import TrackerBlocking
 import SafariServices
+import os
 
 class DiagnosticSupport {
     
-    static let reportFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("report").appendingPathExtension("csv")
-    static let domainsListFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("top-sites").appendingPathExtension("json")
+    private static let logger = OSLog(subsystem: BundleIds.app, category: "Diagnostics")
+    
+    private static let reportFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("report").appendingPathExtension("csv")
+    private static let domainsListFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("top-sites").appendingPathExtension("json")
 
     public static func dump(_ trackers: [DetectedTracker], blocked: Bool) {
         #if DEBUG
         DispatchQueue.global(qos: .background).async {
             
-            NSLog(#function)
             let action = blocked ? "block" : "ignore"
             let report = trackers.map { "\"\($0.resource.absoluteString.replacingOccurrences(of: ",", with: "\\,"))\","
                 + "\"\($0.page.absoluteString.replacingOccurrences(of: ",", with: "\\,"))\","
                 + "\(action)" }
             
-            guard let data = (report.joined(separator: "\n") + "\n").data(using: .utf8) else {
-                NSLog("\(#function) failed to create report data")
-                return
-            }
+            guard let data = (report.joined(separator: "\n") + "\n").data(using: .utf8) else { return }
             
             if !FileManager.default.fileExists(atPath: reportFileUrl.path) {
-                NSLog("\(#function) creating file at \(reportFileUrl.path)")
                 FileManager.default.createFile(atPath: reportFileUrl.path, contents: data, attributes: nil)
             } else {
-                NSLog("\(#function) appending file at \(reportFileUrl.path)")
                 guard let handle = try? FileHandle(forUpdating: reportFileUrl) else {
-                    NSLog("\(#function) failed to open file handle \(reportFileUrl.absoluteString)")
+                    os_log("Unable to open FileHandle %{public}%s", log: logger, type: .default, reportFileUrl.absoluteString)
                     return
                 }
                 handle.seekToEndOfFile()
@@ -68,15 +65,12 @@ class DiagnosticSupport {
         DispatchQueue.global(qos: .background).async {
             guard let next = nextUrl() else { return }
             guard let url = URL(string: next) else {
-                NSLog("\(#function) failed to create url from \(next)")
+                os_log("Next URL is invalid: %{public}s", log: logger, type: .default, next)
                 return
             }
             
-            NSLog("\(#function) opening \(url.absoluteString)")
             SFSafariApplication.openWindow(with: url) { window in
-                NSLog("\(#function) window open \(url.absoluteString)")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    NSLog("\(#function) window closing \(url.absoluteString)")
                     window?.close()
                     nextBlockingTest()
                 }
@@ -85,20 +79,19 @@ class DiagnosticSupport {
     }
     
     private static func nextUrl() -> String? {
-        NSLog("\(#function) IN")
         
         guard let data = try? Data(contentsOf: domainsListFileUrl) else {
-            NSLog("\(#function) Could not read domains list")
+            os_log("Failed to read %{public}s", log: logger, type: .error, domainsListFileUrl.absoluteString)
             return nil
         }
                 
         guard var urls = try? JSONDecoder().decode([String].self, from: data) else {
-            NSLog("\(#function) Failed to decode url content")
+            os_log("Failed to decode %{public}s", log: logger, type: .error, domainsListFileUrl.absoluteString)
             return nil
         }
         
         guard !urls.isEmpty else {
-            NSLog("\(#function) No more urls")
+            // No urls found, we're finished
             return nil
         }
         
@@ -106,10 +99,9 @@ class DiagnosticSupport {
         do {
             try JSONEncoder().encode(urls).write(to: domainsListFileUrl)
         } catch {
-            NSLog("\(#function) failed to write urls back \(error.localizedDescription)")
+            os_log("Failed to re-encode %{public}s", log: logger, type: .error, domainsListFileUrl.absoluteString)
         }
         
-        NSLog("\(#function) OUT, \(nextUrl)")
         return nextUrl
     }
     

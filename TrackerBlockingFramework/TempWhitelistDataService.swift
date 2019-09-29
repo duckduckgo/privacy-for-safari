@@ -45,25 +45,26 @@ public class DefaultTempWhitelistDataService: TempWhitelistDataService {
     }
     
     public func updateData(completion: @escaping TempWhitelistDataCompletion) {
-        os_log("Temp whitelist update starting")
+        os_log("Temp whitelist update starting", log: generalLog)
         
         apiRequest().get(Paths.whitelist, withParams: nil) { data, response, error in
             
             if let error = error {
-                os_log("Temp whitelist request failed with error %{private}s", type: .error, error.localizedDescription)
+                os_log("Temp whitelist request failed with error %{private}s", log: generalLog, type: .error, error.localizedDescription)
                 completion(false, false)
                 return
             }
             
             guard let data = data else {
-                os_log("Temp whitelist request returned with no data", type: .error)
+                os_log("Temp whitelist request returned with no data", log: generalLog, type: .error)
                 completion(false, false)
                 return
             }
             
             let newData = self.tempWhitelistDataServiceStore.etag != response?.strongEtag()
             guard newData else {
-                os_log("Temp whitelist request returned with cached data", type: .error)
+                os_log("Temp whitelist request returned with cached data, etag: %{public}s", log: generalLog, type: .error,
+                       self.tempWhitelistDataServiceStore.etag ?? "unknown")
                 completion(true, false)
                 return
             }
@@ -74,6 +75,8 @@ public class DefaultTempWhitelistDataService: TempWhitelistDataService {
             }
 
             self.tempWhitelistDataServiceStore.etag = response?.strongEtag()
+            os_log("Temp whitelist new data with etag: %{public}s", log: generalLog, type: .error,
+                   self.tempWhitelistDataServiceStore.etag ?? "unknown")
             completion(true, true)
         }
     }
@@ -82,10 +85,12 @@ public class DefaultTempWhitelistDataService: TempWhitelistDataService {
         let url = TempWhitelistDataLocation.dataUrl
         do {
             try data.write(to: url, options: .atomic)
-            os_log("Temp whitelist update persisted to %{public}s", type: .info, url.absoluteString)
+            os_log("Temp whitelist update persisted to %{public}s", log: generalLog, type: .default, url.absoluteString)
             return true
         } catch {
-            os_log("Temp whitelist data failed to persist to %{public}s %{public}s", type: .error, url.absoluteString, error.localizedDescription)
+            os_log("Temp whitelist data failed to persist to %{public}s %{public}s", log: generalLog, type: .error,
+                   url.absoluteString,
+                   error.localizedDescription)
             return false
         }
     }

@@ -84,23 +84,23 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     
     public func load() {
         if !FileManager.default.fileExists(atPath: TrackerDataLocation.trackerDataUrl.path) {
-            os_log("Tracker data does not exist, loading default", type: .error)
+            os_log("Tracker data does not exist, loading default", log: generalLog, type: .error)
             installDefaultTrackerData()
         }
         self.trackerData = TrackerData.decode(contentsOf: TrackerDataLocation.trackerDataUrl)
-        os_log("loaded %d trackers and %d entities", trackerData?.trackers.count ?? -1, trackerData?.entities.count ?? -1)
+        os_log("loaded %d trackers and %d entities", log: generalLog, trackerData?.trackers.count ?? -1, trackerData?.entities.count ?? -1)
     }
 
     private func installDefaultTrackerData() {
         guard let defaultTrackerDataUrl = Bundle(for: type(of: self)).url(forResource: "trackerData", withExtension: "json") else {
-            os_log("Failed to determine url for writing trackerData.json", type: .error)
+            os_log("Failed to determine url for writing trackerData.json", log: generalLog, type: .error)
             return
         }
         
         do {
             try Data(contentsOf: defaultTrackerDataUrl).write(to: TrackerDataLocation.trackerDataUrl, options: .atomicWrite)
         } catch {
-            os_log("Failed to write trackerData.json to %{public}s", type: .error, TrackerDataLocation.trackerDataUrl.absoluteString)
+            os_log("Failed to write trackerData.json to %{public}s", log: generalLog, type: .error, TrackerDataLocation.trackerDataUrl.absoluteString)
         }
     }
 }

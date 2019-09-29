@@ -89,7 +89,7 @@ public class DefaultStatisticsLoader: StatisticsLoader {
         
         apiRequest().get(Paths.atb, withParams: params) { data, _, error in
             if let error = error {
-                os_log("App atb request failed with error %{public}s", type: .error, error.localizedDescription)
+                os_log("App atb request failed with error %{public}s", log: generalLog, type: .error, error.localizedDescription)
                 completion?()
                 return
             }
@@ -106,7 +106,7 @@ public class DefaultStatisticsLoader: StatisticsLoader {
         apiRequest().get(Paths.atb, withParams: nil) { data, _, error in
             
             if let error = error {
-                os_log("Failed to request ATB %{public}s", type: .error, error.localizedDescription)
+                os_log("Failed to request ATB %{public}s", log: generalLog, type: .error, error.localizedDescription)
                 completion?()
                 return
             }
@@ -128,7 +128,7 @@ public class DefaultStatisticsLoader: StatisticsLoader {
 
         apiRequest().get(Paths.exti, withParams: params) { _, _, error in
             if let error = error {
-                os_log("Failed to request ATB install %{public}s", type: .error, error.localizedDescription)
+                os_log("Failed to request ATB install %{public}s", log: generalLog, type: .error, error.localizedDescription)
                 completion?()
                 return
             }

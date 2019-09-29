@@ -310,7 +310,6 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
 
         let trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules()
-        print(#function, rules)
         XCTAssertEqual(8, rules.count)
 
         assert(rules[0], matchesUrlFilter: subdomainPrefix + "facebook\\.com" + domainSuffix, action: .block())

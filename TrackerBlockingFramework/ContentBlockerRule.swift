@@ -158,7 +158,7 @@ extension String {
     func matches(_ string: String) -> Bool {
         // opt: memoize?
         guard let regex = try? NSRegularExpression(pattern: self, options: [ .caseInsensitive ]) else {
-            os_log("Invalid regex %{public}s", self)
+            os_log("Invalid regex %{public}s", log: generalLog, self)
             return false
         }
         let matches = regex.matches(in: string, options: [ ], range: NSRange(location: 0, length: string.utf16.count))

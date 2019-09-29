@@ -72,7 +72,6 @@ class ReportBrokenSiteController: DashboardNavigationController {
     }
 
     @IBAction func submitClicked(sender: Any?) {
-        NSLog("\(#function), \(buttonEnabled)")
         guard buttonEnabled else { return }
         showThankYouState(true)
         submit()

@@ -38,6 +38,6 @@ class LoginItemLauncher {
     
     private static func launchLoginItem(serviceId: String) {
         let enabled = SMLoginItemSetEnabled(serviceId as CFString, true)
-        os_log("Login service was %{public}s", type: .debug, enabled ? "launched" : "not launched")
+        os_log("Login service was %{public}s", log: generalLog, type: .debug, enabled ? "launched" : "not launched")
     }
 }
