@@ -16,14 +16,32 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="DuckDuckGo" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About" id="5kV-Vb-QxS">
+                                        <menuItem title="About Privacy Essentials" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Quit" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Hide Privacy Essentials" keyEquivalent="h" id="QgC-Pb-WsQ">
+                                            <connections>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="8gs-GZ-RdH"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="m5D-x6-Exz">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="ogx-sA-0os"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="1LX-Eg-c6p">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="1jn-tz-MSl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kHZ-ad-cb2"/>
+                                        <menuItem title="Quit Privacy Essentials" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
