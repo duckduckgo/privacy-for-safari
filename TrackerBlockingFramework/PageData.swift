@@ -69,7 +69,8 @@ public class PageData {
         }
 
         if let url = url {
-            grade.https = url.scheme == "https"
+            // We don't perform manual https upgrades yet so all https sites are autoupgraded
+            grade.httpsAutoUpgrade = url.scheme == "https"
             grade.privacyScore = privacyPractices.findPrivacyPractice(forUrl: url).score
             
             let entity = trackerDataManager.entity(forUrl: url)
