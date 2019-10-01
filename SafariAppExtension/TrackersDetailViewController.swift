@@ -124,7 +124,7 @@ extension TrackersDetailViewController: NSOutlineViewDelegate {
             let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EntityCell"), owner: self)
                 as? TrackersDetailEntityView
             view?.entityNameLabel.stringValue = name
-            view?.imageView?.image = NSImage(named: NSImage.Name(imageName)) ?? NSImage(named: NSImage.Name("PP Network Icon unknown"))
+            view?.imageView?.image = NSImage(named: NSImage.Name(imageName))
             return view
             
         case .tracker(let domain, let category):
