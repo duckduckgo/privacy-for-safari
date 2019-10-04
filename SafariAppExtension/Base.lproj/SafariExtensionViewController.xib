@@ -33,10 +33,10 @@
                     <color key="fillColor" name="SearchBarBackground"/>
                 </box>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EW3-Sm-fSZ">
-                    <rect key="frame" x="16" y="504" width="268" height="30"/>
+                    <rect key="frame" x="16" y="510" width="268" height="24"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-ht-4tA">
-                            <rect key="frame" x="0.0" y="3" width="24" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="QZP-ht-4tA" secondAttribute="height" multiplier="1:1" id="KgZ-N8-l6g"/>
                                 <constraint firstAttribute="height" constant="24" id="MOf-XW-Nql"/>
@@ -44,7 +44,7 @@
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="6FX-ne-XAu"/>
                         </imageView>
                         <textField focusRingType="none" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-K7-EcN">
-                            <rect key="frame" x="30" y="6" width="181" height="19"/>
+                            <rect key="frame" x="30" y="3" width="176" height="19"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" focusRingType="none" placeholderString="Search DuckDuckGo" id="T1m-Ma-6Rg">
                                 <font key="font" size="16" name="ProximaNova-Regular"/>
                                 <color key="textColor" name="SearchInputText"/>
@@ -55,8 +55,8 @@
                             </connections>
                         </textField>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="4sM-Fe-yOe">
-                            <rect key="frame" x="217" y="0.0" width="19" height="30"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarSearchTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fol-nQ-O59">
+                            <rect key="frame" x="212" y="0.0" width="24" height="24"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SearchLoupe" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fol-nQ-O59">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                                 <connections>
@@ -66,7 +66,7 @@
                             <color key="contentTintColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                         </button>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="41x-ag-NTP">
-                            <rect key="frame" x="244" y="3" width="24" height="24"/>
+                            <rect key="frame" x="244" y="0.0" width="24" height="24"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Settings" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Jyu-wn-FSA">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -91,13 +91,13 @@
                     </customSpacing>
                 </stackView>
                 <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="T1j-Bc-ZWn">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="492"/>
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
                     <view key="contentView" id="1yo-Ce-QJe">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="492"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="u24-RE-9Oh">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="492"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
                                 <font key="font" metaFont="system"/>
                             </tabView>
                         </subviews>
@@ -130,7 +130,7 @@
     </objects>
     <resources>
         <image name="Logo" width="119" height="119"/>
-        <image name="NSTouchBarSearchTemplate" width="19" height="30"/>
+        <image name="SearchLoupe" width="24" height="24"/>
         <image name="Settings" width="24" height="24"/>
         <namedColor name="DashboardBackground">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
