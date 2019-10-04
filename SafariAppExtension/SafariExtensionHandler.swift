@@ -32,17 +32,31 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         private(set) var pageData: PageData = PageData()
         private(set) var currentPage: SFSafariPage?
         
-        private var trackersPerPage = [SFSafariPage: Trackers]()
+        private var activePageTrackers = [Int: Trackers]()
+
+        /// An in-memory cache of trackers seen on previos urls.  Used when navigating backwards and forward and site is not reloaded by Safari.
+        private var trackersCache = NSCache<NSString, Trackers>()
         
-        func trackers(forPage page: SFSafariPage) -> Trackers {
-            return trackersPerPage[page, default: Trackers()]
+        init() {
+            trackersCache.countLimit = 1000
         }
         
-        func trackers(_ trackers: [DetectedTracker], loadedOnPage page: SFSafariPage) {
+        func trackers(forActivePage page: SFSafariPage) -> Trackers {
+            return activePageTrackers[page.pageId, default: Trackers()]
+        }
+        
+        func cachedTrackers(forUrl url: String) -> Trackers? {
+            return trackersCache.object(forKey: url as NSString)
+        }
+                
+        func trackers(_ trackers: [DetectedTracker], loadedOnPage page: SFSafariPage, forUrl url: String) {
             DiagnosticSupport.dump(trackers, blocked: false)
-            var pageTrackers = trackersPerPage[page, default: Trackers()]
+            
+            let pageTrackers = activePageTrackers[page.pageId, default: Trackers()]
             pageTrackers.loaded += trackers
-            trackersPerPage[page] = pageTrackers
+            activePageTrackers[page.pageId] = pageTrackers
+            trackersCache.setObject(pageTrackers, forKey: url as NSString)
+            
             if page == currentPage {
                 refreshDashboard()
             }
@@ -55,9 +69,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 os_log("BLOCKED %{public}s on %s", log: generalLog, type: .default, $0.resource.absoluteString, $0.page.absoluteString)
             }
                         
-            var pageTrackers = trackersPerPage[page, default: Trackers()]
+            let pageTrackers = activePageTrackers[page.pageId, default: Trackers()]
             pageTrackers.blocked += trackers
-            trackersPerPage[page] = pageTrackers
+            activePageTrackers[page.pageId] = pageTrackers
             if page == currentPage {
                 refreshDashboard()
             }
@@ -67,18 +81,22 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             pageData = PageData(url: url)
             
             guard let page = page else { return }
-            
             currentPage = page
             
-            let trackers = trackersPerPage[page, default: Trackers()]
+            var trackers = activePageTrackers[page.pageId, default: Trackers()]
+
+            if !trackers.trackersDetected, let url = url, let cached = cachedTrackers(forUrl: url.absoluteString) {
+                os_log("Using cached result for page trackers", log: generalLog, type: .default)
+                trackers = cached
+            }
+
             pageData.loadedTrackers = trackers.loaded
             pageData.blockedTrackers = trackers.blocked
-            
             refreshDashboard()
         }
         
         func clear(_ page: SFSafariPage) {
-            trackersPerPage.removeValue(forKey: page)
+            activePageTrackers.removeValue(forKey: page.pageId)
             if page == currentPage {
                 currentPage = nil
             }
@@ -97,9 +115,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         case userAgent
     }
     
-    struct Trackers {
+    class Trackers {
         var loaded = [DetectedTracker]()
         var blocked = [DetectedTracker]()
+        
+        var trackersDetected: Bool {
+            return !loaded.isEmpty || !blocked.isEmpty
+        }
     }
 
     private let pixel: Pixel = Dependencies.shared.pixel
@@ -123,6 +145,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     // This doesn't appear to get called when the page is closed though
     override func page(_ page: SFSafariPage, willNavigateTo url: URL?) {
         Data.shared.clear(page)
+        Data.shared.setCurrentPage(to: page, withUrl: url)
     }
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
@@ -154,7 +177,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     func handleBeforeUnloadMessage(onPage page: SFSafariPage) {
-        Data.shared.clear(page)
+        // Apple bug in getContainingTab documentation, tab can be nil
+        page.getContainingTab { tab in
+            let tab: SFSafariTab? = tab
+            if tab == nil {
+                os_log("Tab was closed", log: generalLog, type: .debug)
+                Data.shared.clear(page)
+            }
+        }
     }
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
@@ -211,7 +241,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
             
             guard !detectedTrackers.isEmpty else { return }
-            Data.shared.trackers(detectedTrackers, loadedOnPage: page)
+            Data.shared.trackers(detectedTrackers, loadedOnPage: page, forUrl: pageUrl.absoluteString)
             self.updateToolbar()
         }
         
@@ -239,6 +269,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
     
+}
+
+private extension SFSafariPage {
+    var pageId: Int {
+        return hash
+    }
 }
 
 extension Grade.Grading {
