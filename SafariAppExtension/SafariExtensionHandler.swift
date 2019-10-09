@@ -32,7 +32,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         private(set) var pageData: PageData = PageData()
         private(set) var currentPage: SFSafariPage?
         
-        private var activePageTrackers = [Int: Trackers]()
+        private var activePageTrackers = [SFSafariPage: Trackers]()
 
         /// An in-memory cache of trackers seen on previos urls.  Used when navigating backwards and forward and site is not reloaded by Safari.
         private var trackersCache = NSCache<NSString, Trackers>()
@@ -42,7 +42,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         func trackers(forActivePage page: SFSafariPage) -> Trackers {
-            return activePageTrackers[page.pageId, default: Trackers()]
+            return activePageTrackers[page, default: Trackers()]
         }
         
         func cachedTrackers(forUrl url: String) -> Trackers? {
@@ -52,9 +52,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         func trackers(_ trackers: [DetectedTracker], loadedOnPage page: SFSafariPage, forUrl url: String) {
             DiagnosticSupport.dump(trackers, blocked: false)
             
-            let pageTrackers = activePageTrackers[page.pageId, default: Trackers()]
+            let pageTrackers = activePageTrackers[page, default: Trackers()]
             pageTrackers.loaded += trackers
-            activePageTrackers[page.pageId] = pageTrackers
+            activePageTrackers[page] = pageTrackers
             trackersCache.setObject(pageTrackers, forKey: url as NSString)
             
             if page == currentPage {
@@ -69,22 +69,22 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 os_log("BLOCKED %{public}s on %s", log: generalLog, type: .default, $0.resource.absoluteString, $0.page.absoluteString)
             }
                         
-            let pageTrackers = activePageTrackers[page.pageId, default: Trackers()]
+            let pageTrackers = activePageTrackers[page, default: Trackers()]
             pageTrackers.blocked += trackers
-            activePageTrackers[page.pageId] = pageTrackers
+            activePageTrackers[page] = pageTrackers
             if page == currentPage {
                 refreshDashboard()
             }
         }
         
         func setCurrentPage(to page: SFSafariPage?, withUrl url: URL?) {
+            os_log("Page set with url %{private}s", log: generalLog, type: .default, url?.absoluteString ?? "nil")
             pageData = PageData(url: url)
             
             guard let page = page else { return }
             currentPage = page
             
-            var trackers = activePageTrackers[page.pageId, default: Trackers()]
-
+            var trackers = activePageTrackers[page, default: Trackers()]
             if !trackers.trackersDetected, let url = url, let cached = cachedTrackers(forUrl: url.absoluteString) {
                 os_log("Using cached result for page trackers", log: generalLog, type: .default)
                 trackers = cached
@@ -96,7 +96,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
         
         func clear(_ page: SFSafariPage) {
-            activePageTrackers.removeValue(forKey: page.pageId)
+            activePageTrackers.removeValue(forKey: page)
             if page == currentPage {
                 currentPage = nil
             }
@@ -181,7 +181,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         page.getContainingTab { tab in
             let tab: SFSafariTab? = tab
             if tab == nil {
-                os_log("Tab was closed", log: generalLog, type: .debug)
+                os_log("Tab was closed", log: generalLog, type: .default)
                 Data.shared.clear(page)
             }
         }
@@ -269,12 +269,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         }
     }
     
-}
-
-private extension SFSafariPage {
-    var pageId: Int {
-        return hash
-    }
 }
 
 extension Grade.Grading {

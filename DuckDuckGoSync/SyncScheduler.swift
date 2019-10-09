@@ -50,7 +50,7 @@ public class SyncScheduler {
 
         activity.schedule { result in
             
-            os_log("Sync scheduled", log: generalLog, type: .debug)
+            os_log("Sync scheduled", log: generalLog, type: .default)
             self.syncRunner.sync { success in
                 os_log("Sync was %{public}s", log: generalLog, type: .default, success ? "successful" : "unsuccessful")
                 if success {
