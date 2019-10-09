@@ -72,7 +72,7 @@ class HomeSectionViewController: NSViewController {
     
     @IBAction func help(_ sender: Any?) {
         pixel.fire(.homeHelpOpened)
-        NSWorkspace.shared.open(URL(string: "https://help.duckduckgo.com/duckduckgo-help-pages/desktop/adding-duckduckgo-to-your-browser/")!)
+        NSWorkspace.shared.open(URL(string: "https://help.duckduckgo.com/desktop/safari/")!)
     }
 
     private func refreshUI() {
