@@ -127,11 +127,6 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     private let pixel: Pixel = Dependencies.shared.pixel
     private let deepDetection = DeepDetection()
 
-    override func beginRequest(with context: NSExtensionContext) {
-        super.beginRequest(with: context)
-        updateRetentionData()
-    }
-    
     override func contentBlocker(withIdentifier contentBlockerIdentifier: String, blockedResourcesWith urls: [URL], on page: SFSafariPage) {
         page.getPropertiesWithCompletionHandler { properties in
             guard let pageUrl = properties?.url else { return }
@@ -139,13 +134,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let trackerDetection = Dependencies.shared.trackerDetection
             Data.shared.trackers(urls.map { trackerDetection.detectedTrackerFrom(resourceUrl: $0, onPageWithUrl: pageUrl) }, blockedOnPage: page)
         }
-        
     }
     
     // This doesn't appear to get called when the page is closed though
     override func page(_ page: SFSafariPage, willNavigateTo url: URL?) {
         Data.shared.clear(page)
         Data.shared.setCurrentPage(to: page, withUrl: url)
+        updateRetentionData()
     }
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
