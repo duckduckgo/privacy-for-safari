@@ -8,10 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SafariExtensionViewController" customModule="SafariAppExtension" customModuleProvider="target">
             <connections>
+                <outlet property="dashboardHolder" destination="1yo-Ce-QJe" id="sVj-tB-BX7"/>
                 <outlet property="menuButton" destination="41x-ag-NTP" id="tf4-uD-uKT"/>
                 <outlet property="searchButton" destination="4sM-Fe-yOe" id="mg0-cx-BLK"/>
                 <outlet property="searchField" destination="zFw-K7-EcN" id="JgX-BP-hRl"/>
-                <outlet property="tabs" destination="u24-RE-9Oh" id="svi-Ce-Ajn"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
             </connections>
         </customObject>
@@ -95,18 +95,6 @@
                     <view key="contentView" id="1yo-Ce-QJe">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="u24-RE-9Oh">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
-                                <font key="font" metaFont="system"/>
-                            </tabView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="u24-RE-9Oh" firstAttribute="height" secondItem="1yo-Ce-QJe" secondAttribute="height" id="3SE-XF-62e"/>
-                            <constraint firstItem="u24-RE-9Oh" firstAttribute="width" secondItem="1yo-Ce-QJe" secondAttribute="width" id="8OU-5U-fol"/>
-                            <constraint firstItem="u24-RE-9Oh" firstAttribute="centerX" secondItem="1yo-Ce-QJe" secondAttribute="centerX" id="h2e-jh-On2"/>
-                            <constraint firstItem="u24-RE-9Oh" firstAttribute="centerY" secondItem="1yo-Ce-QJe" secondAttribute="centerY" id="xAb-nx-qV0"/>
-                        </constraints>
                     </view>
                     <color key="fillColor" name="DashboardBackground"/>
                 </box>

@@ -197,6 +197,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     tabs?.getActivePage(completionHandler: { page in
                         guard let page = page else { return }
                         page.getPropertiesWithCompletionHandler({ properties in
+                            toolbarItem.setEnabled(properties?.url != nil)
                             Data.shared.setCurrentPage(to: page, withUrl: properties?.url)
                             self.update(toolbarItem)
                         })

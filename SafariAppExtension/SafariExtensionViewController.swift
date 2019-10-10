@@ -29,7 +29,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         return shared
     }()
 
-    @IBOutlet weak var tabs: NSTabView!
+    @IBOutlet weak var dashboardHolder: NSView!
     @IBOutlet weak var searchField: NSTextField!
     @IBOutlet weak var searchButton: NSButton!
     @IBOutlet weak var menuButton: NSButton!
@@ -56,7 +56,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        tabs.selectedTabViewItem?.viewController?.viewWillAppear()
         DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
     }
     
@@ -115,7 +114,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                                                                          fromStoryboardNamed: "Dashboard") as? NavigationController else {
             fatalError("failed to load \(NavigationController.self)")
         }
-        tabs.addTabViewItem(NSTabViewItem(viewController: navigationController))
+        
+        navigationController.view.frame = dashboardHolder.frame
+        navigationController.view.autoresizingMask = [.width, .height]
+        
+        dashboardHolder.addSubview(navigationController.view)
+        addChild(navigationController)
+        
         navigationController.pageData = pageData
         self.navigationController = navigationController
     }

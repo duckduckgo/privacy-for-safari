@@ -31,7 +31,6 @@ class NavigationController: NSPageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        transitionStyle = .horizontalStrip
     }
     
     override func viewWillAppear() {
@@ -42,6 +41,10 @@ class NavigationController: NSPageController {
 
     private func updateSelectedViewController() {
         (selectedViewController as? DashboardNavigationController)?.pageData = pageData
+    }
+    
+    override func scrollWheel(with event: NSEvent) {
+        // prevent the swipe bounce from happening
     }
 
 }
@@ -84,10 +87,14 @@ extension NavigationController: DashboardNavigationDelegate {
 extension NavigationController: NSPageControllerDelegate {
 
     func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
-        completeTransition()
         updateSelectedViewController()
+        completeTransition()
     }
 
+    func pageControllerWillStartLiveTransition(_ pageController: NSPageController) {
+        updateSelectedViewController()
+    }
+    
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
         guard let controllerId = object as? DashboardControllers else {
             fatalError("Unexpected object \(object)")

@@ -105,11 +105,11 @@ class MockTrackerDataManager: TrackerDataManager {
 
     var trackerData: TrackerData?
 
-    private var returnEntity: Entity?
+    private var returnEntities: [Entity]
     private var returnTracker: KnownTracker?
-
-    init(returnEntity entity: Entity? = nil, returnTracker tracker: KnownTracker? = nil) {
-        returnEntity = entity
+    
+    init(returnEntities entities: [Entity] = [Entity](), returnTracker tracker: KnownTracker? = nil) {
+        returnEntities = entities
         returnTracker = tracker
     }
     
@@ -123,7 +123,11 @@ class MockTrackerDataManager: TrackerDataManager {
     }
 
     func entity(forUrl url: URL) -> Entity? {
-        return returnEntity
+        return returnEntities.first
+    }
+    
+    func entity(forName name: String) -> Entity? {
+        return returnEntities.first { $0.displayName == name }
     }
 
     func knownTracker(forUrl url: URL) -> KnownTracker? {
