@@ -9,7 +9,7 @@
         <!--Navigation Controller-->
         <scene sceneID="yAA-qf-Nl5">
             <objects>
-                <pagecontroller storyboardIdentifier="NavController" id="6tI-Yp-yJT" customClass="NavigationController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                <pagecontroller storyboardIdentifier="NavController" showSeguePresentationStyle="single" id="6tI-Yp-yJT" customClass="NavigationController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="g7k-pO-hCX">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -135,10 +135,10 @@
                                 </constraints>
                             </customView>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEX-r8-b3F" userLabel="Items Stack">
-                                <rect key="frame" x="0.0" y="-58" width="575" height="312"/>
+                                <rect key="frame" x="0.0" y="-4" width="575" height="258"/>
                                 <subviews>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sT3-p7-JZN" userLabel="Connection Box">
-                                        <rect key="frame" x="0.0" y="262" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="208" width="575" height="50"/>
                                         <view key="contentView" id="eig-5X-H9H">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,7 +187,7 @@
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="U8H-32-p50" userLabel="Trackers Box" customClass="ClickableBox" customModule="SafariAppExtension" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="211" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="157" width="575" height="50"/>
                                         <view key="contentView" id="zQN-kc-PNl">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-XI-WQh" userLabel="Privacy Practices Box">
-                                        <rect key="frame" x="0.0" y="160" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="106" width="575" height="50"/>
                                         <view key="contentView" id="Xuu-OF-qpi">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +301,7 @@
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="2Cp-NG-aaD" userLabel="Site Protection Box">
-                                        <rect key="frame" x="0.0" y="109" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="55" width="575" height="50"/>
                                         <view key="contentView" id="xta-2P-4GV">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -415,10 +415,10 @@
                                         <color key="fillColor" name="ProtectionToggleOn"/>
                                     </box>
                                     <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pjl-CB-ocT">
-                                        <rect key="frame" x="0.0" y="0.0" width="575" height="108"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
                                         <subviews>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9JK-R1-RQT">
-                                                <rect key="frame" x="0.0" y="54" width="575" height="54"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
                                                 <subviews>
                                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="czM-FG-E09">
                                                         <rect key="frame" x="0.0" y="2" width="287" height="50"/>
@@ -491,7 +491,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="bge-cx-nSz">
-                                                <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
+                                                <rect key="frame" x="0.0" y="-54" width="575" height="54"/>
                                                 <view key="contentView" id="gMr-Ci-dUI">
                                                     <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -567,6 +567,7 @@
                                             </box>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="2FZ-kO-qoV"/>
                                             <constraint firstItem="9JK-R1-RQT" firstAttribute="width" secondItem="Pjl-CB-ocT" secondAttribute="width" id="awj-B9-UU7"/>
                                             <constraint firstItem="bge-cx-nSz" firstAttribute="width" secondItem="Pjl-CB-ocT" secondAttribute="width" id="v6d-k5-4Fp"/>
                                         </constraints>

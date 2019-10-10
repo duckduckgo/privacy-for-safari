@@ -31,7 +31,6 @@ class NavigationController: NSPageController {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        transitionStyle = .horizontalStrip
     }
     
     override func viewWillAppear() {
@@ -42,6 +41,10 @@ class NavigationController: NSPageController {
 
     private func updateSelectedViewController() {
         (selectedViewController as? DashboardNavigationController)?.pageData = pageData
+    }
+    
+    override func scrollWheel(with event: NSEvent) {
+        // prevent the swipe bounce from happening
     }
 
 }
