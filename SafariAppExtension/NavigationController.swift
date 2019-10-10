@@ -87,10 +87,14 @@ extension NavigationController: DashboardNavigationDelegate {
 extension NavigationController: NSPageControllerDelegate {
 
     func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
-        completeTransition()
         updateSelectedViewController()
+        completeTransition()
     }
 
+    func pageControllerWillStartLiveTransition(_ pageController: NSPageController) {
+        updateSelectedViewController()
+    }
+    
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {
         guard let controllerId = object as? DashboardControllers else {
             fatalError("Unexpected object \(object)")
