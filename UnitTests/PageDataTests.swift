@@ -30,52 +30,50 @@ class PageDataTests: XCTestCase {
         static let resource3 = URL(string: "https://tracker3.com/tracker.js")!
     }
 
-    func testWhenPageHasLoadedTrackersThenLoadedTrackersByEntityCanBeGenerated() {
-        let pageData = PageData()
-        
+    func testWhenPageHasLoadedTrackersThenLoadedTrackersByEntityGeneratesListInEntityPrevalenceOrder() {
+        let pageData = PageData(trackerDataManager: MockTrackerDataManager(returnEntities: entities()))
         pageData.loadedTrackers = [
+            detectedTracker(resource: URLs.resource3, owner: "Facebook"),
             detectedTracker(resource: URLs.resource, owner: "Google"),
             detectedTracker(resource: URLs.resource2, owner: "Google"),
             detectedTracker(resource: URLs.resource, owner: "Google"),
-            detectedTracker(resource: URLs.resource2, owner: "Google"),
-            detectedTracker(resource: URLs.resource3, owner: "Facebook")
+            detectedTracker(resource: URLs.resource2, owner: "Google")
         ]
         
         let trackersByEntity = pageData.loadedTrackersByEntity()
 
         XCTAssertEqual(trackersByEntity.count, 2)
-        XCTAssertEqual(trackersByEntity[0].entityName, "Facebook")
-        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker3.com" ])
-
-        XCTAssertEqual(trackersByEntity[1].entityName, "Google")
-        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker.com", "tracker2.com" ])
-
+        
+        XCTAssertEqual(trackersByEntity[0].entityName, "Google")
+        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker.com", "tracker2.com" ])
+        
+        XCTAssertEqual(trackersByEntity[1].entityName, "Facebook")
+        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker3.com" ])
     }
     
-    func testWhenPageHasBlockedTrackersThenBlockedTrackersByEntityCanBeGenerated() {
-        let pageData = PageData()
-        
+    func testWhenPageHasBlockedTrackersThenBlockedTrackersByEntityGeneratesListInEntityPrevalenceOrder() {
+        let pageData = PageData(trackerDataManager: MockTrackerDataManager(returnEntities: entities()))
+
         pageData.blockedTrackers = [
+            detectedTracker(resource: URLs.resource3, owner: "Facebook"),
             detectedTracker(resource: URLs.resource, owner: "Google"),
             detectedTracker(resource: URLs.resource2, owner: "Google"),
             detectedTracker(resource: URLs.resource, owner: "Google"),
-            detectedTracker(resource: URLs.resource2, owner: "Google"),
-            detectedTracker(resource: URLs.resource3, owner: "Facebook")
+            detectedTracker(resource: URLs.resource2, owner: "Google")
         ]
         
         let trackersByEntity = pageData.blockedTrackersByEntity()
-        
         XCTAssertEqual(trackersByEntity.count, 2)
-        XCTAssertEqual(trackersByEntity[0].entityName, "Facebook")
-        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker3.com" ])
 
-        XCTAssertEqual(trackersByEntity[1].entityName, "Google")
-        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker.com", "tracker2.com" ])
+        XCTAssertEqual(trackersByEntity[0].entityName, "Google")
+        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker.com", "tracker2.com" ])
 
+        XCTAssertEqual(trackersByEntity[1].entityName, "Facebook")
+        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker3.com" ])
     }
     
     func testWhenTrackersAreUpdatedThenScoreIsRecalculated() {
-        let pageData = PageData()
+        let pageData = PageData(trackerDataManager: MockTrackerDataManager(returnEntities: entities()))
         let defaultGrade = pageData.calculateGrade()
         
         pageData.blockedTrackers = [DetectedTracker(matchedTracker: nil,
@@ -104,6 +102,13 @@ class PageDataTests: XCTestCase {
         XCTAssertNil(pageData.url)
         XCTAssertTrue(pageData.blockedTrackers.isEmpty)
         XCTAssertTrue(pageData.loadedTrackers.isEmpty)
+    }
+    
+    private func entities() -> [Entity] {
+        return [
+            Entity(displayName: "Facebook", domains: [], prevalence: 0.3),
+            Entity(displayName: "Google", domains: [], prevalence: 0.8)
+        ]
     }
 
     private func detectedTracker(resource: URL, owner: String) -> DetectedTracker {

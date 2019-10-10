@@ -19,25 +19,30 @@
 
 import Foundation
 
-public class PageData {
+typealias EntityName = String
 
+public class PageData {
+        
     public struct EntityTrackers {
 
         public let entityName: String
+        public let prevalence: Double
         public let trackers: [String]
 
     }
 
     public let url: URL?
     public let isTrusted: Bool
+    public let trackerDataManager: TrackerDataManager
     
     public var loadedTrackers = [DetectedTracker]()
     public var blockedTrackers = [DetectedTracker]()
 
     private var grade: Grade?
     
-    public init(url: URL? = nil) {
+    public init(url: URL? = nil, trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager) {
         self.url = url
+        self.trackerDataManager = trackerDataManager
         
         if let url = url {
             isTrusted = Dependencies.shared.trustedSitesManager.isTrusted(url: url)
@@ -81,7 +86,7 @@ public class PageData {
     }
 
     private func trackersByEntity(trackers: [DetectedTracker]) -> [EntityTrackers] {
-        return trackers.reduce([:]) { result, tracker -> [String: Set<String>] in
+        return trackers.reduce([:]) { result, tracker -> [EntityName: Set<String>] in
             let owner = tracker.owner ?? "Unknown"
             let domain = tracker.resource.host?.dropPrefix("www.") ?? "Unknown"
             
@@ -91,11 +96,12 @@ public class PageData {
             var newResult = result
             newResult[owner] = trackers
             return newResult
+            
         }.mapValues { $0.sorted() }.map {
-            EntityTrackers(entityName: $0.key, trackers: $0.value)
+            let entity = trackerDataManager.entity(forName: $0.key)
+            return EntityTrackers(entityName: $0.key, prevalence: entity?.prevalence ?? 0.0, trackers: $0.value)
         }.sorted {
-            $0.entityName < $1.entityName
+            $0.prevalence > $1.prevalence
         }
     }
-    
 }

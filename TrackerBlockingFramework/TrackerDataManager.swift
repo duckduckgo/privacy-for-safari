@@ -30,6 +30,7 @@ public protocol TrackerDataManager {
     func forEachEntity(_ result: (Entity) -> Void)
     func forEachTracker(_ result: (KnownTracker) -> Void)
     func entity(forUrl url: URL) -> Entity?
+    func entity(forName name: String) -> Entity?
     func knownTracker(forUrl url: URL) -> KnownTracker?
     
 }
@@ -72,6 +73,10 @@ public class DefaultTrackerDataManager: TrackerDataManager {
         }
         return nil
     }
+    
+    public func entity(forName name: String) -> Entity? {
+        return trackerData?.entities[name]
+   }
 
     public func knownTracker(forUrl url: URL) -> KnownTracker? {
         for domain in url.hostVariations ?? [] {
