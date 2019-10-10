@@ -148,6 +148,7 @@
 		8590F41422CE564600B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
 		8590F41522CE564700B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
 		8590F41622CE564F00B7473A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E9521E22AFDB220071281E /* URLExtension.swift */; };
+		85985D84234F61D5003C22F2 /* Clickables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5017A22C4322B005DDF47 /* Clickables.swift */; };
 		859914D12278946A0023C1F2 /* TrackerBlockingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D02278946A0023C1F2 /* TrackerBlockingDependencies.swift */; };
 		859914D3227895F40023C1F2 /* DetectedTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D2227895F40023C1F2 /* DetectedTracker.swift */; };
 		859914D92278A3DA0023C1F2 /* mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859914D82278A3DA0023C1F2 /* mocks.swift */; };
@@ -751,6 +752,7 @@
 				854A9F532271CB01008F2A93 /* AppIcon.xcassets */,
 				850385FA22F86481002259DB /* AppLinks.swift */,
 				8524A3E723325063001E8856 /* BundleIds.swift */,
+				85D5017A22C4322B005DDF47 /* Clickables.swift */,
 				855205C52334FF5F003E5640 /* Logging.swift */,
 				838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */,
 				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
@@ -857,7 +859,6 @@
 			isa = PBXGroup;
 			children = (
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
-				85D5017A22C4322B005DDF47 /* Clickables.swift */,
 				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
@@ -1611,6 +1612,7 @@
 				8540D8F222BBE264009A2FF4 /* HomeSectionViewController.swift in Sources */,
 				8540D8D022BBA356009A2FF4 /* SectionButton.swift in Sources */,
 				8503859822F3041F002259DB /* CircleIndicatorView.swift in Sources */,
+				85985D84234F61D5003C22F2 /* Clickables.swift in Sources */,
 				85F087B1230828360041D733 /* OnboardingSetDefaultSearchController.swift in Sources */,
 				850385F922F85797002259DB /* Settings.swift in Sources */,
 				85C351322332316000D8E78A /* NSColorExtension.swift in Sources */,

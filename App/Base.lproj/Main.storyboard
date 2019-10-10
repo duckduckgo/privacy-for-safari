@@ -858,16 +858,30 @@
                                                 <action selector="showDashboardPreferences:" target="4Zn-Kl-PVb" id="cC2-cP-W4t"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-OX-Hbd">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-OX-Hbd" customClass="ClickableTextField" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
                                             <rect key="frame" x="319" y="51" width="68" height="16"/>
+                                            <gestureRecognizers>
+                                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PGa-5F-wey">
+                                                    <connections>
+                                                        <action selector="showProtectionPrefences:" target="4Zn-Kl-PVb" id="gqI-sU-vbX"/>
+                                                    </connections>
+                                                </clickGestureRecognizer>
+                                            </gestureRecognizers>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="ENABLED" id="Zpy-9L-JBV">
                                                 <font key="font" metaFont="systemHeavy" size="13"/>
                                                 <color key="textColor" name="HomeEssentialsStateEnabled"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-xD-oXa">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-xD-oXa" customClass="ClickableTextField" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
                                             <rect key="frame" x="319" y="23" width="68" height="16"/>
+                                            <gestureRecognizers>
+                                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="OCA-nj-tNG">
+                                                    <connections>
+                                                        <action selector="showDashboardPreferences:" target="4Zn-Kl-PVb" id="kVB-WC-sZG"/>
+                                                    </connections>
+                                                </clickGestureRecognizer>
+                                            </gestureRecognizers>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="ENABLED" id="4i6-uG-8zO">
                                                 <font key="font" metaFont="systemHeavy" size="13"/>
                                                 <color key="textColor" name="HomeEssentialsStateEnabled"/>
