@@ -137,10 +137,12 @@ class MainDashboardViewController: DashboardNavigationController {
 
         DispatchQueue.global(qos: .background).async {
             self.trustedSites.save()
+            DispatchQueue.main.async {
+                self.updateUI()
+                self.reloadPage()
+            }
         }
 
-        self.updateUI()
-        self.reloadPage()
     }
 
     @IBAction func showTrackers(_ sender: Any) {
@@ -276,7 +278,9 @@ class MainDashboardViewController: DashboardNavigationController {
         SFSafariApplication.getActiveWindow { window in
             window?.getActiveTab(completionHandler: { tab in
                 tab?.getActivePage(completionHandler: { page in
-                    page?.reload()
+                    guard let page = page else { return }
+                    SafariExtensionHandler.Data.shared.clearCache(forPage: page, withUrl: self.pageData?.url?.absoluteString ?? "")
+                    page.reload()
                 })
             })
         }
@@ -291,8 +295,7 @@ extension Grade.Grading {
         .b: NSImage(named: NSImage.Name("PP Inline B"))!,
         .cPlus: NSImage(named: NSImage.Name("PP Inline C Plus"))!,
         .c: NSImage(named: NSImage.Name("PP Inline C"))!,
-        .d: NSImage(named: NSImage.Name("PP Inline D"))!,
-        .dMinus: NSImage(named: NSImage.Name("PP Inline D"))!
+        .d: NSImage(named: NSImage.Name("PP Inline D"))!
     ]
 
     static let icons: [Grade.Grading: String] = [
@@ -301,8 +304,7 @@ extension Grade.Grading {
         .b: "PP Grade B",
         .cPlus: "PP Grade C Plus",
         .c: "PP Grade C",
-        .d: "PP Grade D",
-        .dMinus: "PP Grade D"
+        .d: "PP Grade D"
     ]
     
     var inlineImage: NSImage? {

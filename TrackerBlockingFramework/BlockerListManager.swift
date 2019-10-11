@@ -56,7 +56,10 @@ public class DefaultBlockerListManager: BlockerListManager {
             return nil
         }
         
-        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedSitesManager().allDomains(),
+        let trustedDomains = trustedSitesManager().allDomains()
+        os_log("trustedDomains %s", log: generalLog, type: .error, String(describing: trustedDomains))
+        
+        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedDomains,
                                                                                     andTemporaryWhitelist: trustedSitesManager().whitelistedDomains())
         
         guard let data = try? JSONEncoder().encode(rules) else {
@@ -77,11 +80,17 @@ public class DefaultBlockerListManager: BlockerListManager {
     }
     
     private func reloadExtension() {
+        let group = DispatchGroup()
+        group.enter()
         let id = BundleIds.contentBlockerExtension
+        os_log("START reloading %s", log: generalLog, type: .debug, id)
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: id) { error in
+            group.leave()
             guard let error = error else { return }
             os_log("Failed to reload extension %{public}s", log: generalLog, type: .error, error.localizedDescription)
         }
+        os_log("FINISHED reloading %s", log: generalLog, type: .debug, id)
+        group.wait()
     }
     
     private func writeBlockerList(data: Data) {

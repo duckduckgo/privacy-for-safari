@@ -43,7 +43,8 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let key = createKey(forPage: page, withUrl: url)
             
             if let cached = trackersCache.object(forKey: key) {
-                os_log("Trackers found in cache for page %d %s", log: generalLog, type: .default, page.hash, url)
+                os_log("Trackers found in cache for page %d %s %d/%d", log: generalLog, type: .default,
+                       page.hash, url, cached.blocked.count, cached.loaded.count)
                 return cached
             }
             os_log("No trackers found in cache for page %d %s", log: generalLog, type: .default, page.hash, url)
@@ -54,7 +55,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             DiagnosticSupport.dump(trackers, blocked: false)
             
             let pageTrackers = cachedTrackers(forPage: page, withUrl: url)
-            pageTrackers.loaded += trackers
+            pageTrackers.loaded.append(contentsOf: trackers)
             trackersCache.setObject(pageTrackers, forKey: createKey(forPage: page, withUrl: url))
             
             if page == currentPage {
@@ -70,7 +71,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             }
                         
             let pageTrackers = cachedTrackers(forPage: page, withUrl: url)
-            pageTrackers.blocked += trackers
+            pageTrackers.blocked.append(contentsOf: trackers)
             trackersCache.setObject(pageTrackers, forKey: createKey(forPage: page, withUrl: url))
 
             if page == currentPage {
@@ -92,6 +93,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             pageData.loadedTrackers = trackers.loaded
             pageData.blockedTrackers = trackers.blocked
             refreshDashboard()
+        }
+        
+        func clearCache(forPage page: SFSafariPage, withUrl url: String) {
+            os_log("Clearing cache for page %d %s", log: generalLog, type: .default, page.hash, url)
+            trackersCache.removeObject(forKey: createKey(forPage: page, withUrl: url))
+            _ = cachedTrackers(forPage: page, withUrl: url)
         }
         
         func clear(_ page: SFSafariPage) {
@@ -263,8 +270,7 @@ extension Grade.Grading {
         .b: NSImage(named: "PP Indicator Grade B")!,
         .cPlus: NSImage(named: "PP Indicator Grade C Plus")!,
         .c: NSImage(named: "PP Indicator Grade C")!,
-        .d: NSImage(named: "PP Indicator Grade D")!,
-        .dMinus: NSImage(named: "PP Indicator Grade D")!
+        .d: NSImage(named: "PP Indicator Grade D")!
     ]
     
     var image: NSImage? {
