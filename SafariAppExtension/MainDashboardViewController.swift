@@ -101,6 +101,11 @@ class MainDashboardViewController: DashboardNavigationController {
                                                             object: nil)
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        pageData = SafariExtensionHandler.Data.shared.pageData
+    }
+    
     @objc func onTrustedSitesChanged() {
         trustedSites.load()
     }
