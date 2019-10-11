@@ -46,10 +46,6 @@
         }, 250);
 	}
 
-    window.addEventListener("beforeunload", function(event) {
-       safari.extension.dispatchMessage("beforeUnload");
-    })
-
     document.addEventListener("beforeload", function(event) {
 
 		event.srcElement.onload = function() {

@@ -66,11 +66,13 @@ public class PageData {
         let grade = Grade()
         
         blockedTrackers.forEach { tracker in
-            grade.addEntityBlocked(named: tracker.owner ?? "", withPrevalence: tracker.prevalence)
+            let prevalence = trackerDataManager.entity(forName: tracker.owner ?? "")?.prevalence ?? 0
+            grade.addEntityBlocked(named: tracker.owner ?? "", withPrevalence: prevalence)
         }
 
         loadedTrackers.forEach { tracker in
-            grade.addEntityNotBlocked(named: tracker.owner ?? "", withPrevalence: tracker.prevalence)
+            let prevalence = trackerDataManager.entity(forName: tracker.owner ?? "")?.prevalence ?? 0
+            grade.addEntityNotBlocked(named: tracker.owner ?? "", withPrevalence: prevalence)
         }
 
         if let url = url {
