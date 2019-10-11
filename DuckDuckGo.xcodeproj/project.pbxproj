@@ -1399,13 +1399,13 @@
 				85417D5F226605E60062A081 /* DuckDuckGo Privacy Essentials */,
 				85417D8A226762870062A081 /* SafariAppExtension */,
 				85417DA7226762E40062A081 /* ContentBlockerExtension */,
+				838AF8D72326877700522DD9 /* DuckDuckGoSync */,
 				85E9522A22B0FDE80071281E /* Core */,
 				8524A40B23327568001E8856 /* Feedback */,
 				85E9520722AFC7590071281E /* Statistics */,
 				8587A6822278901300F622AF /* TrackerBlocking */,
 				8587A68A2278901300F622AF /* UnitTests */,
 				85EB7A7A2327E761006CEE2C /* TrackerDetectionValidator */,
-				838AF8D72326877700522DD9 /* DuckDuckGoSync */,
 				838AF8E62326877800522DD9 /* DuckDuckGoSyncTests */,
 			);
 		};
@@ -1912,6 +1912,7 @@
 				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
@@ -1933,6 +1934,7 @@
 				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
@@ -2173,7 +2175,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2181,7 +2183,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = "1.0-beta4";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2198,7 +2200,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2206,7 +2208,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = "1.0-beta4";
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2221,7 +2223,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -2245,7 +2247,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -2269,7 +2271,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
@@ -2293,7 +2295,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
