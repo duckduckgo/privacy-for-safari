@@ -29,7 +29,6 @@ public class Grade {
         case cPlus = "C+"
         case c = "C"
         case d = "D"
-        case dMinus = "D-"
 
     }
 
@@ -183,7 +182,7 @@ public class Grade {
         case 10 ..< 14: return .cPlus
         case 14 ..< 20: return .c
         case 20 ..< 30: return .d
-        default: return .dMinus
+        default: return .d
         }
     }
 
