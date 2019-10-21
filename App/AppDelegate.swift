@@ -21,6 +21,7 @@ import Cocoa
 import TrackerBlocking
 import Statistics
 import SafariServices
+import os
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -29,16 +30,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard !ProcessInfo().arguments.contains("testing") else { return }
-        
+
         if Settings().firstRun {
-            let trackerBlocking = TrackerBlocking.Dependencies.shared
-            trackerBlocking.blockerListManager.updateAndReload()
+            // No reload needed because this is the first time run
+            TrackerBlocking.Dependencies.shared.blockerListManager.update()
         }
         
         LoginItemLauncher.launchSyncService()
         
         DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "ad", completion: nil)
-        
+
         #if DEBUG
         debugMenu.isHidden = false
         #endif        

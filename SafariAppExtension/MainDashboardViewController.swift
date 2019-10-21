@@ -137,6 +137,7 @@ class MainDashboardViewController: DashboardNavigationController {
 
         DispatchQueue.global(qos: .background).async {
             self.trustedSites.save()
+            ContentBlockerExtension.reloadSync()
             DispatchQueue.main.async {
                 self.updateUI()
                 self.reloadPage()

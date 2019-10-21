@@ -66,7 +66,7 @@ class SyncRunnerTests: XCTestCase {
             self.newData = newData
         }
         
-        func updateData(completion: @escaping TrackerDataCompletion) {
+        func updateData(completion: @escaping DataCompletion) {
             completion(success, newData)
         }
     }

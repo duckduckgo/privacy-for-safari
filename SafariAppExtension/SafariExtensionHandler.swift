@@ -25,6 +25,8 @@ import os
 // See https://developer.apple.com/videos/play/wwdc2019/720/
 class SafariExtensionHandler: SFSafariExtensionHandler {
     
+    static let reloadQueue = DispatchQueue(label: "ContentBlockerExtension reload queue", qos: .utility)
+    
     class Data {
         
         static let shared = Data()
@@ -134,7 +136,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     private let pixel: Pixel = Dependencies.shared.pixel
     private let deepDetection = DeepDetection()
-
+    
     override func contentBlocker(withIdentifier contentBlockerIdentifier: String, blockedResourcesWith urls: [URL], on page: SFSafariPage) {
         page.getPropertiesWithCompletionHandler { properties in
             guard let pageUrl = properties?.url else { return }
@@ -182,6 +184,20 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         validationHandler(true, "")
         Data.shared.setCurrentPage(to: nil, withUrl: nil)
         updateToolbar()
+        updateContentBlocker()
+    }
+    
+    private func updateContentBlocker() {
+        SafariExtensionHandler.reloadQueue.async {
+            os_log("updateContentBlocker, IN", log: generalLog, type: .default)
+            defer { os_log("updateContentBlocker, OUT", log: generalLog, type: .default) }
+            let blockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager
+            guard blockerListManager.needsReload else { return }
+            TrackerBlocking.Dependencies.shared.trackerDataManager.load()
+            ContentBlockerExtension.reload { _ in
+                blockerListManager.setNeedsReload(false)
+            }
+        }
     }
     
     private func updateToolbar() {

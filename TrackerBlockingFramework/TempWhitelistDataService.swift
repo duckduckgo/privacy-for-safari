@@ -63,7 +63,7 @@ public class DefaultTempWhitelistDataService: TempWhitelistDataService {
             
             let newData = self.tempWhitelistDataServiceStore.etag != response?.strongEtag()
             guard newData else {
-                os_log("Temp whitelist request returned with cached data, etag: %{public}s", log: generalLog, type: .error,
+                os_log("Temp whitelist request returned with cached data, etag: %{public}s", log: generalLog, type: .default,
                        self.tempWhitelistDataServiceStore.etag ?? "unknown")
                 completion(true, false)
                 return
@@ -75,7 +75,7 @@ public class DefaultTempWhitelistDataService: TempWhitelistDataService {
             }
 
             self.tempWhitelistDataServiceStore.etag = response?.strongEtag()
-            os_log("Temp whitelist new data with etag: %{public}s", log: generalLog, type: .error,
+            os_log("Temp whitelist new data with etag: %{public}s", log: generalLog, type: .default,
                    self.tempWhitelistDataServiceStore.etag ?? "unknown")
             completion(true, true)
         }

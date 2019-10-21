@@ -174,6 +174,8 @@
 		85C55C2B230C5C100030B52A /* TrackerDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C55C2A230C5C100030B52A /* TrackerDataTests.swift */; };
 		85C55C2D230C5CEA0030B52A /* sample-tracker-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 85C55C2C230C5CEA0030B52A /* sample-tracker-data.json */; };
 		85C7AC5C22CCDB3500619302 /* TrackersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */; };
+		85CBCAC22358A236004BD9CF /* ContentBlockerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */; };
+		85CBCAC32358A236004BD9CF /* ContentBlockerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */; };
 		85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */; };
 		85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CFD4C022CB98D600C8B1AA /* NavigationController.swift */; };
 		85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5017A22C4322B005DDF47 /* Clickables.swift */; };
@@ -219,26 +221,12 @@
 			remoteGlobalIDString = 8587A6822278901300F622AF;
 			remoteInfo = TrackerBlocking;
 		};
-		838AF88F232685A800522DD9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85417D58226605E60062A081 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83994E48232678F30040F65B;
-			remoteInfo = SyncService;
-		};
 		838AF8E82326877800522DD9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85417D58226605E60062A081 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 838AF8D72326877700522DD9;
 			remoteInfo = DuckDuckGoSync;
-		};
-		83994E882326858A0040F65B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85417D58226605E60062A081 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83994E48232678F30040F65B;
-			remoteInfo = SyncService;
 		};
 		8524A41123327568001E8856 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -371,7 +359,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		838AF8922326860A00522DD9 /* Copy SyncService to LoginItems */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
@@ -581,6 +569,7 @@
 		85C55C2A230C5C100030B52A /* TrackerDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataTests.swift; sourceTree = "<group>"; };
 		85C55C2C230C5CEA0030B52A /* sample-tracker-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-tracker-data.json"; sourceTree = "<group>"; };
 		85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersDetailViewController.swift; sourceTree = "<group>"; };
+		85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerExtension.swift; sourceTree = "<group>"; };
 		85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PrivacyProtection.xcassets; sourceTree = "<group>"; };
 		85CFD4C022CB98D600C8B1AA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		85D5017A22C4322B005DDF47 /* Clickables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clickables.swift; sourceTree = "<group>"; };
@@ -753,6 +742,7 @@
 				850385FA22F86481002259DB /* AppLinks.swift */,
 				8524A3E723325063001E8856 /* BundleIds.swift */,
 				85D5017A22C4322B005DDF47 /* Clickables.swift */,
+				85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */,
 				855205C52334FF5F003E5640 /* Logging.swift */,
 				838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */,
 				8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */,
@@ -1161,8 +1151,6 @@
 				8587A6972278901400F622AF /* PBXTargetDependency */,
 				85E9520E22AFC7590071281E /* PBXTargetDependency */,
 				85E9523122B0FDE80071281E /* PBXTargetDependency */,
-				83994E892326858A0040F65B /* PBXTargetDependency */,
-				838AF890232685A800522DD9 /* PBXTargetDependency */,
 				8524A41223327568001E8856 /* PBXTargetDependency */,
 			);
 			name = "DuckDuckGo Privacy Essentials";
@@ -1614,6 +1602,7 @@
 				8503859822F3041F002259DB /* CircleIndicatorView.swift in Sources */,
 				85985D84234F61D5003C22F2 /* Clickables.swift in Sources */,
 				85F087B1230828360041D733 /* OnboardingSetDefaultSearchController.swift in Sources */,
+				85CBCAC22358A236004BD9CF /* ContentBlockerExtension.swift in Sources */,
 				850385F922F85797002259DB /* Settings.swift in Sources */,
 				85C351322332316000D8E78A /* NSColorExtension.swift in Sources */,
 				8503859022F1A280002259DB /* OnboardingPageController.swift in Sources */,
@@ -1630,6 +1619,7 @@
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,
 				8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */,
+				85CBCAC32358A236004BD9CF /* ContentBlockerExtension.swift in Sources */,
 				855C129223192443005B21FC /* DiagnosticSupport.swift in Sources */,
 				855205C72334FFF6003E5640 /* Logging.swift in Sources */,
 				85C7AC5C22CCDB3500619302 /* TrackersDetailViewController.swift in Sources */,
@@ -1772,18 +1762,10 @@
 			target = 8587A6822278901300F622AF /* TrackerBlocking */;
 			targetProxy = 837857DB232A7CCC00143219 /* PBXContainerItemProxy */;
 		};
-		838AF890232685A800522DD9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			targetProxy = 838AF88F232685A800522DD9 /* PBXContainerItemProxy */;
-		};
 		838AF8E92326877800522DD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 838AF8D72326877700522DD9 /* DuckDuckGoSync */;
 			targetProxy = 838AF8E82326877800522DD9 /* PBXContainerItemProxy */;
-		};
-		83994E892326858A0040F65B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			targetProxy = 83994E882326858A0040F65B /* PBXContainerItemProxy */;
 		};
 		8524A41223327568001E8856 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

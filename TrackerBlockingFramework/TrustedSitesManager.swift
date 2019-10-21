@@ -18,6 +18,7 @@
 //
 
 import Foundation
+import os
 
 public struct TrustedSitesNotification {
     public static let sitesUpdatedNotificationName = NSNotification.Name("com.duckduckgo.macos.TrustedSites.updated")
@@ -119,6 +120,7 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         
         tempWhitelist = [String]()
         guard let whitelist = try? String(contentsOf: tempWhitelistUrl) else {
+            os_log("Failed to load temporary whitelist from %{public}s", log: generalLog, tempWhitelistUrl.absoluteString)
             return
         }
 
@@ -130,14 +132,12 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     
     public func save() {
         userDefaults?.set(domains, forKey: Keys.domains)
-        
-        blockerListManager().updateAndReload()
-        
+        blockerListManager().update()
+        blockerListManager().setNeedsReload(true)
         DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
                                                                      object: nil,
                                                                      userInfo: nil,
                                                                      deliverImmediately: true)
-
     }
  
 }

@@ -19,6 +19,7 @@
 
 import Cocoa
 import TrackerBlocking
+import SafariServices
 
 @NSApplicationMain
 class DuckDuckGoSyncAppDelegate: NSObject, NSApplicationDelegate {

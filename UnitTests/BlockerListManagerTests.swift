@@ -22,8 +22,36 @@ import XCTest
 
 class BlockerListManagerTests: XCTestCase {
     
+    struct Constants {
+        static let suiteName = "test"
+    }
+    
     var trackerDataManager = MockTrackerDataManager()
     var trustedSitesManager = MockTrustedSitesManager()
+    
+    override func setUp() {
+        super.setUp()
+        
+        UserDefaults(suiteName: Constants.suiteName)?.removePersistentDomain(forName: Constants.suiteName)
+    }
+    
+    func testWhenSetNeedsReloadCalledThenStatePersisted() {
+        
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("json")
+        var manager = DefaultBlockerListManager(trackerDataManager: trackerDataManagerFactory,
+                                  trustedSitesManager: trustedSitesManagerFactory,
+                                  blockerListUrl: url,
+                                  userDefaults: UserDefaults(suiteName: Constants.suiteName))
+
+        XCTAssertFalse(manager.needsReload)
+        manager.setNeedsReload(true)
+        
+        manager = DefaultBlockerListManager(trackerDataManager: trackerDataManagerFactory,
+                                  trustedSitesManager: trustedSitesManagerFactory,
+                                  blockerListUrl: url,
+                                  userDefaults: UserDefaults(suiteName: Constants.suiteName))
+        XCTAssertTrue(manager.needsReload)
+    }
     
     func testWhenWhitelistedDomainsArePresentThenGeneratedRulesContainThem() {
         
@@ -38,9 +66,10 @@ class BlockerListManagerTests: XCTestCase {
 
         let manager = DefaultBlockerListManager(trackerDataManager: trackerDataManagerFactory,
                                   trustedSitesManager: trustedSitesManagerFactory,
-                                  blockerListUrl: url)
+                                  blockerListUrl: url,
+                                  userDefaults: UserDefaults(suiteName: Constants.suiteName))
         
-        manager.updateAndReload()
+        manager.update()
         
         guard let data = try? Data(contentsOf: url) else {
             XCTFail("Failed to load \(url.path)")
