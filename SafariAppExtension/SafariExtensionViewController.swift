@@ -41,6 +41,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             updateUI()
         }
     }
+
+    var currentWindow: SFSafariWindow?
     
     private let pixel: Pixel = Dependencies.shared.pixel
 
@@ -79,11 +81,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     private func performSearch(pixelName: PixelName) {
         guard !searchField.stringValue.isEmpty else { return }
-
         guard let url = URL(withSearch: searchField.stringValue) else { return }
-        
         pixel.fire(pixelName)
-        NSWorkspace.shared.open(url)
+        currentWindow?.openTab(with: url, makeActiveIfPossible: true)
+        searchField.stringValue = ""
         dismissPopover()
     }
     

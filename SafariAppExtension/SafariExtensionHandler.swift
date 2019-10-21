@@ -205,6 +205,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     override func popoverWillShow(in window: SFSafariWindow) {
         pixel.fire(.dashboardPopupOpened)
         SafariExtensionViewController.shared.pageData = Data.shared.pageData
+        SafariExtensionViewController.shared.currentWindow = window
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
