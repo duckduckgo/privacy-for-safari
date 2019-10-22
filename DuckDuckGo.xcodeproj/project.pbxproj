@@ -176,6 +176,8 @@
 		85C7AC5C22CCDB3500619302 /* TrackersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */; };
 		85CBCAC22358A236004BD9CF /* ContentBlockerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */; };
 		85CBCAC32358A236004BD9CF /* ContentBlockerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */; };
+		85CBCB21235F73D1004BD9CF /* NSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCB20235F73D1004BD9CF /* NSAttributedStringExtension.swift */; };
+		85CBCB22235F73E7004BD9CF /* NSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCB20235F73D1004BD9CF /* NSAttributedStringExtension.swift */; };
 		85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */; };
 		85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CFD4C022CB98D600C8B1AA /* NavigationController.swift */; };
 		85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5017A22C4322B005DDF47 /* Clickables.swift */; };
@@ -570,6 +572,7 @@
 		85C55C2C230C5CEA0030B52A /* sample-tracker-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-tracker-data.json"; sourceTree = "<group>"; };
 		85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackersDetailViewController.swift; sourceTree = "<group>"; };
 		85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerExtension.swift; sourceTree = "<group>"; };
+		85CBCB20235F73D1004BD9CF /* NSAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtension.swift; sourceTree = "<group>"; };
 		85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PrivacyProtection.xcassets; sourceTree = "<group>"; };
 		85CFD4C022CB98D600C8B1AA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		85D5017A22C4322B005DDF47 /* Clickables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clickables.swift; sourceTree = "<group>"; };
@@ -749,6 +752,7 @@
 				854A9F4F2271B078008F2A93 /* Shared.xcassets */,
 				8590F40A22CE563300B7473A /* StringExtension.swift */,
 				85E9521E22AFDB220071281E /* URLExtension.swift */,
+				85CBCB20235F73D1004BD9CF /* NSAttributedStringExtension.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -849,9 +853,9 @@
 			isa = PBXGroup;
 			children = (
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
-				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
+				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				85417D97226762870062A081 /* Info.plist */,
 				85008B3322C9581B00A2CFB0 /* Localizable.strings */,
 				8587FD5422C67CD70072F47F /* Localizable.stringsdict */,
@@ -1592,6 +1596,7 @@
 				8524A3EE23325162001E8856 /* BundleIds.swift in Sources */,
 				85417D64226605E60062A081 /* AppDelegate.swift in Sources */,
 				8590F40B22CE563300B7473A /* StringExtension.swift in Sources */,
+				85CBCB21235F73D1004BD9CF /* NSAttributedStringExtension.swift in Sources */,
 				85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */,
 				8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */,
 				838AF9022326D51100522DD9 /* LoginItemLauncher.swift in Sources */,
@@ -1631,6 +1636,7 @@
 				8590F40C22CE563800B7473A /* StringExtension.swift in Sources */,
 				855205CE23350163003E5640 /* BundleIds.swift in Sources */,
 				855C129423193225005B21FC /* ReportBrokenSiteController.swift in Sources */,
+				85CBCB22235F73E7004BD9CF /* NSAttributedStringExtension.swift in Sources */,
 				85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */,
 				85417D91226762870062A081 /* SafariExtensionHandler.swift in Sources */,
 				85C351342332321600D8E78A /* NSColorExtension.swift in Sources */,

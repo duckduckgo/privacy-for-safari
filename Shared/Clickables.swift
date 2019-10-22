@@ -78,3 +78,12 @@ class ClickableButton: NSButton, Clickable {
     }
     
 }
+
+class ClickableImage: NSImageView, Clickable {
+
+    override func resetCursorRects() {
+        super.resetCursorRects()
+        addPointingHandCursor()
+    }
+
+}

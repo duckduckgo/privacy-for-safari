@@ -25,14 +25,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     static let shared: SafariExtensionViewController = {
         let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(width: 300, height: 558)
+        shared.preferredContentSize = NSSize(width: 300, height: 553)
         return shared
     }()
 
     @IBOutlet weak var dashboardHolder: NSView!
-    @IBOutlet weak var searchField: NSTextField!
-    @IBOutlet weak var searchButton: NSButton!
     @IBOutlet weak var menuButton: NSButton!
+    @IBOutlet weak var titleLabel: NSTextField!
 
     weak var navigationController: NavigationController!
 
@@ -49,10 +48,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initSearchPlaceholder()
-        initButton(searchButton)
+        initTitle()
         initButton(menuButton)
-        
         installPageController()
     }
 
@@ -61,52 +58,18 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        updateSearchFieldCaretColor()
-    }
-
     @IBAction func openMenu(sender: Any) {
         pixel.fire(.dashboardMenuOpened)
         NSWorkspace.shared.open(URL(string: AppLinks.home)!)
     }
+    
+    @IBAction func showHomePage(sender: Any) {
+        pixel.fire(.dashboardHomePageOpened)
+        currentWindow?.openTab(with: URL(string: "https://duckduckgo.com")!, makeActiveIfPossible: true)
+    }
 
-    @IBAction func performSearchFromLoupe(sender: Any) {
-        performSearch(pixelName: .dashboardSearchInPopupSubmittedWithLoupe)
-    }
-
-    @IBAction func performSearchFromKeyboard(sender: Any) {
-        performSearch(pixelName: .dashboardSearchInPopupSubmittedWithEnter)
-    }
-    
-    private func performSearch(pixelName: PixelName) {
-        guard !searchField.stringValue.isEmpty else { return }
-        guard let url = URL(withSearch: searchField.stringValue) else { return }
-        pixel.fire(pixelName)
-        currentWindow?.openTab(with: url, makeActiveIfPossible: true)
-        searchField.stringValue = ""
-        dismissPopover()
-    }
-    
-    private func updateSearchFieldCaretColor() {
-        guard let window = searchField.window,
-            let fieldEditor = window.fieldEditor(true, for: searchField) as? NSTextView else { return }
-        fieldEditor.insertionPointColor = .white
-    }
-    
     private func initButton(_ button: NSButton) {
         let cell = button.cell as? NSButtonCell
-        cell?.backgroundColor = NSColor.clear
-    }
-    
-    private func initSearchPlaceholder() {
-        let color = NSColor.searchPlaceholderText
-        let cell = searchField.cell as? NSTextFieldCell
-        let font = NSFont(name: "Proxima Nova Regular", size: 16) ?? NSFont.systemFont(ofSize: 16)
-        let attrs = [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: font]
-        let placeHolderStr = NSAttributedString(string: "Search DuckDuckGo", attributes: attrs as [NSAttributedString.Key: Any])
-        cell?.placeholderAttributedString = placeHolderStr
-        cell?.drawsBackground = true
         cell?.backgroundColor = NSColor.clear
     }
     
@@ -130,4 +93,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         navigationController?.pageData = pageData
     }
     
+    private func initTitle() {
+        titleLabel.attributedStringValue = NSAttributedString.withKern(string: titleLabel.stringValue, 2.0)
+    }
 }
