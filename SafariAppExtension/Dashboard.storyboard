@@ -418,7 +418,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                         <subviews>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9JK-R1-RQT">
-                                                <rect key="frame" x="0.0" y="50" width="575" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                                 <subviews>
                                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="czM-FG-E09">
                                                         <rect key="frame" x="0.0" y="0.0" width="287" height="50"/>
@@ -491,7 +491,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="bge-cx-nSz">
-                                                <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
+                                                <rect key="frame" x="0.0" y="-50" width="575" height="50"/>
                                                 <view key="contentView" id="gMr-Ci-dUI">
                                                     <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -781,7 +781,7 @@
                                 </constraints>
                                 <color key="fillColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-Zd-EVP" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cXc-Zd-EVP" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
                                 <rect key="frame" x="18" y="464" width="119" height="16"/>
                                 <gestureRecognizers>
                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="TEs-UZ-Dqm">
