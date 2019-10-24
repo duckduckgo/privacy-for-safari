@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -135,10 +135,10 @@
                                 </constraints>
                             </customView>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEX-r8-b3F" userLabel="Items Stack">
-                                <rect key="frame" x="0.0" y="-4" width="575" height="258"/>
+                                <rect key="frame" x="0.0" y="0.0" width="575" height="254"/>
                                 <subviews>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sT3-p7-JZN" userLabel="Connection Box">
-                                        <rect key="frame" x="0.0" y="208" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="204" width="575" height="50"/>
                                         <view key="contentView" id="eig-5X-H9H">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,7 +187,7 @@
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="U8H-32-p50" userLabel="Trackers Box" customClass="ClickableBox" customModule="SafariAppExtension" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="157" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="153" width="575" height="50"/>
                                         <view key="contentView" id="zQN-kc-PNl">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-XI-WQh" userLabel="Privacy Practices Box">
-                                        <rect key="frame" x="0.0" y="106" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="102" width="575" height="50"/>
                                         <view key="contentView" id="Xuu-OF-qpi">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +301,7 @@
                                         <color key="fillColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="2Cp-NG-aaD" userLabel="Site Protection Box">
-                                        <rect key="frame" x="0.0" y="55" width="575" height="50"/>
+                                        <rect key="frame" x="0.0" y="51" width="575" height="50"/>
                                         <view key="contentView" id="xta-2P-4GV">
                                             <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -415,13 +415,13 @@
                                         <color key="fillColor" name="ProtectionToggleOn"/>
                                     </box>
                                     <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pjl-CB-ocT">
-                                        <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                         <subviews>
                                             <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9JK-R1-RQT">
-                                                <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
+                                                <rect key="frame" x="0.0" y="50" width="575" height="50"/>
                                                 <subviews>
                                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="czM-FG-E09">
-                                                        <rect key="frame" x="0.0" y="2" width="287" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="287" height="50"/>
                                                         <view key="contentView" id="mgr-sJ-Tmf">
                                                             <rect key="frame" x="0.0" y="0.0" width="287" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,7 +451,7 @@
                                                         <color key="fillColor" name="ItemTitleInverse"/>
                                                     </box>
                                                     <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="AWx-sA-Dr9">
-                                                        <rect key="frame" x="289" y="2" width="286" height="50"/>
+                                                        <rect key="frame" x="289" y="0.0" width="286" height="50"/>
                                                         <view key="contentView" id="wiP-et-A2n">
                                                             <rect key="frame" x="0.0" y="0.0" width="286" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -491,13 +491,13 @@
                                                 </customSpacing>
                                             </stackView>
                                             <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="bge-cx-nSz">
-                                                <rect key="frame" x="0.0" y="-54" width="575" height="54"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                                 <view key="contentView" id="gMr-Ci-dUI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="575" height="54"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="575" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ocx-iY-viS">
-                                                            <rect key="frame" x="172" y="18" width="231" height="18"/>
+                                                            <rect key="frame" x="172" y="16" width="231" height="18"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="17e-Jf-Ll5">
                                                                     <rect key="frame" x="-2" y="0.0" width="159" height="18"/>
@@ -560,14 +560,14 @@
                                                 </view>
                                                 <constraints>
                                                     <constraint firstItem="Ocx-iY-viS" firstAttribute="centerY" secondItem="bge-cx-nSz" secondAttribute="centerY" id="8Xu-Ph-hLo"/>
-                                                    <constraint firstAttribute="height" constant="54" id="BSI-iT-uDJ"/>
+                                                    <constraint firstAttribute="height" constant="50" id="BSI-iT-uDJ"/>
                                                     <constraint firstItem="Ocx-iY-viS" firstAttribute="centerX" secondItem="bge-cx-nSz" secondAttribute="centerX" id="Sxt-ny-ovt"/>
                                                 </constraints>
                                                 <color key="fillColor" name="ItemTitleInverse"/>
                                             </box>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="2FZ-kO-qoV"/>
+                                            <constraint firstAttribute="height" constant="50" id="2FZ-kO-qoV"/>
                                             <constraint firstItem="9JK-R1-RQT" firstAttribute="width" secondItem="Pjl-CB-ocT" secondAttribute="width" id="awj-B9-UU7"/>
                                             <constraint firstItem="bge-cx-nSz" firstAttribute="width" secondItem="Pjl-CB-ocT" secondAttribute="width" id="v6d-k5-4Fp"/>
                                         </constraints>
