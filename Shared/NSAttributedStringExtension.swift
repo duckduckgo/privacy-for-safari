@@ -1,7 +1,6 @@
 //
-//  Utils.swift
+//  NSAttributedStringExtension.swift
 //  DuckDuckGo Privacy Essentials
-//
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,13 +17,15 @@
 //  limitations under the License.
 //
 
-import AppKit
+import Foundation
 
-struct Utils {
+extension NSAttributedString {
     
-    static func versionLabelAttributedString() -> NSAttributedString {
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "?.?"
-        return NSAttributedString.withKern(string: "PRIVACY ESSENTIALS v\(version)", 2.0)
+    static func withKern(string: String, _ kern: CGFloat) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any]? = [
+            NSAttributedString.Key.kern: kern
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
     }
     
 }

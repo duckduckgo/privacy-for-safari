@@ -21,10 +21,6 @@ import Foundation
 import os
 import TrackerBlocking
 
-public struct SyncNotification {
-    public static var newDataNotificationName = NSNotification.Name("com.duckduckgo.macos.privacyessentials.sync.notification.newdata")
-}
-
 class SyncRunner {
 
     typealias SyncCompletion = (_ success: Bool) -> Void
@@ -59,21 +55,19 @@ class SyncRunner {
         group.wait()
                         
         if trackerData.newData || tempWhitelistData.newData {
+            os_log("Sync has new data %{public}s %{public}s", log: generalLog,
+                   trackerData.newData ? "tracker data" : "",
+                   tempWhitelistData.newData ? "whitelist data" : "")
+            
             self.trackerDataManager.load()
-            self.blockerListManager.updateAndReload()
-            self.sendNewDataNotification()
+            self.blockerListManager.update()
+            self.blockerListManager.setNeedsReload(true)
         }
         
         // if either fail, don't store the sync time - we need that data!
         completion(trackerData.success && tempWhitelistData.success)
     }
     
-    private func sendNewDataNotification() {
-        DistributedNotificationCenter.default().postNotificationName(SyncNotification.newDataNotificationName,
-                                                                     object: nil,
-                                                                     userInfo: nil,
-                                                                     deliverImmediately: true)
-    }
 }
 
 class ServiceWrapper {

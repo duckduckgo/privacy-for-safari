@@ -43,12 +43,11 @@ public enum PixelName: String {
 
     case dashboardPopupOpened = "ep"
     case dashboardMenuOpened = "eph"
+    case dashboardHomePageOpened = "ep_h"
     case dashboardPrivacyProtectionToggleOn = "ept_on"
     case dashboardPrivacyProtectionToggleOff = "ept_off"
     case dashboardTrackerNetworksOpened = "epn"
     case dashboardWhitelistOpened = "epw"
-    case dashboardSearchInPopupSubmittedWithEnter = "epq_e"
-    case dashboardSearchInPopupSubmittedWithLoupe = "epq_l"
     
     case safariBrowserExtensionSearch = "sbes"
 }

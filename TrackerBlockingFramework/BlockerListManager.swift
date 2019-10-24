@@ -26,28 +26,50 @@ public protocol BlockerListManager {
     
     typealias Factory = (() -> BlockerListManager)
     
-    func updateAndReload()
+    var needsReload: Bool { get }
+    func setNeedsReload(_ needsReload: Bool)
+    func update()
     
 }
 
 public class DefaultBlockerListManager: BlockerListManager {
+    
+    struct Keys {
+        static let needsReload = "needsReload"
+    }
         
     private let trackerDataManager: TrackerDataManager.Factory
     private let trustedSitesManager: TrustedSitesManager.Factory
     private let blockerListUrl: URL
+    private let userDefaults: UserDefaults?
+    
+    public var needsReload: Bool {
+        get {
+            return userDefaults?.bool(forKey: Keys.needsReload) ?? false
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.needsReload)
+        }
+    }
     
     init(trackerDataManager: @escaping TrackerDataManager.Factory,
          trustedSitesManager: @escaping TrustedSitesManager.Factory,
-         blockerListUrl: URL = BlockerListLocation.blockerListUrl) {        
+         blockerListUrl: URL = BlockerListLocation.blockerListUrl,
+         userDefaults: UserDefaults? = UserDefaults(suiteName: BlockerListLocation.groupName)) {
         self.trackerDataManager = trackerDataManager
         self.trustedSitesManager = trustedSitesManager
         self.blockerListUrl = blockerListUrl
+        self.userDefaults = userDefaults
     }
     
-    public func updateAndReload() {
+    public func setNeedsReload(_ needsReload: Bool) {
+        self.needsReload = needsReload
+    }
+    
+    public func update() {
+        trustedSitesManager().load()
         guard let blockerListData = buildBlockerListData() else { return }
         writeBlockerList(data: blockerListData)
-        reloadExtension()
     }
     
     private func buildBlockerListData() -> Data? {
@@ -57,10 +79,13 @@ public class DefaultBlockerListManager: BlockerListManager {
         }
         
         let trustedDomains = trustedSitesManager().allDomains()
-        os_log("trustedDomains %s", log: generalLog, type: .error, String(describing: trustedDomains))
+        os_log("trustedDomains %s", log: generalLog, type: .debug, String(describing: trustedDomains))
+
+        let tempWhitelistDomains = trustedSitesManager().whitelistedDomains()
+        os_log("tempWhitelistDomains %s", log: generalLog, type: .debug, String(describing: tempWhitelistDomains))
         
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedDomains,
-                                                                                    andTemporaryWhitelist: trustedSitesManager().whitelistedDomains())
+                                                                                    andTemporaryWhitelist: tempWhitelistDomains)
         
         guard let data = try? JSONEncoder().encode(rules) else {
             os_log("Failed to encode rules", log: generalLog, type: .error)
@@ -78,21 +103,7 @@ public class DefaultBlockerListManager: BlockerListManager {
         }
         return data
     }
-    
-    private func reloadExtension() {
-        let group = DispatchGroup()
-        group.enter()
-        let id = BundleIds.contentBlockerExtension
-        os_log("START reloading %s", log: generalLog, type: .debug, id)
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: id) { error in
-            group.leave()
-            guard let error = error else { return }
-            os_log("Failed to reload extension %{public}s", log: generalLog, type: .error, error.localizedDescription)
-        }
-        os_log("FINISHED reloading %s", log: generalLog, type: .debug, id)
-        group.wait()
-    }
-    
+        
     private func writeBlockerList(data: Data) {
         do {
             try data.write(to: blockerListUrl, options: .atomicWrite)

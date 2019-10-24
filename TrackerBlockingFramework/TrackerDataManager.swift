@@ -89,7 +89,7 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     
     public func load() {
         if !FileManager.default.fileExists(atPath: TrackerDataLocation.trackerDataUrl.path) {
-            os_log("Tracker data does not exist, loading default", log: generalLog, type: .error)
+            os_log("Tracker data does not exist, loading default", log: generalLog, type: .default)
             installDefaultTrackerData()
         }
         self.trackerData = TrackerData.decode(contentsOf: TrackerDataLocation.trackerDataUrl)

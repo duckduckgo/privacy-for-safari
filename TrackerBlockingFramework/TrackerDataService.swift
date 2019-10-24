@@ -61,7 +61,7 @@ public class DefaultTrackerDataService: TrackerDataService {
             
             let newData = self.trackerDataServiceStore.etag != response?.strongEtag()
             guard newData else {
-                os_log("TDS request returned with cached data, etag: %{public}s", log: generalLog, type: .error,
+                os_log("TDS request returned with cached data, etag: %{public}s", log: generalLog, type: .default,
                        self.trackerDataServiceStore.etag ?? "unknown")
                 completion(true, false)
                 return
@@ -73,7 +73,7 @@ public class DefaultTrackerDataService: TrackerDataService {
             }
 
             self.trackerDataServiceStore.etag = response?.strongEtag()
-            os_log("TDS new data with etag: %{public}s", log: generalLog, type: .error, self.trackerDataServiceStore.etag ?? "unknown")
+            os_log("TDS new data with etag: %{public}s", log: generalLog, type: .default, self.trackerDataServiceStore.etag ?? "unknown")
             completion(true, true)
         }
     }

@@ -26,7 +26,7 @@ class PrivacyPracticesTests: XCTestCase {
     let mockTrackerDataManager = MockTrackerDataManager()
 
     func testLoadBundledData() {
-        XCTAssertEqual(299, (practicesManager() as? DefaultPrivacyPracticesManager)?.terms.count)
+        XCTAssertEqual(300, (practicesManager() as? DefaultPrivacyPracticesManager)?.terms.count)
     }
 
     func testWhenUrlWithNoPracticesThenReturnUnknownPrivacyPractice() {

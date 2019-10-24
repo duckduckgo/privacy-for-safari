@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,8 +10,7 @@
             <connections>
                 <outlet property="dashboardHolder" destination="1yo-Ce-QJe" id="sVj-tB-BX7"/>
                 <outlet property="menuButton" destination="41x-ag-NTP" id="tf4-uD-uKT"/>
-                <outlet property="searchButton" destination="4sM-Fe-yOe" id="mg0-cx-BLK"/>
-                <outlet property="searchField" destination="zFw-K7-EcN" id="JgX-BP-hRl"/>
+                <outlet property="titleLabel" destination="oyr-Ah-67K" id="irA-kN-veD"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
             </connections>
         </customObject>
@@ -30,43 +29,13 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="gpJ-OW-IKw"/>
                     </constraints>
-                    <color key="fillColor" name="SearchBarBackground"/>
+                    <color key="fillColor" name="ItemTitleInverse"/>
                 </box>
-                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EW3-Sm-fSZ">
-                    <rect key="frame" x="16" y="510" width="268" height="24"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="QEB-56-SMc">
+                    <rect key="frame" x="0.0" y="502" width="300" height="48"/>
                     <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-ht-4tA">
-                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="QZP-ht-4tA" secondAttribute="height" multiplier="1:1" id="KgZ-N8-l6g"/>
-                                <constraint firstAttribute="height" constant="24" id="MOf-XW-Nql"/>
-                            </constraints>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="6FX-ne-XAu"/>
-                        </imageView>
-                        <textField focusRingType="none" verticalHuggingPriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-K7-EcN">
-                            <rect key="frame" x="30" y="3" width="176" height="19"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" focusRingType="none" placeholderString="Search DuckDuckGo" id="T1m-Ma-6Rg">
-                                <font key="font" size="16" name="ProximaNova-Regular"/>
-                                <color key="textColor" name="SearchInputText"/>
-                                <color key="backgroundColor" red="0.29029002790000002" green="0.29790967699999998" blue="0.30980473759999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                            </textFieldCell>
-                            <connections>
-                                <action selector="performSearchFromKeyboardWithSender:" target="-2" id="nDE-6O-tPb"/>
-                            </connections>
-                        </textField>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="4sM-Fe-yOe">
-                            <rect key="frame" x="212" y="0.0" width="24" height="24"/>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SearchLoupe" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fol-nQ-O59">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                                <connections>
-                                    <action selector="performSearchFromLoupeWithSender:" target="-2" id="eRB-RF-l7b"/>
-                                </connections>
-                            </buttonCell>
-                            <color key="contentTintColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
-                        </button>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="41x-ag-NTP">
-                            <rect key="frame" x="244" y="0.0" width="24" height="24"/>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="41x-ag-NTP" customClass="ClickableButton" customModule="SafariAppExtension" customModuleProvider="target">
+                            <rect key="frame" x="262" y="12" width="24" height="24"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Settings" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Jyu-wn-FSA">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -76,40 +45,59 @@
                                 <action selector="openMenuWithSender:" target="-2" id="NJf-by-tHu"/>
                             </connections>
                         </button>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QZP-ht-4tA" customClass="ClickableImage" customModule="SafariAppExtension" customModuleProvider="target">
+                            <rect key="frame" x="14" y="-35" width="24" height="119"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="119" id="3bT-Mg-c9X"/>
+                                <constraint firstAttribute="width" constant="24" id="AOJ-2e-n38"/>
+                            </constraints>
+                            <gestureRecognizers>
+                                <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="7ed-3T-wpX">
+                                    <connections>
+                                        <action selector="showHomePageWithSender:" target="-2" id="ESX-7N-kLB"/>
+                                    </connections>
+                                </clickGestureRecognizer>
+                            </gestureRecognizers>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LogoDashboard" id="6FX-ne-XAu"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyr-Ah-67K">
+                            <rect key="frame" x="89" y="17" width="123" height="14"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="PRIVACY ESSENTIALS" id="3ed-wM-vvs">
+                                <font key="font" metaFont="systemMedium" size="11"/>
+                                <color key="textColor" name="DashboardTitle"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
-                    <visibilityPriorities>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                    </visibilityPriorities>
-                    <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                    </customSpacing>
-                </stackView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Ale-5B-zaM"/>
+                        <constraint firstItem="QZP-ht-4tA" firstAttribute="leading" secondItem="QEB-56-SMc" secondAttribute="leading" constant="14" id="Ijg-cd-mEe"/>
+                        <constraint firstItem="oyr-Ah-67K" firstAttribute="centerY" secondItem="41x-ag-NTP" secondAttribute="centerY" id="YmT-V3-PqB"/>
+                        <constraint firstAttribute="trailing" secondItem="41x-ag-NTP" secondAttribute="trailing" constant="14" id="c2o-wf-jsN"/>
+                        <constraint firstItem="41x-ag-NTP" firstAttribute="top" secondItem="QEB-56-SMc" secondAttribute="top" constant="12" id="gHX-DR-btP"/>
+                        <constraint firstItem="oyr-Ah-67K" firstAttribute="centerX" secondItem="QEB-56-SMc" secondAttribute="centerX" id="le6-kg-k2V"/>
+                        <constraint firstItem="QZP-ht-4tA" firstAttribute="centerY" secondItem="41x-ag-NTP" secondAttribute="centerY" id="q7E-c0-Mpw"/>
+                    </constraints>
+                </customView>
                 <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="T1j-Bc-ZWn">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="502"/>
                     <view key="contentView" id="1yo-Ce-QJe">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <color key="fillColor" name="DashboardBackground"/>
                 </box>
             </subviews>
             <constraints>
-                <constraint firstItem="EW3-Sm-fSZ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="16" id="0e1-TW-BGB"/>
+                <constraint firstAttribute="trailing" secondItem="QEB-56-SMc" secondAttribute="trailing" id="40e-eo-GeF"/>
+                <constraint firstItem="QEB-56-SMc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="8FU-Cc-CsZ"/>
                 <constraint firstItem="T1j-Bc-ZWn" firstAttribute="width" secondItem="c22-O7-iKe" secondAttribute="width" id="GTN-C6-4Nh"/>
-                <constraint firstItem="EW3-Sm-fSZ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="INg-sm-kce"/>
+                <constraint firstItem="T1j-Bc-ZWn" firstAttribute="top" secondItem="QEB-56-SMc" secondAttribute="bottom" id="Pr7-1o-LfN"/>
                 <constraint firstAttribute="trailing" secondItem="Yt0-AV-Xeu" secondAttribute="trailing" id="Ysv-YY-KWZ"/>
                 <constraint firstItem="Yt0-AV-Xeu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Z8Q-fW-AwQ"/>
-                <constraint firstAttribute="trailing" secondItem="EW3-Sm-fSZ" secondAttribute="trailing" constant="16" id="gdL-ai-0Fl"/>
+                <constraint firstItem="QEB-56-SMc" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="bK1-6W-riE"/>
                 <constraint firstItem="T1j-Bc-ZWn" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="gmp-0L-TWX"/>
                 <constraint firstAttribute="bottom" secondItem="T1j-Bc-ZWn" secondAttribute="bottom" id="lEV-7w-xe8"/>
-                <constraint firstItem="T1j-Bc-ZWn" firstAttribute="top" secondItem="EW3-Sm-fSZ" secondAttribute="bottom" constant="12" id="mU8-uA-63d"/>
-                <constraint firstItem="EW3-Sm-fSZ" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="rKl-g6-huU"/>
                 <constraint firstAttribute="bottom" secondItem="Yt0-AV-Xeu" secondAttribute="bottom" id="t8g-YO-ooa"/>
                 <constraint firstItem="Yt0-AV-Xeu" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="uak-4G-POH"/>
             </constraints>
@@ -117,16 +105,15 @@
         </customView>
     </objects>
     <resources>
-        <image name="Logo" width="119" height="119"/>
-        <image name="SearchLoupe" width="24" height="24"/>
+        <image name="LogoDashboard" width="24" height="24"/>
         <image name="Settings" width="24" height="24"/>
         <namedColor name="DashboardBackground">
             <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="SearchBarBackground">
-            <color red="0.29019607843137257" green="0.29803921568627451" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="DashboardTitle">
+            <color red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="SearchInputText">
+        <namedColor name="ItemTitleInverse">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
