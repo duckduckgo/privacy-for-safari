@@ -25,7 +25,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     static let shared: SafariExtensionViewController = {
         let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(width: 300, height: 553)
+        shared.preferredContentSize = NSSize(width: 300, height: 548)
         return shared
     }()
 
@@ -65,7 +65,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     @IBAction func showHomePage(sender: Any) {
         pixel.fire(.dashboardHomePageOpened)
-        currentWindow?.openTab(with: URL(string: "https://duckduckgo.com")!, makeActiveIfPossible: true)
+        self.currentWindow?.openTab(with: URL(string: "https://duckduckgo.com")!, makeActiveIfPossible: true) { _ in
+            self.dismissPopover()
+        }
     }
 
     private func initButton(_ button: NSButton) {
