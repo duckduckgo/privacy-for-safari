@@ -23,11 +23,7 @@ import Statistics
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
     
-    static let shared: SafariExtensionViewController = {
-        let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(width: 300, height: 548)
-        return shared
-    }()
+    static let shared: SafariExtensionViewController = SafariExtensionViewController()
 
     @IBOutlet weak var dashboardHolder: NSView!
     @IBOutlet weak var menuButton: NSButton!
@@ -35,9 +31,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     weak var navigationController: NavigationController!
 
+    /// Always  dispatch to the main thread
     var pageData: PageData? {
         didSet {
-            updateUI()
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
         }
     }
 
@@ -47,7 +46,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        preferredContentSize = NSSize(width: 300, height: 548)
+
         initTitle()
         initButton(menuButton)
         installPageController()

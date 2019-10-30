@@ -67,7 +67,6 @@ public class DefaultBlockerListManager: BlockerListManager {
     }
     
     public func update() {
-        trustedSitesManager().load()
         guard let blockerListData = buildBlockerListData() else { return }
         writeBlockerList(data: blockerListData)
     }

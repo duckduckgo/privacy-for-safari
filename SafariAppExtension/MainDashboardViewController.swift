@@ -21,6 +21,7 @@ import Cocoa
 import SafariServices
 import TrackerBlocking
 import Statistics
+import os
 
 class MainDashboardViewController: DashboardNavigationController {
 
@@ -49,6 +50,7 @@ class MainDashboardViewController: DashboardNavigationController {
 
     let trustedSites: TrustedSitesManager = Dependencies.shared.trustedSitesManager
     let privacyPracticesManager: PrivacyPracticesManager = Dependencies.shared.privacyPracticesManager
+    let blockerListManager: BlockerListManager = Dependencies.shared.blockerListManager
 
     @IBOutlet weak var siteTitle: NSTextField!
     @IBOutlet weak var enhancedStatementStack: NSView!
@@ -80,10 +82,9 @@ class MainDashboardViewController: DashboardNavigationController {
 
     override var pageData: PageData? {
         didSet {
-            if isViewLoaded {
-                updateProtectionToggleState()
-                updateUI()
-            }
+            guard isViewLoaded else { return }
+            self.updateProtectionToggleState()
+            self.updateUI()
         }
     }
     
@@ -103,11 +104,11 @@ class MainDashboardViewController: DashboardNavigationController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        pageData = SafariExtensionHandler.Data.shared.pageData
+        pageData = DashboardData.shared.pageData
     }
     
     @objc func onTrustedSitesChanged() {
-        trustedSites.load()
+        updateUI()
     }
     
     private func updateProtectionToggleState() {
@@ -116,7 +117,6 @@ class MainDashboardViewController: DashboardNavigationController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        trustedSites.load()
         protection = isTrusted ? .on : .off
         updateProtectionToggleState()
         updateUI()
@@ -136,7 +136,7 @@ class MainDashboardViewController: DashboardNavigationController {
         }
 
         DispatchQueue.global(qos: .background).async {
-            self.trustedSites.save()
+            self.blockerListManager.update()
             ContentBlockerExtension.reloadSync()
             DispatchQueue.main.async {
                 self.updateUI()
@@ -278,10 +278,11 @@ class MainDashboardViewController: DashboardNavigationController {
     private func reloadPage() {
         SFSafariApplication.getActiveWindow { window in
             window?.getActiveTab(completionHandler: { tab in
-                tab?.getActivePage(completionHandler: { page in
+                tab?.getActivePageOnQueue(completionHandler: { page in
                     guard let page = page else { return }
-                    SafariExtensionHandler.Data.shared.clearCache(forPage: page, withUrl: self.pageData?.url?.absoluteString ?? "")
+                    page.dispatchMessageToScript(withName: "stopCheckingResources", userInfo: nil)
                     page.reload()
+                    DashboardData.shared.clearCache(forPage: page, withUrl: self.pageData?.url?.absoluteString ?? "")
                 })
             })
         }

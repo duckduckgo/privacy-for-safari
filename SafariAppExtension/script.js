@@ -20,8 +20,18 @@
 // MARK: Detection Methods
 (function() {
 
+    var checkResources = true;
+
     safari.extension.dispatchMessage("userAgent", {
         "userAgent": navigator.userAgent
+    });
+
+    safari.self.addEventListener("message", function(event) { 
+        checkResources = false;
+    });
+
+    window.addEventListener("beforeunload", function(event) {
+       safari.extension.dispatchMessage("beforeUnload");
     });
 
     var maxPerformanceTimeout = 3000;
@@ -41,9 +51,11 @@
                 resources.push({ url: entry.name, type: entry.initiatorType });
             }
 
-            safari.extension.dispatchMessage("resourceLoaded", {
+            if (checkResources) {
+                safari.extension.dispatchMessage("resourceLoaded", {
                     "resources": resources
-                });
+                 });
+            }
 
             performanceIndex = entries.length;
         }

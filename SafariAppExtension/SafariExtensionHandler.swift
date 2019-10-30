@@ -24,125 +24,21 @@ import os
 
 // See https://developer.apple.com/videos/play/wwdc2019/720/
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    
-    static let reloadQueue = DispatchQueue(label: "ContentBlockerExtension reload queue", qos: .utility)
-    
-    class Data {
-        
-        static let shared = Data()
-        
-        private(set) var pageData: PageData = PageData()
-        private(set) var currentPage: SFSafariPage?
-        
-        /// An in-memory cache of trackers seen on previos urls
-        private var trackersCache = NSCache<NSString, Trackers>()
-        
-        init() {
-            trackersCache.countLimit = 10000
-        }
-        
-        func cachedTrackers(forPage page: SFSafariPage, withUrl url: String) -> Trackers {
-            let key = createKey(forPage: page, withUrl: url)
-            
-            if let cached = trackersCache.object(forKey: key) {
-                os_log("Trackers found in cache for page %d %s %d/%d", log: generalLog, type: .default,
-                       page.hash, url, cached.blocked.count, cached.loaded.count)
-                return cached
-            }
-            os_log("No trackers found in cache for page %d %s", log: generalLog, type: .default, page.hash, url)
-            return Trackers()
-        }
-                
-        func trackers(_ trackers: [DetectedTracker], loadedOnPage page: SFSafariPage, forUrl url: String) {
-            DiagnosticSupport.dump(trackers, blocked: false)
-            
-            let pageTrackers = cachedTrackers(forPage: page, withUrl: url)
-            pageTrackers.loaded.append(contentsOf: trackers)
-            trackersCache.setObject(pageTrackers, forKey: createKey(forPage: page, withUrl: url))
-            
-            if page == currentPage {
-                refreshDashboard()
-            }
-        }
-        
-        func trackers(_ trackers: [DetectedTracker], blockedOnPage page: SFSafariPage, forUrl url: String) {
-            DiagnosticSupport.dump(trackers, blocked: true)
-            
-            trackers.forEach {
-                os_log("BLOCKED %{public}s on %s", log: generalLog, type: .default, $0.resource.absoluteString, $0.page.absoluteString)
-            }
-                        
-            let pageTrackers = cachedTrackers(forPage: page, withUrl: url)
-            pageTrackers.blocked.append(contentsOf: trackers)
-            trackersCache.setObject(pageTrackers, forKey: createKey(forPage: page, withUrl: url))
 
-            if page == currentPage {
-                refreshDashboard()
-            }
-        }
-        
-        func setCurrentPage(to page: SFSafariPage?, withUrl url: URL?) {
-            os_log("Page set with url %s", log: generalLog, type: .default, url?.absoluteString ?? "nil")
-            pageData = PageData(url: url)
-            
-            guard let page = page, let url = url else {
-                SafariExtensionViewController.shared.dismiss(self)
-                return
-            }
-            currentPage = page
-            
-            let trackers = cachedTrackers(forPage: page, withUrl: url.absoluteString)
-            pageData.loadedTrackers = trackers.loaded
-            pageData.blockedTrackers = trackers.blocked
-            refreshDashboard()
-        }
-        
-        func clearCache(forPage page: SFSafariPage, withUrl url: String) {
-            os_log("Clearing cache for page %d %s", log: generalLog, type: .default, page.hash, url)
-            trackersCache.removeObject(forKey: createKey(forPage: page, withUrl: url))
-            _ = cachedTrackers(forPage: page, withUrl: url)
-        }
-        
-        func clear(_ page: SFSafariPage) {
-            if page == currentPage {
-                currentPage = nil
-            }
-        }
-                
-        private func refreshDashboard(_ function: StaticString = #function) {
-            DispatchQueue.main.async {
-                SafariExtensionViewController.shared.pageData = self.pageData
-            }
-        }
-        
-        private func createKey(forPage page: SFSafariPage, withUrl url: String) -> NSString {
-            return "\(page.hash)/\(url)" as NSString
-        }
-    }
-    
     enum Messages: String {
         case resourceLoaded
         case userAgent
+        case beforeUnload
     }
     
-    class Trackers {
-        var loaded = [DetectedTracker]()
-        var blocked = [DetectedTracker]()
-        
-        var trackersDetected: Bool {
-            return !loaded.isEmpty || !blocked.isEmpty
-        }
-    }
-
     private let pixel: Pixel = Dependencies.shared.pixel
     private let deepDetection = DeepDetection()
     
     override func contentBlocker(withIdentifier contentBlockerIdentifier: String, blockedResourcesWith urls: [URL], on page: SFSafariPage) {
-        page.getPropertiesWithCompletionHandler { properties in
+        page.getPropertiesOnQueue { properties in
             guard let pageUrl = properties?.url else { return }
-            
             let trackerDetection = Dependencies.shared.trackerDetection
-            Data.shared.trackers(urls.map {
+            DashboardData.shared.trackers(urls.map {
                 trackerDetection.detectedTrackerFrom(resourceUrl: $0, onPageWithUrl: pageUrl)
             }, blockedOnPage: page, forUrl: pageUrl.absoluteString)
         }
@@ -150,9 +46,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     // This doesn't appear to get called when the page is closed though
     override func page(_ page: SFSafariPage, willNavigateTo url: URL?) {
-        Data.shared.clear(page)
-        Data.shared.setCurrentPage(to: page, withUrl: url)
-        updateRetentionData()
+        DispatchQueue.dashboard.async {
+            DashboardData.shared.clear(page)
+            DashboardData.shared.setCurrentPage(to: page, withUrl: url)
+            self.updateRetentionData()
+        }
     }
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
@@ -162,11 +60,18 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         
         switch message {
         case .resourceLoaded:
-            handleResourceLoadedMessage(userInfo, onPage: page)
+            self.handleResourceLoadedMessage(userInfo, onPage: page)
 
         case .userAgent:
-            handleUserAgentMessage(userInfo)
+            self.handleUserAgentMessage(userInfo)
+
+        case .beforeUnload:
+            self.handleBeforeUnloadMessage(from: page)
         }
+    }
+    
+    func handleBeforeUnloadMessage(from page: SFSafariPage) {
+        DashboardData.shared.evictInactivePages()
     }
 
     func handleUserAgentMessage(_ userInfo: [String: Any]?) {
@@ -182,13 +87,15 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         validationHandler(true, "")
-        Data.shared.setCurrentPage(to: nil, withUrl: nil)
-        updateToolbar()
-        updateContentBlocker()
+        DispatchQueue.dashboard.async {
+            DashboardData.shared.setCurrentPage(to: nil, withUrl: nil)
+            self.updateToolbar()
+            self.updateContentBlocker()
+        }
     }
     
     private func updateContentBlocker() {
-        SafariExtensionHandler.reloadQueue.async {
+        DispatchQueue.dashboard.async {
             os_log("updateContentBlocker, IN", log: generalLog, type: .default)
             defer { os_log("updateContentBlocker, OUT", log: generalLog, type: .default) }
             let blockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager
@@ -204,14 +111,16 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         SFSafariApplication.getActiveWindow { window in
             window?.getToolbarItem { toolbarItem in
                 guard let toolbarItem = toolbarItem else { return }
-                toolbarItem.setImage(NSImage(named: NSImage.Name("LogoToolbarItemIcon")))
                 window?.getActiveTab { tabs in
                     tabs?.getActivePage(completionHandler: { page in
-                        guard let page = page else { return }
-                        page.getPropertiesWithCompletionHandler({ properties in
-                            Data.shared.setCurrentPage(to: page, withUrl: properties?.url)
+                        guard let page = page else {
+                            toolbarItem.setImage(nil)
+                            return
+                        }
+                        page.getPropertiesOnQueue { properties in
+                            DashboardData.shared.setCurrentPage(to: page, withUrl: properties?.url)
                             self.update(toolbarItem)
-                        })
+                        }
                     })
                 }
             }
@@ -220,7 +129,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func popoverWillShow(in window: SFSafariWindow) {
         pixel.fire(.dashboardPopupOpened)
-        SafariExtensionViewController.shared.pageData = Data.shared.pageData
+        SafariExtensionViewController.shared.pageData = DashboardData.shared.pageData
         SafariExtensionViewController.shared.currentWindow = window
     }
     
@@ -229,16 +138,17 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     private func handleResourceLoadedMessage(_ userInfo: [String: Any]?, onPage page: SFSafariPage) {
+        
         guard let resources = userInfo?["resources"] as? [[String: String]] else { return }
                 
-        page.getPropertiesWithCompletionHandler { properties in
+        page.getPropertiesOnQueue { properties in
             let trackerDetection = Dependencies.shared.trackerDetection
             guard let pageUrl = properties?.url else { return }
-            
+
             var detectedTrackers = [DetectedTracker]()
             resources.forEach { resource in
                 self.deepDetection.check(resource: resource["url"], onPage: pageUrl)
-                
+
                 if let url = resource["url"],
                     let resourceUrl = URL(withResource: url, relativeTo: pageUrl),
                     let detectedTracker = trackerDetection.detectTrackerFor(resourceUrl: resourceUrl,
@@ -247,21 +157,22 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     detectedTrackers.append(detectedTracker)
                 }
             }
-            
+
             guard !detectedTrackers.isEmpty else { return }
-            Data.shared.trackers(detectedTrackers, loadedOnPage: page, forUrl: pageUrl.absoluteString)
+            DashboardData.shared.trackers(detectedTrackers, loadedOnPage: page, forUrl: pageUrl.absoluteString)
             self.updateToolbar()
         }
         
     }
     
     private func update(_ toolbarItem: SFSafariToolbarItem) {
-        guard let url = Data.shared.pageData.url else {
-            toolbarItem.setImage(NSImage(named: NSImage.Name("LogoToolbarItemIcon")))
+        guard let url = DashboardData.shared.pageData.url else {
+            toolbarItem.setImage(nil)
+            SafariExtensionViewController.shared.pageData = DashboardData.shared.pageData
             return
         }
         
-        let grade = Data.shared.pageData.calculateGrade()
+        let grade = DashboardData.shared.pageData.calculateGrade()
         let site = Dependencies.shared.trustedSitesManager.isTrusted(url: url) ? grade.site : grade.enhanced
         let grading = site.grade
         

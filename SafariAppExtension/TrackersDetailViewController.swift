@@ -51,7 +51,7 @@ class TrackersDetailViewController: DashboardNavigationController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        pageData = SafariExtensionHandler.Data.shared.pageData
+        pageData = DashboardData.shared.pageData
         updateUI()
     }
     

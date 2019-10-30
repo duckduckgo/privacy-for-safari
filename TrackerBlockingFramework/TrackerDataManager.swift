@@ -50,7 +50,23 @@ public struct TrackerDataLocation {
 
 public class DefaultTrackerDataManager: TrackerDataManager {
 
-    public var trackerData: TrackerData?
+    private let lock = NSLock()
+    
+    private var _trackerData: TrackerData?
+    
+    public var trackerData: TrackerData? {
+        get {
+            lock.lock()
+            defer { lock.unlock() }
+            return _trackerData
+        }
+        
+        set {
+            lock.lock()
+            _trackerData = newValue
+            lock.unlock()
+        }
+    }
 
     init() {
         load()

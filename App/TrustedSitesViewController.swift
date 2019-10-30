@@ -27,6 +27,7 @@ class TrustedSitesViewController: NSViewController {
     @IBOutlet weak var noSitesView: NSView!
 
     let trustedSites = Dependencies.shared.trustedSitesManager
+    let blockerListManager = Dependencies.shared.blockerListManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,6 @@ class TrustedSitesViewController: NSViewController {
     }
     
     @objc private func onTrustedSitesChanged() {
-        trustedSites.load()
         tableView.reloadData()
         tableView.isHidden = trustedSites.count == 0
         noSitesView.isHidden = trustedSites.count != 0
@@ -66,7 +66,7 @@ extension TrustedSitesViewController: NSTableViewDelegate {
             entry.isAlternate = 0 == (row % 2)
             entry.onDelete = {
                 self.trustedSites.removeDomain(at: row - 1)
-                self.trustedSites.save()
+                self.blockerListManager.setNeedsReload(true)
                 self.tableView.reloadData()
             }
             return entry
