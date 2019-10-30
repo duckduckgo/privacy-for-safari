@@ -24,6 +24,8 @@ import os
 
 class DiagnosticSupport {
     
+    private static let reportQueue = DispatchQueue(label: "Report Queue")
+    
     private static let logger = OSLog(subsystem: BundleIds.app, category: "Diagnostics")
     
     private static let reportFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("report").appendingPathExtension("csv")
@@ -31,7 +33,7 @@ class DiagnosticSupport {
 
     public static func dump(_ trackers: [DetectedTracker], blocked: Bool) {
         #if DEBUG
-        DispatchQueue.global(qos: .background).async {
+        reportQueue.async {
             
             let action = blocked ? "block" : "ignore"
             let report = trackers.map { "\"\($0.resource.absoluteString.replacingOccurrences(of: ",", with: "\\,"))\","

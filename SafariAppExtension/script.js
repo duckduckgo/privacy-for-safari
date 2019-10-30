@@ -20,81 +20,51 @@
 // MARK: Detection Methods
 (function() {
 
+    var checkResources = true;
+
     safari.extension.dispatchMessage("userAgent", {
         "userAgent": navigator.userAgent
     });
- 
-    var resources = [];
-    var timeout;
 
-    function debounce(func, time) {
-        clearTimeout(timeout);
-        timeout = setTimeout(function() {
-            func()
-        }, time);
-    }
+    safari.self.addEventListener("message", function(event) { 
+        checkResources = false;
+    });
 
-	function resourceLoaded(resource, type) {
-        resources.push({ url: resource, type: type });
+    window.addEventListener("beforeunload", function(event) {
+       safari.extension.dispatchMessage("beforeUnload");
+    });
 
-        debounce(function() {
-            console.log(`DDG: checking ${resources.length} resources for trackers`);
-            safari.extension.dispatchMessage("resourceLoaded", {
-                "resources": resources
-            });
-            resources = [];
-        }, 250);
-	}
+    var maxPerformanceTimeout = 3000;
+    var performanceTimeoutIncrement = 200;
+    var performanceTimeout = 100;
+    var performanceIndex = 0; 
 
-    document.addEventListener("beforeload", function(event) {
+    function reportLoadedResources() {
 
-		event.srcElement.onload = function() {
-	        if (event.target.nodeName == "LINK") {
-	            type = event.target.rel;
-	        } else if (event.target.nodeName == "IMG") {
-	            type = "image";
-	        } else if (event.target.nodeName == "IFRAME") {
-	            type = "subdocument";
-	        } else {
-	            type = event.target.nodeName;
-	        }
+        let entries = performance.getEntriesByType("resource");
 
-	        resourceLoaded(event.url, type);
-		}
+        if (entries.length > performanceIndex) {
+             var resources = [];
 
-    }, true)
-
-
-    try {
-        var originalImageSrc = Object.getOwnPropertyDescriptor(Image.prototype, 'src')
-        delete Image.prototype.src;
-        Object.defineProperty(Image.prototype, 'src', {
-            get: function() {
-                return originalImageSrc.get.call(this);
-            },
-            set: function(value) {
-				resourceLoaded(value, "image");
-                originalImageSrc.set.call(this, value);                
+            for (var i = performanceIndex; i < entries.length; i++) {
+                var entry = entries[i];
+                resources.push({ url: entry.name, type: entry.initiatorType });
             }
-        })
 
-    } catch(error) {
-        console.log("failed to install image src detection", error);
-    }
+            if (checkResources) {
+                safari.extension.dispatchMessage("resourceLoaded", {
+                    "resources": resources
+                 });
+            }
 
-    try {
-        var xhr = XMLHttpRequest.prototype;
-        var originalOpen = xhr.open;
-
-        xhr.open = function() {
-            var args = arguments;
-            var url = arguments[1];
-            resourceLoaded(url, "xmlhttprequest");
-            return originalOpen.apply(this, args);
+            performanceIndex = entries.length;
         }
 
-    } catch(error) {
-        console.log("failed to install xhr detection", error);
+        // backoff from calling it so often - all the interesting stuff is in the first few seconds
+        performanceTimeout = Math.min(performanceTimeout + performanceTimeoutIncrement, maxPerformanceTimeout)
+        setTimeout(reportLoadedResources, performanceTimeout);
     }
- 
+
+    setTimeout(reportLoadedResources, performanceTimeout);
+
 }) ();

@@ -68,6 +68,7 @@
 		8524A43023327D82001E8856 /* FeedbackSenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A42F23327D82001E8856 /* FeedbackSenderTests.swift */; };
 		852ABF52230D86120017A95B /* ContentBlockerRulesBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852ABF51230D86120017A95B /* ContentBlockerRulesBuilderTests.swift */; };
 		852AEEB9232FECA1003C1D17 /* TrustedSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AEEB8232FECA1003C1D17 /* TrustedSitesViewController.swift */; };
+		853CE0FD236309EB009E1D66 /* DashboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853CE0FC236309EB009E1D66 /* DashboardData.swift */; };
 		8540D8D022BBA356009A2FF4 /* SectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540D8CF22BBA356009A2FF4 /* SectionButton.swift */; };
 		8540D8F222BBE264009A2FF4 /* HomeSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8540D8F122BBE264009A2FF4 /* HomeSectionViewController.swift */; };
 		8540D8F322BCDD56009A2FF4 /* Statistics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9520822AFC7590071281E /* Statistics.framework */; };
@@ -180,6 +181,7 @@
 		85CBCB22235F73E7004BD9CF /* NSAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CBCB20235F73D1004BD9CF /* NSAttributedStringExtension.swift */; };
 		85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */; };
 		85CFD4C122CB98D600C8B1AA /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CFD4C022CB98D600C8B1AA /* NavigationController.swift */; };
+		85D2B7A22369B6860053716B /* QueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D2B7A12369B6860053716B /* QueueExtensions.swift */; };
 		85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D5017A22C4322B005DDF47 /* Clickables.swift */; };
 		85E86066232BD112007DDE2E /* AppVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E86065232BD112007DDE2E /* AppVersionTests.swift */; };
 		85E8606A232BD34B007DDE2E /* BrokenSiteReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E86069232BD34B007DDE2E /* BrokenSiteReporterTests.swift */; };
@@ -494,6 +496,7 @@
 		8524A42F23327D82001E8856 /* FeedbackSenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSenderTests.swift; sourceTree = "<group>"; };
 		852ABF51230D86120017A95B /* ContentBlockerRulesBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRulesBuilderTests.swift; sourceTree = "<group>"; };
 		852AEEB8232FECA1003C1D17 /* TrustedSitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesViewController.swift; sourceTree = "<group>"; };
+		853CE0FC236309EB009E1D66 /* DashboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardData.swift; sourceTree = "<group>"; };
 		8540D8CF22BBA356009A2FF4 /* SectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionButton.swift; sourceTree = "<group>"; };
 		8540D8F122BBE264009A2FF4 /* HomeSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionViewController.swift; sourceTree = "<group>"; };
 		85417D60226605E60062A081 /* DuckDuckGo Privacy Essentials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DuckDuckGo Privacy Essentials.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -575,6 +578,7 @@
 		85CBCB20235F73D1004BD9CF /* NSAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtension.swift; sourceTree = "<group>"; };
 		85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PrivacyProtection.xcassets; sourceTree = "<group>"; };
 		85CFD4C022CB98D600C8B1AA /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		85D2B7A12369B6860053716B /* QueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueExtensions.swift; sourceTree = "<group>"; };
 		85D5017A22C4322B005DDF47 /* Clickables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clickables.swift; sourceTree = "<group>"; };
 		85E86065232BD112007DDE2E /* AppVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionTests.swift; sourceTree = "<group>"; };
 		85E86069232BD34B007DDE2E /* BrokenSiteReporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenSiteReporterTests.swift; sourceTree = "<group>"; };
@@ -854,7 +858,9 @@
 			children = (
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
+				853CE0FC236309EB009E1D66 /* DashboardData.swift */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
+				85D2B7A12369B6860053716B /* QueueExtensions.swift */,
 				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				85417D97226762870062A081 /* Info.plist */,
 				85008B3322C9581B00A2CFB0 /* Localizable.strings */,
@@ -1638,7 +1644,9 @@
 				855C129423193225005B21FC /* ReportBrokenSiteController.swift in Sources */,
 				85CBCB22235F73E7004BD9CF /* NSAttributedStringExtension.swift in Sources */,
 				85D5017B22C4322B005DDF47 /* Clickables.swift in Sources */,
+				85D2B7A22369B6860053716B /* QueueExtensions.swift in Sources */,
 				85417D91226762870062A081 /* SafariExtensionHandler.swift in Sources */,
+				853CE0FD236309EB009E1D66 /* DashboardData.swift in Sources */,
 				85C351342332321600D8E78A /* NSColorExtension.swift in Sources */,
 				8587FD5722C67D2D0072F47F /* UserText.swift in Sources */,
 			);
@@ -1900,7 +1908,7 @@
 				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
@@ -1923,7 +1931,7 @@
 				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
@@ -2165,7 +2173,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2190,7 +2198,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2213,7 +2221,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -2238,7 +2246,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -2263,7 +2271,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
@@ -2288,7 +2296,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;

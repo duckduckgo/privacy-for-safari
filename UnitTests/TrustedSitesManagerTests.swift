@@ -31,14 +31,13 @@ class TrackerBlockingTests: XCTestCase {
         UserDefaults(suiteName: testGroupName)?.removePersistentDomain(forName: testGroupName)
     }
         
-    func testWhenLoadCalledThenReadDomainsFromUserDefaults() {
+    func testDomainsReturnedFromUserDefaults() {
         let userDefaults = UserDefaults(suiteName: testGroupName)
         userDefaults?.set(["domain1", "domain2"], forKey: DefaultTrustedSitesManager.Keys.domains)
         
         let manager = DefaultTrustedSitesManager(blockerListManager: blockerListManagerFactory,
                                                  userDefaults: userDefaults)
-        manager.load()
-        
+
         XCTAssertEqual(["domain1", "domain2"], manager.allDomains())
     }
     
@@ -52,7 +51,7 @@ class TrackerBlockingTests: XCTestCase {
         XCTAssertEqual(["test1"], userDefaults?.value(forKey: DefaultTrustedSitesManager.Keys.domains) as? [String])
     }
     
-    func testWhenLoadCalledThenReadWhitelistFromUrl() throws {
+    func testWhitelistReadFromUrl() throws {
         
         let tempWhitelistLocation = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("txt")
         let domains = ["domain1", "domain2"].joined(separator: "\n")
@@ -63,7 +62,6 @@ class TrackerBlockingTests: XCTestCase {
         
         let manager = DefaultTrustedSitesManager(blockerListManager: blockerListManagerFactory,
                                                  tempWhitelistUrl: tempWhitelistLocation)
-        manager.load()
 
         XCTAssertEqual(["domain1", "domain2"], manager.whitelistedDomains())
         

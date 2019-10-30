@@ -33,11 +33,8 @@ public protocol TrustedSitesManager {
     func addDomain(forUrl url: URL)
     func allDomains() -> [String]
     func whitelistedDomains() -> [String]
-    func clear()
     func removeDomain(at index: Int)
     func removeDomain(forUrl url: URL)
-    func load()
-    func save()
     func isTrusted(url: URL) -> Bool
 
 }
@@ -47,11 +44,25 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     struct Keys {
         static let domains = "domains"
     }
-    
-    private var domains = [String]()
-    private var tempWhitelist = [String]()
-    
+
+    private let lock = NSLock()
+
+    private var domains: [String] {
+        get {
+            return userDefaults?.array(forKey: Keys.domains) as? [String] ?? []
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.domains)
+            DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
+                                                                         object: nil,
+                                                                         userInfo: nil,
+                                                                         deliverImmediately: true)
+        }
+    }
+
     public var count: Int {
+        lock.lock()
+        defer { lock.unlock() }
         return domains.count
     }
     
@@ -66,78 +77,56 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         self.blockerListManager = blockerListManager
         self.userDefaults = userDefaults
         self.tempWhitelistUrl = tempWhitelistUrl
-        load()
     }
     
     public func addDomain(_ domain: String) {
+        lock.lock()
         domains.append(domain)
-        save()
+        lock.unlock()
     }
     
     public func isTrusted(url: URL) -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
         guard let host = url.host else { return false }
         return domains.contains(host)
     }
     
     public func allDomains() -> [String] {
+        lock.lock()
+        defer { lock.unlock() }
         return domains
     }
     
     public func whitelistedDomains() -> [String] {
-        return tempWhitelist
-    }
-    
-    public func clear() {
-        domains = []
-        save()
+        guard let whitelist = try? String(contentsOf: tempWhitelistUrl) else {
+            os_log("Failed to load temporary whitelist from %{public}s", log: generalLog, tempWhitelistUrl.absoluteString)
+            return []
+        }
+
+        return whitelist.components(separatedBy: "\n").compactMap {
+            let trimmed = $0.trimmingCharacters(in: .whitespaces)
+            return trimmed.isEmpty ? nil : trimmed
+        }
     }
     
     public func removeDomain(at index: Int) {
         guard index >= 0 else { return }
+        lock.lock()
         domains.remove(at: index)
-        save()
+        lock.unlock()
     }
     
     public func removeDomain(forUrl url: URL) {
         guard let host = url.host else { return }
+        lock.lock()
         domains.removeAll { host == $0 }
+        lock.unlock()
     }
     
     public func addDomain(forUrl url: URL) {
         guard let host = url.host else { return }
         addDomain(host)
-    }
-    
-    public func load() {
-        if let domains = userDefaults?.array(forKey: Keys.domains) as? [String] {
-            self.domains = domains
-        }
-        
-        loadTemporaryWhitelist()
-    }
-    
-    private func loadTemporaryWhitelist() {
-        
-        tempWhitelist = [String]()
-        guard let whitelist = try? String(contentsOf: tempWhitelistUrl) else {
-            os_log("Failed to load temporary whitelist from %{public}s", log: generalLog, tempWhitelistUrl.absoluteString)
-            return
-        }
-
-        tempWhitelist = whitelist.components(separatedBy: "\n").compactMap({
-            let trimmed = $0.trimmingCharacters(in: .whitespaces)
-            return trimmed.isEmpty ? nil : trimmed
-        })
-    }
-    
-    public func save() {
-        userDefaults?.set(domains, forKey: Keys.domains)
-        blockerListManager().update()
-        blockerListManager().setNeedsReload(true)
-        DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
-                                                                     object: nil,
-                                                                     userInfo: nil,
-                                                                     deliverImmediately: true)
     }
  
 }
