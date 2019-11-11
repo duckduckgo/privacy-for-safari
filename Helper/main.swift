@@ -1,6 +1,6 @@
 //
-//  Atb.swift
-//  Statistics
+//  main.swift
+//  Helper
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,15 +18,10 @@
 //
 
 import Foundation
+import HelperSupport
 
-public struct Atb: Decodable {
-    
-    enum Types: String {
-        case search = "search"
-        case app = "app_use"
-    }
-    
-    let version: String
-    let updateVersion: String?
-    
-}
+let syncScheduler = SyncScheduler()
+syncScheduler.schedule()
+XPCStatisticsLoader.start()
+
+RunLoop.current.run()

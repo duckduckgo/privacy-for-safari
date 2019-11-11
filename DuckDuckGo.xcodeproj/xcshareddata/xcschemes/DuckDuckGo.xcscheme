@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1120"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "838AF8D72326877700522DD9"
-               BuildableName = "DuckDuckGoSync.app"
-               BlueprintName = "DuckDuckGoSync"
+               BuildableName = "DuckDuckGo Helper.app"
+               BlueprintName = "DuckDuckGo Helper"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -79,6 +79,16 @@
                BlueprintIdentifier = "8587A68A2278901300F622AF"
                BuildableName = "UnitTests.xctest"
                BlueprintName = "UnitTests"
+               ReferencedContainer = "container:DuckDuckGo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "838AF8E62326877800522DD9"
+               BuildableName = "DuckDuckGoSyncTests.xctest"
+               BlueprintName = "DuckDuckGoSyncTests"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </TestableReference>

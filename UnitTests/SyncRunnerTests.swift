@@ -1,6 +1,6 @@
 //
 //  SyncRunnerTests.swift
-//  DuckDuckGoSyncTests
+//  UnitTests
 //
 //  Created by duckduckgo on 16/09/2019.
 //  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 
 import XCTest
-@testable import DuckDuckGoSync
+@testable import HelperSupport
 @testable import TrackerBlocking
 
 class SyncRunnerTests: XCTestCase {

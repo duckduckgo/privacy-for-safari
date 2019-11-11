@@ -1,6 +1,6 @@
 //
 //  SyncScheduler.swift
-//  DuckDuckGoSync
+//  HelperSupport
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -35,7 +35,7 @@ public class SyncScheduler {
     private var syncStore: SyncStore
     private let syncRunner: SyncRunner
     
-    init(syncStore: SyncStore = SyncUserDefaults(), syncRunner: SyncRunner = SyncRunner()) {
+    public init(syncStore: SyncStore = SyncUserDefaults(), syncRunner: SyncRunner = SyncRunner()) {
         self.syncStore = syncStore
         self.syncRunner = syncRunner
         activity.invalidate()

@@ -25,6 +25,34 @@ import XCTest
 
 class StatisticsLoaderTests: XCTestCase {
     
+    func testWhenUpdateVersionIsReturnedThenInstallAtbIsUpdated() {
+        
+        let store = MockStatisticsStore()
+        store.installAtb = "v100-6"
+        store.installDate = Date()
+        store.searchRetentionAtb = "v173-2"
+        Dependencies.shared = MockStatisticsDependencies(statisticsStore: store)
+        
+        let apiRequest = MockAPIRequest()
+        apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\", \"updateVersion\": \"v100-1\" }")
+        
+        let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
+        loader.refreshSearchRetentionAtb(atLocation: "test", completion: nil)
+        
+        XCTAssertEqual(1, apiRequest.requests.count)
+        XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
+        XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
+            "at": "search",
+            "atb": "v100-6",
+            "set_atb": "v173-2",
+            "l": "test"
+            ])
+        
+        XCTAssertEqual("v100-1", store.installAtb)
+        XCTAssertNil(store.appRetentionAtb)
+
+    }
+    
     func testWhenAtbNeedsUpdatingThenAppAtbIsRefreshed() {
         
         let store = MockStatisticsStore()
@@ -97,7 +125,9 @@ class StatisticsLoaderTests: XCTestCase {
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
             "at": "app_use",
-            "atb": "v173-2"
+            "atb": "v173-2",
+            "set_atb": "v173-2",
+            "l": "test"
             ])
 
         XCTAssertEqual("v174-1", store.appRetentionAtb)
@@ -121,7 +151,9 @@ class StatisticsLoaderTests: XCTestCase {
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
         XCTAssertEqual(apiRequest.requests[0].params ?? [:], [
             "at": "search",
-            "atb": "v173-2"
+            "atb": "v173-2",
+            "set_atb": "v173-2",
+            "l": "test"
             ])
         
         XCTAssertEqual("v174-1", store.searchRetentionAtb)

@@ -1,6 +1,6 @@
 //
 //  SyncRunner.swift
-//  DuckDuckGoSync
+//  HelperSupport
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -21,19 +21,19 @@ import Foundation
 import os
 import TrackerBlocking
 
-class SyncRunner {
+public class SyncRunner {
 
-    typealias SyncCompletion = (_ success: Bool) -> Void
+    public typealias SyncCompletion = (_ success: Bool) -> Void
     
     private let trackerDataService: TrackerDataService
     private let tempWhitelistDataService: TempWhitelistDataService
     private let trackerDataManager: TrackerDataManager
     private let blockerListManager: BlockerListManager
     
-    init(trackerDataService: TrackerDataService = DefaultTrackerDataService(),
-         tempWhitelistDataService: TempWhitelistDataService = DefaultTempWhitelistDataService(),
-         trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager,
-         blockerListManager: BlockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager) {
+    public init(trackerDataService: TrackerDataService = DefaultTrackerDataService(),
+                tempWhitelistDataService: TempWhitelistDataService = DefaultTempWhitelistDataService(),
+                trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager,
+                blockerListManager: BlockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager) {
         
         self.trackerDataService = trackerDataService
         self.tempWhitelistDataService = tempWhitelistDataService

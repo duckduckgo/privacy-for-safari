@@ -56,7 +56,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "sevc", completion: nil)
+        RemoteStatisticsLoader().refreshAppRetentionAtb(atLocation: AtbLocations.safariExtensionViewController, completion: nil)
     }
     
     @IBAction func openMenu(sender: Any) {

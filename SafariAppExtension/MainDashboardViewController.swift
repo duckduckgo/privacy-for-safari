@@ -176,7 +176,7 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     private func updatePrivacyPractices() {
-        privacyPracticesLabel.stringValue = "Unkonwn Privacy Practices"
+        privacyPracticesLabel.stringValue = UserText.dashboardTOSUnknown
         privacyPracticesIcon.image = privacyPracticesImages[.unknown]
 
         guard let url = pageData?.url else { return }

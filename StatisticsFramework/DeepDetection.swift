@@ -27,6 +27,7 @@ public class DeepDetection {
         static let country = "ct"
         static let affiliate = "a"
         static let query = "q"
+        static let sequence = "s"
         
     }
     
@@ -34,7 +35,7 @@ public class DeepDetection {
     private let statisticsLoader: StatisticsLoader
     
     public init(pixel: Pixel = Dependencies.shared.pixel,
-                statisticsLoader: StatisticsLoader = DefaultStatisticsLoader()) {
+                statisticsLoader: StatisticsLoader = RemoteStatisticsLoader()) {
         self.pixel = pixel
         self.statisticsLoader = statisticsLoader
     }
@@ -46,7 +47,8 @@ public class DeepDetection {
         guard let resource = resource else { return }
         guard let components = URLComponents(string: resource) else { return }
         guard components.path == "/d.js" else { return }
-        
+        guard components.queryItems?.first(where: { $0.name == Params.sequence && $0.value == "0" }) != nil else { return }
+                
         var params = [String: String]()
         if let ct = components.queryItems?.first(where: { $0.name == Params.country })?.value {
             params[Params.country] = ct
@@ -64,7 +66,7 @@ public class DeepDetection {
     private func checkForSearch(_ url: URL) {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         guard components?.queryItems?.contains(where: { $0.name == Params.query  }) ?? false else { return }
-        statisticsLoader.refreshSearchRetentionAtb(atLocation: "dd", completion: nil)
+        statisticsLoader.refreshSearchRetentionAtb(atLocation: AtbLocations.deepDetection, completion: nil)
     }
     
 }

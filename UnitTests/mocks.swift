@@ -274,9 +274,11 @@ class MockStatisticsLoader: StatisticsLoader {
     
     func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
         refreshSearchRetentionAtbFired = true
+        completion?()
     }
     
     func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
         refreshAppRetentionAtbFired = true
+        completion?()
     }
 }

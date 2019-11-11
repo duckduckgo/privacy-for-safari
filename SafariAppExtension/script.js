@@ -41,10 +41,12 @@
 
     function reportLoadedResources() {
 
-        let entries = performance.getEntriesByType("resource");
+        let entries = performance.getEntriesByType("resource").sort((a, b) => {
+            return a.responseEnd > b.responseEnd
+        })
 
         if (entries.length > performanceIndex) {
-             var resources = [];
+            var resources = [];
 
             for (var i = performanceIndex; i < entries.length; i++) {
                 var entry = entries[i];

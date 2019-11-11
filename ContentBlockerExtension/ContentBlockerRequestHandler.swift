@@ -44,7 +44,7 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
         let bundle = Bundle(for: type(of: self))
         SFContentBlockerManager.getStateOfContentBlocker(withIdentifier: bundle.bundleIdentifier!) { state, _ in
             if state?.isEnabled ?? false {
-                DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "cbrh", completion: nil)
+                RemoteStatisticsLoader().refreshAppRetentionAtb(atLocation: AtbLocations.contentBlockerRequestHandler, completion: nil)
             }
         }
     }
