@@ -36,13 +36,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             TrackerBlocking.Dependencies.shared.blockerListManager.update()
         }
         
-        LoginItemLauncher.launchSyncService()
-        
-        DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "ad", completion: nil)
+        LoginItemLauncher.launch()
+
+        RemoteStatisticsLoader().refreshAppRetentionAtb(atLocation: AtbLocations.appDelegate, completion: nil)
 
         #if DEBUG
-        debugMenu.isHidden = false
-        #endif        
+        debugMenu.isHidden = false  
+        #endif
+        
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {

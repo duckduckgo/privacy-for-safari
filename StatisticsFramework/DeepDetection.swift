@@ -34,7 +34,7 @@ public class DeepDetection {
     private let statisticsLoader: StatisticsLoader
     
     public init(pixel: Pixel = Dependencies.shared.pixel,
-                statisticsLoader: StatisticsLoader = DefaultStatisticsLoader()) {
+                statisticsLoader: StatisticsLoader = RemoteStatisticsLoader()) {
         self.pixel = pixel
         self.statisticsLoader = statisticsLoader
     }
@@ -64,7 +64,7 @@ public class DeepDetection {
     private func checkForSearch(_ url: URL) {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         guard components?.queryItems?.contains(where: { $0.name == Params.query  }) ?? false else { return }
-        statisticsLoader.refreshSearchRetentionAtb(atLocation: "dd", completion: nil)
+        statisticsLoader.refreshSearchRetentionAtb(atLocation: AtbLocations.deepDetection, completion: nil)
     }
     
 }

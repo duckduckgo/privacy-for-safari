@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85E9520722AFC7590071281E"
-               BuildableName = "Statistics.framework"
-               BlueprintName = "Statistics"
+               BlueprintIdentifier = "838AF8D72326877700522DD9"
+               BuildableName = "DuckDuckGo Helper.app"
+               BlueprintName = "DuckDuckGo Helper"
+               ReferencedContainer = "container:DuckDuckGo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "838AF8E62326877800522DD9"
+               BuildableName = "DuckDuckGoSyncTests.xctest"
+               BlueprintName = "DuckDuckGoSyncTests"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,6 +54,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "838AF8D72326877700522DD9"
+            BuildableName = "DuckDuckGo Helper.app"
+            BlueprintName = "DuckDuckGo Helper"
+            ReferencedContainer = "container:DuckDuckGo.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +71,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "85E9520722AFC7590071281E"
-            BuildableName = "Statistics.framework"
-            BlueprintName = "Statistics"
+            BlueprintIdentifier = "838AF8D72326877700522DD9"
+            BuildableName = "DuckDuckGo Helper.app"
+            BlueprintName = "DuckDuckGo Helper"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

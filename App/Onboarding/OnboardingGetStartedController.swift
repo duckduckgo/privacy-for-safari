@@ -20,6 +20,7 @@
 
 import AppKit
 import Statistics
+import os
 
 class OnboardingGetStartedController: OnboardingScreen {
     

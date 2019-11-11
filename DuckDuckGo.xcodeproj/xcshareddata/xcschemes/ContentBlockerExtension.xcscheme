@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85417D8A226762870062A081"
-               BuildableName = "SafariAppExtension.appex"
-               BlueprintName = "SafariAppExtension"
+               BlueprintIdentifier = "85417DA7226762E40062A081"
+               BuildableName = "ContentBlockerExtension.appex"
+               BlueprintName = "ContentBlockerExtension"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

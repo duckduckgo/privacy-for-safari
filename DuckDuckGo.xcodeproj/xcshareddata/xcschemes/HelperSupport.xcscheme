@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85E9520722AFC7590071281E"
-               BuildableName = "Statistics.framework"
-               BlueprintName = "Statistics"
+               BlueprintIdentifier = "855150252375AA7900DBC528"
+               BuildableName = "HelperSupport.framework"
+               BlueprintName = "HelperSupport"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "85E9520722AFC7590071281E"
-            BuildableName = "Statistics.framework"
-            BlueprintName = "Statistics"
+            BlueprintIdentifier = "855150252375AA7900DBC528"
+            BuildableName = "HelperSupport.framework"
+            BlueprintName = "HelperSupport"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -22,7 +22,11 @@ import Foundation
 struct BundleIds {
     
     static let app = "com.duckduckgo.macos.PrivacyEssentials"
+    static let appName = "DuckDuckGo Privacy Essentials"
     static let contentBlockerExtension = app + ".ContentBlockerExtension"
     static let safariAppExtension = app + ".SafariAppExtension"
+    static let oldSyncApp = app + ".DuckDuckGoSync"
+    static let helperApp = "group." + app + ".DuckDuckGoHelper"
+    static let xpcServiceName = helperApp
 
 }

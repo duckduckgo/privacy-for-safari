@@ -183,7 +183,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let bundle = Bundle(for: type(of: self))
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: bundle.bundleIdentifier!) { state, _ in
             if state?.isEnabled ?? false {
-                DefaultStatisticsLoader().refreshAppRetentionAtb(atLocation: "seh", completion: nil)
+                RemoteStatisticsLoader().refreshAppRetentionAtb(atLocation: AtbLocations.safariExtensionHandler, completion: nil)
             }
         }
     }

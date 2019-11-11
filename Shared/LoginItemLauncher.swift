@@ -23,21 +23,23 @@ import ServiceManagement
 import os
 
 class LoginItemLauncher {
-    
-    private struct ServiceId {
-        static let syncService = "com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSync"
-    }
-    
-    static func launchSyncService() {
-        launchLoginItem(serviceId: ServiceId.syncService)
+
+    static func launch() {
+        enableHelper()
+        removeOldSyncApp()
     }
     
     static func disable() {
-        SMLoginItemSetEnabled(ServiceId.syncService as CFString, false)
+        SMLoginItemSetEnabled(BundleIds.helperApp as CFString, false)
     }
     
-    private static func launchLoginItem(serviceId: String) {
-        let enabled = SMLoginItemSetEnabled(serviceId as CFString, true)
+    private static func enableHelper() {
+        let enabled = SMLoginItemSetEnabled(BundleIds.helperApp as CFString, true)
         os_log("Login service was %{public}s", log: generalLog, type: .default, enabled ? "launched" : "not launched")
     }
+
+    private static func removeOldSyncApp() {
+        SMLoginItemSetEnabled(BundleIds.oldSyncApp as CFString, false)
+    }
+
 }

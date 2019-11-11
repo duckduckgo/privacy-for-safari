@@ -10,23 +10,12 @@
 		833FACE4232F9585001F1BC9 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833FACE3232F9585001F1BC9 /* SettingsTests.swift */; };
 		833FACE5232FAE76001F1BC9 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
 		8347D38E23325E13006AB02A /* FireOncePixelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8347D38D23325E13006AB02A /* FireOncePixelTests.swift */; };
-		834E5859232C22B700B43C37 /* SyncStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E5858232C22B700B43C37 /* SyncStore.swift */; };
 		834E585D232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */; };
-		834E585F232F365000B43C37 /* SyncRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585E232F365000B43C37 /* SyncRunnerTests.swift */; };
 		8358675E23322836001776B0 /* FireOncePixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358675C23322748001776B0 /* FireOncePixel.swift */; };
 		8358676023323FA0001776B0 /* PixelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358675F23323FA0001776B0 /* PixelTests.swift */; };
-		837857D9232A7CCC00143219 /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
-		837857DA232A7CCC00143219 /* TrackerBlocking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		837857DD232A7CE800143219 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
-		837857DE232A7CE800143219 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8382B7D6232BDD02002BAD64 /* TrackerDataServiceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382B7D4232B0CC9002BAD64 /* TrackerDataServiceStore.swift */; };
-		838AF8E02326877800522DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 838AF8DE2326877800522DD9 /* Main.storyboard */; };
-		838AF8EC2326877800522DD9 /* SyncUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */; };
-		838AF8F8232687F300522DD9 /* DuckDuckGoSync.app in Copy SyncService to LoginItems */ = {isa = PBXBuildFile; fileRef = 838AF8D82326877700522DD9 /* DuckDuckGoSync.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		838AF8F8232687F300522DD9 /* DuckDuckGo Helper.app in Copy SyncService to LoginItems */ = {isa = PBXBuildFile; fileRef = 838AF8D82326877700522DD9 /* DuckDuckGo Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		838AF8FD232688DD00522DD9 /* LoginItemLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */; };
-		838AF8FE232688DD00522DD9 /* SyncScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FA232688DD00522DD9 /* SyncScheduler.swift */; };
-		838AF8FF232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */; };
-		838AF900232688DD00522DD9 /* SyncRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FC232688DD00522DD9 /* SyncRunner.swift */; };
 		838AF9022326D51100522DD9 /* LoginItemLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */; };
 		83D3300423310CF900DFEAF2 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3300323310CF900DFEAF2 /* Pixel.swift */; };
 		83DFC259232AAC5300700F87 /* TrackerDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837857DF232A7D8E00143219 /* TrackerDataService.swift */; };
@@ -57,8 +46,6 @@
 		8524A41323327568001E8856 /* Feedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8524A40C23327568001E8856 /* Feedback.framework */; };
 		8524A41423327568001E8856 /* Feedback.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8524A40C23327568001E8856 /* Feedback.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8524A41823327584001E8856 /* BrokenSiteReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FF17BA232BB57200FB036C /* BrokenSiteReporter.swift */; };
-		8524A41A2332764C001E8856 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
-		8524A41B2332764C001E8856 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8524A41E2332764C001E8856 /* Statistics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9520822AFC7590071281E /* Statistics.framework */; };
 		8524A41F2332764C001E8856 /* Statistics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9520822AFC7590071281E /* Statistics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8524A4222332764C001E8856 /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
@@ -108,6 +95,24 @@
 		854EFADF2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFADE2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift */; };
 		854EFAE12333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAE02333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift */; };
 		854EFAE32333BB4D00A6BDC3 /* BlockerListManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAE22333BB4D00A6BDC3 /* BlockerListManagerTests.swift */; };
+		8551502A2375AA7900DBC528 /* HelperSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 855150282375AA7900DBC528 /* HelperSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		855150322375AA9F00DBC528 /* SyncScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FA232688DD00522DD9 /* SyncScheduler.swift */; };
+		855150332375AA9F00DBC528 /* SyncRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8FC232688DD00522DD9 /* SyncRunner.swift */; };
+		855150342375AA9F00DBC528 /* SyncStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E5858232C22B700B43C37 /* SyncStore.swift */; };
+		855150352375AA9F00DBC528 /* XPCStatisticsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855150142375921000DBC528 /* XPCStatisticsLoader.swift */; };
+		855150372375AABC00DBC528 /* SyncUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */; };
+		855150382375AABC00DBC528 /* XPCStatisticsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551501D2375957400DBC528 /* XPCStatisticsLoaderTests.swift */; };
+		855150392375AABC00DBC528 /* SyncRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834E585E232F365000B43C37 /* SyncRunnerTests.swift */; };
+		8551503E2375AB9300DBC528 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
+		8551503F2375AB9A00DBC528 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
+		855150432375C16E00DBC528 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855150422375C16E00DBC528 /* main.swift */; };
+		8551505E2378DA5A00DBC528 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
+		8551505F2378DA5A00DBC528 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		855150602378E93F00DBC528 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
+		855150612378E94700DBC528 /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
+		855150622378E94C00DBC528 /* Statistics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9520822AFC7590071281E /* Statistics.framework */; };
+		855150672378EBC000DBC528 /* HelperSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855150262375AA7900DBC528 /* HelperSupport.framework */; };
+		855150682378EBC000DBC528 /* HelperSupport.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 855150262375AA7900DBC528 /* HelperSupport.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		855205C22333C9D4003E5640 /* DeepDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C02333C9BB003E5640 /* DeepDetection.swift */; };
 		855205C42333C9DE003E5640 /* DeepDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C32333C9DE003E5640 /* DeepDetectionTests.swift */; };
 		855205C62334FF5F003E5640 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855205C52334FF5F003E5640 /* Logging.swift */; };
@@ -211,6 +216,11 @@
 		85EB7A9023293E0C006CEE2C /* TrackerBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8587A6832278901300F622AF /* TrackerBlocking.framework */; };
 		85EB7A9523294421006CEE2C /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; };
 		85EB7A9623294421006CEE2C /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85E9522B22B0FDE80071281E /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85EFAE58237977A500D6E7BD /* AtbLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE57237977A500D6E7BD /* AtbLocations.swift */; };
+		85EFAE592379783300D6E7BD /* AtbLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE57237977A500D6E7BD /* AtbLocations.swift */; };
+		85EFAE5A2379783300D6E7BD /* AtbLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE57237977A500D6E7BD /* AtbLocations.swift */; };
+		85EFAE5D2379789800D6E7BD /* AtbLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE57237977A500D6E7BD /* AtbLocations.swift */; };
+		85EFAE5F23798BF700D6E7BD /* AtbLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EFAE57237977A500D6E7BD /* AtbLocations.swift */; };
 		85F087B1230828360041D733 /* OnboardingSetDefaultSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B0230828360041D733 /* OnboardingSetDefaultSearchController.swift */; };
 		85F087B3230828610041D733 /* OnboardingEnableExtensionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */; };
 		85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B4230828870041D733 /* OnboardingGetStartedController.swift */; };
@@ -218,20 +228,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		837857DB232A7CCC00143219 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85417D58226605E60062A081 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8587A6822278901300F622AF;
-			remoteInfo = TrackerBlocking;
-		};
-		838AF8E82326877800522DD9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85417D58226605E60062A081 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 838AF8D72326877700522DD9;
-			remoteInfo = DuckDuckGoSync;
-		};
 		8524A41123327568001E8856 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85417D58226605E60062A081 /* Project object */;
@@ -289,6 +285,27 @@
 			remoteInfo = SafariAppExtension;
 		};
 		85488E3522CEA399005C8BCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8587A6822278901300F622AF;
+			remoteInfo = TrackerBlocking;
+		};
+		8551502B2375AA7900DBC528 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 855150252375AA7900DBC528;
+			remoteInfo = SyncSupport;
+		};
+		8551503A2375AB3D00DBC528 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85417D58226605E60062A081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 855150252375AA7900DBC528;
+			remoteInfo = SyncSupport;
+		};
+		8551503C2375AB5000DBC528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85417D58226605E60062A081 /* Project object */;
 			proxyType = 1;
@@ -367,21 +384,9 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				838AF8F8232687F300522DD9 /* DuckDuckGoSync.app in Copy SyncService to LoginItems */,
+				838AF8F8232687F300522DD9 /* DuckDuckGo Helper.app in Copy SyncService to LoginItems */,
 			);
 			name = "Copy SyncService to LoginItems";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		838AF8F7232687A100522DD9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				837857DA232A7CCC00143219 /* TrackerBlocking.framework in Embed Frameworks */,
-				837857DE232A7CE800143219 /* Core.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8524A4262332764C001E8856 /* Embed Frameworks */ = {
@@ -390,8 +395,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8524A41B2332764C001E8856 /* Core.framework in Embed Frameworks */,
 				8524A41F2332764C001E8856 /* Statistics.framework in Embed Frameworks */,
+				8551505F2378DA5A00DBC528 /* Core.framework in Embed Frameworks */,
 				8524A4232332764C001E8856 /* TrackerBlocking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -407,6 +412,17 @@
 				85417DB3226762E40062A081 /* ContentBlockerExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		855150532378D76100DBC528 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				855150682378EBC000DBC528 /* HelperSupport.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8587A69D2278901400F622AF /* Embed Frameworks */ = {
@@ -456,16 +472,12 @@
 		8358675F23323FA0001776B0 /* PixelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelTests.swift; sourceTree = "<group>"; };
 		837857DF232A7D8E00143219 /* TrackerDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataService.swift; sourceTree = "<group>"; };
 		8382B7D4232B0CC9002BAD64 /* TrackerDataServiceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDataServiceStore.swift; sourceTree = "<group>"; };
-		838AF8D82326877700522DD9 /* DuckDuckGoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuckDuckGoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		838AF8DF2326877800522DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		838AF8D82326877700522DD9 /* DuckDuckGo Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DuckDuckGo Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		838AF8E12326877800522DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		838AF8E22326877800522DD9 /* DuckDuckGoSync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuckDuckGoSync.entitlements; sourceTree = "<group>"; };
-		838AF8E72326877800522DD9 /* DuckDuckGoSyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuckDuckGoSyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		838AF8E22326877800522DD9 /* Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helper.entitlements; sourceTree = "<group>"; };
 		838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserDefaultsTests.swift; sourceTree = "<group>"; };
-		838AF8ED2326877800522DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		838AF8F9232688DD00522DD9 /* LoginItemLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginItemLauncher.swift; sourceTree = "<group>"; };
 		838AF8FA232688DD00522DD9 /* SyncScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncScheduler.swift; sourceTree = "<group>"; };
-		838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckDuckGoSyncAppDelegate.swift; sourceTree = "<group>"; };
 		838AF8FC232688DD00522DD9 /* SyncRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncRunner.swift; sourceTree = "<group>"; };
 		83994E8023267EC60040F65B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		83D3300323310CF900DFEAF2 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
@@ -533,6 +545,12 @@
 		854EFADE2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempWhitelistDataServiceUserDefaultsTests.swift; sourceTree = "<group>"; };
 		854EFAE02333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesManagerTests.swift; sourceTree = "<group>"; };
 		854EFAE22333BB4D00A6BDC3 /* BlockerListManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerListManagerTests.swift; sourceTree = "<group>"; };
+		855150142375921000DBC528 /* XPCStatisticsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCStatisticsLoader.swift; sourceTree = "<group>"; };
+		8551501D2375957400DBC528 /* XPCStatisticsLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCStatisticsLoaderTests.swift; sourceTree = "<group>"; };
+		855150262375AA7900DBC528 /* HelperSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelperSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		855150282375AA7900DBC528 /* HelperSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelperSupport.h; sourceTree = "<group>"; };
+		855150292375AA7900DBC528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		855150422375C16E00DBC528 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		855205C02333C9BB003E5640 /* DeepDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDetection.swift; sourceTree = "<group>"; };
 		855205C32333C9DE003E5640 /* DeepDetectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDetectionTests.swift; sourceTree = "<group>"; };
 		855205C52334FF5F003E5640 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -601,6 +619,7 @@
 		85EB7A7B2327E761006CEE2C /* TrackerDetectionValidator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrackerDetectionValidator; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EB7A7D2327E761006CEE2C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		85EB7A8C23293D1A006CEE2C /* LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
+		85EFAE57237977A500D6E7BD /* AtbLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtbLocations.swift; sourceTree = "<group>"; };
 		85F087B0230828360041D733 /* OnboardingSetDefaultSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSetDefaultSearchController.swift; sourceTree = "<group>"; };
 		85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEnableExtensionsController.swift; sourceTree = "<group>"; };
 		85F087B4230828870041D733 /* OnboardingGetStartedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGetStartedController.swift; sourceTree = "<group>"; };
@@ -613,15 +632,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				837857D9232A7CCC00143219 /* TrackerBlocking.framework in Frameworks */,
-				837857DD232A7CE800143219 /* Core.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		838AF8E42326877800522DD9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				855150672378EBC000DBC528 /* HelperSupport.framework in Frameworks */,
+				855150622378E94C00DBC528 /* Statistics.framework in Frameworks */,
+				855150612378E94700DBC528 /* TrackerBlocking.framework in Frameworks */,
+				855150602378E93F00DBC528 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,8 +643,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8524A41A2332764C001E8856 /* Core.framework in Frameworks */,
 				8524A41E2332764C001E8856 /* Statistics.framework in Frameworks */,
+				8551505E2378DA5A00DBC528 /* Core.framework in Frameworks */,
 				8524A4222332764C001E8856 /* TrackerBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,6 +678,13 @@
 				8587A6A42278905900F622AF /* TrackerBlocking.framework in Frameworks */,
 				8540D8F822BCDD60009A2FF4 /* Statistics.framework in Frameworks */,
 				85417DA9226762E40062A081 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		855150232375AA7900DBC528 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,28 +739,14 @@
 			name = App;
 			sourceTree = "<group>";
 		};
-		838AF8D92326877700522DD9 /* DuckDuckGoSync */ = {
+		838AF8D92326877700522DD9 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				838AF8FB232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift */,
-				838AF8FA232688DD00522DD9 /* SyncScheduler.swift */,
-				838AF8FC232688DD00522DD9 /* SyncRunner.swift */,
-				834E5858232C22B700B43C37 /* SyncStore.swift */,
-				838AF8DE2326877800522DD9 /* Main.storyboard */,
+				838AF8E22326877800522DD9 /* Helper.entitlements */,
 				838AF8E12326877800522DD9 /* Info.plist */,
-				838AF8E22326877800522DD9 /* DuckDuckGoSync.entitlements */,
+				855150422375C16E00DBC528 /* main.swift */,
 			);
-			path = DuckDuckGoSync;
-			sourceTree = "<group>";
-		};
-		838AF8EA2326877800522DD9 /* DuckDuckGoSyncTests */ = {
-			isa = PBXGroup;
-			children = (
-				838AF8ED2326877800522DD9 /* Info.plist */,
-				834E585E232F365000B43C37 /* SyncRunnerTests.swift */,
-				838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */,
-			);
-			path = DuckDuckGoSyncTests;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		8510B261226F5A110015D406 /* Shared */ = {
@@ -747,6 +754,7 @@
 			children = (
 				854A9F532271CB01008F2A93 /* AppIcon.xcassets */,
 				850385FA22F86481002259DB /* AppLinks.swift */,
+				85EFAE57237977A500D6E7BD /* AtbLocations.swift */,
 				8524A3E723325063001E8856 /* BundleIds.swift */,
 				85D5017A22C4322B005DDF47 /* Clickables.swift */,
 				85CBCAC12358A236004BD9CF /* ContentBlockerExtension.swift */,
@@ -787,11 +795,11 @@
 				85417D62226605E60062A081 /* App */,
 				85417DAA226762E40062A081 /* ContentBlockerExtension */,
 				85E9522C22B0FDE80071281E /* CoreFramework */,
-				854A9F32227067ED008F2A93 /* Fonts */,
-				838AF8D92326877700522DD9 /* DuckDuckGoSync */,
-				838AF8EA2326877800522DD9 /* DuckDuckGoSyncTests */,
 				8524A40D23327568001E8856 /* FeedbackFramework */,
+				854A9F32227067ED008F2A93 /* Fonts */,
 				85417D8C226762870062A081 /* Frameworks */,
+				838AF8D92326877700522DD9 /* Helper */,
+				855150272375AA7900DBC528 /* HelperSupport */,
 				85417D61226605E60062A081 /* Products */,
 				85417D8F226762870062A081 /* SafariAppExtension */,
 				8510B261226F5A110015D406 /* Shared */,
@@ -813,9 +821,9 @@
 				85E9520822AFC7590071281E /* Statistics.framework */,
 				85E9522B22B0FDE80071281E /* Core.framework */,
 				85EB7A7B2327E761006CEE2C /* TrackerDetectionValidator */,
-				838AF8D82326877700522DD9 /* DuckDuckGoSync.app */,
-				838AF8E72326877800522DD9 /* DuckDuckGoSyncTests.xctest */,
+				838AF8D82326877700522DD9 /* DuckDuckGo Helper.app */,
 				8524A40C23327568001E8856 /* Feedback.framework */,
+				855150262375AA7900DBC528 /* HelperSupport.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -905,6 +913,29 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		855150272375AA7900DBC528 /* HelperSupport */ = {
+			isa = PBXGroup;
+			children = (
+				855150282375AA7900DBC528 /* HelperSupport.h */,
+				838AF8FC232688DD00522DD9 /* SyncRunner.swift */,
+				838AF8FA232688DD00522DD9 /* SyncScheduler.swift */,
+				834E5858232C22B700B43C37 /* SyncStore.swift */,
+				855150142375921000DBC528 /* XPCStatisticsLoader.swift */,
+				855150292375AA7900DBC528 /* Info.plist */,
+			);
+			path = HelperSupport;
+			sourceTree = "<group>";
+		};
+		855150362375AAAC00DBC528 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				834E585E232F365000B43C37 /* SyncRunnerTests.swift */,
+				838AF8EB2326877800522DD9 /* SyncUserDefaultsTests.swift */,
+				8551501D2375957400DBC528 /* XPCStatisticsLoaderTests.swift */,
+			);
+			name = Sync;
+			sourceTree = "<group>";
+		};
 		8587A6842278901300F622AF /* TrackerBlockingFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,6 +971,7 @@
 		8587A6912278901400F622AF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				855150362375AAAC00DBC528 /* Sync */,
 				833FACE2232F956D001F1BC9 /* App */,
 				85E86064232BD105007DDE2E /* Core */,
 				8524A419233275A4001E8856 /* Feedback */,
@@ -962,15 +994,15 @@
 		85E9520922AFC7590071281E /* StatisticsFramework */ = {
 			isa = PBXGroup;
 			children = (
+				85E9521C22AFCE7A0071281E /* Atb.swift */,
+				855205C02333C9BB003E5640 /* DeepDetection.swift */,
+				8358675C23322748001776B0 /* FireOncePixel.swift */,
 				85E9520B22AFC7590071281E /* Info.plist */,
+				83D3300323310CF900DFEAF2 /* Pixel.swift */,
 				85E9520A22AFC7590071281E /* Statistics.h */,
 				85E9521622AFC7FB0071281E /* StatisticsDependencies.swift */,
 				85E9521422AFC7C20071281E /* StatisticsLoader.swift */,
 				85E9521822AFC8F10071281E /* StatisticsStore.swift */,
-				85E9521C22AFCE7A0071281E /* Atb.swift */,
-				83D3300323310CF900DFEAF2 /* Pixel.swift */,
-				8358675C23322748001776B0 /* FireOncePixel.swift */,
-				855205C02333C9BB003E5640 /* DeepDetection.swift */,
 			);
 			path = StatisticsFramework;
 			sourceTree = "<group>";
@@ -1054,6 +1086,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		855150212375AA7900DBC528 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8551502A2375AA7900DBC528 /* HelperSupport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8587A67E2278901300F622AF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1081,42 +1121,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		838AF8D72326877700522DD9 /* DuckDuckGoSync */ = {
+		838AF8D72326877700522DD9 /* DuckDuckGo Helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 838AF8EE2326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSync" */;
+			buildConfigurationList = 838AF8EE2326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGo Helper" */;
 			buildPhases = (
 				838AF8D42326877700522DD9 /* Sources */,
 				838AF8D52326877700522DD9 /* Frameworks */,
 				838AF8D62326877700522DD9 /* Resources */,
-				838AF8F7232687A100522DD9 /* Embed Frameworks */,
+				855150532378D76100DBC528 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				837857DC232A7CCC00143219 /* PBXTargetDependency */,
+				8551502C2375AA7900DBC528 /* PBXTargetDependency */,
 			);
-			name = DuckDuckGoSync;
+			name = "DuckDuckGo Helper";
 			productName = DuckDuckGoSync;
-			productReference = 838AF8D82326877700522DD9 /* DuckDuckGoSync.app */;
+			productReference = 838AF8D82326877700522DD9 /* DuckDuckGo Helper.app */;
 			productType = "com.apple.product-type.application";
-		};
-		838AF8E62326877800522DD9 /* DuckDuckGoSyncTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 838AF8F12326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSyncTests" */;
-			buildPhases = (
-				838AF8E32326877800522DD9 /* Sources */,
-				838AF8E42326877800522DD9 /* Frameworks */,
-				838AF8E52326877800522DD9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				838AF8E92326877800522DD9 /* PBXTargetDependency */,
-			);
-			name = DuckDuckGoSyncTests;
-			productName = DuckDuckGoSyncTests;
-			productReference = 838AF8E72326877800522DD9 /* DuckDuckGoSyncTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8524A40B23327568001E8856 /* Feedback */ = {
 			isa = PBXNativeTarget;
@@ -1203,6 +1225,25 @@
 			productReference = 85417DA8226762E40062A081 /* ContentBlockerExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		855150252375AA7900DBC528 /* HelperSupport */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8551502F2375AA7900DBC528 /* Build configuration list for PBXNativeTarget "HelperSupport" */;
+			buildPhases = (
+				855150212375AA7900DBC528 /* Headers */,
+				855150222375AA7900DBC528 /* Sources */,
+				855150232375AA7900DBC528 /* Frameworks */,
+				855150242375AA7900DBC528 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8551503D2375AB5000DBC528 /* PBXTargetDependency */,
+			);
+			name = HelperSupport;
+			productName = SyncSupport;
+			productReference = 855150262375AA7900DBC528 /* HelperSupport.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		8587A6822278901300F622AF /* TrackerBlocking */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8587A69A2278901400F622AF /* Build configuration list for PBXNativeTarget "TrackerBlocking" */;
@@ -1235,6 +1276,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8551503B2375AB3D00DBC528 /* PBXTargetDependency */,
 				85488E3622CEA399005C8BCE /* PBXTargetDependency */,
 				8587A6902278901400F622AF /* PBXTargetDependency */,
 				85488E3422CEA2C3005C8BCE /* PBXTargetDependency */,
@@ -1307,15 +1349,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Duck Duck Go, Inc.";
 				TargetAttributes = {
 					838AF8D72326877700522DD9 = {
 						CreatedOnToolsVersion = 11.0;
-					};
-					838AF8E62326877800522DD9 = {
-						CreatedOnToolsVersion = 11.0;
-						TestTargetID = 838AF8D72326877700522DD9;
 					};
 					8524A40B23327568001E8856 = {
 						CreatedOnToolsVersion = 11.0;
@@ -1362,6 +1400,9 @@
 							};
 						};
 					};
+					855150252375AA7900DBC528 = {
+						CreatedOnToolsVersion = 11.2;
+					};
 					8587A6822278901300F622AF = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
@@ -1397,14 +1438,14 @@
 				85417D5F226605E60062A081 /* DuckDuckGo Privacy Essentials */,
 				85417D8A226762870062A081 /* SafariAppExtension */,
 				85417DA7226762E40062A081 /* ContentBlockerExtension */,
-				838AF8D72326877700522DD9 /* DuckDuckGoSync */,
+				838AF8D72326877700522DD9 /* DuckDuckGo Helper */,
 				85E9522A22B0FDE80071281E /* Core */,
 				8524A40B23327568001E8856 /* Feedback */,
+				855150252375AA7900DBC528 /* HelperSupport */,
 				85E9520722AFC7590071281E /* Statistics */,
 				8587A6822278901300F622AF /* TrackerBlocking */,
 				8587A68A2278901300F622AF /* UnitTests */,
 				85EB7A7A2327E761006CEE2C /* TrackerDetectionValidator */,
-				838AF8E62326877800522DD9 /* DuckDuckGoSyncTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1414,15 +1455,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				838AF8E02326877800522DD9 /* Main.storyboard in Resources */,
 				833FACE5232FAE76001F1BC9 /* AppIcon.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		838AF8E52326877800522DD9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1478,6 +1511,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				854A9F562271CB0B008F2A93 /* AppIcon.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		855150242375AA7900DBC528 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1560,22 +1600,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				838AF8FE232688DD00522DD9 /* SyncScheduler.swift in Sources */,
 				855205CD2334FFFC003E5640 /* Logging.swift in Sources */,
+				855150432375C16E00DBC528 /* main.swift in Sources */,
 				838AF8FD232688DD00522DD9 /* LoginItemLauncher.swift in Sources */,
 				855205D32335016D003E5640 /* BundleIds.swift in Sources */,
-				838AF8FF232688DD00522DD9 /* DuckDuckGoSyncAppDelegate.swift in Sources */,
-				834E5859232C22B700B43C37 /* SyncStore.swift in Sources */,
-				838AF900232688DD00522DD9 /* SyncRunner.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		838AF8E32326877800522DD9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				834E585F232F365000B43C37 /* SyncRunnerTests.swift in Sources */,
-				838AF8EC2326877800522DD9 /* SyncUserDefaultsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1620,6 +1648,7 @@
 				850385FB22F86481002259DB /* AppLinks.swift in Sources */,
 				85C3512E2331596800D8E78A /* Utils.swift in Sources */,
 				85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */,
+				85EFAE58237977A500D6E7BD /* AtbLocations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1628,6 +1657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
+				85EFAE592379783300D6E7BD /* AtbLocations.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,
 				8510B26A226F7A8D0015D406 /* ScoreCardViewController.swift in Sources */,
 				85CBCAC32358A236004BD9CF /* ContentBlockerExtension.swift in Sources */,
@@ -1658,9 +1688,24 @@
 			files = (
 				8590F40D22CE563900B7473A /* StringExtension.swift in Sources */,
 				855205CF23350164003E5640 /* BundleIds.swift in Sources */,
+				85EFAE5A2379783300D6E7BD /* AtbLocations.swift in Sources */,
 				85417DAE226762E40062A081 /* ContentBlockerRequestHandler.swift in Sources */,
 				8590F41222CE564600B7473A /* URLExtension.swift in Sources */,
 				855205C82334FFF6003E5640 /* Logging.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		855150222375AA7900DBC528 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8551503F2375AB9A00DBC528 /* BundleIds.swift in Sources */,
+				855150332375AA9F00DBC528 /* SyncRunner.swift in Sources */,
+				8551503E2375AB9300DBC528 /* Logging.swift in Sources */,
+				855150352375AA9F00DBC528 /* XPCStatisticsLoader.swift in Sources */,
+				855150322375AA9F00DBC528 /* SyncScheduler.swift in Sources */,
+				855150342375AA9F00DBC528 /* SyncStore.swift in Sources */,
+				85EFAE5F23798BF700D6E7BD /* AtbLocations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1703,6 +1748,7 @@
 				854EFAE12333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift in Sources */,
 				859F13D6227A468600EDE40A /* PageDataTests.swift in Sources */,
 				859F13D2227A3B2C00EDE40A /* GradeTests.swift in Sources */,
+				855150372375AABC00DBC528 /* SyncUserDefaultsTests.swift in Sources */,
 				855205C42333C9DE003E5640 /* DeepDetectionTests.swift in Sources */,
 				854EFADF2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift in Sources */,
 				8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */,
@@ -1710,6 +1756,7 @@
 				850AFB01232A50DF004C859B /* PrivacyPracticesTests.swift in Sources */,
 				834E585D232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift in Sources */,
 				854EFAE32333BB4D00A6BDC3 /* BlockerListManagerTests.swift in Sources */,
+				855150382375AABC00DBC528 /* XPCStatisticsLoaderTests.swift in Sources */,
 				8524A43023327D82001E8856 /* FeedbackSenderTests.swift in Sources */,
 				859914D92278A3DA0023C1F2 /* mocks.swift in Sources */,
 				833FACE4232F9585001F1BC9 /* SettingsTests.swift in Sources */,
@@ -1721,6 +1768,7 @@
 				8358676023323FA0001776B0 /* PixelTests.swift in Sources */,
 				85E86066232BD112007DDE2E /* AppVersionTests.swift in Sources */,
 				852ABF52230D86120017A95B /* ContentBlockerRulesBuilderTests.swift in Sources */,
+				855150392375AABC00DBC528 /* SyncRunnerTests.swift in Sources */,
 				85E9524822B284710071281E /* StatisticsStoreTests.swift in Sources */,
 				85E8606A232BD34B007DDE2E /* BrokenSiteReporterTests.swift in Sources */,
 				85E9524622B13E790071281E /* StatisticsLoaderTests.swift in Sources */,
@@ -1739,6 +1787,7 @@
 				855205C22333C9D4003E5640 /* DeepDetection.swift in Sources */,
 				8590F40F22CE563A00B7473A /* StringExtension.swift in Sources */,
 				85E9521D22AFCE7A0071281E /* Atb.swift in Sources */,
+				85EFAE5D2379789800D6E7BD /* AtbLocations.swift in Sources */,
 				855205D223350166003E5640 /* BundleIds.swift in Sources */,
 				85E9521922AFC8F10071281E /* StatisticsStore.swift in Sources */,
 				8590F41422CE564600B7473A /* URLExtension.swift in Sources */,
@@ -1771,16 +1820,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		837857DC232A7CCC00143219 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8587A6822278901300F622AF /* TrackerBlocking */;
-			targetProxy = 837857DB232A7CCC00143219 /* PBXContainerItemProxy */;
-		};
-		838AF8E92326877800522DD9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 838AF8D72326877700522DD9 /* DuckDuckGoSync */;
-			targetProxy = 838AF8E82326877800522DD9 /* PBXContainerItemProxy */;
-		};
 		8524A41223327568001E8856 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8524A40B23327568001E8856 /* Feedback */;
@@ -1825,6 +1864,21 @@
 			isa = PBXTargetDependency;
 			target = 8587A6822278901300F622AF /* TrackerBlocking */;
 			targetProxy = 85488E3522CEA399005C8BCE /* PBXContainerItemProxy */;
+		};
+		8551502C2375AA7900DBC528 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 855150252375AA7900DBC528 /* HelperSupport */;
+			targetProxy = 8551502B2375AA7900DBC528 /* PBXContainerItemProxy */;
+		};
+		8551503B2375AB3D00DBC528 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 855150252375AA7900DBC528 /* HelperSupport */;
+			targetProxy = 8551503A2375AB3D00DBC528 /* PBXContainerItemProxy */;
+		};
+		8551503D2375AB5000DBC528 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8587A6822278901300F622AF /* TrackerBlocking */;
+			targetProxy = 8551503C2375AB5000DBC528 /* PBXContainerItemProxy */;
 		};
 		8587A6902278901400F622AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1874,14 +1928,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		838AF8DE2326877800522DD9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				838AF8DF2326877800522DD9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		85417D69226605E60062A081 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1905,19 +1951,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Helper/Helper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
+				INFOPLIST_FILE = Helper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"@executable_path/../../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSync;
+				MARKETING_VERSION = "1.0-20191029";
+				PRODUCT_BUNDLE_IDENTIFIER = group.com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1928,66 +1976,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DuckDuckGoSync/DuckDuckGoSync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Helper/Helper.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = DuckDuckGoSync/Info.plist;
+				INFOPLIST_FILE = Helper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
+					"@executable_path/../../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSync;
+				MARKETING_VERSION = "1.0-20191029";
+				PRODUCT_BUNDLE_IDENTIFIER = group.com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		838AF8F22326877800522DD9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HKE973VLUW;
-				INFOPLIST_FILE = DuckDuckGoSyncTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSyncTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGoSync.app/Contents/MacOS/DuckDuckGoSync";
-			};
-			name = Debug;
-		};
-		838AF8F32326877800522DD9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HKE973VLUW;
-				INFOPLIST_FILE = DuckDuckGoSyncTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.DuckDuckGoSyncTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGoSync.app/Contents/MacOS/DuckDuckGoSync";
 			};
 			name = Release;
 		};
@@ -1995,7 +2001,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2024,7 +2030,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2173,7 +2179,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2181,7 +2187,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = "1.0-20191029";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2198,7 +2204,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = App/Info.plist;
@@ -2206,7 +2212,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = "1.0-20191029";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2221,7 +2227,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -2230,7 +2236,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = "1.0-20191029";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.SafariAppExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2246,7 +2252,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
@@ -2255,7 +2261,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = "1.0-20191029";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.SafariAppExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2271,7 +2277,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
@@ -2280,7 +2286,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = "1.0-20191029";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.ContentBlockerExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2296,7 +2302,7 @@
 				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
@@ -2305,12 +2311,66 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = "1.0-20191029";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.ContentBlockerExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		855150302375AA7900DBC528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HelperSupport/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.HelperSupport;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		855150312375AA7900DBC528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HKE973VLUW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HelperSupport/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.PrivacyEssentials.HelperSupport;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -2543,6 +2603,7 @@
 		85EB7A7F2327E761006CEE2C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2554,6 +2615,7 @@
 		85EB7A802327E761006CEE2C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HKE973VLUW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2565,20 +2627,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		838AF8EE2326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSync" */ = {
+		838AF8EE2326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGo Helper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				838AF8EF2326877800522DD9 /* Debug */,
 				838AF8F02326877800522DD9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		838AF8F12326877800522DD9 /* Build configuration list for PBXNativeTarget "DuckDuckGoSyncTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				838AF8F22326877800522DD9 /* Debug */,
-				838AF8F32326877800522DD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2624,6 +2677,15 @@
 			buildConfigurations = (
 				85417DB5226762E40062A081 /* Debug */,
 				85417DB6226762E40062A081 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8551502F2375AA7900DBC528 /* Build configuration list for PBXNativeTarget "HelperSupport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				855150302375AA7900DBC528 /* Debug */,
+				855150312375AA7900DBC528 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

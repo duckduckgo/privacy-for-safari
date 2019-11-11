@@ -1,6 +1,6 @@
 //
 //  SyncUserDefaultsTests.swift
-//  DuckDuckGoSyncTests
+//  UnitTests
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -18,7 +18,7 @@
 //
 
 import XCTest
-@testable import DuckDuckGoSync
+@testable import HelperSupport
 
 class SyncUserDefaultsTests: XCTestCase {
     

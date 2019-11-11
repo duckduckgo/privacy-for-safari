@@ -23,11 +23,53 @@ import os
 
 public typealias StatisticsLoaderCompletion = () -> Void
 
+@objc(StatisticsLoader)
 public protocol StatisticsLoader {
  
     func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?)
     func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?)
     
+}
+
+public class RemoteStatisticsLoader: StatisticsLoader {
+
+    let store: StatisticsStore
+    
+    public init(store: StatisticsStore = Dependencies.shared.statisticsStore) {
+        self.store = store
+    }
+
+    public func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
+        guard store.installAtb != nil else {
+            NSWorkspace.shared.launchApplication(BundleIds.appName)
+            return
+        }
+        remoteLoader()?.refreshSearchRetentionAtb(atLocation: location) {
+            completion?()
+        }
+    }
+
+    public func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
+        guard store.installAtb != nil else {
+            NSWorkspace.shared.launchApplication(BundleIds.appName)
+            return
+        }
+        
+        remoteLoader()?.refreshAppRetentionAtb(atLocation: location) {
+            completion?()
+        }
+    }
+
+    private func remoteLoader() -> StatisticsLoader? {
+        let connection = NSXPCConnection(machServiceName: BundleIds.xpcServiceName)
+        connection.remoteObjectInterface = NSXPCInterface(with: StatisticsLoader.self)
+        connection.resume()
+
+        return connection.remoteObjectProxyWithErrorHandler { error in
+            os_log("Error connecting to remote statistics loader: %s", log: generalLog, type: .error, error.localizedDescription)
+        } as? StatisticsLoader
+    }
+
 }
 
 public class DefaultStatisticsLoader: StatisticsLoader {
@@ -70,7 +112,7 @@ public class DefaultStatisticsLoader: StatisticsLoader {
                                   storeResult: @escaping (Atb) -> Void,
                                   completion: Completion?) {
         
-        let store = statisticsStore()
+        var store = statisticsStore()
         
         guard let initialAtb = store.installAtb else {
             requestInstallStatistics(atLocation: location, completion: completion)
@@ -82,7 +124,7 @@ public class DefaultStatisticsLoader: StatisticsLoader {
             "atb": initialAtb
         ]
         
-        if let setAtb = setAtb {
+        if let setAtb = setAtb ?? store.installAtb {
             params["set_atb"] = setAtb
             params["l"] = location
         }
@@ -95,6 +137,9 @@ public class DefaultStatisticsLoader: StatisticsLoader {
             }
             if let data = data, let atb = try? JSONDecoder().decode(Atb.self, from: data) {
                 storeResult(atb)
+                if let updateVersion = atb.updateVersion {
+                    store.installAtb = updateVersion
+                }
             }
             completion?()
         }

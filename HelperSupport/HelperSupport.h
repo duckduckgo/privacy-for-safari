@@ -1,6 +1,6 @@
 //
-//  DuckDuckGoSyncAppDelegate.swift
-//  DuckDuckGoSync
+//  HelperSupport.h
+//  HelperSupport
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -17,19 +17,10 @@
 //  limitations under the License.
 //
 
-import Cocoa
-import TrackerBlocking
-import SafariServices
+#import <Foundation/Foundation.h>
 
-@NSApplicationMain
-class DuckDuckGoSyncAppDelegate: NSObject, NSApplicationDelegate {
+//! Project version number for HelperSupport.
+FOUNDATION_EXPORT double HelperSupportVersionNumber;
 
-    let syncScheduler = SyncScheduler()
-    
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        syncScheduler.schedule()
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-    }
-}
+//! Project version string for HelperSupport.
+FOUNDATION_EXPORT const unsigned char HelperSupportVersionString[];
