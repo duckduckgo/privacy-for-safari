@@ -27,6 +27,7 @@ public class DeepDetection {
         static let country = "ct"
         static let affiliate = "a"
         static let query = "q"
+        static let sequence = "s"
         
     }
     
@@ -46,7 +47,8 @@ public class DeepDetection {
         guard let resource = resource else { return }
         guard let components = URLComponents(string: resource) else { return }
         guard components.path == "/d.js" else { return }
-        
+        guard components.queryItems?.first(where: { $0.name == Params.sequence && $0.value == "0" }) != nil else { return }
+                
         var params = [String: String]()
         if let ct = components.queryItems?.first(where: { $0.name == Params.country })?.value {
             params[Params.country] = ct

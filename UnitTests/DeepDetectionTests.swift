@@ -56,7 +56,16 @@ class DeepDetectionTests: XCTestCase {
         XCTAssertTrue(pixel.pixels.isEmpty)
         
     }
+
+    func testWhenResourceIsDeepAfterMoreButtonIsPressedThenNoPixel() {
     
+        let pixel = MockPixel()
+        let detection = DeepDetection(pixel: pixel)
+        detection.check(resource: "/d.js?q=ehello&l=wt-wt&s=1&ct=GB&ss_mkt=us", onPage: Urls.ddg)
+        XCTAssertEqual(0, pixel.pixels.count)
+
+    }
+
     func testWhenResourceIsDeepWithCtParamThenPixelFiredIsFiredWithCtParams() {
     
         let pixel = MockPixel()
