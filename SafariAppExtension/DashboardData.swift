@@ -59,6 +59,14 @@ class DashboardData {
     private(set) var currentPage: SFSafariPage?
     
     private var trackersCache = [CacheKey: Trackers]()
+        
+    init() {
+        os_log("DashboardData init", log: lifecycleLog)
+    }
+    
+    deinit {
+        os_log("DashboardData deinit", log: lifecycleLog)
+    }
     
     func cachedTrackers(forPage page: SFSafariPage, withUrl url: String) -> Trackers {
         let key = createKey(forPage: page, withUrl: url)

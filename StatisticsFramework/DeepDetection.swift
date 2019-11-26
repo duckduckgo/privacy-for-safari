@@ -35,7 +35,7 @@ public class DeepDetection {
     private let statisticsLoader: StatisticsLoader
     
     public init(pixel: Pixel = Dependencies.shared.pixel,
-                statisticsLoader: StatisticsLoader = RemoteStatisticsLoader()) {
+                statisticsLoader: StatisticsLoader = DefaultStatisticsLoader.shared) {
         self.pixel = pixel
         self.statisticsLoader = statisticsLoader
     }

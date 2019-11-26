@@ -50,6 +50,12 @@ public enum PixelName: String {
     case dashboardWhitelistOpened = "epw"
     
     case safariBrowserExtensionSearch = "sbes"
+
+    // debug pixels
+    case debugStatisticsTimeout = "m_sae_dbg_sts"
+    case debugSyncTimeout = "m_sae_dbg_syn"
+    case debugSchedulerTimeout = "m_sae_dbg_sch"
+    case debugReloadTimeout = "m_sae_dbg_rel"
 }
 
 public typealias PixelCompletion = (Error?) -> Void

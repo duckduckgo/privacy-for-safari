@@ -83,8 +83,8 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     public func entity(forUrl url: URL) -> Entity? {
         guard let variations = url.hostVariations else { return nil }
         for host in variations {
-            if let entity = trackerData?.entities[host] {
-                return entity
+            if let entityName = trackerData?.domains[host] {
+                return trackerData?.entities[entityName]
             }
         }
         return nil

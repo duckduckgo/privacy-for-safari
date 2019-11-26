@@ -1,6 +1,6 @@
 //
-//  HelperSupport.h
-//  HelperSupport
+//  SyncSupport.h
+//  SyncSupport
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -19,8 +19,8 @@
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for HelperSupport.
-FOUNDATION_EXPORT double HelperSupportVersionNumber;
+//! Project version number for SyncSupport.
+FOUNDATION_EXPORT double SyncSupportVersionNumber;
 
-//! Project version string for HelperSupport.
-FOUNDATION_EXPORT const unsigned char HelperSupportVersionString[];
+//! Project version string for SyncSupport.
+FOUNDATION_EXPORT const unsigned char SyncSupportVersionString[];

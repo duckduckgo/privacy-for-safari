@@ -36,8 +36,13 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\", \"updateVersion\": \"v100-1\" }")
         
+        let ex = expectation(description: "refresh")
         let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
-        loader.refreshSearchRetentionAtb(atLocation: "test", completion: nil)
+        loader.refreshSearchRetentionAtb(atLocation: "test") {
+            ex.fulfill()
+        }
+        
+        wait(for: [ex], timeout: 1.0)
         
         XCTAssertEqual(1, apiRequest.requests.count)
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
@@ -64,8 +69,12 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
         
+        let ex = expectation(description: "refresh")
         let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
-        loader.refreshAppRetentionAtb(atLocation: "test") { }
+        loader.refreshAppRetentionAtb(atLocation: "test") {
+            ex.fulfill()
+        }
+        wait(for: [ex], timeout: 1.0)
         
         XCTAssertEqual(1, apiRequest.requests.count)
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
@@ -91,8 +100,13 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
         
+        let ex = expectation(description: "refresh")
         let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
-        loader.refreshSearchRetentionAtb(atLocation: "test", completion: nil)
+        loader.refreshSearchRetentionAtb(atLocation: "test") {
+            ex.fulfill()
+        }
+        
+        wait(for: [ex], timeout: 1.0)
         
         XCTAssertEqual(1, apiRequest.requests.count)
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
@@ -118,8 +132,13 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
 
+        let ex = expectation(description: "refresh")
         let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
-        loader.refreshAppRetentionAtb(atLocation: "test") { }
+        loader.refreshAppRetentionAtb(atLocation: "test") {
+            ex.fulfill()
+        }
+        
+        wait(for: [ex], timeout: 1.0)
         
         XCTAssertEqual(1, apiRequest.requests.count)
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
@@ -144,8 +163,13 @@ class StatisticsLoaderTests: XCTestCase {
         let apiRequest = MockAPIRequest()
         apiRequest.addResponse(200, body: "{ \"version\": \"v174-1\" }")
         
+        let ex = expectation(description: "ex")
         let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
-        loader.refreshSearchRetentionAtb(atLocation: "test", completion: nil)
+        loader.refreshSearchRetentionAtb(atLocation: "test") {
+            ex.fulfill()
+        }
+        
+        wait(for: [ex], timeout: 1.0)
         
         XCTAssertEqual(1, apiRequest.requests.count)
         XCTAssertEqual(apiRequest.requests[0].path, DefaultStatisticsLoader.Paths.atb)
@@ -169,8 +193,13 @@ class StatisticsLoaderTests: XCTestCase {
         apiRequest.addResponse(200, body: "{ \"version\": \"v173-1\" }")
         apiRequest.addResponse(200)
         
+        let ex = expectation(description: "refresh")
         let loader = DefaultStatisticsLoader(apiRequest: { apiRequest })
-        loader.refreshAppRetentionAtb(atLocation: "test") { }
+        loader.refreshAppRetentionAtb(atLocation: "test") {
+            ex.fulfill()
+        }
+        
+        wait(for: [ex], timeout: 10.0)
 
         XCTAssertEqual(2, apiRequest.requests.count)
 

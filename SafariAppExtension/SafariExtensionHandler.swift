@@ -20,6 +20,7 @@
 import SafariServices
 import TrackerBlocking
 import Statistics
+import SyncSupport
 import os
 
 // See https://developer.apple.com/videos/play/wwdc2019/720/
@@ -87,23 +88,10 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         validationHandler(true, "")
+        SyncScheduler.shared.schedule()
         DispatchQueue.dashboard.async {
             DashboardData.shared.setCurrentPage(to: nil, withUrl: nil)
             self.updateToolbar()
-            self.updateContentBlocker()
-        }
-    }
-    
-    private func updateContentBlocker() {
-        DispatchQueue.dashboard.async {
-            os_log("updateContentBlocker, IN", log: generalLog, type: .default)
-            defer { os_log("updateContentBlocker, OUT", log: generalLog, type: .default) }
-            let blockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager
-            guard blockerListManager.needsReload else { return }
-            TrackerBlocking.Dependencies.shared.trackerDataManager.load()
-            ContentBlockerExtension.reload { _ in
-                blockerListManager.setNeedsReload(false)
-            }
         }
     }
     
@@ -183,11 +171,21 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         let bundle = Bundle(for: type(of: self))
         SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: bundle.bundleIdentifier!) { state, _ in
             if state?.isEnabled ?? false {
-                RemoteStatisticsLoader().refreshAppRetentionAtb(atLocation: AtbLocations.safariExtensionHandler, completion: nil)
+                DefaultStatisticsLoader.shared.refreshAppRetentionAtb(atLocation: AtbLocations.safariExtensionHandler, completion: nil)
             }
         }
     }
-    
+
+    override init() {
+        os_log("SEH init", log: lifecycleLog)
+        super.init()
+        SyncScheduler.shared.schedule()
+    }
+        
+    deinit {
+        os_log("SEH deinit", log: lifecycleLog)
+    }
+
 }
 
 extension Grade.Grading {
