@@ -150,13 +150,10 @@ class MockTrackerDataManager: TrackerDataManager {
 
 class MockBlockerListManager: BlockerListManager {
     
-    func setNeedsReload(_ needsReload: Bool) { }
-        
-    var needsReload: Bool = false
-    
     var blockerListUrl: URL { return URL(fileURLWithPath: "blockerList.json") }
     
     func update() { }
+    func needsReload() { }
     
 }
 

@@ -1,6 +1,6 @@
 //
 //  SyncStore.swift
-//  HelperSupport
+//  SyncSupport
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //

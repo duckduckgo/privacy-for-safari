@@ -26,44 +26,22 @@ public protocol BlockerListManager {
     
     typealias Factory = (() -> BlockerListManager)
     
-    var needsReload: Bool { get }
-    func setNeedsReload(_ needsReload: Bool)
     func update()
     
 }
 
 public class DefaultBlockerListManager: BlockerListManager {
-    
-    struct Keys {
-        static let needsReload = "needsReload"
-    }
-        
+            
     private let trackerDataManager: TrackerDataManager.Factory
     private let trustedSitesManager: TrustedSitesManager.Factory
     private let blockerListUrl: URL
-    private let userDefaults: UserDefaults?
-    
-    public var needsReload: Bool {
-        get {
-            return userDefaults?.bool(forKey: Keys.needsReload) ?? false
-        }
-        set {
-            userDefaults?.set(newValue, forKey: Keys.needsReload)
-        }
-    }
-    
+        
     init(trackerDataManager: @escaping TrackerDataManager.Factory,
          trustedSitesManager: @escaping TrustedSitesManager.Factory,
-         blockerListUrl: URL = BlockerListLocation.blockerListUrl,
-         userDefaults: UserDefaults? = UserDefaults(suiteName: BlockerListLocation.groupName)) {
+         blockerListUrl: URL = BlockerListLocation.blockerListUrl) {
         self.trackerDataManager = trackerDataManager
         self.trustedSitesManager = trustedSitesManager
         self.blockerListUrl = blockerListUrl
-        self.userDefaults = userDefaults
-    }
-    
-    public func setNeedsReload(_ needsReload: Bool) {
-        self.needsReload = needsReload
     }
     
     public func update() {

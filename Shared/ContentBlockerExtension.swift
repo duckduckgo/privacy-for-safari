@@ -18,6 +18,7 @@
 //
 
 import SafariServices
+import Statistics
 import os
 
 class ContentBlockerExtension {
@@ -39,7 +40,9 @@ class ContentBlockerExtension {
         reload { _ in
             group.leave()
         }
-        group.wait()
+        if group.wait(timeout: .now() + 30) == .timedOut {
+            Dependencies.shared.pixel.fire(.debugReloadTimeout)
+        }
         os_log("ContentBlockerExtension reloadSync END", log: generalLog)
     }
     

@@ -22,3 +22,4 @@ import os
 
 ///  A general logger. Defaults to the subsystem the code is compiled in and a category of DDG General.
 let generalLog: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier ?? BundleIds.app, category: "DDG General")
+let lifecycleLog: OSLog = OSLog(subsystem: Bundle.main.bundleIdentifier ?? BundleIds.app, category: "DDG Lifecycle")

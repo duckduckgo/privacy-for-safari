@@ -34,25 +34,7 @@ class BlockerListManagerTests: XCTestCase {
         
         UserDefaults(suiteName: Constants.suiteName)?.removePersistentDomain(forName: Constants.suiteName)
     }
-    
-    func testWhenSetNeedsReloadCalledThenStatePersisted() {
         
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("json")
-        var manager = DefaultBlockerListManager(trackerDataManager: trackerDataManagerFactory,
-                                  trustedSitesManager: trustedSitesManagerFactory,
-                                  blockerListUrl: url,
-                                  userDefaults: UserDefaults(suiteName: Constants.suiteName))
-
-        XCTAssertFalse(manager.needsReload)
-        manager.setNeedsReload(true)
-        
-        manager = DefaultBlockerListManager(trackerDataManager: trackerDataManagerFactory,
-                                  trustedSitesManager: trustedSitesManagerFactory,
-                                  blockerListUrl: url,
-                                  userDefaults: UserDefaults(suiteName: Constants.suiteName))
-        XCTAssertTrue(manager.needsReload)
-    }
-    
     func testWhenWhitelistedDomainsArePresentThenGeneratedRulesContainThem() {
         
         let trackers = [
@@ -66,8 +48,7 @@ class BlockerListManagerTests: XCTestCase {
 
         let manager = DefaultBlockerListManager(trackerDataManager: trackerDataManagerFactory,
                                   trustedSitesManager: trustedSitesManagerFactory,
-                                  blockerListUrl: url,
-                                  userDefaults: UserDefaults(suiteName: Constants.suiteName))
+                                  blockerListUrl: url)
         
         manager.update()
         

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "855150252375AA7900DBC528"
-               BuildableName = "HelperSupport.framework"
-               BlueprintName = "HelperSupport"
+               BuildableName = "SyncSupport.framework"
+               BlueprintName = "SyncSupport"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "855150252375AA7900DBC528"
-            BuildableName = "HelperSupport.framework"
-            BlueprintName = "HelperSupport"
+            BuildableName = "SyncSupport.framework"
+            BlueprintName = "SyncSupport"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

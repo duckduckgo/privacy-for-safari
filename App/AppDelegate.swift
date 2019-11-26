@@ -22,6 +22,7 @@ import TrackerBlocking
 import Statistics
 import SafariServices
 import os
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -35,15 +36,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // No reload needed because this is the first time run
             TrackerBlocking.Dependencies.shared.blockerListManager.update()
         }
+ 
+        removeOldSyncApp()
         
-        LoginItemLauncher.launch()
-
-        RemoteStatisticsLoader().refreshAppRetentionAtb(atLocation: AtbLocations.appDelegate, completion: nil)
-
         #if DEBUG
         debugMenu.isHidden = false  
-        #endif
-        
+        #endif        
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {
@@ -66,9 +64,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func resetOnboarding(_ sender: Any) {
         Settings().onboardingShown = false
     }
-    
-    @IBAction func disableSyncService(_ sender: Any) {
-        LoginItemLauncher.disable()
+
+    /// Probably not essential, but will remove the entry from the launchctl list as well, hopefully.
+    private func removeOldSyncApp() {
+        SMLoginItemSetEnabled(BundleIds.oldSyncApp as CFString, false)
     }
 
 }

@@ -26,8 +26,8 @@ class TrackerDataManagerTests: XCTestCase {
     func testWhenUrlDomainMatchesEntityThenItIsReturned() {
 
         let trackerData = TrackerData(trackers: [:],
-                                      entities: ["google.com": Entity(displayName: "Google", domains: [], prevalence: 0.0) ],
-                                      domains: [:])
+                                      entities: ["Google": Entity(displayName: "Google", domains: [], prevalence: 0.0) ],
+                                      domains: ["google.com": "Google"])
         let manager = DefaultTrackerDataManager()
         manager.trackerData = trackerData
 

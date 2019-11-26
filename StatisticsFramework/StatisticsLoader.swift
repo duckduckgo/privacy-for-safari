@@ -31,79 +31,68 @@ public protocol StatisticsLoader {
     
 }
 
-public class RemoteStatisticsLoader: StatisticsLoader {
-
-    let store: StatisticsStore
-    
-    public init(store: StatisticsStore = Dependencies.shared.statisticsStore) {
-        self.store = store
-    }
-
-    public func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
-        guard store.installAtb != nil else {
-            NSWorkspace.shared.launchApplication(BundleIds.appName)
-            return
-        }
-        remoteLoader()?.refreshSearchRetentionAtb(atLocation: location) {
-            completion?()
-        }
-    }
-
-    public func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
-        guard store.installAtb != nil else {
-            NSWorkspace.shared.launchApplication(BundleIds.appName)
-            return
-        }
-        
-        remoteLoader()?.refreshAppRetentionAtb(atLocation: location) {
-            completion?()
-        }
-    }
-
-    private func remoteLoader() -> StatisticsLoader? {
-        let connection = NSXPCConnection(machServiceName: BundleIds.xpcServiceName)
-        connection.remoteObjectInterface = NSXPCInterface(with: StatisticsLoader.self)
-        connection.resume()
-
-        return connection.remoteObjectProxyWithErrorHandler { error in
-            os_log("Error connecting to remote statistics loader: %s", log: generalLog, type: .error, error.localizedDescription)
-        } as? StatisticsLoader
-    }
-
-}
-
 public class DefaultStatisticsLoader: StatisticsLoader {
 
+    public static let shared = DefaultStatisticsLoader()
+    
     public typealias Completion = (() -> Void)
 
+    struct Constants {
+        static let waitTimeout: TimeInterval = 30 // 30 second timeout
+    }
+
     struct Paths {
-        
         static let atb = "/atb.js"
         static let exti = "/exti/"
-        
     }
     
+    private let queue = DispatchQueue(label: "StatisticsLoader")
     private let statisticsStore: StatisticsStore.Factory
     private let apiRequest: APIRequest.Factory
+    private let pixel: Pixel
     
-    public init(statisticsStore: @escaping StatisticsStore.Factory = { Dependencies.shared.statisticsStore },
-                apiRequest: @escaping APIRequest.Factory = { DefaultAPIRequest() }) {
+    init(statisticsStore: @escaping StatisticsStore.Factory = { Dependencies.shared.statisticsStore },
+         apiRequest: @escaping APIRequest.Factory = { DefaultAPIRequest() },
+         pixel: Pixel = Dependencies.shared.pixel) {
         self.statisticsStore = statisticsStore
         self.apiRequest = apiRequest
+        self.pixel = pixel
     }
     
     public func refreshSearchRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
-        var store = statisticsStore()
-        refreshRetention(forType: .search, withSetAtb: store.searchRetentionAtb, atLocation: location, storeResult: { atb in
-            store.searchRetentionAtb = atb.version
-        }, completion: completion)
+        queue.async {
+            let group = DispatchGroup()
+            group.enter()
+            
+            var store = self.statisticsStore()
+            self.refreshRetention(forType: .search, withSetAtb: store.searchRetentionAtb, atLocation: location, storeResult: { atb in
+                store.searchRetentionAtb = atb.version
+            }, completion: {
+                group.leave()
+                completion?()
+            })
+            if group.wait(timeout: .now() + Constants.waitTimeout) == .timedOut {
+                self.pixel.fire(.debugStatisticsTimeout)
+            }
+        }
     }
     
     public func refreshAppRetentionAtb(atLocation location: String, completion: StatisticsLoaderCompletion?) {
-        var store = statisticsStore()
-        refreshRetention(forType: .app, withSetAtb: store.appRetentionAtb, atLocation: location, storeResult: { atb in
-            store.appRetentionAtb = atb.version
-        }, completion: completion)
+        queue.async {
+            let group = DispatchGroup()
+            group.enter()
+            
+            var store = self.statisticsStore()
+            self.refreshRetention(forType: .app, withSetAtb: store.appRetentionAtb, atLocation: location, storeResult: { atb in
+                store.appRetentionAtb = atb.version
+            }, completion: {
+                group.leave()
+                completion?()
+            })
+            if group.wait(timeout: .now() + Constants.waitTimeout) == .timedOut {
+                self.pixel.fire(.debugStatisticsTimeout)
+            }
+        }
     }
     
     private func refreshRetention(forType type: Atb.Types,

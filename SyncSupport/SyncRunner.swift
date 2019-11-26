@@ -1,6 +1,6 @@
 //
 //  SyncRunner.swift
-//  HelperSupport
+//  SyncSupport
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -20,6 +20,7 @@
 import Foundation
 import os
 import TrackerBlocking
+import Statistics
 
 public class SyncRunner {
 
@@ -52,8 +53,10 @@ public class SyncRunner {
         trackerDataService.updateData(completion: trackerData.start())
         tempWhitelistDataService.updateData(completion: tempWhitelistData.start())
         
-        group.wait()
-                        
+        if group.wait(timeout: .now() + 30) == .timedOut {
+            Statistics.Dependencies.shared.pixel.fire(.debugSyncTimeout)
+        }
+        
         if trackerData.newData || tempWhitelistData.newData {
             os_log("Sync has new data %{public}s %{public}s", log: generalLog,
                    trackerData.newData ? "tracker data" : "",
@@ -61,7 +64,7 @@ public class SyncRunner {
             
             self.trackerDataManager.load()
             self.blockerListManager.update()
-            self.blockerListManager.setNeedsReload(true)
+            ContentBlockerExtension.reloadSync()
         }
         
         // if either fail, don't store the sync time - we need that data!

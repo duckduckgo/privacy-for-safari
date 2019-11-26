@@ -18,7 +18,7 @@
 //
 
 import XCTest
-@testable import HelperSupport
+@testable import SyncSupport
 
 class SyncUserDefaultsTests: XCTestCase {
     

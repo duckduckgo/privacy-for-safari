@@ -9,7 +9,7 @@
 import Foundation
 
 import XCTest
-@testable import HelperSupport
+@testable import SyncSupport
 @testable import TrackerBlocking
 
 class SyncRunnerTests: XCTestCase {
