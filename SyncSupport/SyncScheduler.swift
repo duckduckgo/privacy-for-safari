@@ -62,7 +62,7 @@ public class SyncScheduler {
             }
             
             if group.wait(timeout: .now() + 30) == .timedOut {
-                Dependencies.shared.pixel.fire(.debugSyncTimeout)
+                Dependencies.shared.pixel.fire(.debugSchedulerTimeout)
             }
         }
     }
