@@ -118,6 +118,8 @@ extension TrackersDetailViewController: NSOutlineViewDelegate {
                 as? TrackersDetailHeaderView
             view?.domainLabel.stringValue = pageData?.url?.host?.dropPrefix("www.") ?? ""
             view?.trackersLabel.stringValue = pageData?.trackersText.uppercased() ?? ""
+            let trackersLabelString = pageData?.trackersText.uppercased() ?? ""
+            view?.trackersLabel.attributedStringValue = NSAttributedString(string: trackersLabelString, kern: NSAttributedString.headerKern)
             view?.imageView?.image = pageData?.networksHeroIcon
             return view
             

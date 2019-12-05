@@ -9,10 +9,28 @@
       "color" : {
         "color-space" : "srgb",
         "components" : {
-          "red" : "170",
+          "red" : "136",
           "alpha" : "1.000",
-          "blue" : "170",
-          "green" : "170"
+          "blue" : "136",
+          "green" : "136"
+        }
+      }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "red" : "204",
+          "alpha" : "1.000",
+          "blue" : "204",
+          "green" : "204"
         }
       }
     }

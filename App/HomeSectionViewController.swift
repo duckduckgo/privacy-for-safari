@@ -42,7 +42,7 @@ class HomeSectionViewController: NSViewController {
         super.viewDidLoad()
         
         let string = dashboardEnabledLabel.stringValue
-        dashboardEnabledLabel.attributedStringValue = NSAttributedString.withKern(string: string, 1.5)
+        dashboardEnabledLabel.attributedStringValue = NSAttributedString(string: string, kern: 1.5)
         protectionEnabledLabel.attributedStringValue = dashboardEnabledLabel.attributedStringValue
         
         versionLabel.attributedStringValue = Utils.versionLabelAttributedString()

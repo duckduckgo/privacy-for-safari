@@ -24,7 +24,7 @@ struct Utils {
     
     static func versionLabelAttributedString() -> NSAttributedString {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "?.?"
-        return NSAttributedString.withKern(string: "PRIVACY ESSENTIALS v\(version)", 2.0)
+        return NSAttributedString(string: "PRIVACY ESSENTIALS v\(version)", kern: 2.0)
     }
     
 }

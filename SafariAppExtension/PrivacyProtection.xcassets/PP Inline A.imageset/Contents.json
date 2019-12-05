@@ -2,7 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "toolbarAScoreCard.pdf"
+      "filename" : "ltA.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "dtA.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

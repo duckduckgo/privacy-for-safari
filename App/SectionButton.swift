@@ -34,12 +34,7 @@ class SectionButton: NSBox {
         emphasis.isHidden = false
 
         fillColor = NSColor.selectedBackground
-        if #available(OSX 10.14, *) {
-            label.textColor = NSColor.controlAccentColor
-        } else {
-            label.textColor = NSColor.selectedText
-        }
-        
+        label.textColor = NSColor.controlAccentColor
     }
      
 }

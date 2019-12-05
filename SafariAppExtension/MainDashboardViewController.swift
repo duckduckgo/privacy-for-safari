@@ -35,10 +35,10 @@ class MainDashboardViewController: DashboardNavigationController {
     }
 
     let privacyPracticesImages: [PrivacyPractice.Summary: NSImage] = [
-        .unknown: #imageLiteral(resourceName: "PP Icon Privacy Bad Off"),
-        .poor: #imageLiteral(resourceName: "PP Icon Privacy Bad On"),
-        .mixed: #imageLiteral(resourceName: "PP Icon Privacy Good Off"),
-        .good: #imageLiteral(resourceName: "PP Icon Privacy Good On")
+        .unknown: #imageLiteral(resourceName: "PP Icon Unknown"),
+        .poor: #imageLiteral(resourceName: "PP Icon Bad"),
+        .mixed: #imageLiteral(resourceName: "PP Icon Warning"),
+        .good: #imageLiteral(resourceName: "PP Icon Check")
     ]
 
     let privacyPracticesText: [PrivacyPractice.Summary: String] = [
@@ -54,9 +54,12 @@ class MainDashboardViewController: DashboardNavigationController {
 
     @IBOutlet weak var siteTitle: NSTextField!
     @IBOutlet weak var enhancedStatementStack: NSView!
+    @IBOutlet weak var enhancedStatementTextField: NSTextField!
+    @IBOutlet weak var privacyGradeMessage: NSStackView!
+    @IBOutlet weak var privacyGradeTextField: NSTextField!
     @IBOutlet weak var regularSitesMessage: NSView!
+    @IBOutlet weak var regularSitesTextField: NSTextField!
     @IBOutlet weak var fromIcon: NSImageView!
-    @IBOutlet weak var toIcon: NSImageView!
 
     @IBOutlet weak var protectionToggle: NSSwitch!
     @IBOutlet weak var protectionBox: NSBox!
@@ -100,6 +103,8 @@ class MainDashboardViewController: DashboardNavigationController {
                                                             selector: #selector(onTrustedSitesChanged),
                                                             name: TrustedSitesNotification.sitesUpdatedNotificationName,
                                                             object: nil)
+
+        initTextFields()
     }
     
     override func viewWillAppear() {
@@ -165,6 +170,12 @@ class MainDashboardViewController: DashboardNavigationController {
         updateUI()
     }
 
+    private func initTextFields() {
+        let textFields = [enhancedStatementTextField!, regularSitesTextField!, privacyGradeTextField!]
+
+        textFields.forEach { $0.attributedStringValue = NSAttributedString(string: $0.stringValue, kern: NSAttributedString.headerKern) }
+    }
+
     private func updateUI() {
         updateEncryptionStatus()
         updateStatement()
@@ -190,10 +201,10 @@ class MainDashboardViewController: DashboardNavigationController {
         let isEncryptionEnabled: Bool
         let imageName: String
         if let url = pageData?.url {
-            imageName = url.isEncrypted ? "PP Icon Connection On" : "PP Icon Connection Bad"
+            imageName = url.isEncrypted ? "PP Icon Check" : "PP Icon Bad"
             isEncryptionEnabled = url.isEncrypted
         } else {
-            imageName = "PP Icon Connection Off"
+            imageName = "PP Icon Unknown"
             isEncryptionEnabled = false
         }
 
@@ -214,10 +225,10 @@ class MainDashboardViewController: DashboardNavigationController {
         if let grade = pageData?.calculateGrade(), grade.site.grade != grade.enhanced.grade, !isTrusted {
             enhancedStatementStack.isHidden = false
             fromIcon.image = grade.site.grade.inlineImage
-            toIcon.image = grade.enhanced.grade.inlineImage
         } else {
             enhancedStatementStack.isHidden = true
         }
+        privacyGradeMessage.isHidden = !enhancedStatementStack.isHidden
     }
     
     private func updateTitle() {
@@ -225,13 +236,6 @@ class MainDashboardViewController: DashboardNavigationController {
     }
     
     private func updateProtectionStatus() {
-
-        if isTrusted {
-            protectionBox.fillColor = NSColor.protectionToggleOff
-        } else {
-            protectionBox.fillColor = NSColor.protectionToggleOn
-        }
-
         NSAnimationContext.runAnimationGroup { context in
 
             context.duration = 0.25
@@ -327,9 +331,9 @@ extension PageData {
     var networksIcon: NSImage? {
         let imageName: String
         if isTrusted {
-            imageName = loadedTrackers.count == 0 ? "PP Icon Major Networks Off" : "PP Icon Major Networks Bad"
+            imageName = loadedTrackers.count == 0 ? "PP Icon Unknown" : "PP Icon Bad"
         } else {
-            imageName = "PP Icon Major Networks On"
+            imageName = "PP Icon Check"
         }
         return NSImage(named: NSImage.Name(imageName))
     }

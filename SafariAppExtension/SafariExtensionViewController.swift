@@ -25,6 +25,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     static let shared: SafariExtensionViewController = SafariExtensionViewController()
 
+    @IBOutlet weak var backgroundEffectView: NSVisualEffectView!
     @IBOutlet weak var dashboardHolder: NSView!
     @IBOutlet weak var menuButton: NSButton!
     @IBOutlet weak var titleLabel: NSTextField!
@@ -47,11 +48,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        preferredContentSize = NSSize(width: 300, height: 548)
+        preferredContentSize = NSSize(width: 310, height: 498)
 
         initTitle()
         initButton(menuButton)
         installPageController()
+        initBackgroundEffectView()
     }
 
     override func viewWillAppear() {
@@ -97,6 +99,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     private func initTitle() {
-        titleLabel.attributedStringValue = NSAttributedString.withKern(string: titleLabel.stringValue, 2.0)
+        titleLabel.attributedStringValue = NSAttributedString(string: titleLabel.stringValue, kern: NSAttributedString.headerKern)
+    }
+
+    private func initBackgroundEffectView() {
+        backgroundEffectView.material = .appearanceBased
     }
 }

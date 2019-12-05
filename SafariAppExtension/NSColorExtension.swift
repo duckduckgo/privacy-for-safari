@@ -20,9 +20,7 @@
 import AppKit
 
 extension NSColor {
-    
-    static let protectionToggleOff = NSColor(named: NSColor.Name("ProtectionToggleOff"))!
-    static let protectionToggleOn = NSColor(named: NSColor.Name("ProtectionToggleOn"))!
+
     static let searchPlaceholderText = NSColor(named: NSColor.Name("SearchPlaceholderText"))!
     static let brokenSiteButtonEnabled = NSColor(named: NSColor.Name("BrokenSiteButtonEnabled"))!
     static let brokenSiteButtonDisabled = NSColor(named: NSColor.Name("BrokenSiteButtonDisabled"))!
