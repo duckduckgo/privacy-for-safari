@@ -331,7 +331,7 @@ extension PageData {
     var networksIcon: NSImage? {
         let imageName: String
         if isTrusted {
-            imageName = loadedTrackers.count == 0 ? "PP Icon Unknown" : "PP Icon Bad"
+            imageName = loadedTrackers.count == 0 ? "PP Icon Check" : "PP Icon Bad"
         } else {
             imageName = "PP Icon Check"
         }

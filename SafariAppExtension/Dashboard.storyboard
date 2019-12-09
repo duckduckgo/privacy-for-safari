@@ -338,7 +338,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DKZ-mC-dhQ" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                <rect key="frame" x="89" y="17" width="116" height="16"/>
+                                                                <rect key="frame" x="90" y="17" width="116" height="16"/>
                                                                 <gestureRecognizers>
                                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Fge-04-xuQ">
                                                                         <connections>
@@ -378,7 +378,7 @@
                                                         <rect key="frame" x="295" y="0.0" width="294" height="50"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QaT-Zm-7Gd" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                <rect key="frame" x="84" y="17" width="125" height="16"/>
+                                                                <rect key="frame" x="85" y="17" width="125" height="16"/>
                                                                 <gestureRecognizers>
                                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Bgw-WN-92W">
                                                                         <connections>
@@ -763,7 +763,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-iP-kR7">
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-iP-kR7">
                                         <rect key="frame" x="139" y="180" width="33" height="21"/>
                                         <view key="contentView" id="O7B-eb-3fc">
                                             <rect key="frame" x="0.0" y="0.0" width="33" height="21"/>
@@ -771,8 +771,8 @@
                                             <subviews>
                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-BF-Ewc">
                                                     <rect key="frame" x="-2" y="-3" width="38" height="25"/>
-                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="20j-wz-aYH">
-                                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="20j-wz-aYH">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                         <menu key="menu" id="G7g-x3-4Ud"/>
                                                     </popUpButtonCell>
@@ -788,7 +788,8 @@
                                             <constraint firstItem="kYW-BF-Ewc" firstAttribute="height" secondItem="UGk-iP-kR7" secondAttribute="height" id="Q8z-RC-1NX"/>
                                             <constraint firstItem="kYW-BF-Ewc" firstAttribute="centerY" secondItem="UGk-iP-kR7" secondAttribute="centerY" id="eVD-b8-UA8"/>
                                         </constraints>
-                                        <color key="fillColor" name="HeaderMessage"/>
+                                        <color key="borderColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="fillColor" name="underPageBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                     <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LUb-P8-ECG" customClass="ClickableBox" customModule="SafariAppExtension" customModuleProvider="target">
                                         <rect key="frame" x="16" y="121" width="278" height="47"/>
@@ -800,7 +801,7 @@
                                                     <rect key="frame" x="99" y="16" width="80" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Send Report" drawsBackground="YES" id="ARk-Av-GWK">
                                                         <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="SearchInputText"/>
+                                                        <color key="textColor" name="BrokenSiteButtonText"/>
                                                         <color key="backgroundColor" red="1" green="0.99997597930000004" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -823,7 +824,7 @@
                                         <color key="fillColor" name="HeaderMessage"/>
                                     </box>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yY9-3b-LJi">
-                                        <rect key="frame" x="6" y="33" width="298" height="60"/>
+                                        <rect key="frame" x="14" y="49" width="282" height="60"/>
                                         <textFieldCell key="cell" selectable="YES" enabled="NO" alignment="center" id="v8Z-Bd-VHW">
                                             <font key="font" metaFont="systemMedium" size="12"/>
                                             <string key="title">Reports sent to DuckDuckGo are 100% anonymous and only include your selection above, the URL, and a list of trackers we found on the site.</string>
@@ -843,9 +844,9 @@
                                     <constraint firstItem="y7r-G3-an3" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="T8B-19-p3F"/>
                                     <constraint firstItem="kYW-BF-Ewc" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="VUk-Wf-BaS"/>
                                     <constraint firstItem="dX0-Ho-UEB" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="Xjp-Zr-bVZ"/>
-                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="top" secondItem="fvj-kO-Tb3" secondAttribute="bottom" constant="28" id="YwE-s1-mod"/>
+                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="top" secondItem="fvj-kO-Tb3" secondAttribute="bottom" constant="12" id="YwE-s1-mod"/>
                                     <constraint firstItem="LUb-P8-ECG" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="cBp-RB-HaE"/>
-                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="width" secondItem="ylS-Cp-teY" secondAttribute="width" constant="-16" id="khF-lk-i5a"/>
+                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="width" secondItem="ylS-Cp-teY" secondAttribute="width" constant="-32" id="khF-lk-i5a"/>
                                     <constraint firstItem="LUb-P8-ECG" firstAttribute="width" secondItem="ylS-Cp-teY" secondAttribute="width" constant="-32" id="qy6-d7-cBp"/>
                                     <constraint firstItem="LUb-P8-ECG" firstAttribute="top" secondItem="UGk-iP-kR7" secondAttribute="bottom" constant="12" id="swx-c4-vFX"/>
                                     <constraint firstItem="yY9-3b-LJi" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="thx-NT-hZe"/>
@@ -1215,13 +1216,16 @@
         <image name="PP Inline D" width="18" height="18"/>
         <image name="PP Network Icon google" width="24" height="24"/>
         <namedColor name="Arrow">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrokenSiteButtonText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BrokenSiteHeader">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="BrokenSiteText">
-            <color red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="HeaderMessage">
             <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1235,11 +1239,8 @@
         <namedColor name="ProtectionToggleBackground">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="SearchInputText">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="SeparatorColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.074999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.075000002980232239" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SiteTitle">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
