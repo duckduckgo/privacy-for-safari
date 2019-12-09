@@ -463,15 +463,6 @@
                                                                     <font key="font" size="15" name="ProximaNova-Regular"/>
                                                                 </buttonCell>
                                                                 <color key="contentTintColor" name="ItemTitle"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="wantsLayer" value="YES"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                        <integer key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="reportBrokenSite:" target="yVf-K8-uRd" id="nwl-Ea-UQD"/>
                                                                 </connections>
