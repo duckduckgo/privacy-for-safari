@@ -39,9 +39,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         page.getPropertiesOnQueue { properties in
             guard let pageUrl = properties?.url else { return }
             let trackerDetection = Dependencies.shared.trackerDetection
-            DashboardData.shared.trackers(urls.map {
+            DashboardData.shared.trackers(Set<DetectedTracker>(urls.map {
                 trackerDetection.detectedTrackerFrom(resourceUrl: $0, onPageWithUrl: pageUrl)
-            }, blockedOnPage: page, forUrl: pageUrl.absoluteString)
+            }), blockedOnPage: page, forUrl: pageUrl.absoluteString)
         }
     }
     
@@ -133,7 +133,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let trackerDetection = Dependencies.shared.trackerDetection
             guard let pageUrl = properties?.url else { return }
 
-            var detectedTrackers = [DetectedTracker]()
+            var detectedTrackers = Set<DetectedTracker>()
             resources.forEach { resource in
                 self.deepDetection.check(resource: resource["url"], onPage: pageUrl)
 
@@ -142,7 +142,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     let detectedTracker = trackerDetection.detectTrackerFor(resourceUrl: resourceUrl,
                                                                     onPageWithUrl: pageUrl,
                                                                     asResourceType: resource["type"]) {
-                    detectedTrackers.append(detectedTracker)
+                    detectedTrackers.insert(detectedTracker)
                 }
             }
 

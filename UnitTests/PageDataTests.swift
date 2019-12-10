@@ -42,8 +42,11 @@ class PageDataTests: XCTestCase {
         
         let trackersByEntity = pageData.loadedTrackersByEntity()
 
-        XCTAssertEqual(trackersByEntity.count, 2)
-        
+        guard trackersByEntity.count == 2 else {
+            XCTFail("wrong number of trackers")
+            return
+        }
+
         XCTAssertEqual(trackersByEntity[0].entityName, "Google")
         XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker.com", "tracker2.com" ])
         
@@ -63,7 +66,10 @@ class PageDataTests: XCTestCase {
         ]
         
         let trackersByEntity = pageData.blockedTrackersByEntity()
-        XCTAssertEqual(trackersByEntity.count, 2)
+        guard trackersByEntity.count == 2 else {
+            XCTFail("wrong number of trackers")
+            return
+        }
 
         XCTAssertEqual(trackersByEntity[0].entityName, "Google")
         XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker.com", "tracker2.com" ])
@@ -112,7 +118,7 @@ class PageDataTests: XCTestCase {
     }
 
     private func detectedTracker(resource: URL, owner: String) -> DetectedTracker {
-        return DetectedTracker(matchedTracker: nil,
+        return DetectedTracker(matchedTracker: KnownTracker.build(domain: resource.host ?? ""),
                                resource: resource,
                                page: URLs.page,
                                owner: owner,

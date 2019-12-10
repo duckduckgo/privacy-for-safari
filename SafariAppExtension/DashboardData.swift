@@ -24,19 +24,19 @@ import os
 class DashboardData {
 
     class Trackers {
-        private(set) var loaded = [DetectedTracker]()
-        private(set) var blocked = [DetectedTracker]()
+        private(set) var loaded = Set<DetectedTracker>()
+        private(set) var blocked = Set<DetectedTracker>()
 
         var trackersDetected: Bool {
             return !loaded.isEmpty || !blocked.isEmpty
         }
             
-        func append(loadedTrackers: [DetectedTracker]) {
-            loaded.append(contentsOf: loadedTrackers)
+        func append(loadedTrackers: Set<DetectedTracker>) {
+            loaded = loaded.union(loadedTrackers)
         }
         
-        func append(blockedTrackers: [DetectedTracker]) {
-            blocked.append(contentsOf: blockedTrackers)
+        func append(blockedTrackers: Set<DetectedTracker>) {
+            blocked = blocked.union(blockedTrackers)
         }
 
     }
@@ -82,7 +82,7 @@ class DashboardData {
         return trackers
     }
             
-    func trackers(_ trackers: [DetectedTracker], loadedOnPage page: SFSafariPage, forUrl url: String) {
+    func trackers(_ trackers: Set<DetectedTracker>, loadedOnPage page: SFSafariPage, forUrl url: String) {
         DiagnosticSupport.dump(trackers, blocked: false)
         
         let pageTrackers = cachedTrackers(forPage: page, withUrl: url)
@@ -93,7 +93,7 @@ class DashboardData {
         }
     }
     
-    func trackers(_ trackers: [DetectedTracker], blockedOnPage page: SFSafariPage, forUrl url: String) {
+    func trackers(_ trackers: Set<DetectedTracker>, blockedOnPage page: SFSafariPage, forUrl url: String) {
         DiagnosticSupport.dump(trackers, blocked: true)
         
         trackers.forEach {
