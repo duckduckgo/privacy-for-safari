@@ -31,7 +31,7 @@ class DiagnosticSupport {
     private static let reportFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("report").appendingPathExtension("csv")
     private static let domainsListFileUrl = BlockerListLocation.containerUrl.appendingPathComponent("top-sites").appendingPathExtension("json")
 
-    public static func dump(_ trackers: [DetectedTracker], blocked: Bool) {
+    public static func dump(_ trackers: Set<DetectedTracker>, blocked: Bool) {
         #if DEBUG
         reportQueue.async {
             

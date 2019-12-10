@@ -121,7 +121,7 @@ class ReportBrokenSiteController: DashboardNavigationController {
         guard let url = pageData.url else { return }
         guard let category = category else { return }
         
-        BrokenSiteReporter().reportBreakageOn(url: url, withBlockedTrackers: pageData.blockedTrackers, inCategory: category)
+        BrokenSiteReporter().reportBreakageOn(url: url, withBlockedTrackers: Array(pageData.blockedTrackers), inCategory: category)
     }
     
 }

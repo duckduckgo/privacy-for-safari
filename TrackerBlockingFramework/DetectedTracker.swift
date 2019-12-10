@@ -19,7 +19,7 @@
 
 import Foundation
 
-public struct DetectedTracker: Equatable {
+public struct DetectedTracker {
 
     public enum Action {
         case block
@@ -33,5 +33,21 @@ public struct DetectedTracker: Equatable {
     public let prevalence: Double
     public let isFirstParty: Bool
     public let action: Action
+
+}
+
+extension DetectedTracker: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(matchedTracker?.domain)
+    }
+
+}
+
+extension DetectedTracker: Equatable {
+
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.matchedTracker?.domain == rhs.matchedTracker?.domain
+    }
 
 }
