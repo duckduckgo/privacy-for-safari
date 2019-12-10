@@ -118,6 +118,8 @@ extension TrackersDetailViewController: NSOutlineViewDelegate {
                 as? TrackersDetailHeaderView
             view?.domainLabel.stringValue = pageData?.url?.host?.dropPrefix("www.") ?? ""
             view?.trackersLabel.stringValue = pageData?.trackersText.uppercased() ?? ""
+            let trackersLabelString = pageData?.trackersText.uppercased() ?? ""
+            view?.trackersLabel.attributedStringValue = NSAttributedString(string: trackersLabelString, kern: NSAttributedString.headerKern)
             view?.imageView?.image = pageData?.networksHeroIcon
             return view
             
@@ -179,10 +181,10 @@ extension PageData {
 
     var trackersText: String {
         if isTrusted {
-            let count = loadedTrackers.uniqueDomains
+            let count = loadedTrackers.count
             return String(format: UserText.trackersFound, count)
         } else {
-            let count = blockedTrackers.uniqueDomains
+            let count = blockedTrackers.count
             return String(format: UserText.trackersBlocked, count)
         }
 
@@ -196,16 +198,6 @@ extension PageData {
             imageName = "PP Hero Major On"
         }
         return NSImage(named: NSImage.Name(imageName))
-    }
-    
-}
-
-fileprivate extension Array where Element == DetectedTracker {
-    
-    var uniqueDomains: Int {
-        var domains = Set<String>()
-        forEach({ domains.insert($0.resource.host ?? "") })
-        return domains.count
     }
     
 }

@@ -35,8 +35,8 @@ public class PageData {
     public let isTrusted: Bool
     public let trackerDataManager: TrackerDataManager
     
-    public var loadedTrackers = [DetectedTracker]()
-    public var blockedTrackers = [DetectedTracker]()
+    public var loadedTrackers = Set<DetectedTracker>()
+    public var blockedTrackers = Set<DetectedTracker>()
 
     private var grade: Grade?
     
@@ -87,7 +87,7 @@ public class PageData {
         return grade.scores
     }
 
-    private func trackersByEntity(trackers: [DetectedTracker]) -> [EntityTrackers] {
+    private func trackersByEntity(trackers: Set<DetectedTracker>) -> [EntityTrackers] {
         return trackers.reduce([:]) { result, tracker -> [EntityName: Set<String>] in
             let owner = tracker.owner ?? "Unknown"
             let domain = tracker.resource.host?.dropPrefix("www.") ?? "Unknown"

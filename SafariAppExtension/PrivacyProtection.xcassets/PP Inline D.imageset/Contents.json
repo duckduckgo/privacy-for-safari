@@ -2,7 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "toolbarDScoreCard.pdf"
+      "filename" : "ltD.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "dtD.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

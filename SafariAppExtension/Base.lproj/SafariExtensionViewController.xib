@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SafariExtensionViewController" customModule="SafariAppExtension" customModuleProvider="target">
             <connections>
-                <outlet property="dashboardHolder" destination="1yo-Ce-QJe" id="sVj-tB-BX7"/>
+                <outlet property="backgroundEffectView" destination="0cD-BJ-hcQ" id="GNQ-lF-aCL"/>
+                <outlet property="dashboardHolder" destination="Z5E-MF-RJ1" id="WDd-qQ-p5v"/>
                 <outlet property="menuButton" destination="41x-ag-NTP" id="tf4-uD-uKT"/>
                 <outlet property="titleLabel" destination="oyr-Ah-67K" id="irA-kN-veD"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
@@ -17,30 +18,32 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView wantsLayer="YES" id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="550"/>
+            <rect key="frame" x="0.0" y="0.0" width="310" height="500"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box horizontalHuggingPriority="1000" boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Yt0-AV-Xeu">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="550"/>
-                    <view key="contentView" id="rNb-jP-EyH">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="550"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="0cD-BJ-hcQ" customClass="NSVisualEffectView">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="500"/>
+                </customView>
+                <box boxType="custom" borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="FKK-b1-cgT" userLabel="Background Color View">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="500"/>
+                    <view key="contentView" id="DAf-E8-VdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="300" id="gpJ-OW-IKw"/>
-                    </constraints>
-                    <color key="fillColor" name="ItemTitleInverse"/>
+                    <color key="fillColor" name="DashboardBackground"/>
                 </box>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="QEB-56-SMc">
-                    <rect key="frame" x="0.0" y="502" width="300" height="48"/>
+                <view translatesAutoresizingMaskIntoConstraints="NO" id="Z5E-MF-RJ1">
+                    <rect key="frame" x="0.0" y="0.0" width="310" height="452"/>
+                </view>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="QEB-56-SMc" userLabel="Header View">
+                    <rect key="frame" x="0.0" y="452" width="310" height="48"/>
                     <subviews>
                         <button translatesAutoresizingMaskIntoConstraints="NO" id="41x-ag-NTP" customClass="ClickableButton" customModule="SafariAppExtension" customModuleProvider="target">
-                            <rect key="frame" x="262" y="12" width="24" height="24"/>
+                            <rect key="frame" x="272" y="12" width="24" height="24"/>
                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Settings" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Jyu-wn-FSA">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <color key="contentTintColor" red="0.67450980390000004" green="0.67450980390000004" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="openMenuWithSender:" target="-2" id="NJf-by-tHu"/>
                             </connections>
@@ -61,60 +64,71 @@
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LogoDashboard" id="6FX-ne-XAu"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oyr-Ah-67K">
-                            <rect key="frame" x="89" y="17" width="123" height="14"/>
+                            <rect key="frame" x="89" y="17" width="132" height="15"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="PRIVACY ESSENTIALS" id="3ed-wM-vvs">
-                                <font key="font" metaFont="systemMedium" size="11"/>
+                                <font key="font" metaFont="systemMedium" size="12"/>
                                 <color key="textColor" name="DashboardTitle"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Ieq-OR-Zd0" userLabel="Separator">
+                            <rect key="frame" x="0.0" y="0.0" width="310" height="1"/>
+                            <view key="contentView" id="IHT-fN-Yrn">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="1"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="KmD-6b-tUl"/>
+                            </constraints>
+                            <color key="borderColor" red="1" green="1" blue="1" alpha="0.49355201198630139" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="fillColor" name="SeparatorColor"/>
+                        </box>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="Ieq-OR-Zd0" firstAttribute="leading" secondItem="QEB-56-SMc" secondAttribute="leading" id="4Pm-LM-uDu"/>
                         <constraint firstAttribute="height" constant="48" id="Ale-5B-zaM"/>
                         <constraint firstItem="QZP-ht-4tA" firstAttribute="leading" secondItem="QEB-56-SMc" secondAttribute="leading" constant="14" id="Ijg-cd-mEe"/>
+                        <constraint firstAttribute="bottom" secondItem="Ieq-OR-Zd0" secondAttribute="bottom" id="KOm-Fg-srt"/>
                         <constraint firstItem="oyr-Ah-67K" firstAttribute="centerY" secondItem="41x-ag-NTP" secondAttribute="centerY" id="YmT-V3-PqB"/>
                         <constraint firstAttribute="trailing" secondItem="41x-ag-NTP" secondAttribute="trailing" constant="14" id="c2o-wf-jsN"/>
                         <constraint firstItem="41x-ag-NTP" firstAttribute="top" secondItem="QEB-56-SMc" secondAttribute="top" constant="12" id="gHX-DR-btP"/>
                         <constraint firstItem="oyr-Ah-67K" firstAttribute="centerX" secondItem="QEB-56-SMc" secondAttribute="centerX" id="le6-kg-k2V"/>
                         <constraint firstItem="QZP-ht-4tA" firstAttribute="centerY" secondItem="41x-ag-NTP" secondAttribute="centerY" id="q7E-c0-Mpw"/>
+                        <constraint firstAttribute="trailing" secondItem="Ieq-OR-Zd0" secondAttribute="trailing" id="rRJ-ab-EXa"/>
                     </constraints>
                 </customView>
-                <box boxType="custom" borderType="none" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="T1j-Bc-ZWn">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="502"/>
-                    <view key="contentView" id="1yo-Ce-QJe">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="502"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </view>
-                    <color key="fillColor" name="DashboardBackground"/>
-                </box>
             </subviews>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Z5E-MF-RJ1" secondAttribute="bottom" id="0Mc-Zm-qeF"/>
                 <constraint firstAttribute="trailing" secondItem="QEB-56-SMc" secondAttribute="trailing" id="40e-eo-GeF"/>
+                <constraint firstItem="FKK-b1-cgT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="6hz-Lm-axB"/>
                 <constraint firstItem="QEB-56-SMc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="8FU-Cc-CsZ"/>
-                <constraint firstItem="T1j-Bc-ZWn" firstAttribute="width" secondItem="c22-O7-iKe" secondAttribute="width" id="GTN-C6-4Nh"/>
-                <constraint firstItem="T1j-Bc-ZWn" firstAttribute="top" secondItem="QEB-56-SMc" secondAttribute="bottom" id="Pr7-1o-LfN"/>
-                <constraint firstAttribute="trailing" secondItem="Yt0-AV-Xeu" secondAttribute="trailing" id="Ysv-YY-KWZ"/>
-                <constraint firstItem="Yt0-AV-Xeu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Z8Q-fW-AwQ"/>
+                <constraint firstItem="Z5E-MF-RJ1" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Fl3-te-vtb"/>
+                <constraint firstAttribute="bottom" secondItem="FKK-b1-cgT" secondAttribute="bottom" id="Rhu-ae-Ay4"/>
+                <constraint firstAttribute="bottom" secondItem="0cD-BJ-hcQ" secondAttribute="bottom" id="St4-5m-Zve"/>
+                <constraint firstItem="0cD-BJ-hcQ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="ZIg-lr-PwT"/>
                 <constraint firstItem="QEB-56-SMc" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="bK1-6W-riE"/>
-                <constraint firstItem="T1j-Bc-ZWn" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="gmp-0L-TWX"/>
-                <constraint firstAttribute="bottom" secondItem="T1j-Bc-ZWn" secondAttribute="bottom" id="lEV-7w-xe8"/>
-                <constraint firstAttribute="bottom" secondItem="Yt0-AV-Xeu" secondAttribute="bottom" id="t8g-YO-ooa"/>
-                <constraint firstItem="Yt0-AV-Xeu" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="uak-4G-POH"/>
+                <constraint firstItem="FKK-b1-cgT" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="ds8-gN-vvf"/>
+                <constraint firstAttribute="trailing" secondItem="0cD-BJ-hcQ" secondAttribute="trailing" id="p45-wa-c7d"/>
+                <constraint firstAttribute="trailing" secondItem="FKK-b1-cgT" secondAttribute="trailing" id="p56-4g-Tcq"/>
+                <constraint firstItem="Z5E-MF-RJ1" firstAttribute="top" secondItem="QEB-56-SMc" secondAttribute="bottom" id="p7F-7G-PjA"/>
+                <constraint firstItem="0cD-BJ-hcQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="tEq-50-3r7"/>
+                <constraint firstAttribute="trailing" secondItem="Z5E-MF-RJ1" secondAttribute="trailing" id="yHN-Xm-8eN"/>
             </constraints>
-            <point key="canvasLocation" x="-683" y="28"/>
+            <point key="canvasLocation" x="-679" y="13"/>
         </customView>
     </objects>
     <resources>
         <image name="LogoDashboard" width="24" height="24"/>
         <image name="Settings" width="24" height="24"/>
         <namedColor name="DashboardBackground">
-            <color red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DashboardTitle">
-            <color red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="ItemTitleInverse">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="SeparatorColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.074999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

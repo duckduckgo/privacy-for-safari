@@ -17,15 +17,19 @@
 //  limitations under the License.
 //
 
-import Foundation
+import Cocoa
 
 extension NSAttributedString {
-    
-    static func withKern(string: String, _ kern: CGFloat) -> NSAttributedString {
+
+    public convenience init(string: String, kern: CGFloat, font: NSFont = NSFont.systemFont(ofSize: 12)) {
         let attributes: [NSAttributedString.Key: Any]? = [
-            NSAttributedString.Key.kern: kern
+            NSAttributedString.Key.kern: kern,
+            NSAttributedString.Key.font: font
         ]
-        return NSAttributedString(string: string, attributes: attributes)
+
+        self.init(string: string, attributes: attributes)
     }
+
+    static let headerKern: CGFloat = 1.25
     
 }

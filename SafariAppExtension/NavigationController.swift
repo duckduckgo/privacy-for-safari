@@ -30,6 +30,7 @@ class NavigationController: NSPageController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        transitionStyle = .horizontalStrip
         delegate = self
     }
     
