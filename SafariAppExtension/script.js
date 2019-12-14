@@ -20,53 +20,27 @@
 // MARK: Detection Methods
 (function() {
 
-    var checkResources = true;
+    const observer = new PerformanceObserver((list, observer) => {
+        let resources = list.getEntries().map((entry) => { return { url: entry.name, type: entry.initiatorType } })
+        safari.extension.dispatchMessage("resourceLoaded", {
+            "resources": resources
+        });
+
+    }); 
+    observer.observe({entryTypes: ["resource"]});
 
     safari.extension.dispatchMessage("userAgent", {
         "userAgent": navigator.userAgent
     });
 
-    safari.self.addEventListener("message", function(event) { 
-        checkResources = false;
+    safari.self.addEventListener("message", function(event) {
+        if (event.name === "stopCheckingResources") {
+            observer.disconnect();        
+        }
     });
 
     window.addEventListener("beforeunload", function(event) {
        safari.extension.dispatchMessage("beforeUnload");
     });
-
-    var maxPerformanceTimeout = 3000;
-    var performanceTimeoutIncrement = 200;
-    var performanceTimeout = 100;
-    var performanceIndex = 0; 
-
-    function reportLoadedResources() {
-
-        let entries = performance.getEntriesByType("resource").sort((a, b) => {
-            return a.responseEnd > b.responseEnd
-        })
-
-        if (entries.length > performanceIndex) {
-            var resources = [];
-
-            for (var i = performanceIndex; i < entries.length; i++) {
-                var entry = entries[i];
-                resources.push({ url: entry.name, type: entry.initiatorType });
-            }
-
-            if (checkResources) {
-                safari.extension.dispatchMessage("resourceLoaded", {
-                    "resources": resources
-                 });
-            }
-
-            performanceIndex = entries.length;
-        }
-
-        // backoff from calling it so often - all the interesting stuff is in the first few seconds
-        performanceTimeout = Math.min(performanceTimeout + performanceTimeoutIncrement, maxPerformanceTimeout)
-        setTimeout(reportLoadedResources, performanceTimeout);
-    }
-
-    setTimeout(reportLoadedResources, performanceTimeout);
 
 }) ();
