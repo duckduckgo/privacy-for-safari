@@ -86,7 +86,6 @@ class MainDashboardViewController: DashboardNavigationController {
     override var pageData: PageData? {
         didSet {
             guard isViewLoaded else { return }
-            self.updateProtectionToggleState()
             self.updateUI()
         }
     }
@@ -113,7 +112,16 @@ class MainDashboardViewController: DashboardNavigationController {
     }
     
     @objc func onTrustedSitesChanged() {
-        updateUI()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.blockerListManager.update()
+            ContentBlockerExtension.reloadSync()
+            DispatchQueue.main.async {
+                self.updateUI()
+                if let domain = self.trustedSites.lastChangedDomain {
+                    self.reloadPages(with: domain)
+                }
+            }
+        }
     }
     
     private func updateProtectionToggleState() {
@@ -139,16 +147,6 @@ class MainDashboardViewController: DashboardNavigationController {
             trustedSites.addDomain(forUrl: url)
             protection = .disabled
         }
-
-        DispatchQueue.global(qos: .background).async {
-            self.blockerListManager.update()
-            ContentBlockerExtension.reloadSync()
-            DispatchQueue.main.async {
-                self.updateUI()
-                self.reloadPage()
-            }
-        }
-
     }
 
     @IBAction func showTrackers(_ sender: Any) {
@@ -279,17 +277,30 @@ class MainDashboardViewController: DashboardNavigationController {
         gradeIcon.image = trusted ? grade.site.grade.iconImage(trusted: trusted) : grade.enhanced.grade.iconImage(trusted: trusted)
     }
     
-    private func reloadPage() {
-        SFSafariApplication.getActiveWindow { window in
-            window?.getActiveTab(completionHandler: { tab in
-                tab?.getActivePageOnQueue(completionHandler: { page in
-                    guard let page = page else { return }
-                    page.dispatchMessageToScript(withName: "stopCheckingResources", userInfo: nil)
-                    page.reload()
-                    DashboardData.shared.clearCache(forPage: page, withUrl: self.pageData?.url?.absoluteString ?? "")
-                })
-            })
+    private func reloadPages(with domain: String) {
+        SFSafariApplication.getAllWindows { windows in
+            windows.forEach { window in
+                window.getAllTabs { tabs in
+                    tabs.forEach { tab in
+                        tab.getPagesWithCompletionHandler { pages in
+                            pages?.forEach { page in
+                                page.getPropertiesWithCompletionHandler { properties in
+                                    if properties?.url?.host == domain {
+                                        self.reloadPage(page)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
+    }
+
+    private func reloadPage(_ page: SFSafariPage) {
+        page.dispatchMessageToScript(withName: "stopCheckingResources", userInfo: nil)
+        page.reload()
+        DashboardData.shared.clearCache(forPage: page, withUrl: self.pageData?.url?.absoluteString ?? "")
     }
 }
 

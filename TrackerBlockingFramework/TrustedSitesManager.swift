@@ -29,6 +29,7 @@ public protocol TrustedSitesManager {
     typealias Factory = (() -> TrustedSitesManager)
 
     var count: Int { get }
+    var lastChangedDomain: String? { get }
     func addDomain(_ domain: String)
     func addDomain(forUrl url: URL)
     func allDomains() -> [String]
@@ -43,6 +44,7 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
 
     struct Keys {
         static let domains = "domains"
+        static let lastChangedDomain = "lastChangedDomain"
     }
 
     private let lock = NSLock()
@@ -53,10 +55,6 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         }
         set {
             userDefaults?.set(newValue, forKey: Keys.domains)
-            DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
-                                                                         object: nil,
-                                                                         userInfo: nil,
-                                                                         deliverImmediately: true)
         }
     }
 
@@ -64,6 +62,15 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         lock.lock()
         defer { lock.unlock() }
         return domains.count
+    }
+
+    private(set) public var lastChangedDomain: String? {
+        get {
+            return userDefaults?.string(forKey: Keys.lastChangedDomain)
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.lastChangedDomain)
+        }
     }
     
     private let blockerListManager: BlockerListManager.Factory
@@ -82,7 +89,10 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     public func addDomain(_ domain: String) {
         lock.lock()
         domains.append(domain)
+        lastChangedDomain = domain
         lock.unlock()
+
+        postSitesUpdatedNotification()
     }
     
     public func isTrusted(url: URL) -> Bool {
@@ -113,20 +123,33 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     public func removeDomain(at index: Int) {
         guard index >= 0 else { return }
         lock.lock()
-        domains.remove(at: index)
+        let removedDomain = domains.remove(at: index)
+        lastChangedDomain = removedDomain
         lock.unlock()
+
+        postSitesUpdatedNotification()
     }
     
     public func removeDomain(forUrl url: URL) {
         guard let host = url.host else { return }
         lock.lock()
         domains.removeAll { host == $0 }
+        lastChangedDomain = host
         lock.unlock()
+
+        postSitesUpdatedNotification()
     }
     
     public func addDomain(forUrl url: URL) {
         guard let host = url.host else { return }
         addDomain(host)
+    }
+
+    private func postSitesUpdatedNotification() {
+        DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
+                                                                     object: nil,
+                                                                     userInfo: nil,
+                                                                     deliverImmediately: true)
     }
  
 }

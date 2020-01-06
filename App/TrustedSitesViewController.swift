@@ -66,7 +66,6 @@ extension TrustedSitesViewController: NSTableViewDelegate {
             entry.isAlternate = 0 == (row % 2)
             entry.onDelete = {
                 self.trustedSites.removeDomain(at: row - 1)
-                ContentBlockerExtension.reload()
                 self.tableView.reloadData()
             }
             return entry
