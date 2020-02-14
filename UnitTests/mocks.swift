@@ -52,9 +52,11 @@ struct MockPrivacyPracticesManager: PrivacyPracticesManager {
 }
 
 struct MockTrustedSitesManager: TrustedSitesManager {
-    
+
     var count: Int = 0
-    
+
+    var lastChangedDomain: String?
+
     // swiftlint:disable identifier_name
     var _whitelistedDomains = [String]()
     // swiftlint:enable identifier_name
