@@ -1301,7 +1301,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Duck Duck Go, Inc.";
 				TargetAttributes = {
 					8524A40B23327568001E8856 = {
@@ -1513,7 +1513,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint lint\nelse\necho \"error: SwiftLint not installed. Install using \\`brew install swiftlint\\`\"\nexit 1\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n   if [ ! -z \"$BITRISE_PROJECT_PATH\" ] || [ \"$CONFIGURATION\" = \"Release\" ]; then\n       swiftlint lint --strict\n       if [ $? -ne 0 ]; then\n           echo \"error: SwiftLint validation failed.\"\n           exit 1\n       fi\n   else\n       swiftlint lint\n   fi\nelse\n   echo \"error: SwiftLint not installed. Install using \\`brew install swiftlint\\`\"\n   exit 1\nfi\n";
 		};
 		854A9F3022706478008F2A93 /* Install Fonts */ = {
 			isa = PBXShellScriptBuildPhase;
