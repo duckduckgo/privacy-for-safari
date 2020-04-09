@@ -47,7 +47,7 @@ public class BrokenSiteReporter {
         
         let params = [
             "category": category,
-            "siteUrl": url.absoluteString,
+            "siteUrl": normalize(url),
             "upgradedHttps": "false",
             "tds": trackerDataServiceStore.etag ?? "",
             "blockedTrackers": blockedTrackersParam,
@@ -59,4 +59,14 @@ public class BrokenSiteReporter {
         apiRequest().get("/t/epbf_safari", withParams: params) { _, _, _ in }
     }
     
+    private func normalize(_ url: URL?) -> String {
+        guard let url = url else { return "" }
+        
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        components?.queryItems = nil
+        
+        guard let nomalizedUrl = components?.url else { return "" }
+        return nomalizedUrl.absoluteString
+    }
+
 }
