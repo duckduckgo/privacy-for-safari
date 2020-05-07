@@ -29,7 +29,6 @@
 		850AFB01232A50DF004C859B /* PrivacyPracticesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850AFB00232A50DF004C859B /* PrivacyPracticesTests.swift */; };
 		8510B255226F34AA0015D406 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */; };
 		8510B257226F3BFB0015D406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8510B256226F3BFB0015D406 /* Assets.xcassets */; };
-		8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */; };
 		8510B262226F5A3B0015D406 /* NSViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */; };
 		8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B263226F5A840015D406 /* MainDashboardViewController.swift */; };
 		8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8510B265226F5AF30015D406 /* Dashboard.storyboard */; };
@@ -213,6 +212,8 @@
 		85F087B3230828610041D733 /* OnboardingEnableExtensionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */; };
 		85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B4230828870041D733 /* OnboardingGetStartedController.swift */; };
 		85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B6230828C40041D733 /* OnboardingScreen.swift */; };
+		AA66B12E2462D616000BF088 /* ToolbarIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AA66B12D2462D616000BF088 /* ToolbarIcon.pdf */; };
+		AA66B1302462E003000BF088 /* ToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA66B12F2462E003000BF088 /* ToolbarIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -483,7 +484,6 @@
 		850AFB00232A50DF004C859B /* PrivacyPracticesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPracticesTests.swift; sourceTree = "<group>"; };
 		8510B254226F34AA0015D406 /* NSViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtension.swift; sourceTree = "<group>"; };
 		8510B256226F3BFB0015D406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogoToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		8510B263226F5A840015D406 /* MainDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
 		8510B265226F5AF30015D406 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationDelegate.swift; sourceTree = "<group>"; };
@@ -613,6 +613,8 @@
 		85F087B4230828870041D733 /* OnboardingGetStartedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGetStartedController.swift; sourceTree = "<group>"; };
 		85F087B6230828C40041D733 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		85FF17BA232BB57200FB036C /* BrokenSiteReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenSiteReporter.swift; sourceTree = "<group>"; };
+		AA66B12D2462D616000BF088 /* ToolbarIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarIcon.pdf; sourceTree = "<group>"; };
+		AA66B12F2462E003000BF088 /* ToolbarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -834,13 +836,14 @@
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
 				853CE0FC236309EB009E1D66 /* DashboardData.swift */,
+				AA66B12F2462E003000BF088 /* ToolbarIcon.swift */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
 				85D2B7A12369B6860053716B /* QueueExtensions.swift */,
 				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				85417D97226762870062A081 /* Info.plist */,
 				85008B3322C9581B00A2CFB0 /* Localizable.strings */,
 				8587FD5422C67CD70072F47F /* Localizable.stringsdict */,
-				8510B25E226F4A6F0015D406 /* LogoToolbarItemIcon.pdf */,
+				AA66B12D2462D616000BF088 /* ToolbarIcon.pdf */,
 				8510B263226F5A840015D406 /* MainDashboardViewController.swift */,
 				85CFD4C022CB98D600C8B1AA /* NavigationController.swift */,
 				85C351332332321600D8E78A /* NSColorExtension.swift */,
@@ -1429,8 +1432,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */,
-				8510B25F226F4A6F0015D406 /* LogoToolbarItemIcon.pdf in Resources */,
 				8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */,
+				AA66B12E2462D616000BF088 /* ToolbarIcon.pdf in Resources */,
 				854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */,
 				854A9F3D22706817008F2A93 /* proximanova-bold.otf in Resources */,
 				854A9F4022706817008F2A93 /* proximanova-regular.otf in Resources */,
@@ -1584,6 +1587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA66B1302462E003000BF088 /* ToolbarIcon.swift in Sources */,
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
 				85EFAE592379783300D6E7BD /* AtbLocations.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,

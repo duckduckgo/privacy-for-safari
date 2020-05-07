@@ -50,7 +50,7 @@
 			<key>Identifier</key>
 			<string>Button</string>
 			<key>Image</key>
-			<string>LogoToolbarItemIcon.pdf</string>
+			<string>ToolbarIcon.pdf</string>
 			<key>Label</key>
 			<string>DuckDuckGo</string>
 		</dict>
