@@ -47,6 +47,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     // This doesn't appear to get called when the page is closed though
     override func page(_ page: SFSafariPage, willNavigateTo url: URL?) {
+        guard let url = url else {
+            SafariExtensionViewController.shared.dismissPopover()
+            return
+        }
+        
         DispatchQueue.dashboard.async {
             DashboardData.shared.clear(page)
             DashboardData.shared.setCurrentPage(to: page, withUrl: url)
@@ -107,6 +112,11 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                         }
                         page.getPropertiesOnQueue { properties in
                             DashboardData.shared.setCurrentPage(to: page, withUrl: properties?.url)
+                            
+                            if properties?.url == nil {
+                                SafariExtensionViewController.shared.dismissPopover()
+                            }
+                            
                             self.update(toolbarItem)
                         }
                     })
