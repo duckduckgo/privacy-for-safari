@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEX-r8-b3F" userLabel="Items Stack">
                                 <rect key="frame" x="0.0" y="0.0" width="589" height="250"/>
                                 <subviews>
-                                    <view translatesAutoresizingMaskIntoConstraints="NO" id="CmJ-kZ-cIg" userLabel="Connection View" customClass="ClickableView" customModule="SafariAppExtension" customModuleProvider="target">
+                                    <view translatesAutoresizingMaskIntoConstraints="NO" id="CmJ-kZ-cIg" userLabel="Connection View">
                                         <rect key="frame" x="0.0" y="200" width="589" height="50"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gX-yF-nUl">
@@ -157,7 +157,7 @@
                                             </clickGestureRecognizer>
                                         </gestureRecognizers>
                                     </view>
-                                    <view translatesAutoresizingMaskIntoConstraints="NO" id="XuR-Kz-dfd" userLabel="Privacy Practices View" customClass="ClickableView" customModule="SafariAppExtension" customModuleProvider="target">
+                                    <view translatesAutoresizingMaskIntoConstraints="NO" id="XuR-Kz-dfd" userLabel="Privacy Practices View">
                                         <rect key="frame" x="0.0" y="100" width="589" height="50"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOQ-il-Thx">
@@ -440,7 +440,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <view translatesAutoresizingMaskIntoConstraints="NO" id="N4i-u7-f57">
-                                                <rect key="frame" x="0.0" y="-50" width="589" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="589" height="50"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-yr-DeA">
                                                         <rect key="frame" x="179" y="16" width="231" height="18"/>
@@ -910,7 +910,6 @@
                                     <tableColumns>
                                         <tableColumn width="310" minWidth="310" maxWidth="310" id="ukL-ac-7We">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                <font key="font" metaFont="message" size="11"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
