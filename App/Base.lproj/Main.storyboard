@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -243,8 +243,8 @@
                                                     <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-oR-IZE">
-                                                    <rect key="frame" x="18" y="20" width="79" height="21"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Whitelist" id="PCA-Tc-qMw">
+                                                    <rect key="frame" x="18" y="20" width="164" height="21"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Manage Protection" id="PCA-Tc-qMw">
                                                         <font key="font" metaFont="systemSemibold" size="18"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -521,7 +521,6 @@
                                             <tableColumns>
                                                 <tableColumn width="586" minWidth="40" maxWidth="1000" id="Jc3-sP-dr8">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -539,7 +538,7 @@
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBi-uE-RQS">
                                                                     <rect key="frame" x="0.0" y="43" width="586" height="26"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Whitelist" id="lcM-vz-Ltd">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Unprotected Sites" id="lcM-vz-Ltd">
                                                                         <font key="font" metaFont="systemBold" size="22"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -664,28 +663,28 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Exceptions" id="dtH-LG-vGf"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4GI-aE-TNs">
-                                            <rect key="frame" x="139" y="211" width="210" height="26"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="No whitelisted sites" id="7v2-fY-5nH">
+                                            <rect key="frame" x="132" y="211" width="224" height="26"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="No unprotected sites" id="7v2-fY-5nH">
                                                 <font key="font" metaFont="systemBold" size="22"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vg-Ts-M0O">
-                                            <rect key="frame" x="69" y="40" width="350" height="135"/>
+                                            <rect key="frame" x="67" y="40" width="355" height="135"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fbl-dg-Avp">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="135"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="135"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="haL-kB-qUz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="135"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="135"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="textColor" red="0.36862745099999999" green="0.3803921569" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="minSize" width="350" height="135"/>
+                                                        <size key="minSize" width="355" height="135"/>
                                                         <size key="maxSize" width="440" height="10000000"/>
                                                         <attributedString key="textStorage">
-                                                            <fragment content="Disabling Privacy Protection automatically adds a whitelist entry for that domain.">
+                                                            <fragment content="Disabling Privacy Protection automatically adds that domain to your list of unprotected sites.">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.36862745099999999" green="0.3803921569" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <font key="NSFont" metaFont="system" size="16"/>
@@ -698,7 +697,7 @@
                                                 </subviews>
                                             </clipView>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="350" id="8ad-Tm-51G"/>
+                                                <constraint firstAttribute="width" constant="355" id="8ad-Tm-51G"/>
                                                 <constraint firstAttribute="height" constant="135" id="B35-sm-yM6"/>
                                             </constraints>
                                             <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cTl-Dh-h5J">
@@ -706,7 +705,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="fTe-vE-VoM">
-                                                <rect key="frame" x="334" y="0.0" width="16" height="135"/>
+                                                <rect key="frame" x="339" y="0.0" width="16" height="135"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
