@@ -59,7 +59,8 @@ extension TrustedSitesViewController: NSTableViewDelegate {
         if row == 0 {
             return tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("Header"), owner: nil)
         } else {
-            guard let entry = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("Entry"), owner: nil) as? WhitelistEntryView else {
+            guard let entry = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("Entry"), owner: nil) as? ProtectionEntryTableCellView
+                else {
                 fatalError("Failed to make 'Entry' view")
             }
             entry.textField?.stringValue = trustedSites.allDomains()[row - 1]
@@ -86,7 +87,7 @@ extension TrustedSitesViewController: NSTableViewDataSource {
 
 }
 
-class WhitelistEntryView: NSTableCellView {
+class ProtectionEntryTableCellView: NSTableCellView {
  
     typealias OnDelete = () -> Void
     

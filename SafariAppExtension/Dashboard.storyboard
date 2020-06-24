@@ -342,7 +342,7 @@
                                                                 <gestureRecognizers>
                                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Fge-04-xuQ">
                                                                         <connections>
-                                                                            <action selector="manageWhitelist:" target="yVf-K8-uRd" id="qCt-sJ-TYH"/>
+                                                                            <action selector="manageProtection:" target="yVf-K8-uRd" id="qCt-sJ-TYH"/>
                                                                         </connections>
                                                                     </clickGestureRecognizer>
                                                                 </gestureRecognizers>
@@ -678,7 +678,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addedToWhitelist" destination="aLg-JS-Wgp" id="RsR-29-tEV"/>
+                        <outlet property="addedToUnprotectedSites" destination="aLg-JS-Wgp" id="RsR-29-tEV"/>
                         <outlet property="bottomButtons" destination="9JK-R1-RQT" id="gtm-Yy-iXx"/>
                         <outlet property="brokenYesNo" destination="N4i-u7-f57" id="aeK-3G-K4p"/>
                         <outlet property="encryptionIcon" destination="Czi-OK-Y5s" id="nwg-Iu-ulR"/>
@@ -687,7 +687,7 @@
                         <outlet property="enhancedStatementTextField" destination="czp-bw-3uq" id="3bj-4Q-xDU"/>
                         <outlet property="fromIcon" destination="E7N-7n-9tf" id="Tt4-jQ-05k"/>
                         <outlet property="gradeIcon" destination="4Ss-Wb-RHc" id="nRS-ta-aJa"/>
-                        <outlet property="manageWhitelistCTA" destination="DKZ-mC-dhQ" id="QvH-Ip-IxN"/>
+                        <outlet property="manageUnprotectedSitesCTA" destination="DKZ-mC-dhQ" id="QvH-Ip-IxN"/>
                         <outlet property="privacyGradeMessage" destination="xR5-py-kgz" id="GGA-N4-t5y"/>
                         <outlet property="privacyGradeTextField" destination="Ih1-bJ-qaH" id="eZV-hd-A1i"/>
                         <outlet property="privacyPracticesIcon" destination="v95-je-r3q" id="R2q-BO-i49"/>
@@ -697,7 +697,7 @@
                         <outlet property="protectionToggle" destination="GT7-Dd-T5H" id="W3l-me-Xsd"/>
                         <outlet property="regularSitesMessage" destination="0go-gC-ecL" id="XO2-Fn-FsH"/>
                         <outlet property="regularSitesTextField" destination="KNG-uB-8MP" id="kJJ-b3-BMI"/>
-                        <outlet property="removedFromWhitelist" destination="i0D-m3-TFt" id="4re-R5-nlN"/>
+                        <outlet property="removedFromUnprotectedSites" destination="i0D-m3-TFt" id="4re-R5-nlN"/>
                         <outlet property="reportBrokenSiteCTA" destination="QaT-Zm-7Gd" id="nei-Sy-8t4"/>
                         <outlet property="siteTitle" destination="Zyd-k1-7eh" id="w1h-P4-IrE"/>
                         <outlet property="trackersIcon" destination="H5D-fS-3Pc" id="hho-pH-KmM"/>

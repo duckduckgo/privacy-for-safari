@@ -38,13 +38,14 @@ public struct ContentBlockerRulesBuilder {
     let trackerData: TrackerData
     
     /// Build all the rules for the given tracker data and list of exceptions.
-    public func buildRules(withExceptions exceptions: [String]? = nil, andTemporaryWhitelist tempWhitelist: [String]? = nil) -> [ContentBlockerRule] {
+    public func buildRules(withExceptions exceptions: [String]? = nil,
+                           andTemporaryUnprotectedDomains tempUnprotectedDomains: [String]? = nil) -> [ContentBlockerRule] {
         
         let trackerRules = trackerData.trackers.values.compactMap {
             buildRules(from: $0)
         }.flatMap { $0 }
         
-        return trackerRules + buildExceptions(from: exceptions, andWhitelist: tempWhitelist) + buildInstallButtonHider()
+        return trackerRules + buildExceptions(from: exceptions, andUnprotectedDomains: tempUnprotectedDomains) + buildInstallButtonHider()
     }
     
     /// Build the rules for a specific tracker.
@@ -70,8 +71,8 @@ public struct ContentBlockerRulesBuilder {
         return [ rule ]
     }
     
-    private func buildExceptions(from exceptions: [String]?, andWhitelist whitelist: [String]?) -> [ContentBlockerRule] {
-        let allExceptions = (exceptions ?? []) + (whitelist?.wildcards() ?? [])
+    private func buildExceptions(from exceptions: [String]?, andUnprotectedDomains unprotectedDomains: [String]?) -> [ContentBlockerRule] {
+        let allExceptions = (exceptions ?? []) + (unprotectedDomains?.wildcards() ?? [])
         guard !allExceptions.isEmpty else { return [] }
         return [ContentBlockerRule(trigger: .trigger(urlFilter: ".*", ifDomain: allExceptions, resourceType: nil), action: .ignorePreviousRules())]
     }

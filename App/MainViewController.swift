@@ -55,7 +55,7 @@ class MainViewController: NSViewController {
     }
 
     @IBAction func selectTrustedSites(_ sender: Any) {
-        pixel.fire(.homeWhitelistOpened)
+        pixel.fire(.homeManageProtectionOpened)
         deselectAllSectionButtons()
         tabs.selectTabViewItem(at: 1)
         setSectionButtonSelected(atIndex: 1)

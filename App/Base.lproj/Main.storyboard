@@ -558,7 +558,7 @@
                                                                 <outlet property="textField" destination="aBi-uE-RQS" id="PI9-1v-JrM"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="Entry" id="i9m-aw-Vzv" customClass="WhitelistEntryView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                                        <tableCellView identifier="Entry" id="i9m-aw-Vzv" customClass="ProtectionEntryTableCellView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="100" width="586" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -719,8 +719,8 @@
                                         <constraint firstItem="4GI-aE-TNs" firstAttribute="centerX" secondItem="Khr-Iq-su0" secondAttribute="centerX" id="zZm-G2-Q3W"/>
                                     </constraints>
                                 </view>
-                                <color key="borderColor" name="WhitelistEmptyBorder"/>
-                                <color key="fillColor" name="WhitelistEmptyFill"/>
+                                <color key="borderColor" name="NoUnprotectedSitesBorder"/>
+                                <color key="fillColor" name="NoUnprotectedSitesFill"/>
                             </box>
                         </subviews>
                         <constraints>
@@ -1088,6 +1088,12 @@
         <namedColor name="HomeScreenFill">
             <color red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="NoUnprotectedSitesBorder">
+            <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NoUnprotectedSitesFill">
+            <color red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SelectedBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1096,12 +1102,6 @@
         </namedColor>
         <namedColor name="UnselectedBackground">
             <color red="0.9649999737739563" green="0.9649999737739563" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="WhitelistEmptyBorder">
-            <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="WhitelistEmptyFill">
-            <color red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

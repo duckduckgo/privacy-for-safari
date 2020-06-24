@@ -35,13 +35,13 @@ class BlockerListManagerTests: XCTestCase {
         UserDefaults(suiteName: Constants.suiteName)?.removePersistentDomain(forName: Constants.suiteName)
     }
         
-    func testWhenWhitelistedDomainsArePresentThenGeneratedRulesContainThem() {
+    func testWhenUnprotectedDomainsArePresentThenGeneratedRulesContainThem() {
         
         let trackers = [
             "Google": KnownTracker(domain: "google.com", defaultAction: .block, owner: nil, prevalence: nil, subdomains: nil, rules: nil)
         ]
         
-        trustedSitesManager._whitelistedDomains = ["domain1", "domain2"]
+        trustedSitesManager._unprotectedDomains = ["domain1", "domain2"]
         trackerDataManager.trackerData = TrackerData(trackers: trackers, entities: [:], domains: [:])
         
         let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("json")
