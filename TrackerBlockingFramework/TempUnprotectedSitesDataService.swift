@@ -103,7 +103,7 @@ public protocol TempUnprotectedSitesDataServiceStore {
 public class TempUnprotectedSitesDataServiceUserDefaults: TempUnprotectedSitesDataServiceStore {
     
     private struct Key {
-        static var etag = "com.duckduckgo.tempwhitelistservice.etag"
+        static var etag = "com.duckduckgo.tempunprotectedsitesservice.etag"
     }
     
     private let userDefaults: UserDefaults
