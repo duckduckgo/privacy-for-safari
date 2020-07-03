@@ -31,7 +31,7 @@ public enum PixelName: String {
     case onboardingEnableDDGSearchTime = "eon_ed_t"
     
     case homeShown = "eapp_h"
-    case homeManageProtectionOpened = "eapp_h_w"
+    case homeUnprotectedSitesOpened = "eapp_h_w"
     case homeHelpOpened = "eapp_h_h"
     case homeOpenSafariToEnableDashboard = "eapp_h_sd"
     case homeOpenSafariToEnableCb = "eapp_h_scb"
@@ -47,7 +47,7 @@ public enum PixelName: String {
     case dashboardPrivacyProtectionToggleOn = "ept_on"
     case dashboardPrivacyProtectionToggleOff = "ept_off"
     case dashboardTrackerNetworksOpened = "epn"
-    case dashboardManageProtectionOpened = "epw"
+    case dashboardUnprotectedSitesOpened = "epw"
     
     case safariBrowserExtensionSearch = "sbes"
 

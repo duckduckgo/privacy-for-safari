@@ -158,8 +158,8 @@ class MainDashboardViewController: DashboardNavigationController {
         navigationDelegate?.present(controller: .reportBrokenWebsite)
     }
 
-    @IBAction func manageProtection(_ sender: Any) {
-        pixel.fire(.dashboardManageProtectionOpened)
+    @IBAction func manageUnprotectedSites(_ sender: Any) {
+        pixel.fire(.dashboardUnprotectedSitesOpened)
         NSWorkspace.shared.open(URL(string: AppLinks.manageUnprotectedSites)!)
     }
 

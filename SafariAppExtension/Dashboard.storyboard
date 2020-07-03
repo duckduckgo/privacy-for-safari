@@ -342,7 +342,7 @@
                                                                 <gestureRecognizers>
                                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Fge-04-xuQ">
                                                                         <connections>
-                                                                            <action selector="manageProtection:" target="yVf-K8-uRd" id="qCt-sJ-TYH"/>
+                                                                            <action selector="manageUnprotectedSites:" target="yVf-K8-uRd" id="qCt-sJ-TYH"/>
                                                                         </connections>
                                                                     </clickGestureRecognizer>
                                                                 </gestureRecognizers>
@@ -440,7 +440,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <view translatesAutoresizingMaskIntoConstraints="NO" id="N4i-u7-f57">
-                                                <rect key="frame" x="0.0" y="0.0" width="592" height="50"/>
+                                                <rect key="frame" x="0.0" y="-50" width="592" height="50"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-yr-DeA">
                                                         <rect key="frame" x="180" y="16" width="232" height="19"/>
@@ -900,7 +900,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="wQE-8q-Cf2">
                             <rect key="frame" x="0.0" y="0.0" width="310" height="452"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" outlineTableColumn="ukL-ac-7We" id="9ad-6x-2Xl">
                                     <rect key="frame" x="0.0" y="0.0" width="310" height="452"/>
