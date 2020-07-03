@@ -226,11 +226,11 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="514" height="50"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-JS-Wgp">
-                                                                    <rect key="frame" x="0.0" y="33" width="98" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="33" width="192" height="17"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="urB-Oh-x1S">
-                                                                            <rect key="frame" x="-2" y="0.0" width="102" height="17"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Protection Off" id="wnA-0a-BaX">
+                                                                            <rect key="frame" x="-2" y="0.0" width="196" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Added to Unprotected Sites" id="wnA-0a-BaX">
                                                                                 <font key="font" metaFont="systemBold" size="14"/>
                                                                                 <color key="textColor" name="ItemTitle"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -245,11 +245,11 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0D-m3-TFt">
-                                                                    <rect key="frame" x="0.0" y="17" width="96" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="17" width="229" height="16"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="efC-4d-6e7">
-                                                                            <rect key="frame" x="-2" y="0.0" width="100" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Protection On" id="7EW-Gx-uDT">
+                                                                            <rect key="frame" x="-2" y="0.0" width="233" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Removed from Unprotected Sites" id="7EW-Gx-uDT">
                                                                                 <font key="font" metaFont="systemBold" size="14"/>
                                                                                 <color key="textColor" name="ItemTitle"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -338,7 +338,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="296" height="50"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DKZ-mC-dhQ" customClass="ClickableTextField" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                <rect key="frame" x="85" y="17" width="126" height="16"/>
+                                                                <rect key="frame" x="88" y="17" width="121" height="16"/>
                                                                 <gestureRecognizers>
                                                                     <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Fge-04-xuQ">
                                                                         <connections>
@@ -346,7 +346,7 @@
                                                                         </connections>
                                                                     </clickGestureRecognizer>
                                                                 </gestureRecognizers>
-                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Manage Protection" id="VNz-51-3td">
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Unprotected Sites" id="VNz-51-3td">
                                                                     <font key="font" metaFont="systemMedium" size="13"/>
                                                                     <color key="textColor" name="ItemTitle"/>
                                                                     <color key="backgroundColor" name="ItemTitleInverse"/>
@@ -440,7 +440,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <view translatesAutoresizingMaskIntoConstraints="NO" id="N4i-u7-f57">
-                                                <rect key="frame" x="0.0" y="-50" width="592" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="592" height="50"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-yr-DeA">
                                                         <rect key="frame" x="180" y="16" width="232" height="19"/>
