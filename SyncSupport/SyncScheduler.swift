@@ -37,6 +37,8 @@ public class SyncScheduler {
     private var syncStore: SyncStore
     private let syncRunner: SyncRunner
     
+    private var workItem: DispatchWorkItem?
+    
     init(syncStore: SyncStore = SyncUserDefaults(), syncRunner: SyncRunner = SyncRunner()) {
         os_log("SyncScheduler init", log: lifecycleLog)
         self.syncStore = syncStore
@@ -48,9 +50,19 @@ public class SyncScheduler {
     }
     
     public func schedule() {
-        queue.async {
-            guard Self.isTimeToSync(lastSyncDateTime: self.syncStore.lastSyncTimestamp ?? 0) else { return }
-            os_log("Scheduling sync", log: generalLog, type: .default)
+        
+        os_log("Scheduling sync", log: generalLog, type: .default)
+        guard Self.isTimeToSync(lastSyncDateTime: self.syncStore.lastSyncTimestamp ?? 0) else {
+            os_log("Sync not ready yet", log: generalLog, type: .default)
+            return
+        }
+        
+        guard workItem == nil else {
+            os_log("Sync already working", log: generalLog, type: .default)
+            return
+        }
+        
+        workItem = DispatchWorkItem {
             let group = DispatchGroup()
             group.enter()
             self.syncRunner.sync { success in
@@ -64,7 +76,11 @@ public class SyncScheduler {
             if group.wait(timeout: .now() + 30) == .timedOut {
                 Dependencies.shared.pixel.fire(.debugSchedulerTimeout)
             }
+            
+            self.workItem = nil
         }
+        
+        queue.async(execute: workItem!)
     }
 
     static func isTimeToSync(currentDate: Date = Date(), lastSyncDateTime: TimeInterval) -> Bool {
