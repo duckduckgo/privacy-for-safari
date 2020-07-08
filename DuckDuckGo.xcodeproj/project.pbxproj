@@ -86,10 +86,10 @@
 		854A9F542271CB01008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
 		854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
 		854A9F562271CB0B008F2A93 /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 854A9F532271CB01008F2A93 /* AppIcon.xcassets */; };
-		854EFAD72333974D00A6BDC3 /* TempWhitelistDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAD5233394F400A6BDC3 /* TempWhitelistDataService.swift */; };
+		854EFAD72333974D00A6BDC3 /* TempUnprotectedSitesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAD5233394F400A6BDC3 /* TempUnprotectedSitesDataService.swift */; };
 		854EFADA233397D100A6BDC3 /* HTTPURLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAD82333977A00A6BDC3 /* HTTPURLResponseExtension.swift */; };
 		854EFADD23339C9500A6BDC3 /* DataCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFADB23339C4A00A6BDC3 /* DataCompletion.swift */; };
-		854EFADF2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFADE2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift */; };
+		854EFADF2333A03400A6BDC3 /* TempUnprotectedSitesDataServiceUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFADE2333A03400A6BDC3 /* TempUnprotectedSitesDataServiceUserDefaultsTests.swift */; };
 		854EFAE12333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAE02333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift */; };
 		854EFAE32333BB4D00A6BDC3 /* BlockerListManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854EFAE22333BB4D00A6BDC3 /* BlockerListManagerTests.swift */; };
 		8551502A2375AA7900DBC528 /* SyncSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 855150282375AA7900DBC528 /* SyncSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -529,10 +529,10 @@
 		854A9F4622708783008F2A93 /* TrustedSitesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesManager.swift; sourceTree = "<group>"; };
 		854A9F4F2271B078008F2A93 /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		854A9F532271CB01008F2A93 /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
-		854EFAD5233394F400A6BDC3 /* TempWhitelistDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempWhitelistDataService.swift; sourceTree = "<group>"; };
+		854EFAD5233394F400A6BDC3 /* TempUnprotectedSitesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempUnprotectedSitesDataService.swift; sourceTree = "<group>"; };
 		854EFAD82333977A00A6BDC3 /* HTTPURLResponseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponseExtension.swift; sourceTree = "<group>"; };
 		854EFADB23339C4A00A6BDC3 /* DataCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCompletion.swift; sourceTree = "<group>"; };
-		854EFADE2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempWhitelistDataServiceUserDefaultsTests.swift; sourceTree = "<group>"; };
+		854EFADE2333A03400A6BDC3 /* TempUnprotectedSitesDataServiceUserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempUnprotectedSitesDataServiceUserDefaultsTests.swift; sourceTree = "<group>"; };
 		854EFAE02333B4AF00A6BDC3 /* TrustedSitesManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrustedSitesManagerTests.swift; sourceTree = "<group>"; };
 		854EFAE22333BB4D00A6BDC3 /* BlockerListManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerListManagerTests.swift; sourceTree = "<group>"; };
 		855150262375AA7900DBC528 /* SyncSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SyncSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -921,7 +921,7 @@
 				859F13CC227926D800EDE40A /* PageData.swift */,
 				859914E0227B0C1C0023C1F2 /* PrivacyPractice.swift */,
 				859914DE227B08EC0023C1F2 /* PrivacyPracticesManager.swift */,
-				854EFAD5233394F400A6BDC3 /* TempWhitelistDataService.swift */,
+				854EFAD5233394F400A6BDC3 /* TempUnprotectedSitesDataService.swift */,
 				850AFAFC232A4FF8004C859B /* TermsOfService.swift */,
 				850AFAFE232A505B004C859B /* tosdr.json */,
 				8587A6852278901300F622AF /* TrackerBlocking.h */,
@@ -999,7 +999,7 @@
 				859F13D5227A468600EDE40A /* PageDataTests.swift */,
 				850AFB00232A50DF004C859B /* PrivacyPracticesTests.swift */,
 				85C55C2C230C5CEA0030B52A /* sample-tracker-data.json */,
-				854EFADE2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift */,
+				854EFADE2333A03400A6BDC3 /* TempUnprotectedSitesDataServiceUserDefaultsTests.swift */,
 				8576BB7023100FF5005DAB06 /* tracker-cases.json */,
 				8541840E2283A54300DD2900 /* TrackerDataManagerTests.swift */,
 				834E585C232F2EBF00B43C37 /* TrackerDataServiceUserDefaultsTests.swift */,
@@ -1646,7 +1646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85A527C9227F634600233FDF /* ContentBlockerRule.swift in Sources */,
-				854EFAD72333974D00A6BDC3 /* TempWhitelistDataService.swift in Sources */,
+				854EFAD72333974D00A6BDC3 /* TempUnprotectedSitesDataService.swift in Sources */,
 				859F13DB227A4BE100EDE40A /* PageData.swift in Sources */,
 				859E7CF7230EFB96007353C0 /* ContentBlockerRulesBuilder.swift in Sources */,
 				859914E1227B0C1C0023C1F2 /* PrivacyPractice.swift in Sources */,
@@ -1682,7 +1682,7 @@
 				859F13D2227A3B2C00EDE40A /* GradeTests.swift in Sources */,
 				855150372375AABC00DBC528 /* SyncUserDefaultsTests.swift in Sources */,
 				855205C42333C9DE003E5640 /* DeepDetectionTests.swift in Sources */,
-				854EFADF2333A03400A6BDC3 /* TempWhitelistDataServiceUserDefaultsTests.swift in Sources */,
+				854EFADF2333A03400A6BDC3 /* TempUnprotectedSitesDataServiceUserDefaultsTests.swift in Sources */,
 				8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */,
 				8347D38E23325E13006AB02A /* FireOncePixelTests.swift in Sources */,
 				850AFB01232A50DF004C859B /* PrivacyPracticesTests.swift in Sources */,

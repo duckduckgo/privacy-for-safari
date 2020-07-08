@@ -323,7 +323,7 @@ class ContentBlockerRulesBuilderTests: XCTestCase {
     }
     // swiftlint:enable line_length
     
-    func testWhenTrackerHasWhitelistAdditionalIgnorePreviousRuleCreatedForSpecifiedDomainsOnly() {
+    func testWhenTrackerHasUnprotectedSitesAdditionalIgnorePreviousRuleCreatedForSpecifiedDomainsOnly() {
         
         let facebook = ["Facebook": KnownTracker.build(domain: "facebook.com", defaultAction: .block) ]
         

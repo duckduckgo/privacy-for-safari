@@ -22,6 +22,6 @@ import Foundation
 struct AppLinks {
     
     static let home = "ddg://home"
-    static let manageWhitelist = "ddg://manageWhitelist"
+    static let manageUnprotectedSites = "ddg://manageUnprotectedSites"
     
 }

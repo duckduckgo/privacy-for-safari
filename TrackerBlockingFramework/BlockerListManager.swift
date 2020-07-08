@@ -58,11 +58,11 @@ public class DefaultBlockerListManager: BlockerListManager {
         let trustedDomains = trustedSitesManager().allDomains()
         os_log("trustedDomains %s", log: generalLog, type: .debug, String(describing: trustedDomains))
 
-        let tempWhitelistDomains = trustedSitesManager().whitelistedDomains()
-        os_log("tempWhitelistDomains %s", log: generalLog, type: .debug, String(describing: tempWhitelistDomains))
+        let tempUnprotectedDomains = trustedSitesManager().unprotectedDomains()
+        os_log("tempUnprotectedDomains %s", log: generalLog, type: .debug, String(describing: tempUnprotectedDomains))
         
         let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedDomains,
-                                                                                    andTemporaryWhitelist: tempWhitelistDomains)
+                                                                                    andTemporaryUnprotectedDomains: tempUnprotectedDomains)
         
         guard let data = try? JSONEncoder().encode(rules) else {
             os_log("Failed to encode rules", log: generalLog, type: .error)

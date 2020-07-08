@@ -51,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         switch urls[0].absoluteString {
             
-        case AppLinks.manageWhitelist:
+        case AppLinks.manageUnprotectedSites:
             controller.selectTrustedSites(self)
             
         default:

@@ -51,19 +51,20 @@ class TrackerBlockingTests: XCTestCase {
         XCTAssertEqual(["test1"], userDefaults?.value(forKey: DefaultTrustedSitesManager.Keys.domains) as? [String])
     }
     
-    func testWhitelistReadFromUrl() throws {
+    func testUnprotectedDomainsReadFromUrl() throws {
         
-        let tempWhitelistLocation = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("txt")
+        let tempUnprotectedSitesLocation =
+            FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("txt")
         let domains = ["domain1", "domain2"].joined(separator: "\n")
-        guard FileManager.default.createFile(atPath: tempWhitelistLocation.path, contents: domains.data(using: .utf8), attributes: nil) else {
-            XCTFail("Failed to write to \(tempWhitelistLocation.path)")
+        guard FileManager.default.createFile(atPath: tempUnprotectedSitesLocation.path, contents: domains.data(using: .utf8), attributes: nil) else {
+            XCTFail("Failed to write to \(tempUnprotectedSitesLocation.path)")
             return
         }
         
         let manager = DefaultTrustedSitesManager(blockerListManager: blockerListManagerFactory,
-                                                 tempWhitelistUrl: tempWhitelistLocation)
+                                                 tempUnprotectedSitesUrl: tempUnprotectedSitesLocation)
 
-        XCTAssertEqual(["domain1", "domain2"], manager.whitelistedDomains())
+        XCTAssertEqual(["domain1", "domain2"], manager.unprotectedDomains())
         
     }
     
