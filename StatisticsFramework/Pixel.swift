@@ -64,6 +64,16 @@ public struct PixelParameters {
     public static let atb = "atb"
     public static let version = "extensionVersion"
     public static let elapsed = "elapsed"
+    
+    #if DEBUG
+    public static let test = "test"
+    #endif
+}
+
+public struct PixelValues {
+    #if DEBUG
+    public static let test = "1"
+    #endif
 }
 
 public protocol  Pixel {
@@ -96,10 +106,15 @@ public class DefaultPixel: Pixel {
             PixelParameters.atb: statisticsStore.installAtb ?? "",
             PixelParameters.version: appVersion.fullVersion
         ]
+        
+        #if DEBUG
+        params[PixelParameters.test] = PixelValues.test
+        #endif
+                
         params.merge(additionalParams) { (current, _) in current }
       
         apiRequest().get(path, withParams: params) { _, _, error in
-            os_log("Pixel fired %{public}s", log: generalLog, pixel.rawValue)
+            os_log("Pixel fired %{public}s %s", log: generalLog, pixel.rawValue, String(describing: params))
             onComplete(error)
         }
     }
