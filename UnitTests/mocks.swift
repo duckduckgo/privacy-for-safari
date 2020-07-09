@@ -58,7 +58,7 @@ struct MockTrustedSitesManager: TrustedSitesManager {
     var lastChangedDomain: String?
 
     // swiftlint:disable identifier_name
-    var _whitelistedDomains = [String]()
+    var _unprotectedDomains = [String]()
     // swiftlint:enable identifier_name
 
     func addDomain(_ domain: String) {
@@ -73,8 +73,8 @@ struct MockTrustedSitesManager: TrustedSitesManager {
         return []
     }
     
-    func whitelistedDomains() -> [String] {
-        return _whitelistedDomains
+    func unprotectedDomains() -> [String] {
+        return _unprotectedDomains
     }
     
     func clear() {

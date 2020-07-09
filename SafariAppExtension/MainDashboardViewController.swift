@@ -64,11 +64,11 @@ class MainDashboardViewController: DashboardNavigationController {
     @IBOutlet weak var protectionToggle: NSSwitch!
     @IBOutlet weak var protectionBox: NSBox!
     @IBOutlet weak var protectionMessage: NSView!
-    @IBOutlet weak var addedToWhitelist: NSView!
-    @IBOutlet weak var removedFromWhitelist: NSView!
+    @IBOutlet weak var addedToUnprotectedSites: NSView!
+    @IBOutlet weak var removedFromUnprotectedSites: NSView!
 
     @IBOutlet weak var bottomButtons: NSView!
-    @IBOutlet weak var manageWhitelistCTA: NSView!
+    @IBOutlet weak var manageUnprotectedSitesCTA: NSView!
     @IBOutlet weak var reportBrokenSiteCTA: NSView!
     @IBOutlet weak var brokenYesNo: NSView!
 
@@ -158,9 +158,9 @@ class MainDashboardViewController: DashboardNavigationController {
         navigationDelegate?.present(controller: .reportBrokenWebsite)
     }
 
-    @IBAction func manageWhitelist(_ sender: Any) {
-        pixel.fire(.dashboardWhitelistOpened)
-        NSWorkspace.shared.open(URL(string: AppLinks.manageWhitelist)!)
+    @IBAction func manageUnprotectedSites(_ sender: Any) {
+        pixel.fire(.dashboardUnprotectedSitesOpened)
+        NSWorkspace.shared.open(URL(string: AppLinks.manageUnprotectedSites)!)
     }
 
     @IBAction func clearBrokenYesNo(_ sender: Any) {
@@ -243,22 +243,22 @@ class MainDashboardViewController: DashboardNavigationController {
 
             case .on, .off:
                 self.protectionMessage.isHidden = false
-                self.addedToWhitelist.isHidden = true
-                self.removedFromWhitelist.isHidden = true
+                self.addedToUnprotectedSites.isHidden = true
+                self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = false
                 self.brokenYesNo.isHidden = true
 
             case .disabled:
                 self.protectionMessage.isHidden = true
-                self.addedToWhitelist.isHidden = false
-                self.removedFromWhitelist.isHidden = true
+                self.addedToUnprotectedSites.isHidden = false
+                self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = true
                 self.brokenYesNo.isHidden = false
 
             case .enabled:
                 self.protectionMessage.isHidden = true
-                self.addedToWhitelist.isHidden = true
-                self.removedFromWhitelist.isHidden = false
+                self.addedToUnprotectedSites.isHidden = true
+                self.removedFromUnprotectedSites.isHidden = false
                 self.bottomButtons.isHidden = false
                 self.brokenYesNo.isHidden = true
 

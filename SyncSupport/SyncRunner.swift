@@ -27,17 +27,17 @@ public class SyncRunner {
     public typealias SyncCompletion = (_ success: Bool) -> Void
     
     private let trackerDataService: TrackerDataService
-    private let tempWhitelistDataService: TempWhitelistDataService
+    private let tempUnprotectedSitesDataService: TempUnprotectedSitesDataService
     private let trackerDataManager: TrackerDataManager
     private let blockerListManager: BlockerListManager
     
     public init(trackerDataService: TrackerDataService = DefaultTrackerDataService(),
-                tempWhitelistDataService: TempWhitelistDataService = DefaultTempWhitelistDataService(),
+                tempUnprotectedSitesDataService: TempUnprotectedSitesDataService = DefaultTempUnprotectedSitesDataService(),
                 trackerDataManager: TrackerDataManager = TrackerBlocking.Dependencies.shared.trackerDataManager,
                 blockerListManager: BlockerListManager = TrackerBlocking.Dependencies.shared.blockerListManager) {
         
         self.trackerDataService = trackerDataService
-        self.tempWhitelistDataService = tempWhitelistDataService
+        self.tempUnprotectedSitesDataService = tempUnprotectedSitesDataService
         self.trackerDataManager = trackerDataManager
         self.blockerListManager = blockerListManager
     }
@@ -48,19 +48,19 @@ public class SyncRunner {
         let group = DispatchGroup()
         
         let trackerData = ServiceWrapper(group: group)
-        let tempWhitelistData = ServiceWrapper(group: group)
+        let tempUnprotectedSitesData = ServiceWrapper(group: group)
         
         trackerDataService.updateData(completion: trackerData.start())
-        tempWhitelistDataService.updateData(completion: tempWhitelistData.start())
+        tempUnprotectedSitesDataService.updateData(completion: tempUnprotectedSitesData.start())
         
         if group.wait(timeout: .now() + 30) == .timedOut {
             Statistics.Dependencies.shared.pixel.fire(.debugSyncTimeout)
         }
         
-        if trackerData.newData || tempWhitelistData.newData {
+        if trackerData.newData || tempUnprotectedSitesData.newData {
             os_log("Sync has new data %{public}s %{public}s", log: generalLog, type: .debug,
                    trackerData.newData ? "tracker data" : "",
-                   tempWhitelistData.newData ? "whitelist data" : "")
+                   tempUnprotectedSitesData.newData ? "unprotected sites data" : "")
             
             self.trackerDataManager.load()
             self.blockerListManager.update()
@@ -68,7 +68,7 @@ public class SyncRunner {
         }
         
         // if either fail, don't store the sync time - we need that data!
-        completion(trackerData.success && tempWhitelistData.success)
+        completion(trackerData.success && tempUnprotectedSitesData.success)
     }
     
 }

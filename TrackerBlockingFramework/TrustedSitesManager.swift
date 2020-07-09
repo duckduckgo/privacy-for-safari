@@ -33,7 +33,7 @@ public protocol TrustedSitesManager {
     func addDomain(_ domain: String)
     func addDomain(forUrl url: URL)
     func allDomains() -> [String]
-    func whitelistedDomains() -> [String]
+    func unprotectedDomains() -> [String]
     func removeDomain(at index: Int)
     func removeDomain(forUrl url: URL)
     func isTrusted(url: URL) -> Bool
@@ -75,15 +75,15 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     
     private let blockerListManager: BlockerListManager.Factory
     private let userDefaults: UserDefaults?
-    private let tempWhitelistUrl: URL
+    private let tempUnprotectedSitesUrl: URL
 
     public init(blockerListManager: @escaping BlockerListManager.Factory,
-                userDefaults: UserDefaults? = UserDefaults(suiteName: TempWhitelistDataLocation.groupName),
-                tempWhitelistUrl: URL = TempWhitelistDataLocation.dataUrl) {
+                userDefaults: UserDefaults? = UserDefaults(suiteName: TempUnprotectedSitesDataLocation.groupName),
+                tempUnprotectedSitesUrl: URL = TempUnprotectedSitesDataLocation.dataUrl) {
         
         self.blockerListManager = blockerListManager
         self.userDefaults = userDefaults
-        self.tempWhitelistUrl = tempWhitelistUrl
+        self.tempUnprotectedSitesUrl = tempUnprotectedSitesUrl
     }
     
     public func addDomain(_ domain: String) {
@@ -108,13 +108,13 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
         return domains
     }
     
-    public func whitelistedDomains() -> [String] {
-        guard let whitelist = try? String(contentsOf: tempWhitelistUrl) else {
-            os_log("Failed to load temporary whitelist from %{public}s", log: generalLog, tempWhitelistUrl.absoluteString)
+    public func unprotectedDomains() -> [String] {
+        guard let unprotectedDomains = try? String(contentsOf: tempUnprotectedSitesUrl) else {
+            os_log("Failed to load temporary unprotected domains from %{public}s", log: generalLog, tempUnprotectedSitesUrl.absoluteString)
             return []
         }
 
-        return whitelist.components(separatedBy: "\n").compactMap {
+        return unprotectedDomains.components(separatedBy: "\n").compactMap {
             let trimmed = $0.trimmingCharacters(in: .whitespaces)
             return trimmed.isEmpty ? nil : trimmed
         }
@@ -154,12 +154,12 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
  
 }
 
-public struct TempWhitelistDataLocation {
+public struct TempUnprotectedSitesDataLocation {
     
     public static var groupName = "group.com.duckduckgo.TrustedSites"
     
     public static var dataUrl: URL {
-        return containerUrl.appendingPathComponent("temporary-whitelist").appendingPathExtension("txt")
+        return containerUrl.appendingPathComponent("temporary-unprotected-sites").appendingPathExtension("txt")
     }
     
     static private var containerUrl: URL {

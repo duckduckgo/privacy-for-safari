@@ -1,5 +1,5 @@
 //
-//  TempWhitelistDataServiceUserDefaultsTests.swift
+//  TempUnprotectedSitesDataServiceUserDefaultsTests.swift
 //  UnitTests
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
@@ -22,7 +22,7 @@ import XCTest
 
 @testable import TrackerBlocking
 
-class TempWhitelistDataServiceUserDefaultsTests: XCTestCase {
+class TempUnprotectedSitesDataServiceUserDefaultsTests: XCTestCase {
     
     let testGroupName = "test"
     
@@ -31,12 +31,12 @@ class TempWhitelistDataServiceUserDefaultsTests: XCTestCase {
     }
 
     func testWhenInitializedThenEtagIsNil() {
-        let userDefaults = TempWhitelistDataServiceUserDefaults(userDefaults: UserDefaults(suiteName: testGroupName)!)
+        let userDefaults = TempUnprotectedSitesDataServiceUserDefaults(userDefaults: UserDefaults(suiteName: testGroupName)!)
         XCTAssertNil(userDefaults.etag)
     }
     
     func testWhenEtagIsSetThenItIsPersisted() {
-        let userDefaults = TempWhitelistDataServiceUserDefaults(userDefaults: UserDefaults(suiteName: testGroupName)!)
+        let userDefaults = TempUnprotectedSitesDataServiceUserDefaults(userDefaults: UserDefaults(suiteName: testGroupName)!)
         let etag = "abcd"
         userDefaults.etag = etag
         XCTAssertEqual(etag, userDefaults.etag)
