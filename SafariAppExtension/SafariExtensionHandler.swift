@@ -187,13 +187,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     override init() {
-        os_log("SEH init", log: lifecycleLog)
+        os_log("SEH init", log: lifecycleLog, type: .debug)
         super.init()
         SyncScheduler.shared.schedule()
     }
         
     deinit {
-        os_log("SEH deinit", log: lifecycleLog)
+        os_log("SEH deinit", log: lifecycleLog, type: .debug)
     }
 
 }
