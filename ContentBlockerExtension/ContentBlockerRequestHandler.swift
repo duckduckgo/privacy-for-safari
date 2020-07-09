@@ -25,13 +25,13 @@ import os
 class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
     
     override init() {
-        os_log("CBRH init", log: lifecycleLog)
+        os_log("CBRH init", log: lifecycleLog, type: .debug)
         super.init()
     }
     
     func beginRequest(with context: NSExtensionContext) {
         
-        os_log(#function, log: lifecycleLog)
+        os_log(#function, log: lifecycleLog, type: .debug)
         
         let blockerListUrl = BlockerListLocation.blockerListUrl
                         
@@ -47,7 +47,7 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
     }
     
     deinit {
-        os_log("CBRH deinit", log: lifecycleLog)
+        os_log("CBRH deinit", log: lifecycleLog, type: .debug)
     }
     
 }

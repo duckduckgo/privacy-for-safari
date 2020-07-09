@@ -61,11 +61,11 @@ class DashboardData {
     private var trackersCache = [CacheKey: Trackers]()
         
     init() {
-        os_log("DashboardData init", log: lifecycleLog)
+        os_log("DashboardData init", log: lifecycleLog, type: .debug)
     }
     
     deinit {
-        os_log("DashboardData deinit", log: lifecycleLog)
+        os_log("DashboardData deinit", log: lifecycleLog, type: .debug)
     }
     
     func cachedTrackers(forPage page: SFSafariPage, withUrl url: String) -> Trackers {

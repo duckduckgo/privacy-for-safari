@@ -37,24 +37,36 @@ public class SyncScheduler {
     private var syncStore: SyncStore
     private let syncRunner: SyncRunner
     
+    private var workItem: DispatchWorkItem?
+    
     init(syncStore: SyncStore = SyncUserDefaults(), syncRunner: SyncRunner = SyncRunner()) {
-        os_log("SyncScheduler init", log: lifecycleLog)
+        os_log("SyncScheduler init", log: lifecycleLog, type: .debug)
         self.syncStore = syncStore
         self.syncRunner = syncRunner
     }
     
     deinit {
-        os_log("SyncScheduler deinit", log: lifecycleLog)
+        os_log("SyncScheduler deinit", log: lifecycleLog, type: .debug)
     }
     
     public func schedule() {
-        queue.async {
-            guard Self.isTimeToSync(lastSyncDateTime: self.syncStore.lastSyncTimestamp ?? 0) else { return }
-            os_log("Scheduling sync", log: generalLog, type: .default)
+        
+        os_log("Scheduling sync", log: generalLog, type: .debug)
+        guard Self.isTimeToSync(lastSyncDateTime: self.syncStore.lastSyncTimestamp ?? 0) else {
+            os_log("Sync not ready yet", log: generalLog, type: .default)
+            return
+        }
+        
+        guard workItem == nil else {
+            os_log("Sync already working", log: generalLog, type: .debug)
+            return
+        }
+        
+        workItem = DispatchWorkItem {
             let group = DispatchGroup()
             group.enter()
             self.syncRunner.sync { success in
-                os_log("Sync was %{public}s", log: generalLog, type: .default, success ? "successful" : "unsuccessful")
+                os_log("Sync was %{public}s", log: generalLog, type: .debug, success ? "successful" : "unsuccessful")
                 if success {
                     self.syncStore.lastSyncTimestamp = Date().timeIntervalSince1970
                 }
@@ -64,7 +76,11 @@ public class SyncScheduler {
             if group.wait(timeout: .now() + 30) == .timedOut {
                 Dependencies.shared.pixel.fire(.debugSchedulerTimeout)
             }
+            
+            self.workItem = nil
         }
+        
+        queue.async(execute: workItem!)
     }
 
     static func isTimeToSync(currentDate: Date = Date(), lastSyncDateTime: TimeInterval) -> Bool {

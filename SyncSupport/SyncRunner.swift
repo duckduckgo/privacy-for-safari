@@ -43,7 +43,7 @@ public class SyncRunner {
     }
     
     public func sync(completion: @escaping SyncCompletion) {
-        os_log("Sync is starting", log: generalLog)
+        os_log("Sync is starting", log: generalLog, type: .debug)
         
         let group = DispatchGroup()
         
@@ -58,7 +58,7 @@ public class SyncRunner {
         }
         
         if trackerData.newData || tempUnprotectedSitesData.newData {
-            os_log("Sync has new data %{public}s %{public}s", log: generalLog,
+            os_log("Sync has new data %{public}s %{public}s", log: generalLog, type: .debug,
                    trackerData.newData ? "tracker data" : "",
                    tempUnprotectedSitesData.newData ? "unprotected sites data" : "")
             
