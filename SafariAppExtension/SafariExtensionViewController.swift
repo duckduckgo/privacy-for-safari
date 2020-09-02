@@ -103,6 +103,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     private func initBackgroundEffectView() {
-        backgroundEffectView.material = .appearanceBased
+        backgroundEffectView.material = .underWindowBackground
     }
 }
