@@ -44,48 +44,48 @@ public class DefaultStatisticsStore: StatisticsStore {
     }
 
     public var installDate: Date? {
-        set {
-            userDefaults?.set(newValue?.timeIntervalSince1970, forKey: Keys.installDate)
-        }
         get {
             guard let timeInterval = userDefaults?.object(forKey: Keys.installDate) as? Double else { return nil }
             return Date(timeIntervalSince1970: timeInterval)
         }
+        set {
+            userDefaults?.set(newValue?.timeIntervalSince1970, forKey: Keys.installDate)
+        }
     }
     
     public var installAtb: String? {
-        set {
-            userDefaults?.set(newValue, forKey: Keys.installAtb)
-        }
         get {
             return userDefaults?.string(forKey: Keys.installAtb)
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.installAtb)
         }
     }
     
     public var searchRetentionAtb: String? {
-        set {
-            userDefaults?.set(newValue, forKey: Keys.searchRetentionAtb)
-        }
         get {
             return userDefaults?.string(forKey: Keys.searchRetentionAtb)
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.searchRetentionAtb)
         }
     }
     
     public var appRetentionAtb: String? {
-        set {
-            userDefaults?.set(newValue, forKey: Keys.appRetentionAtb)
-        }
         get {
             return userDefaults?.string(forKey: Keys.appRetentionAtb)
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.appRetentionAtb)
         }
     }
 
     public var browserVersion: String? {
-        set {
-            userDefaults?.set(newValue, forKey: Keys.browserVersion)
-        }
         get {
             return userDefaults?.string(forKey: Keys.browserVersion)
+        }
+        set {
+            userDefaults?.set(newValue, forKey: Keys.browserVersion)
         }
     }
 
