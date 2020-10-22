@@ -25,7 +25,7 @@
 "dashboard.tos.mixed" = "Mixed Privacy Practices";
 "dashboard.tos.poor" = "Poor Privacy Practices";
 
-"dashboard.brokensite.submit.title" = "Something broken?";
+"dashboard.brokensite.submit.title" = "Something Broken?";
 "dashboard.brokensite.submit.body" = "Submitting an anonymous broken site report helps us debug these issues and improve the extension.";
 
 "dashboard.brokensite.thankyou.title" = "Thank You!";
@@ -37,6 +37,6 @@
 "dashboard.brokensite.category.videos" = "Video didn't play";
 "dashboard.brokensite.category.links" = "Links or buttons don't work";
 "dashboard.brokensite.category.content" = "Content is missing";
-"dashboard.brokensite.category.login" = "I can't login";
+"dashboard.brokensite.category.login" = "I can't sign in";
 "dashboard.brokensite.category.other" = "Something else";
 "dashboard.brokensite.category.select" = "Pick your issue from the list...";
