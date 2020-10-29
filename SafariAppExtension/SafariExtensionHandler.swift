@@ -107,7 +107,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                 window?.getActiveTab { tabs in
                     tabs?.getActivePage(completionHandler: { page in
                         guard let page = page else {
-                            toolbarItem.setImage(ToolbarIcon.currentIcon)
+                            toolbarItem.setImage(nil)
                             return
                         }
                         page.getPropertiesOnQueue { properties in
@@ -165,7 +165,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     private func update(_ toolbarItem: SFSafariToolbarItem) {
         guard let url = DashboardData.shared.pageData.url else {
-            toolbarItem.setImage(ToolbarIcon.currentIcon)
+            toolbarItem.setImage(nil)
             SafariExtensionViewController.shared.pageData = DashboardData.shared.pageData
             return
         }

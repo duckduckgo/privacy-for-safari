@@ -212,8 +212,7 @@
 		85F087B3230828610041D733 /* OnboardingEnableExtensionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B2230828610041D733 /* OnboardingEnableExtensionsController.swift */; };
 		85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B4230828870041D733 /* OnboardingGetStartedController.swift */; };
 		85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B6230828C40041D733 /* OnboardingScreen.swift */; };
-		AA66B12E2462D616000BF088 /* ToolbarIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AA66B12D2462D616000BF088 /* ToolbarIcon.pdf */; };
-		AA66B1302462E003000BF088 /* ToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA66B12F2462E003000BF088 /* ToolbarIcon.swift */; };
+		AA6820B5254B0E49005ED0D5 /* ToolbarIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -613,8 +612,7 @@
 		85F087B4230828870041D733 /* OnboardingGetStartedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGetStartedController.swift; sourceTree = "<group>"; };
 		85F087B6230828C40041D733 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		85FF17BA232BB57200FB036C /* BrokenSiteReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenSiteReporter.swift; sourceTree = "<group>"; };
-		AA66B12D2462D616000BF088 /* ToolbarIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarIcon.pdf; sourceTree = "<group>"; };
-		AA66B12F2462E003000BF088 /* ToolbarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
+		AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarIcon.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -836,18 +834,17 @@
 				8510B256226F3BFB0015D406 /* Assets.xcassets */,
 				8510B265226F5AF30015D406 /* Dashboard.storyboard */,
 				853CE0FC236309EB009E1D66 /* DashboardData.swift */,
-				AA66B12F2462E003000BF088 /* ToolbarIcon.swift */,
 				8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */,
 				85D2B7A12369B6860053716B /* QueueExtensions.swift */,
 				855C129123192443005B21FC /* DiagnosticSupport.swift */,
 				85417D97226762870062A081 /* Info.plist */,
 				85008B3322C9581B00A2CFB0 /* Localizable.strings */,
 				8587FD5422C67CD70072F47F /* Localizable.stringsdict */,
-				AA66B12D2462D616000BF088 /* ToolbarIcon.pdf */,
 				8510B263226F5A840015D406 /* MainDashboardViewController.swift */,
 				85CFD4C022CB98D600C8B1AA /* NavigationController.swift */,
 				85C351332332321600D8E78A /* NSColorExtension.swift */,
 				85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */,
+				AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */,
 				855C129323193225005B21FC /* ReportBrokenSiteController.swift */,
 				85417D9C226762870062A081 /* Safari.entitlements */,
 				85417D90226762870062A081 /* SafariExtensionHandler.swift */,
@@ -1433,12 +1430,12 @@
 			files = (
 				85CF7BB922C3964D002634C7 /* PrivacyProtection.xcassets in Resources */,
 				8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */,
-				AA66B12E2462D616000BF088 /* ToolbarIcon.pdf in Resources */,
 				854A9F552271CB0A008F2A93 /* AppIcon.xcassets in Resources */,
 				854A9F3D22706817008F2A93 /* proximanova-bold.otf in Resources */,
 				854A9F4022706817008F2A93 /* proximanova-regular.otf in Resources */,
 				854A9F3E22706817008F2A93 /* proximanova-extrabold.otf in Resources */,
 				854A9F3F22706817008F2A93 /* proximanova-light.otf in Resources */,
+				AA6820B5254B0E49005ED0D5 /* ToolbarIcon.pdf in Resources */,
 				85417D96226762870062A081 /* SafariExtensionViewController.xib in Resources */,
 				854A9F512271B0BA008F2A93 /* Shared.xcassets in Resources */,
 				85008B3422C9581B00A2CFB0 /* Localizable.strings in Resources */,
@@ -1587,7 +1584,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA66B1302462E003000BF088 /* ToolbarIcon.swift in Sources */,
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
 				85EFAE592379783300D6E7BD /* AtbLocations.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,
