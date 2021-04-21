@@ -213,6 +213,7 @@
 		85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B4230828870041D733 /* OnboardingGetStartedController.swift */; };
 		85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B6230828C40041D733 /* OnboardingScreen.swift */; };
 		AA6820B5254B0E49005ED0D5 /* ToolbarIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */; };
+		AA8B72E62630494E00317524 /* ToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B72E52630494E00317524 /* ToolbarIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -613,6 +614,7 @@
 		85F087B6230828C40041D733 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		85FF17BA232BB57200FB036C /* BrokenSiteReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenSiteReporter.swift; sourceTree = "<group>"; };
 		AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarIcon.pdf; sourceTree = "<group>"; };
+		AA8B72E52630494E00317524 /* ToolbarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,6 +847,7 @@
 				85C351332332321600D8E78A /* NSColorExtension.swift */,
 				85CF7BB822C3964D002634C7 /* PrivacyProtection.xcassets */,
 				AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */,
+				AA8B72E52630494E00317524 /* ToolbarIcon.swift */,
 				855C129323193225005B21FC /* ReportBrokenSiteController.swift */,
 				85417D9C226762870062A081 /* Safari.entitlements */,
 				85417D90226762870062A081 /* SafariExtensionHandler.swift */,
@@ -1584,6 +1587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8B72E62630494E00317524 /* ToolbarIcon.swift in Sources */,
 				8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */,
 				85EFAE592379783300D6E7BD /* AtbLocations.swift in Sources */,
 				85E9522022AFDB5B0071281E /* URLExtension.swift in Sources */,
