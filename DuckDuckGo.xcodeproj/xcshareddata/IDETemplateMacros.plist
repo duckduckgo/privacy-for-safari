@@ -1,8 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>FILEHEADER</key>
+    <string>
+//  ___FILENAME___
 //
-//  ToolbarIcon.swift
-//  SafariAppExtension
-//
-//  Copyright © 2021 DuckDuckGo. All rights reserved.
+//  Copyright © ___YEAR___ DuckDuckGo. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -15,25 +19,6 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-//
-
-import Cocoa
-
-class ToolbarIcon {
-
-    private static let lightIcon = NSImage(named: "ToolbarIconLight")
-    private static let darkIcon = NSImage(named: "ToolbarIconDark")
-
-    public static var currentIcon: NSImage? {
-        NSApplication.shared.effectiveAppearance.isDarkMode ? Self.darkIcon : Self.lightIcon
-    }
-
-}
-
-fileprivate extension NSAppearance {
-
-    var isDarkMode: Bool {
-        debugDescription.lowercased().contains("dark")
-    }
-
-}
+//</string>
+</dict>
+</plist>
