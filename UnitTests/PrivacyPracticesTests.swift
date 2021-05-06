@@ -51,13 +51,11 @@ class PrivacyPracticesTests: XCTestCase {
     }
 
     func testWhenRelatedEntityHasWorstScoreThenUseIt() {
-        // swiftlint:disable nesting
         class Mock: MockTrackerDataManager {
             override func entity(forUrl url: URL) -> Entity? {
                 return Entity(displayName: "Facebook", domains: [], prevalence: 0)
             }
         }
-        // swiftlint:enable nesting
 
         let url = URL(string: "https://whatsapp.com")!
         let practice = practicesManager(Mock()).findPrivacyPractice(forUrl: url)
