@@ -6,7 +6,7 @@ Requires Xcode 11 and macOS 10.15 or better.
 Open the project in Xcode then build and run the DuckDuckGo scheme.
 
 ### SwiftLint
-We use [SwifLint](https://github.com/realm/SwiftLint) for enforcing Swift style and conventions, so you'll need to [install it](https://github.com/realm/SwiftLint#installation).
+We use [SwiftLint](https://github.com/realm/SwiftLint) for enforcing Swift style and conventions, so you'll need to [install it](https://github.com/realm/SwiftLint#installation).
 
 ### Fonts
 We use Proxima Nova fonts which are proprietary and cannot be committed to source control, see [fonts](https://github.com/duckduckgo/privacy-essentials-safari/tree/develop/fonts/licensed). 
