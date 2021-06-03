@@ -68,16 +68,19 @@ public class DefaultBlockerListManager: BlockerListManager {
             os_log("Failed to encode rules", log: generalLog, type: .error)
             return nil
         }
-        
-        if let store = WKContentRuleListStore.default() {
-            store.compileContentRuleList(forIdentifier: "XXX", encodedContentRuleList: String(data: data, encoding: .utf8)!) { _, error in
-                if let error = error {
-                    os_log("Failed to to compile rules %{public}s", log: generalLog, type: .error, error.localizedDescription)
+
+        DispatchQueue.main.async {
+            if let store = WKContentRuleListStore.default() {
+                store.compileContentRuleList(forIdentifier: "XXX", encodedContentRuleList: String(data: data, encoding: .utf8)!) { _, error in
+                    if let error = error {
+                        os_log("Failed to to compile rules %{public}s", log: generalLog, type: .error, error.localizedDescription)
+                    }
                 }
+            } else {
+                os_log("Failed to access the default WKContentRuleListStore for rules compiliation checking", log: generalLog, type: .error)
             }
-        } else {
-            os_log("Failed to access the default WKContentRuleListStore for rules compiliation checking", log: generalLog, type: .error)
         }
+
         return data
     }
         
