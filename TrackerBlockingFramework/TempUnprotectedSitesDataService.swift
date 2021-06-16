@@ -31,7 +31,7 @@ public typealias TempUnprotectedSitesDataCompletion = (_ success: Bool, _ newDat
 public class DefaultTempUnprotectedSitesDataService: TempUnprotectedSitesDataService {
     
     struct Paths {
-        static let unprotectedSites = "/contentblocking/trackers-whitelist-temporary.txt"
+        static let unprotectedSites = "/contentblocking/trackers-unprotected-temporary.txt"
     }
     
     private let apiRequest: APIRequest.Factory
