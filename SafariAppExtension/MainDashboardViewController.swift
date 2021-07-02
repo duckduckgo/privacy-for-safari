@@ -50,7 +50,6 @@ class MainDashboardViewController: DashboardNavigationController {
     ]
 
     let trustedSites: TrustedSitesManager = Dependencies.shared.trustedSitesManager
-    let tempUnprotectedSites: TempUnprotectedSitesDataService = DefaultTempUnprotectedSitesDataService()
     let privacyPracticesManager: PrivacyPracticesManager = Dependencies.shared.privacyPracticesManager
     let blockerListManager: BlockerListManager = Dependencies.shared.blockerListManager
 

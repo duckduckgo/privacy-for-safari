@@ -462,7 +462,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <view translatesAutoresizingMaskIntoConstraints="NO" id="N4i-u7-f57">
-                                                <rect key="frame" x="0.0" y="-50" width="592" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="592" height="50"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-yr-DeA">
                                                         <rect key="frame" x="180" y="15" width="232" height="20"/>
