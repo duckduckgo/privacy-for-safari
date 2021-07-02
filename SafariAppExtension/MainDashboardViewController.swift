@@ -31,6 +31,7 @@ class MainDashboardViewController: DashboardNavigationController {
         case disabled
         case off
         case enabled
+        case tempDisabled
 
     }
 
@@ -49,6 +50,7 @@ class MainDashboardViewController: DashboardNavigationController {
     ]
 
     let trustedSites: TrustedSitesManager = Dependencies.shared.trustedSitesManager
+    let tempUnprotectedSites: TempUnprotectedSitesDataService = DefaultTempUnprotectedSitesDataService()
     let privacyPracticesManager: PrivacyPracticesManager = Dependencies.shared.privacyPracticesManager
     let blockerListManager: BlockerListManager = Dependencies.shared.blockerListManager
 
@@ -64,6 +66,7 @@ class MainDashboardViewController: DashboardNavigationController {
     @IBOutlet weak var protectionToggle: NSSwitch!
     @IBOutlet weak var protectionBox: NSBox!
     @IBOutlet weak var protectionMessage: NSView!
+    @IBOutlet weak var tempUnprotectedMessage: NSView!
     @IBOutlet weak var addedToUnprotectedSites: NSView!
     @IBOutlet weak var removedFromUnprotectedSites: NSView!
 
@@ -131,6 +134,9 @@ class MainDashboardViewController: DashboardNavigationController {
     override func viewDidAppear() {
         super.viewDidAppear()
         protection = isTrusted ? .on : .off
+        if pageData?.isBroken ?? false {
+            protection = .tempDisabled
+        }
         updateProtectionToggleState()
         updateUI()
     }
@@ -243,24 +249,40 @@ class MainDashboardViewController: DashboardNavigationController {
 
             case .on, .off:
                 self.protectionMessage.isHidden = false
+                self.tempUnprotectedMessage.isHidden = true
                 self.addedToUnprotectedSites.isHidden = true
                 self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = false
                 self.brokenYesNo.isHidden = true
+                self.protectionToggle.isEnabled = true
 
             case .disabled:
                 self.protectionMessage.isHidden = true
+                self.tempUnprotectedMessage.isHidden = true
                 self.addedToUnprotectedSites.isHidden = false
                 self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = true
                 self.brokenYesNo.isHidden = false
+                self.protectionToggle.isEnabled = true
 
             case .enabled:
                 self.protectionMessage.isHidden = true
+                self.tempUnprotectedMessage.isHidden = true
                 self.addedToUnprotectedSites.isHidden = true
                 self.removedFromUnprotectedSites.isHidden = false
                 self.bottomButtons.isHidden = false
                 self.brokenYesNo.isHidden = true
+                self.protectionToggle.isEnabled = true
+                
+            case .tempDisabled:
+                self.protectionMessage.isHidden = false
+                self.tempUnprotectedMessage.isHidden = false
+                self.addedToUnprotectedSites.isHidden = true
+                self.removedFromUnprotectedSites.isHidden = true
+                self.bottomButtons.isHidden = true
+                self.brokenYesNo.isHidden = true
+                self.protectionToggle.isEnabled = false
+                self.protectionToggle.state = .off
 
             }
 

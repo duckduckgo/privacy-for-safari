@@ -33,6 +33,7 @@ public class PageData {
 
     public let url: URL?
     public let isTrusted: Bool
+    public let isBroken: Bool
     public let trackerDataManager: TrackerDataManager
     
     public var loadedTrackers = Set<DetectedTracker>()
@@ -46,8 +47,10 @@ public class PageData {
         
         if let url = url {
             isTrusted = Dependencies.shared.trustedSitesManager.isTrusted(url: url)
+            isBroken = Dependencies.shared.trustedSitesManager.unprotectedDomains().contains(url.host ?? "")
         } else {
             isTrusted = false
+            isBroken = false
         }
     }
     
