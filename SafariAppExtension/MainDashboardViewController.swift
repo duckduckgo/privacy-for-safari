@@ -65,7 +65,7 @@ class MainDashboardViewController: DashboardNavigationController {
     @IBOutlet weak var protectionToggle: NSSwitch!
     @IBOutlet weak var protectionBox: NSBox!
     @IBOutlet weak var protectionMessage: NSView!
-    @IBOutlet weak var tempUnprotectedMessage: NSView!
+    @IBOutlet weak var temporarilyUnprotectedMessage: NSView!
     @IBOutlet weak var addedToUnprotectedSites: NSView!
     @IBOutlet weak var removedFromUnprotectedSites: NSView!
 
@@ -248,7 +248,7 @@ class MainDashboardViewController: DashboardNavigationController {
 
             case .on, .off:
                 self.protectionMessage.isHidden = false
-                self.tempUnprotectedMessage.isHidden = true
+                self.temporarilyUnprotectedMessage.isHidden = true
                 self.addedToUnprotectedSites.isHidden = true
                 self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = false
@@ -257,7 +257,7 @@ class MainDashboardViewController: DashboardNavigationController {
 
             case .disabled:
                 self.protectionMessage.isHidden = true
-                self.tempUnprotectedMessage.isHidden = true
+                self.temporarilyUnprotectedMessage.isHidden = true
                 self.addedToUnprotectedSites.isHidden = false
                 self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = true
@@ -266,7 +266,7 @@ class MainDashboardViewController: DashboardNavigationController {
 
             case .enabled:
                 self.protectionMessage.isHidden = true
-                self.tempUnprotectedMessage.isHidden = true
+                self.temporarilyUnprotectedMessage.isHidden = true
                 self.addedToUnprotectedSites.isHidden = true
                 self.removedFromUnprotectedSites.isHidden = false
                 self.bottomButtons.isHidden = false
@@ -275,7 +275,7 @@ class MainDashboardViewController: DashboardNavigationController {
                 
             case .tempDisabled:
                 self.protectionMessage.isHidden = false
-                self.tempUnprotectedMessage.isHidden = false
+                self.temporarilyUnprotectedMessage.isHidden = false
                 self.addedToUnprotectedSites.isHidden = true
                 self.removedFromUnprotectedSites.isHidden = true
                 self.bottomButtons.isHidden = true

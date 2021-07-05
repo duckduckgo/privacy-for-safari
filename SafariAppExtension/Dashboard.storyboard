@@ -26,33 +26,12 @@
                 <customObject id="PdZ-5R-Xob" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MainDashboard" id="yVf-K8-uRd" customClass="MainDashboardViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="nT0-5T-PJt">
-                        <rect key="frame" x="0.0" y="0.0" width="592" height="575"/>
+                        <rect key="frame" x="0.0" y="0.0" width="592" height="450"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEX-r8-b3F" userLabel="Items Stack">
-                                <rect key="frame" x="0.0" y="29" width="592" height="346"/>
+                                <rect key="frame" x="0.0" y="0.0" width="592" height="250"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CGj-Xm-Y7b">
-                                        <rect key="frame" x="0.0" y="250" width="592" height="96"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Ug-Vb-mcP">
-                                                <rect key="frame" x="0.0" y="0.0" width="592" height="96"/>
-                                                <textFieldCell key="cell" alignment="center" title="We temporarily disabled Privacy Protection as it appears to be breaking this site." drawsBackground="YES" id="Ynr-2b-sA4">
-                                                    <font key="font" size="16" name="ProximaNova-Semibold"/>
-                                                    <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="backgroundColor" red="1" green="0.94900935890000004" blue="0.75008279089999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="5Ug-Vb-mcP" firstAttribute="width" secondItem="CGj-Xm-Y7b" secondAttribute="width" id="8XE-OO-I4a"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="96" id="Fj7-eV-7eU"/>
-                                            <constraint firstAttribute="bottom" secondItem="5Ug-Vb-mcP" secondAttribute="bottom" id="ZCt-bp-0Av"/>
-                                            <constraint firstItem="5Ug-Vb-mcP" firstAttribute="top" secondItem="CGj-Xm-Y7b" secondAttribute="top" id="fAY-b9-gWD"/>
-                                            <constraint firstItem="5Ug-Vb-mcP" firstAttribute="leading" secondItem="CGj-Xm-Y7b" secondAttribute="leading" id="jJB-bz-v51"/>
-                                            <constraint firstAttribute="height" constant="96" id="kur-Ro-Sjk"/>
-                                        </constraints>
-                                    </customView>
                                     <view translatesAutoresizingMaskIntoConstraints="NO" id="CmJ-kZ-cIg" userLabel="Connection View">
                                         <rect key="frame" x="0.0" y="200" width="592" height="50"/>
                                         <subviews>
@@ -462,13 +441,13 @@
                                                 </customSpacing>
                                             </stackView>
                                             <view translatesAutoresizingMaskIntoConstraints="NO" id="N4i-u7-f57">
-                                                <rect key="frame" x="0.0" y="0.0" width="592" height="50"/>
+                                                <rect key="frame" x="0.0" y="-50" width="592" height="50"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-yr-DeA">
-                                                        <rect key="frame" x="180" y="15" width="232" height="20"/>
+                                                        <rect key="frame" x="180" y="16" width="232" height="19"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5wF-F9-LVm">
-                                                                <rect key="frame" x="-2" y="1" width="160" height="19"/>
+                                                                <rect key="frame" x="-2" y="0.0" width="160" height="19"/>
                                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Is this website broken?" id="VMe-Xh-Z38">
                                                                     <font key="font" metaFont="system" size="15"/>
                                                                     <color key="textColor" name="ItemTitle"/>
@@ -476,7 +455,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9tX-9h-vIC" customClass="ClickableButton" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                <rect key="frame" x="164" y="0.0" width="30" height="20"/>
+                                                                <rect key="frame" x="164" y="0.0" width="30" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="HtH-ca-sYc"/>
                                                                 </constraints>
@@ -490,7 +469,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ro2-J5-yZN" customClass="ClickableButton" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                <rect key="frame" x="202" y="0.0" width="30" height="20"/>
+                                                                <rect key="frame" x="202" y="0.0" width="30" height="19"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="MIb-9a-7Jy"/>
                                                                 </constraints>
@@ -556,17 +535,11 @@
                                 <constraints>
                                     <constraint firstItem="CmJ-kZ-cIg" firstAttribute="width" secondItem="dEX-r8-b3F" secondAttribute="width" id="0DF-oW-Zyp"/>
                                     <constraint firstItem="2Cp-NG-aaD" firstAttribute="width" secondItem="dEX-r8-b3F" secondAttribute="width" id="2JO-43-HZJ"/>
-                                    <constraint firstItem="YDc-ak-MrW" firstAttribute="height" secondItem="dEX-r8-b3F" secondAttribute="height" multiplier="0.144509" id="9kh-Tj-Xaa"/>
                                     <constraint firstItem="XuR-Kz-dfd" firstAttribute="width" secondItem="dEX-r8-b3F" secondAttribute="width" id="MqI-bH-6Mh"/>
-                                    <constraint firstItem="XuR-Kz-dfd" firstAttribute="height" secondItem="dEX-r8-b3F" secondAttribute="height" multiplier="0.144509" id="OPV-uP-gOm"/>
-                                    <constraint firstItem="2Cp-NG-aaD" firstAttribute="height" secondItem="dEX-r8-b3F" secondAttribute="height" multiplier="0.144509" id="W3i-f4-hgf"/>
-                                    <constraint firstItem="CGj-Xm-Y7b" firstAttribute="height" secondItem="dEX-r8-b3F" secondAttribute="height" multiplier="0.277457" id="gU1-BS-zbr"/>
-                                    <constraint firstItem="CGj-Xm-Y7b" firstAttribute="width" secondItem="dEX-r8-b3F" secondAttribute="width" id="iKN-Xm-AFZ"/>
                                     <constraint firstItem="YDc-ak-MrW" firstAttribute="width" secondItem="dEX-r8-b3F" secondAttribute="width" id="vNQ-k4-OxZ"/>
                                     <constraint firstItem="Pjl-CB-ocT" firstAttribute="width" secondItem="dEX-r8-b3F" secondAttribute="width" id="xob-8V-Tbt"/>
                                 </constraints>
                                 <visibilityPriorities>
-                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -579,11 +552,10 @@
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="YBF-ON-sRb">
-                                <rect key="frame" x="0.0" y="375" width="592" height="200"/>
+                                <rect key="frame" x="0.0" y="250" width="592" height="200"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPl-kJ-Ago" userLabel="Header Stack">
                                         <rect key="frame" x="0.0" y="-9" width="592" height="218"/>
@@ -688,12 +660,40 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGt-vj-aaM" userLabel="Temporarily Unprotected" customClass="ColorView" customModule="SafariAppExtension" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="592" height="67"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FWP-cr-THp">
+                                                <rect key="frame" x="14" y="4" width="564" height="55"/>
+                                                <textFieldCell key="cell" alignment="center" title="We temporarily disabled Privacy Protection as it appears to be breaking this site." id="Vev-GG-R0M">
+                                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="FWP-cr-THp" secondAttribute="bottom" constant="4" id="H3o-9E-oCN"/>
+                                            <constraint firstItem="FWP-cr-THp" firstAttribute="top" secondItem="cGt-vj-aaM" secondAttribute="top" constant="8" id="I37-qr-u8V"/>
+                                            <constraint firstAttribute="trailing" secondItem="FWP-cr-THp" secondAttribute="trailing" constant="16" id="aL3-Jk-Vhl"/>
+                                            <constraint firstItem="FWP-cr-THp" firstAttribute="leading" secondItem="cGt-vj-aaM" secondAttribute="leading" constant="16" id="kRG-Lf-Gbb"/>
+                                            <constraint firstAttribute="height" constant="67" id="wb1-9j-Do9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                                <color key="value" name="TemporarilyUnprotectedBackground"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </customView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="cGt-vj-aaM" secondAttribute="bottom" id="0kU-0D-YLP"/>
                                     <constraint firstItem="VPl-kJ-Ago" firstAttribute="width" secondItem="YBF-ON-sRb" secondAttribute="width" id="WxC-wu-hcd"/>
                                     <constraint firstAttribute="height" constant="200" id="YWy-Nj-jwd"/>
                                     <constraint firstItem="VPl-kJ-Ago" firstAttribute="centerX" secondItem="YBF-ON-sRb" secondAttribute="centerX" id="a0a-X8-Cg6"/>
+                                    <constraint firstAttribute="trailing" secondItem="cGt-vj-aaM" secondAttribute="trailing" id="dIP-zc-Hwv"/>
                                     <constraint firstItem="VPl-kJ-Ago" firstAttribute="centerY" secondItem="YBF-ON-sRb" secondAttribute="centerY" id="iX2-t1-dID"/>
+                                    <constraint firstItem="cGt-vj-aaM" firstAttribute="leading" secondItem="YBF-ON-sRb" secondAttribute="leading" id="izh-LU-BCv"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -703,7 +703,6 @@
                             <constraint firstItem="YBF-ON-sRb" firstAttribute="leading" secondItem="nT0-5T-PJt" secondAttribute="leading" id="E7t-rg-Tu8"/>
                             <constraint firstItem="YBF-ON-sRb" firstAttribute="top" secondItem="nT0-5T-PJt" secondAttribute="top" id="Hky-d0-jaQ"/>
                             <constraint firstAttribute="trailing" secondItem="dEX-r8-b3F" secondAttribute="trailing" id="JjE-FG-qtD"/>
-                            <constraint firstAttribute="bottom" secondItem="dEX-r8-b3F" secondAttribute="bottom" constant="29" id="mVp-UA-z7G"/>
                             <constraint firstItem="dEX-r8-b3F" firstAttribute="top" secondItem="YBF-ON-sRb" secondAttribute="bottom" id="xYp-ZB-aQO"/>
                         </constraints>
                     </view>
@@ -730,13 +729,13 @@
                         <outlet property="removedFromUnprotectedSites" destination="i0D-m3-TFt" id="4re-R5-nlN"/>
                         <outlet property="reportBrokenSiteCTA" destination="QaT-Zm-7Gd" id="nei-Sy-8t4"/>
                         <outlet property="siteTitle" destination="Zyd-k1-7eh" id="w1h-P4-IrE"/>
-                        <outlet property="tempUnprotectedMessage" destination="CGj-Xm-Y7b" id="BHF-K4-CEF"/>
+                        <outlet property="temporarilyUnprotectedMessage" destination="cGt-vj-aaM" id="918-AA-tAJ"/>
                         <outlet property="trackersIcon" destination="H5D-fS-3Pc" id="hho-pH-KmM"/>
                         <outlet property="trackersLabel" destination="vJA-6G-nQL" id="bfi-GR-7eE"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-238" y="-88.5"/>
+            <point key="canvasLocation" x="-238" y="-88"/>
         </scene>
         <!--Report Broken Site Controller-->
         <scene sceneID="j2b-jG-Gg7">
@@ -930,11 +929,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="10" height="452"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="wQE-8q-Cf2">
-                            <rect key="frame" x="0.0" y="0.0" width="10" height="452"/>
+                            <rect key="frame" x="0.0" y="0.0" width="10" height="437"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" outlineTableColumn="ukL-ac-7We" id="9ad-6x-2Xl">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="452"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="437"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -1208,7 +1207,7 @@
                         </clipView>
                         <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Saj-j1-9Fy">
-                            <rect key="frame" x="0.0" y="436" width="10" height="16"/>
+                            <rect key="frame" x="0.0" y="437" width="10" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="cLw-CD-NZG">
@@ -1265,6 +1264,9 @@
         </namedColor>
         <namedColor name="SiteTitle">
             <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TemporarilyUnprotectedBackground">
+            <color red="0.99215686274509807" green="0.94901960784313721" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
