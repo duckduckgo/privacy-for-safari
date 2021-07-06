@@ -213,6 +213,7 @@
 		85F087B5230828870041D733 /* OnboardingGetStartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B4230828870041D733 /* OnboardingGetStartedController.swift */; };
 		85F087B7230828C40041D733 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F087B6230828C40041D733 /* OnboardingScreen.swift */; };
 		AA6820B5254B0E49005ED0D5 /* ToolbarIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */; };
+		AA70F4DD26939C5E001C4846 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA70F4DC26939C5E001C4846 /* ColorView.swift */; };
 		AA8B72E62630494E00317524 /* ToolbarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8B72E52630494E00317524 /* ToolbarIcon.swift */; };
 /* End PBXBuildFile section */
 
@@ -614,6 +615,7 @@
 		85F087B6230828C40041D733 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		85FF17BA232BB57200FB036C /* BrokenSiteReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokenSiteReporter.swift; sourceTree = "<group>"; };
 		AA6820B4254B0E49005ED0D5 /* ToolbarIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarIcon.pdf; sourceTree = "<group>"; };
+		AA70F4DC26939C5E001C4846 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		AA8B72E52630494E00317524 /* ToolbarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -857,6 +859,7 @@
 				85417D98226762870062A081 /* script.js */,
 				85C7AC5B22CCDB3500619302 /* TrackersDetailViewController.swift */,
 				8587FD5622C67D2D0072F47F /* UserText.swift */,
+				AA70F4DC26939C5E001C4846 /* ColorView.swift */,
 			);
 			path = SafariAppExtension;
 			sourceTree = "<group>";
@@ -1601,6 +1604,7 @@
 				8510B262226F5A3B0015D406 /* NSViewControllerExtension.swift in Sources */,
 				8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */,
 				850385FC22F864BE002259DB /* AppLinks.swift in Sources */,
+				AA70F4DD26939C5E001C4846 /* ColorView.swift in Sources */,
 				8590F40C22CE563800B7473A /* StringExtension.swift in Sources */,
 				855205CE23350163003E5640 /* BundleIds.swift in Sources */,
 				855C129423193225005B21FC /* ReportBrokenSiteController.swift in Sources */,

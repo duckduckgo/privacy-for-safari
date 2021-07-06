@@ -169,7 +169,7 @@ class TrackersDetailTrackerView: NSTableCellView {
 extension PageData {
     
     func trackerBreakdown() -> [ TrackersDetailViewController.TableDataItem ] {
-        let trackersByEntity = isTrusted ? loadedTrackersByEntity() : blockedTrackersByEntity()
+        let trackersByEntity = (isTrusted || isBroken) ? loadedTrackersByEntity() : blockedTrackersByEntity()
 
         return trackersByEntity.map { t -> [ TrackersDetailViewController.TableDataItem ] in
             let entity = TrackersDetailViewController.TableDataItem.entity(name: t.entityName, imageName: "PP Network Icon \(t.entityName)")
@@ -180,7 +180,7 @@ extension PageData {
     }
 
     var trackersText: String {
-        if isTrusted {
+        if isTrusted || isBroken {
             let count = loadedTrackers.count
             return String(format: UserText.trackersFound, count)
         } else {
@@ -192,7 +192,7 @@ extension PageData {
 
     var networksHeroIcon: NSImage? {
         let imageName: String
-        if isTrusted {
+        if isTrusted || isBroken {
             imageName = loadedTrackers.count == 0 ? "PP Hero Major Off" : "PP Hero Major Bad"
         } else {
             imageName = "PP Hero Major On"
