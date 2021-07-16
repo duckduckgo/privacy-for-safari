@@ -925,20 +925,20 @@
         <scene sceneID="hLn-ju-cIt">
             <objects>
                 <viewController storyboardIdentifier="TrackersDetail" id="jyJ-fd-6T4" customClass="TrackersDetailViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="H80-34-EsR">
-                        <rect key="frame" x="0.0" y="0.0" width="10" height="452"/>
+                    <scrollView key="view" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="H80-34-EsR">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="452"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="wQE-8q-Cf2">
-                            <rect key="frame" x="0.0" y="0.0" width="10" height="437"/>
+                            <rect key="frame" x="0.0" y="0.0" width="270" height="452"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" outlineTableColumn="ukL-ac-7We" id="9ad-6x-2Xl">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="437"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="302" height="452"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="310" minWidth="310" maxWidth="310" id="ukL-ac-7We">
+                                        <tableColumn width="270" minWidth="270" maxWidth="270" id="ukL-ac-7We">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -950,22 +950,22 @@
                                             </textFieldCell>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="HeaderCell" id="LJ5-nK-G7y" customClass="TrackersDetailHeaderView" customModule="SafariAppExtension" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="0.0" width="322" height="286"/>
+                                                    <rect key="frame" x="10" y="0.0" width="270" height="286"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="f9l-hk-oud">
-                                                            <rect key="frame" x="0.0" y="0.0" width="322" height="286"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="286"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="nZJ-3g-FKG" customClass="ClickableView" customModule="SafariAppExtension" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="126" width="322" height="160"/>
+                                                                    <rect key="frame" x="0.0" y="126" width="270" height="160"/>
                                                                     <subviews>
                                                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="kMr-AU-kiu">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="322" height="160"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="160"/>
                                                                         </view>
                                                                         <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-j8-DKP" userLabel="Separator">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="322" height="1"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="1"/>
                                                                             <view key="contentView" id="Gca-u3-ImN">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="322" height="1"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="1"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             </view>
                                                                             <constraints>
@@ -975,7 +975,7 @@
                                                                             <color key="fillColor" name="SeparatorColor"/>
                                                                         </box>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbI-MO-yfT" userLabel="Header Stack">
-                                                                            <rect key="frame" x="87" y="17" width="148" height="126"/>
+                                                                            <rect key="frame" x="61" y="17" width="148" height="126"/>
                                                                             <subviews>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8md-4P-cpe">
                                                                                     <rect key="frame" x="45" y="61" width="58" height="65"/>
@@ -1055,10 +1055,10 @@
                                                                     </gestureRecognizers>
                                                                 </customView>
                                                                 <view translatesAutoresizingMaskIntoConstraints="NO" id="aFJ-fb-Ho9">
-                                                                    <rect key="frame" x="0.0" y="-2" width="322" height="128"/>
+                                                                    <rect key="frame" x="0.0" y="-2" width="270" height="128"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yyf-a6-7RY">
-                                                                            <rect key="frame" x="14" y="27" width="294" height="85"/>
+                                                                            <rect key="frame" x="14" y="10" width="242" height="102"/>
                                                                             <textFieldCell key="cell" selectable="YES" alignment="center" id="fFp-gK-DOO">
                                                                                 <font key="font" metaFont="menu" size="14"/>
                                                                                 <string key="title">Tracker networks aggregate your web history into a data profile about you.  Major tracker networks are more harmful because they can track and target you across more of the Internet.</string>
@@ -1067,9 +1067,9 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="H22-CU-nof" userLabel="Separator">
-                                                                            <rect key="frame" x="0.0" y="10" width="322" height="1"/>
+                                                                            <rect key="frame" x="0.0" y="-7" width="270" height="1"/>
                                                                             <view key="contentView" id="8st-X6-On5">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="322" height="1"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="1"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             </view>
                                                                             <constraints>
@@ -1113,14 +1113,14 @@
                                                     </connections>
                                                 </tableCellView>
                                                 <tableCellView identifier="EntityCell" id="hii-fF-i5g" customClass="TrackersDetailEntityView" customModule="SafariAppExtension" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="286" width="322" height="50"/>
+                                                    <rect key="frame" x="10" y="286" width="270" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arI-Lu-XJu">
-                                                            <rect key="frame" x="22" y="6" width="278" height="24"/>
+                                                            <rect key="frame" x="22" y="6" width="226" height="24"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6mQ-Fv-1Ea">
-                                                                    <rect key="frame" x="-2" y="4" width="250" height="17"/>
+                                                                    <rect key="frame" x="-2" y="4" width="198" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Google" id="TAL-FG-lHZ">
                                                                         <font key="font" metaFont="systemBold" size="14"/>
                                                                         <color key="textColor" name="ItemTitle"/>
@@ -1128,7 +1128,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <imageView horizontalHuggingPriority="750" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vNa-oO-8vi">
-                                                                    <rect key="frame" x="254" y="0.0" width="24" height="24"/>
+                                                                    <rect key="frame" x="202" y="0.0" width="24" height="24"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="PP Network Icon google" id="hPZ-nd-Z4M"/>
                                                                 </imageView>
                                                             </subviews>
@@ -1152,15 +1152,15 @@
                                                         <outlet property="imageView" destination="vNa-oO-8vi" id="j8O-zY-7U8"/>
                                                     </connections>
                                                 </tableCellView>
-                                                <tableCellView identifier="TrackerCell" id="qhj-2o-p0u" customClass="TrackersDetailTrackerView" customModule="SafariAppExtension" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="336" width="322" height="20"/>
+                                                <tableCellView identifier="TrackerCell" misplaced="YES" id="qhj-2o-p0u" customClass="TrackersDetailTrackerView" customModule="SafariAppExtension" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="336" width="270" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vx-DZ-c6D">
-                                                            <rect key="frame" x="22" y="0.0" width="278" height="20"/>
+                                                            <rect key="frame" x="22" y="0.0" width="245" height="20"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6pU-0U-f8d">
-                                                                    <rect key="frame" x="-2" y="2" width="200" height="17"/>
+                                                                    <rect key="frame" x="-2" y="2" width="167" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="tag-manager.google.com" id="mrn-JJ-gQp">
                                                                         <font key="font" metaFont="menu" size="14"/>
                                                                         <color key="textColor" name="ItemTitle"/>
@@ -1168,7 +1168,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AkB-GO-4aF">
-                                                                    <rect key="frame" x="202" y="2" width="78" height="17"/>
+                                                                    <rect key="frame" x="169" y="2" width="78" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Advertising" id="SgY-5v-sqD">
                                                                         <font key="font" metaFont="menu" size="14"/>
                                                                         <color key="textColor" name="ItemTitle"/>
@@ -1206,8 +1206,8 @@
                             <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                         </clipView>
                         <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
-                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Saj-j1-9Fy">
-                            <rect key="frame" x="0.0" y="437" width="10" height="15"/>
+                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.3125" horizontal="YES" id="Saj-j1-9Fy">
+                            <rect key="frame" x="0.0" y="436" width="270" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="cLw-CD-NZG">
@@ -1221,7 +1221,7 @@
                 </viewController>
                 <customObject id="PYA-BJ-iVJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-378" y="511.5"/>
+            <point key="canvasLocation" x="-362.5" y="511"/>
         </scene>
     </scenes>
     <resources>
