@@ -15,7 +15,7 @@ We use Proxima Nova fonts which are proprietary and cannot be committed to sourc
 
 ***CAUTION** - this is a destructive process.  Please be comfortable with the contents of `deleteApp.sh` before running it.*
 
-To competely remove the app and any files it creates:
+To completely remove the app and any files it creates:
 
 * Disable the extension in Safari's Extension Preferences pane. 
 * Run the `./deleteApp.sh` script.
