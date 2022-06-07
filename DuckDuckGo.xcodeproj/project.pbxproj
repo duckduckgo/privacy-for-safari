@@ -1121,6 +1121,7 @@
 			buildConfigurationList = 85417D70226605E60062A081 /* Build configuration list for PBXNativeTarget "DuckDuckGo Privacy Essentials" */;
 			buildPhases = (
 				854A9F3022706478008F2A93 /* Install Fonts */,
+				85417D73226613900062A081 /* Swiftlint */,
 				85417D5C226605E60062A081 /* Sources */,
 				85417D5D226605E60062A081 /* Frameworks */,
 				85417D5E226605E60062A081 /* Resources */,
@@ -1502,6 +1503,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		85417D73226613900062A081 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n   if [ ! -z \"$BITRISE_PROJECT_PATH\" ] || [ \"$CONFIGURATION\" = \"Release\" ]; then\n       swiftlint lint --strict\n       if [ $? -ne 0 ]; then\n           echo \"error: SwiftLint validation failed.\"\n           exit 1\n       fi\n   else\n       swiftlint lint\n   fi\nelse\n   echo \"error: SwiftLint not installed. Install using \\`brew install swiftlint\\`\"\n   exit 1\nfi\n";
+		};
 		854A9F3022706478008F2A93 /* Install Fonts */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
