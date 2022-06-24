@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -114,7 +114,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                     <connections>
                         <outlet property="debugMenu" destination="wpr-3q-Mcd" id="GSQ-Gk-xZj"/>
                     </connections>
@@ -150,7 +150,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="MainViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="MainViewController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -181,7 +181,7 @@
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzr-0X-7wL">
                                 <rect key="frame" x="0.0" y="320" width="210" height="180"/>
                                 <subviews>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-2m-qQh" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-2m-qQh" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="120" width="210" height="60"/>
                                         <view key="contentView" id="bX0-Hx-0fO">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
@@ -194,7 +194,7 @@
                                                     <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hb0-ib-rpC">
-                                                    <rect key="frame" x="18" y="20" width="55" height="21"/>
+                                                    <rect key="frame" x="18" y="20" width="54" height="21"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Home" id="n9W-rC-dVl">
                                                         <font key="font" metaFont="systemSemibold" size="18"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -231,7 +231,7 @@
                                             <outlet property="label" destination="Hb0-ib-rpC" id="sM9-b4-Zn2"/>
                                         </connections>
                                     </box>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ryO-Y9-5T6" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ryO-Y9-5T6" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="60" width="210" height="60"/>
                                         <view key="contentView" id="UDQ-4l-MkG">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
@@ -244,7 +244,7 @@
                                                     <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-oR-IZE">
-                                                    <rect key="frame" x="18" y="20" width="158" height="21"/>
+                                                    <rect key="frame" x="18" y="20" width="157" height="21"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Unprotected Sites" id="PCA-Tc-qMw">
                                                         <font key="font" metaFont="systemSemibold" size="18"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -281,7 +281,7 @@
                                             <outlet property="label" destination="gyh-oR-IZE" id="rpC-MA-jRg"/>
                                         </connections>
                                     </box>
-                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sfB-pB-4F4" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sfB-pB-4F4" userLabel="Section Button" customClass="SectionButton" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
                                         <view key="contentView" id="ugv-il-D4k">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="60"/>
@@ -294,7 +294,7 @@
                                                     <rect key="frame" x="0.0" y="-2" width="210" height="5"/>
                                                 </box>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OGJ-5a-nbM">
-                                                    <rect key="frame" x="18" y="20" width="141" height="21"/>
+                                                    <rect key="frame" x="18" y="20" width="140" height="21"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Share Feedback" id="GmJ-LU-FKd">
                                                         <font key="font" metaFont="systemSemibold" size="18"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -376,7 +376,7 @@
         <!--Send Feedback View Controller-->
         <scene sceneID="6KS-NO-xBy">
             <objects>
-                <viewController storyboardIdentifier="SendFeedback" id="KsG-jK-kKk" customClass="SendFeedbackViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SendFeedback" id="KsG-jK-kKk" customClass="SendFeedbackViewController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="lta-Uq-f2F">
                         <rect key="frame" x="0.0" y="0.0" width="690" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -391,7 +391,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="690" height="500"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gn9-QS-Awt">
-                                        <rect key="frame" x="49" y="439" width="173" height="26"/>
+                                        <rect key="frame" x="49" y="439" width="172" height="26"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Help Us Improve" id="hpb-0h-nC7">
                                             <font key="font" metaFont="systemBold" size="22"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -407,8 +407,8 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rlz-64-DEm">
-                                        <rect key="frame" x="51" y="415" width="567" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Submitting anonymous feedback helps us improve DuckDuckGo Privacy Essentials for Safari." id="MQM-3V-ZA7">
+                                        <rect key="frame" x="51" y="415" width="502" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Submitting anonymous feedback helps us improve DuckDuckGo Privacy for Safari." id="MQM-3V-ZA7">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -448,7 +448,7 @@
                                         </scroller>
                                     </scrollView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qsl-9j-tBO">
-                                        <rect key="frame" x="47" y="180" width="83" height="32"/>
+                                        <rect key="frame" x="46" y="181" width="77" height="32"/>
                                         <buttonCell key="cell" type="push" title="Submit" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bHN-sH-lDc">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -497,30 +497,30 @@
         <!--Trusted Sites View Controller-->
         <scene sceneID="ynG-g0-0fY">
             <objects>
-                <viewController storyboardIdentifier="TrustedSites" id="GZA-B9-v0r" customClass="TrustedSitesViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrustedSites" id="GZA-B9-v0r" customClass="TrustedSitesViewController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="TQc-Lz-EYw">
-                        <rect key="frame" x="0.0" y="0.0" width="692" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="HCw-sJ-1SX">
-                                <rect key="frame" x="0.0" y="0.0" width="692" height="500"/>
+                                <rect key="frame" x="0.0" y="0.0" width="712" height="500"/>
                                 <connections>
                                     <segue destination="t6J-9g-unl" kind="embed" id="WR4-Fj-Y26"/>
                                 </connections>
                             </containerView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="100" horizontalPageScroll="10" verticalLineScroll="100" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzd-oU-6hJ">
-                                <rect key="frame" x="51" y="0.0" width="591" height="500"/>
+                                <rect key="frame" x="51" y="0.0" width="611" height="500"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="xgs-bV-kmC">
-                                    <rect key="frame" x="0.0" y="0.0" width="591" height="500"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="611" height="500"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="100" viewBased="YES" id="mLd-CF-Xnz">
-                                            <rect key="frame" x="0.0" y="0.0" width="591" height="500"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="611" height="500"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="586" minWidth="40" maxWidth="1000" id="Jc3-sP-dr8">
+                                                <tableColumn width="554" minWidth="40" maxWidth="1000" id="Jc3-sP-dr8">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -533,11 +533,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="Header" id="9Z7-mT-FYE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="586" height="100"/>
+                                                            <rect key="frame" x="10" y="0.0" width="566" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBi-uE-RQS">
-                                                                    <rect key="frame" x="0.0" y="43" width="586" height="26"/>
+                                                                    <rect key="frame" x="0.0" y="43" width="566" height="26"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Unprotected Sites" id="lcM-vz-Ltd">
                                                                         <font key="font" metaFont="systemBold" size="22"/>
@@ -559,14 +559,14 @@
                                                                 <outlet property="textField" destination="aBi-uE-RQS" id="PI9-1v-JrM"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="Entry" id="i9m-aw-Vzv" customClass="ProtectionEntryTableCellView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="100" width="586" height="50"/>
+                                                        <tableCellView identifier="Entry" id="i9m-aw-Vzv" customClass="ProtectionEntryTableCellView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
+                                                            <rect key="frame" x="10" y="100" width="566" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="vPq-rW-vBd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="586" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="566" height="50"/>
                                                                     <view key="contentView" id="H7z-gc-R6S">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="586" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="566" height="50"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmB-jK-ffj">
@@ -664,7 +664,7 @@
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Exceptions" id="dtH-LG-vGf"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4GI-aE-TNs">
-                                            <rect key="frame" x="132" y="211" width="224" height="26"/>
+                                            <rect key="frame" x="133" y="211" width="223" height="26"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="No unprotected sites" id="7v2-fY-5nH">
                                                 <font key="font" metaFont="systemBold" size="22"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -739,7 +739,7 @@
         <!--Home Section View Controller-->
         <scene sceneID="KW6-SJ-uCZ">
             <objects>
-                <viewController storyboardIdentifier="Home" id="4Zn-Kl-PVb" customClass="HomeSectionViewController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="4Zn-Kl-PVb" customClass="HomeSectionViewController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="omw-7N-PNg">
                         <rect key="frame" x="0.0" y="0.0" width="690" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -749,7 +749,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="OnboardingLogo" id="ei6-Rw-d6d"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ok5-Tf-GTo">
-                                <rect key="frame" x="249" y="302" width="192" height="13"/>
+                                <rect key="frame" x="249" y="302" width="193" height="13"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="P R I V A C Y   E S S E N T I A L S  1 . 0" id="H7j-Jt-dzE">
                                     <font key="font" metaFont="systemHeavy" size="10"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -771,7 +771,7 @@
                                             <size key="maxSize" width="508" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
-                                                    <string key="content">DuckDuckGo Privacy Essentials for Safari helps you seamlessly take control of your personal information. Private search, tracker blocking, and more!</string>
+                                                    <string key="content">DuckDuckGo Privacy for Safari helps you seamlessly take control of your personal information. Private search, tracker blocking, and more!</string>
                                                     <attributes>
                                                         <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="menu" size="14"/>
@@ -827,7 +827,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kly-RK-eKj">
-                                            <rect key="frame" x="298" y="42" width="111" height="32"/>
+                                            <rect key="frame" x="297" y="42" width="113" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="99" id="3G3-Qp-I5E"/>
                                             </constraints>
@@ -840,7 +840,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-fs-gyY">
-                                            <rect key="frame" x="298" y="14" width="111" height="32"/>
+                                            <rect key="frame" x="297" y="14" width="113" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="99" id="l0C-xO-bzg"/>
                                             </constraints>
@@ -852,7 +852,7 @@
                                                 <action selector="showDashboardPreferences:" target="4Zn-Kl-PVb" id="cC2-cP-W4t"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-OX-Hbd" customClass="ClickableTextField" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TL2-OX-Hbd" customClass="ClickableTextField" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                             <rect key="frame" x="319" y="51" width="68" height="16"/>
                                             <gestureRecognizers>
                                                 <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="PGa-5F-wey">
@@ -867,7 +867,7 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-xD-oXa" customClass="ClickableTextField" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-xD-oXa" customClass="ClickableTextField" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                             <rect key="frame" x="319" y="23" width="68" height="16"/>
                                             <gestureRecognizers>
                                                 <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="OCA-nj-tNG">
@@ -928,7 +928,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kyc-ks-BHN">
-                                            <rect key="frame" x="299" y="6" width="110" height="32"/>
+                                            <rect key="frame" x="298" y="7" width="112" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="98" id="qty-DP-27T"/>
                                             </constraints>
@@ -958,7 +958,7 @@
                                 <color key="fillColor" name="HomeScreenFill"/>
                             </box>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-5a-asi">
-                                <rect key="frame" x="565" y="64" width="25" height="25"/>
+                                <rect key="frame" x="564" y="65" width="25" height="25"/>
                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SSc-Dd-hfP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1010,7 +1010,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="FeedbackSent" id="Svk-jx-5a2"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ahO-yt-hV2">
-                                <rect key="frame" x="214" y="223" width="162" height="26"/>
+                                <rect key="frame" x="215" y="223" width="161" height="26"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Feedback Sent" id="sZt-Yz-dxS">
                                     <font key="font" metaFont="systemBold" size="22"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1031,7 +1031,7 @@
                                             <size key="minSize" width="370" height="42"/>
                                             <size key="maxSize" width="388" height="10000000"/>
                                             <attributedString key="textStorage">
-                                                <fragment content="Thank you! Your feedback will help us improve DuckDuckGo Privacy Essentials for Safari.">
+                                                <fragment content="Thank you! Your feedback will help us improve DuckDuckGo Privacy for Safari.">
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="system"/>
