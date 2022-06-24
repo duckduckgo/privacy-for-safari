@@ -618,6 +618,7 @@
 		AA70F4DC26939C5E001C4846 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		AA8B72E52630494E00317524 /* ToolbarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarIcon.swift; sourceTree = "<group>"; };
 		AAC688222865EE2C00D54247 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AAC68823286601A600D54247 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -767,6 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				AAC688222865EE2C00D54247 /* README.md */,
+				AAC68823286601A600D54247 /* CONTRIBUTING.md */,
 				85417D62226605E60062A081 /* App */,
 				85417DAA226762E40062A081 /* ContentBlockerExtension */,
 				85E9522C22B0FDE80071281E /* CoreFramework */,
