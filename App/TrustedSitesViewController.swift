@@ -1,6 +1,6 @@
 //
 //  TrustedSitesViewController.swift
-//  DuckDuckGo Privacy Essentials
+//  DuckDuckGo Privacy for Safari
 //
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
