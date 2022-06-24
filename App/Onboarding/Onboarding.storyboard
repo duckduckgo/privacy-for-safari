@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="AfP-Og-hqd">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="AfP-Og-hqd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,7 +10,7 @@
         <!--Onboarding Page Controller-->
         <scene sceneID="P27-Hm-vY6">
             <objects>
-                <pagecontroller id="AfP-Og-hqd" customClass="OnboardingPageController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <pagecontroller id="AfP-Og-hqd" customClass="OnboardingPageController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Bs8-F4-LKE">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -23,7 +24,7 @@
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="35" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gs1-RW-EYN">
                                             <rect key="frame" x="400" y="101" width="100" height="10"/>
                                             <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="y4f-Nc-qcC" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="y4f-Nc-qcC" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="10" id="Ndv-BO-UrF"/>
@@ -33,14 +34,14 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="active" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nVi-Tk-Eh8" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nVi-Tk-Eh8" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                                     <rect key="frame" x="45" y="0.0" width="10" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="10" id="qpb-lq-E7e"/>
                                                         <constraint firstAttribute="width" constant="10" id="wzU-79-Gma"/>
                                                     </constraints>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="3nX-Uf-Mkg" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="3nX-Uf-Mkg" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                                     <rect key="frame" x="90" y="0.0" width="10" height="10"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="10" id="aW9-PX-29e"/>
@@ -88,14 +89,14 @@
         <!--Onboarding Get Started Controller-->
         <scene sceneID="tiI-Ys-NMQ">
             <objects>
-                <viewController storyboardIdentifier="GetStarted" id="f9Y-b3-E89" customClass="OnboardingGetStartedController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GetStarted" id="f9Y-b3-E89" customClass="OnboardingGetStartedController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="YHX-zc-TUw">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yBs-RL-7Yp">
-                                <rect key="frame" x="229" y="235" width="442" height="28"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enable DuckDuckGo Privacy Essentials" id="uvo-bI-rWV">
+                                <rect key="frame" x="237" y="235" width="427" height="28"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Enable DuckDuckGo Privacy for Safari" id="uvo-bI-rWV">
                                     <font key="font" metaFont="systemBold" size="24"/>
                                     <color key="textColor" name="OnboardingTitleText"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -123,7 +124,7 @@
                                             <size key="minSize" width="423" height="69"/>
                                             <size key="maxSize" width="581" height="10000000"/>
                                             <attributedString key="textStorage">
-                                                <fragment content="Before DuckDuckGo Privacy Essentials will work, you'll need to enable its features within Safari.">
+                                                <fragment content="Before DuckDuckGo Privacy for Safari will work, you'll need to enable its features within Safari.">
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="system" size="15"/>
@@ -149,7 +150,7 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3aH-wP-8hp">
-                                <rect key="frame" x="354" y="44" width="192" height="32"/>
+                                <rect key="frame" x="353" y="44" width="194" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="Esj-Y2-nd5"/>
                                 </constraints>
@@ -166,8 +167,8 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LogoHorizontalText" id="dhZ-2E-Eae"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UET-kF-jZx">
-                                <rect key="frame" x="690" y="455" width="192" height="13"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="P R I V A C Y   E S S E N T I A L S  1 . 0" id="lGw-WR-7sH">
+                                <rect key="frame" x="724" y="455" width="158" height="13"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="P R I V A C Y  F O R  S A F A R I" id="lGw-WR-7sH">
                                     <font key="font" metaFont="systemHeavy" size="10"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -201,13 +202,13 @@
         <!--Onboarding Enable Extensions Controller-->
         <scene sceneID="OAE-3j-Ikk">
             <objects>
-                <viewController storyboardIdentifier="EnableExtensions" id="UPf-Ie-zeu" customClass="OnboardingEnableExtensionsController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnableExtensions" id="UPf-Ie-zeu" customClass="OnboardingEnableExtensionsController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Ue2-PN-5ym">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4kE-rh-WQJ">
-                                <rect key="frame" x="354" y="44" width="192" height="32"/>
+                                <rect key="frame" x="353" y="44" width="194" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="qKi-EX-hO6"/>
                                 </constraints>
@@ -220,7 +221,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jIR-pB-tTg">
-                                <rect key="frame" x="340" y="433" width="221" height="21"/>
+                                <rect key="frame" x="340" y="433" width="220" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable Safari Extensions" id="v4p-wT-Ivd">
                                     <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="OnboardingTitleText"/>
@@ -270,7 +271,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yeu-bq-jYA" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yeu-bq-jYA" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="17" y="122" width="7" height="7"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -280,7 +281,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-8S-FKd" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-8S-FKd" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="17" y="180" width="7" height="7"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -290,7 +291,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isd-mU-QBQ" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isd-mU-QBQ" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="17" y="56" width="7" height="7"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -329,13 +330,13 @@
         <!--Onboarding Set Default Search Controller-->
         <scene sceneID="A8A-TK-d6m">
             <objects>
-                <viewController storyboardIdentifier="SetDefaultSearch" id="n26-cz-W7b" customClass="OnboardingSetDefaultSearchController" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetDefaultSearch" id="n26-cz-W7b" customClass="OnboardingSetDefaultSearchController" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OWq-he-coW">
                         <rect key="frame" x="0.0" y="0.0" width="900" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qKW-ih-IdP">
-                                <rect key="frame" x="326" y="433" width="249" height="21"/>
+                                <rect key="frame" x="327" y="433" width="247" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable DuckDuckGo Search" id="lCZ-4m-L2Z">
                                     <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="OnboardingTitleText"/>
@@ -367,7 +368,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odZ-Tl-5mp" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odZ-Tl-5mp" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="17" y="180" width="7" height="7"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -377,7 +378,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </customView>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvm-VB-6g0" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvm-VB-6g0" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="17" y="122" width="7" height="7"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -405,7 +406,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ku1-cN-brD" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_Essentials" customModuleProvider="target">
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ku1-cN-brD" customClass="CircleIndicatorView" customModule="DuckDuckGo_Privacy_for_Safari" customModuleProvider="target">
                                         <rect key="frame" x="17" y="56" width="7" height="7"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -424,10 +425,10 @@
                                 </constraints>
                             </customView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iz8-tZ-khS">
-                                <rect key="frame" x="264" y="51" width="372" height="21"/>
+                                <rect key="frame" x="264" y="51" width="372" height="20"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wz2-vd-WS9">
-                                        <rect key="frame" x="-6" y="-7" width="192" height="32"/>
+                                        <rect key="frame" x="-7" y="-7" width="194" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="2ff-ME-Tje"/>
                                         </constraints>
@@ -440,7 +441,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9XQ-xS-ZUb">
-                                        <rect key="frame" x="186" y="-7" width="192" height="32"/>
+                                        <rect key="frame" x="185" y="-7" width="194" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="Ar2-0z-4Mh"/>
                                         </constraints>
