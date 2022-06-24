@@ -2359,7 +2359,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo Privacy Essentials.app/Contents/MacOS/DuckDuckGo Privacy Essentials";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo Privacy for Safari.app/Contents/MacOS/DuckDuckGo Privacy for Safari";
 			};
 			name = Debug;
 		};
@@ -2380,7 +2380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.duckduckgo.macos.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo Privacy Essentials.app/Contents/MacOS/DuckDuckGo Privacy Essentials";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuckDuckGo Privacy for Safari.app/Contents/MacOS/DuckDuckGo Privacy for Safari";
 			};
 			name = Release;
 		};
