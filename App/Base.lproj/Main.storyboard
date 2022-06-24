@@ -17,14 +17,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="DuckDuckGo" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About Privacy Essentials" id="5kV-Vb-QxS">
+                                        <menuItem title="About Privacy for Safari" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Hide Privacy Essentials" keyEquivalent="h" id="QgC-Pb-WsQ">
+                                        <menuItem title="Hide Privacy for Safari" keyEquivalent="h" id="QgC-Pb-WsQ">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="8gs-GZ-RdH"/>
                                             </connections>
@@ -42,7 +42,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kHZ-ad-cb2"/>
-                                        <menuItem title="Quit Privacy Essentials" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Privacy for Safari" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
