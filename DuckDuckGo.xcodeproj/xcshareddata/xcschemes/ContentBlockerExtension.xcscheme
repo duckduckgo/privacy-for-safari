@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "85417D5F226605E60062A081"
-               BuildableName = "DuckDuckGo for Safari.app"
+               BuildableName = "DuckDuckGo Privacy for Safari.app"
                BlueprintName = "DuckDuckGo Privacy for Safari"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo for Safari.app"
+            BuildableName = "DuckDuckGo Privacy for Safari.app"
             BlueprintName = "DuckDuckGo Privacy for Safari"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo for Safari.app"
+            BuildableName = "DuckDuckGo Privacy for Safari.app"
             BlueprintName = "DuckDuckGo Privacy for Safari"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
