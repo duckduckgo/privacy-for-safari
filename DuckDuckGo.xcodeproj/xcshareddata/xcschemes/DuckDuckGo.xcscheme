@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "85417D5F226605E60062A081"
-               BuildableName = "DuckDuckGo Privacy Essentials.app"
-               BlueprintName = "DuckDuckGo Privacy Essentials"
+               BuildableName = "DuckDuckGo Privacy for Safari.app"
+               BlueprintName = "DuckDuckGo Privacy for Safari"
                ReferencedContainer = "container:DuckDuckGo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -60,8 +60,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo Privacy Essentials.app"
-            BlueprintName = "DuckDuckGo Privacy Essentials"
+            BuildableName = "DuckDuckGo Privacy for Safari.app"
+            BlueprintName = "DuckDuckGo Privacy for Safari"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -109,8 +109,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo Privacy Essentials.app"
-            BlueprintName = "DuckDuckGo Privacy Essentials"
+            BuildableName = "DuckDuckGo Privacy for Safari.app"
+            BlueprintName = "DuckDuckGo Privacy for Safari"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -126,8 +126,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "85417D5F226605E60062A081"
-            BuildableName = "DuckDuckGo Privacy Essentials.app"
-            BlueprintName = "DuckDuckGo Privacy Essentials"
+            BuildableName = "DuckDuckGo Privacy for Safari.app"
+            BlueprintName = "DuckDuckGo Privacy for Safari"
             ReferencedContainer = "container:DuckDuckGo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -20,7 +20,7 @@
 import Foundation
 
 import XCTest
-@testable import DuckDuckGo_Privacy_Essentials
+@testable import DuckDuckGo_Privacy_for_Safari
 
 class SettingsTests: XCTestCase {
     

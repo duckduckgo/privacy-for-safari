@@ -1,6 +1,6 @@
 //
 //  AtbLocations.swift
-//  DuckDuckGo Privacy Essentials
+//  DuckDuckGo Privacy for Safari
 //
 //  Created by Chris Brind on 11/11/2019.
 //  Copyright © 2019 Duck Duck Go, Inc. All rights reserved.

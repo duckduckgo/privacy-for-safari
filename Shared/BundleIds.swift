@@ -1,6 +1,6 @@
 //
 //  AppIds.swift
-//  DuckDuckGo Privacy Essentials
+//  DuckDuckGo Privacy for Safari
 //
 //  Copyright © 2019 DuckDuckGo. All rights reserved.
 //
@@ -22,7 +22,6 @@ import Foundation
 struct BundleIds {
     
     static let app = "com.duckduckgo.macos.PrivacyEssentials"
-    static let appName = "DuckDuckGo Privacy Essentials"
     static let contentBlockerExtension = app + ".ContentBlockerExtension"
     static let safariAppExtension = app + ".SafariAppExtension"
     static let oldSyncApp = app + ".DuckDuckGoSync"

@@ -1,4 +1,4 @@
-# DuckDuckGo Privacy Essentials for Safari
+# DuckDuckGo Privacy for Safari
 
 ## Building
 Requires Xcode 11 and macOS 10.15 or better.
@@ -27,4 +27,4 @@ Please refer to [contributing](CONTRIBUTING.md).
 Contact us at https://duckduckgo.com/feedback if you have feedback, questions or want to chat.  You can also use the feedback form embedded within the macOS app - to do so open the app and select "Send Feedback".
 
 ## License
-DuckDuckGo Privacy Essentials for Safari is distributed under the Apache 2.0 [license](https://github.com/duckduckgo/privacy-essentials-safari/blob/master/LICENSE).
+DuckDuckGo Privacy for Safari is distributed under the Apache 2.0 [license](https://github.com/duckduckgo/privacy-essentials-safari/blob/master/LICENSE).

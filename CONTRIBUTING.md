@@ -1,4 +1,4 @@
-# Contributing to Privacy Essentials for Safari
+# Contributing to DuckDuckGo Privacy for Safari
 
 Thank you for taking the time to contribute! :sparkles:
 
