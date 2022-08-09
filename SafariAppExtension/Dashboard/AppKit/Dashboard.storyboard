@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="yAA-qf-Nl5">
+            <objects>
+                <pagecontroller storyboardIdentifier="NavController" showSeguePresentationStyle="single" id="6tI-Yp-yJT" customClass="NavigationController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="g7k-pO-hCX">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </pagecontroller>
+                <customObject id="R1v-Tp-hdP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-390" y="-834"/>
+        </scene>
+        <!--Report Broken Site Controller-->
+        <scene sceneID="j2b-jG-Gg7">
+            <objects>
+                <viewController storyboardIdentifier="ReportBrokenWebsite" id="YMj-4S-pCf" customClass="ReportBrokenSiteController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="t4Z-QY-57E">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="452"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <view id="ylS-Cp-teY">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="452"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y7r-G3-an3">
+                                        <rect key="frame" x="75" y="294" width="160" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="awd-MB-NjA"/>
+                                            <constraint firstAttribute="width" constant="160" id="ypf-p7-eyi"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="BrokenSite" id="yp2-aV-Gyb"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iha-Yn-ghd">
+                                        <rect key="frame" x="133" y="273" width="45" height="21"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Title" id="Ap1-of-iKK">
+                                            <font key="font" metaFont="systemSemibold" size="18"/>
+                                            <color key="textColor" name="BrokenSiteHeader"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dX0-Ho-UEB">
+                                        <rect key="frame" x="24" y="248" width="262" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="258" id="OHe-Ji-wre"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" selectable="YES" enabled="NO" alignment="center" title="Message" id="sLX-S1-EUY">
+                                            <font key="font" metaFont="menu" size="14"/>
+                                            <color key="textColor" name="BrokenSiteText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x9l-4V-3vD">
+                                        <rect key="frame" x="73" y="209" width="165" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Describe what happened" id="QD4-iW-w2v">
+                                            <font key="font" metaFont="menu" size="14"/>
+                                            <color key="textColor" name="BrokenSiteHeader"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <box boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UGk-iP-kR7">
+                                        <rect key="frame" x="139" y="181" width="32" height="20"/>
+                                        <view key="contentView" id="O7B-eb-3fc">
+                                            <rect key="frame" x="0.0" y="0.0" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kYW-BF-Ewc">
+                                                    <rect key="frame" x="-3" y="-4" width="39" height="25"/>
+                                                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="20j-wz-aYH">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="menu"/>
+                                                        <menu key="menu" id="G7g-x3-4Ud"/>
+                                                    </popUpButtonCell>
+                                                    <connections>
+                                                        <action selector="selectionChangedWithSender:" target="YMj-4S-pCf" id="mZ4-he-8iV"/>
+                                                    </connections>
+                                                </popUpButton>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="kYW-BF-Ewc" firstAttribute="width" secondItem="UGk-iP-kR7" secondAttribute="width" id="8x1-5K-Lgg"/>
+                                            <constraint firstItem="kYW-BF-Ewc" firstAttribute="centerX" secondItem="UGk-iP-kR7" secondAttribute="centerX" id="KwG-gP-aMb"/>
+                                            <constraint firstItem="kYW-BF-Ewc" firstAttribute="height" secondItem="UGk-iP-kR7" secondAttribute="height" id="Q8z-RC-1NX"/>
+                                            <constraint firstItem="kYW-BF-Ewc" firstAttribute="centerY" secondItem="UGk-iP-kR7" secondAttribute="centerY" id="eVD-b8-UA8"/>
+                                        </constraints>
+                                        <color key="borderColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="fillColor" name="underPageBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </box>
+                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LUb-P8-ECG" customClass="ClickableBox" customModule="SafariAppExtension" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="122" width="278" height="47"/>
+                                        <view key="contentView" id="fvj-kO-Tb3">
+                                            <rect key="frame" x="0.0" y="0.0" width="278" height="47"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ECL-Pg-CiH">
+                                                    <rect key="frame" x="99" y="16" width="80" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Send Report" drawsBackground="YES" id="ARk-Av-GWK">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="BrokenSiteButtonText"/>
+                                                        <color key="backgroundColor" red="1" green="0.99997597930000004" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ECL-Pg-CiH" firstAttribute="centerY" secondItem="fvj-kO-Tb3" secondAttribute="centerY" id="SHC-YZ-4V1"/>
+                                                <constraint firstItem="ECL-Pg-CiH" firstAttribute="centerX" secondItem="fvj-kO-Tb3" secondAttribute="centerX" id="T0u-eC-cd3"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="k3r-qN-HbE"/>
+                                        </constraints>
+                                        <gestureRecognizers>
+                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="F1Q-X1-w4C">
+                                                <connections>
+                                                    <action selector="submitClickedWithSender:" target="YMj-4S-pCf" id="R7K-E6-bTX"/>
+                                                </connections>
+                                            </clickGestureRecognizer>
+                                        </gestureRecognizers>
+                                        <color key="fillColor" name="HeaderMessage"/>
+                                    </box>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yY9-3b-LJi">
+                                        <rect key="frame" x="14" y="50" width="282" height="60"/>
+                                        <textFieldCell key="cell" selectable="YES" enabled="NO" alignment="center" id="v8Z-Bd-VHW">
+                                            <font key="font" metaFont="systemMedium" size="12"/>
+                                            <string key="title">Reports sent to DuckDuckGo are 100% anonymous and only include your selection above, the URL, and a list of trackers we found on the site.</string>
+                                            <color key="textColor" name="BrokenSiteText"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="x9l-4V-3vD" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="1aU-Q1-0ta"/>
+                                    <constraint firstItem="x9l-4V-3vD" firstAttribute="top" secondItem="dX0-Ho-UEB" secondAttribute="bottom" constant="22" id="CUd-56-5k9"/>
+                                    <constraint firstItem="UGk-iP-kR7" firstAttribute="top" secondItem="x9l-4V-3vD" secondAttribute="bottom" constant="8" id="Gzv-p6-Ewx"/>
+                                    <constraint firstItem="dX0-Ho-UEB" firstAttribute="top" secondItem="Iha-Yn-ghd" secondAttribute="bottom" constant="8" id="H7A-oh-MMT"/>
+                                    <constraint firstItem="Iha-Yn-ghd" firstAttribute="top" secondItem="y7r-G3-an3" secondAttribute="bottom" id="Jaj-jX-mm7"/>
+                                    <constraint firstItem="Iha-Yn-ghd" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="Mry-jn-mtX"/>
+                                    <constraint firstItem="y7r-G3-an3" firstAttribute="top" secondItem="ylS-Cp-teY" secondAttribute="top" constant="38" id="Njh-Kb-E5l"/>
+                                    <constraint firstItem="y7r-G3-an3" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="T8B-19-p3F"/>
+                                    <constraint firstItem="kYW-BF-Ewc" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="VUk-Wf-BaS"/>
+                                    <constraint firstItem="dX0-Ho-UEB" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="Xjp-Zr-bVZ"/>
+                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="top" secondItem="fvj-kO-Tb3" secondAttribute="bottom" constant="12" id="YwE-s1-mod"/>
+                                    <constraint firstItem="LUb-P8-ECG" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="cBp-RB-HaE"/>
+                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="width" secondItem="ylS-Cp-teY" secondAttribute="width" constant="-32" id="khF-lk-i5a"/>
+                                    <constraint firstItem="LUb-P8-ECG" firstAttribute="width" secondItem="ylS-Cp-teY" secondAttribute="width" constant="-32" id="qy6-d7-cBp"/>
+                                    <constraint firstItem="LUb-P8-ECG" firstAttribute="top" secondItem="UGk-iP-kR7" secondAttribute="bottom" constant="12" id="swx-c4-vFX"/>
+                                    <constraint firstItem="yY9-3b-LJi" firstAttribute="centerX" secondItem="ylS-Cp-teY" secondAttribute="centerX" id="thx-NT-hZe"/>
+                                </constraints>
+                            </view>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="s3C-jY-jh1">
+                                <rect key="frame" x="274" y="416" width="24" height="24"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Close" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Hga-MX-XXz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backWithSender:" target="YMj-4S-pCf" id="nkt-6P-frj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="s3C-jY-jh1" secondAttribute="trailing" constant="12" id="5Ig-uE-dB8"/>
+                            <constraint firstItem="s3C-jY-jh1" firstAttribute="top" secondItem="t4Z-QY-57E" secondAttribute="top" constant="12" id="TyR-xf-blX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bodyLabel" destination="dX0-Ho-UEB" id="d3c-iI-Lgu"/>
+                        <outlet property="describeLabel" destination="x9l-4V-3vD" id="esu-9l-wEU"/>
+                        <outlet property="infoLabel" destination="yY9-3b-LJi" id="inl-gW-G2w"/>
+                        <outlet property="popupBackground" destination="UGk-iP-kR7" id="aZe-NJ-P5e"/>
+                        <outlet property="popupMenu" destination="kYW-BF-Ewc" id="tCa-Sc-xa3"/>
+                        <outlet property="submitButton" destination="LUb-P8-ECG" id="E9n-93-REW"/>
+                        <outlet property="titleLabel" destination="Iha-Yn-ghd" id="po3-qQ-Ebn"/>
+                    </connections>
+                </viewController>
+                <customObject id="PUx-oB-4Fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10" y="664"/>
+        </scene>
+        <!--Requests Detail View Controller-->
+        <scene sceneID="xZL-Ry-jwY">
+            <objects>
+                <viewController storyboardIdentifier="RequestsDetail" id="bdf-tx-uKY" customClass="RequestsDetailViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2dc-u9-Wak">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="2RU-SG-EMZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="617"/>
+        </scene>
+        <!--Main Dashboard View Controller-->
+        <scene sceneID="pfV-rh-cZD">
+            <objects>
+                <viewController storyboardIdentifier="MainDashboard" id="uIr-XV-IR3" customClass="MainDashboardViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aYR-f6-QRm">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="do7-Nx-Hag" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="355" y="-112"/>
+        </scene>
+        <!--Trackers Detail View Controller-->
+        <scene sceneID="2d8-6a-HZ5">
+            <objects>
+                <viewController storyboardIdentifier="TrackersDetail" id="t5P-Bi-eez" customClass="TrackersDetailViewController" customModule="SafariAppExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9YJ-fm-Dy8">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="lVA-IG-me1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="617"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BrokenSite" width="248" height="248"/>
+        <image name="Close" width="24" height="24"/>
+        <namedColor name="BrokenSiteButtonText">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BrokenSiteHeader">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BrokenSiteText">
+            <color red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="HeaderMessage">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

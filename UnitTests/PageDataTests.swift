@@ -19,7 +19,7 @@
 
 import XCTest
 @testable import TrackerBlocking
-@testable import SafariAppExtension
+@testable import TrackerRadarKit
 
 class PageDataTests: XCTestCase {
 
@@ -30,54 +30,6 @@ class PageDataTests: XCTestCase {
         static let resource3 = URL(string: "https://tracker3.com/tracker.js")!
     }
 
-    func testWhenPageHasLoadedTrackersThenLoadedTrackersByEntityGeneratesListInEntityPrevalenceOrder() {
-        let pageData = PageData(trackerDataManager: MockTrackerDataManager(returnEntities: entities()))
-        pageData.loadedTrackers = [
-            detectedTracker(resource: URLs.resource3, owner: "Facebook"),
-            detectedTracker(resource: URLs.resource, owner: "Google"),
-            detectedTracker(resource: URLs.resource2, owner: "Google"),
-            detectedTracker(resource: URLs.resource, owner: "Google"),
-            detectedTracker(resource: URLs.resource2, owner: "Google")
-        ]
-        
-        let trackersByEntity = pageData.loadedTrackersByEntity()
-
-        guard trackersByEntity.count == 2 else {
-            XCTFail("wrong number of trackers")
-            return
-        }
-
-        XCTAssertEqual(trackersByEntity[0].entityName, "Google")
-        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker.com", "tracker2.com" ])
-        
-        XCTAssertEqual(trackersByEntity[1].entityName, "Facebook")
-        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker3.com" ])
-    }
-    
-    func testWhenPageHasBlockedTrackersThenBlockedTrackersByEntityGeneratesListInEntityPrevalenceOrder() {
-        let pageData = PageData(trackerDataManager: MockTrackerDataManager(returnEntities: entities()))
-
-        pageData.blockedTrackers = [
-            detectedTracker(resource: URLs.resource3, owner: "Facebook"),
-            detectedTracker(resource: URLs.resource, owner: "Google"),
-            detectedTracker(resource: URLs.resource2, owner: "Google"),
-            detectedTracker(resource: URLs.resource, owner: "Google"),
-            detectedTracker(resource: URLs.resource2, owner: "Google")
-        ]
-        
-        let trackersByEntity = pageData.blockedTrackersByEntity()
-        guard trackersByEntity.count == 2 else {
-            XCTFail("wrong number of trackers")
-            return
-        }
-
-        XCTAssertEqual(trackersByEntity[0].entityName, "Google")
-        XCTAssertEqual(trackersByEntity[0].trackers, [ "tracker.com", "tracker2.com" ])
-
-        XCTAssertEqual(trackersByEntity[1].entityName, "Facebook")
-        XCTAssertEqual(trackersByEntity[1].trackers, [ "tracker3.com" ])
-    }
-    
     func testWhenTrackersAreUpdatedThenScoreIsRecalculated() {
         let pageData = PageData(trackerDataManager: MockTrackerDataManager(returnEntities: entities()))
         let defaultGrade = pageData.calculateGrade()

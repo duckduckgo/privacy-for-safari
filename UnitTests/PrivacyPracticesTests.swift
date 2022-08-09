@@ -20,6 +20,7 @@
 
 import XCTest
 @testable import TrackerBlocking
+@testable import TrackerRadarKit
 
 class PrivacyPracticesTests: XCTestCase {
 
@@ -52,7 +53,7 @@ class PrivacyPracticesTests: XCTestCase {
 
     func testWhenRelatedEntityHasWorstScoreThenUseIt() {
         class Mock: MockTrackerDataManager {
-            override func entity(forUrl url: URL) -> Entity? {
+            override func entity(forUrl url: URL) -> Entity {
                 return Entity(displayName: "Facebook", domains: [], prevalence: 0)
             }
         }

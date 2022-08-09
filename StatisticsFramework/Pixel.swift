@@ -51,6 +51,10 @@ public enum PixelName: String {
     
     case safariBrowserExtensionSearch = "sbes"
 
+    // Ad click attribution
+    case adClickDetected = "m_ad_click_detected"
+    case adClickActive = "m_ad_click_active"
+
     // debug pixels
     case debugStatisticsTimeout = "m_sae_dbg_sts"
     case debugSyncTimeout = "m_sae_dbg_syn"
