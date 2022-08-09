@@ -20,23 +20,34 @@
 
 import XCTest
 @testable import TrackerBlocking
+@testable import TrackerRadarKit
 
 class TrackerDataManagerTests: XCTestCase {
+
+    func testCanonicalURL() {
+        let trackerData = TrackerData(trackers: [:],
+                                      entities: [:],
+                                      domains: [:],
+                                      cnames: ["cheekycname.website.com": "example.tracker.com"])
+        let manager = DefaultTrackerDataManager()
+        manager.trackerData = trackerData
+        let canonUrl = manager.canonicalURL(forUrl: URL(string: "https://cheekycname.website.com/somescript.js?x=1")!)
+        XCTAssertEqual(URL(string: "https://example.tracker.com/somescript.js?x=1"), canonUrl)
+    }
 
     func testWhenUrlDomainMatchesEntityThenItIsReturned() {
 
         let trackerData = TrackerData(trackers: [:],
-                                      entities: ["Google": Entity(displayName: "Google", domains: [], prevalence: 0.0) ],
+                                      entities: ["Google": Entity(displayName: "Google!", domains: [], prevalence: 0.0) ],
                                       domains: ["google.com": "Google"])
         let manager = DefaultTrackerDataManager()
         manager.trackerData = trackerData
 
-        XCTAssertNotNil(manager.entity(forUrl: URL(string: "https://www.google.com")!))
-        XCTAssertNotNil(manager.entity(forUrl: URL(string: "https://google.com")!))
-        XCTAssertNotNil(manager.entity(forUrl: URL(string: "https://hello.world.google.com")!))
+        XCTAssertEqual("Google!", manager.entity(forUrl: URL(string: "https://www.google.com")!)?.displayName)
+        XCTAssertEqual("Google!", manager.entity(forUrl: URL(string: "https://google.com")!)?.displayName)
+        XCTAssertEqual("Google!", manager.entity(forUrl: URL(string: "https://hello.world.google.com")!)?.displayName)
 
         XCTAssertNil(manager.entity(forUrl: URL(string: "https://www.example.com")!))
-        XCTAssertNil(manager.entity(forUrl: URL(string: "https://example.com")!))
         XCTAssertNil(manager.entity(forUrl: URL(string: "https://notgoogle.com")!))
 
     }

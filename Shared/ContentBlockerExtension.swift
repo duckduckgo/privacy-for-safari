@@ -22,28 +22,20 @@ import Statistics
 import os
 
 class ContentBlockerExtension {
-    
-    typealias Completion = (Error?) -> Void
-    
-    static func reload(completion: Completion? = nil) {
+
+    static func reload() async throws {
         os_log("ContentBlockerExtension reload START", log: generalLog)
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: BundleIds.contentBlockerExtension) { error in
-            os_log("ContentBlockerExtension reload END, %{public}s", log: generalLog, error?.localizedDescription ?? "SUCCESS")
-            completion?(error)
-        }
+
+        try await SFContentBlockerManager
+            .reloadContentBlocker(withIdentifier: BundleIds.contentBlockerExtension)
+
+        os_log("ContentBlockerExtension reload END", log: generalLog)
     }
-    
-    static func reloadSync() {
-        os_log("ContentBlockerExtension reloadSync START", log: generalLog)
-        let group = DispatchGroup()
-        group.enter()
-        reload { _ in
-            group.leave()
-        }
-        if group.wait(timeout: .now() + 30) == .timedOut {
-            Dependencies.shared.pixel.fire(.debugReloadTimeout)
-        }
-        os_log("ContentBlockerExtension reloadSync END", log: generalLog)
+
+    static func isExtensionLoaded() async throws -> Bool {
+        return try await SFContentBlockerManager
+            .stateOfContentBlocker(withIdentifier: BundleIds.contentBlockerExtension)
+            .isEnabled
     }
-    
+
 }

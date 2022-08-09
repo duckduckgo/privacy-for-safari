@@ -19,6 +19,7 @@
 
 import XCTest
 @testable import TrackerBlocking
+@testable import TrackerRadarKit
 import WebKit
 
 class ContentBlockerRuleOutputTests: XCTestCase {
@@ -173,7 +174,7 @@ class ContentBlockerRuleOutputTests: XCTestCase {
 
         // Check each individually to isolate problems faster
         trackerData?.trackers.values.forEach {
-            let rules = builder.buildRules(from: $0)
+            let rules = builder.buildRules(from: $0, loadTypes: [.thirdParty])
             assertCompiles(rules: rules)
         }
     }
