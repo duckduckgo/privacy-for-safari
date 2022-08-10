@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import SyncSupport
 
 class SyncSchedulerTests: XCTestCase {
     

@@ -100,7 +100,9 @@ public class DefaultStatisticsLoader: StatisticsLoader {
                                   atLocation location: String,
                                   storeResult: @escaping (Atb) -> Void,
                                   completion: Completion?) {
-        
+
+        os_log("SL refreshRetention %{public}s", log: generalLog, type: .debug, type.rawValue)
+
         var store = statisticsStore()
         
         guard let initialAtb = store.installAtb else {

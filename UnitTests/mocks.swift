@@ -21,6 +21,7 @@ import Foundation
 @testable import Core
 @testable import TrackerBlocking
 @testable import Statistics
+@testable import TrackerRadarKit
 
 class MockTrackerDetection: TrackerDetection {
 
@@ -125,7 +126,7 @@ class MockTrackerDataManager: TrackerDataManager {
     }
 
     func entity(forUrl url: URL) -> Entity? {
-        return returnEntities.first
+        return returnEntities.first 
     }
     
     func entity(forName name: String) -> Entity? {
@@ -148,13 +149,17 @@ class MockTrackerDataManager: TrackerDataManager {
         return nil
     }
     
+    func canonicalURL(forUrl url: URL) -> URL {
+        return url
+    }
 }
 
 class MockBlockerListManager: BlockerListManager {
-    
+
     var blockerListUrl: URL { return URL(fileURLWithPath: "blockerList.json") }
     
     func update() { }
+    func update(applyingAllowList allowList: [AdClickAttributionFeature.AllowlistEntry], toDomains domains: [String]) { }
     func needsReload() { }
     
 }

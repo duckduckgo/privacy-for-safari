@@ -18,7 +18,6 @@
 //
 
 import XCTest
-@testable import SyncSupport
 
 class SyncUserDefaultsTests: XCTestCase {
     

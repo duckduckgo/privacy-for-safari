@@ -34,7 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if Settings().firstRun {
             // No reload needed because this is the first time run
-            TrackerBlocking.Dependencies.shared.blockerListManager.update()
+            Task {
+               await TrackerBlocking.Dependencies.shared.blockerListManager.update()
+            }
         }
  
         removeOldSyncApp()

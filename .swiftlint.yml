@@ -1,6 +1,7 @@
 
 disabled_rules:
   - trailing_whitespace
+  - for_where
 
 # Rule Config
 line_length:

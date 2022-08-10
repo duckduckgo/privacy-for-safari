@@ -19,6 +19,7 @@
 
 import XCTest
 @testable import TrackerBlocking
+@testable import TrackerRadarKit
 
 class DetectedTrackerTests: XCTestCase {
 

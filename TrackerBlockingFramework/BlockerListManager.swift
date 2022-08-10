@@ -21,13 +21,14 @@ import Foundation
 import SafariServices
 import os
 import WebKit
+import TrackerRadarKit
 
 public protocol BlockerListManager {
     
     typealias Factory = (() -> BlockerListManager)
-    
-    func update()
-    
+
+    func update() async
+
 }
 
 public class DefaultBlockerListManager: BlockerListManager {
@@ -43,27 +44,37 @@ public class DefaultBlockerListManager: BlockerListManager {
         self.trustedSitesManager = trustedSitesManager
         self.blockerListUrl = blockerListUrl
     }
-    
-    public func update() {
-        guard let blockerListData = buildBlockerListData() else { return }
+
+    public func update() async {
+        let allowList = AdClickAttributionExemptions.shared.allowList
+        let domains = AdClickAttributionExemptions.shared.vendorDomains
+
+        guard let blockerListData = buildBlockerListData(applyingAllowList: allowList, toDomains: domains) else { return }
         writeBlockerList(data: blockerListData)
     }
     
-    private func buildBlockerListData() -> Data? {
+    private func buildBlockerListData(applyingAllowList allowList: [AdClickAttributionFeature.AllowlistEntry], toDomains domains: [String]) -> Data? {
+        os_log("buildBlockerListData %s", log: generalLog, type: .debug, "\(allowList) \(domains)")
+
         guard let trackerData = trackerDataManager().trackerData else {
             os_log("No trackers found", log: generalLog, type: .error)
             return nil
         }
-        
+
         let trustedDomains = trustedSitesManager().allDomains()
         os_log("trustedDomains %s", log: generalLog, type: .debug, String(describing: trustedDomains))
 
         let tempUnprotectedDomains = trustedSitesManager().unprotectedDomains()
         os_log("tempUnprotectedDomains %s", log: generalLog, type: .debug, String(describing: tempUnprotectedDomains))
-        
-        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(withExceptions: trustedDomains,
-                                                                                    andTemporaryUnprotectedDomains: tempUnprotectedDomains)
-        
+
+        let trackerAllowList = createTrackerAllowList(using: allowList, forDomains: domains)
+        let builder = ContentBlockerRulesBuilder(trackerData: trackerData)
+        let blockingRules = builder.buildRules(withExceptions: trustedDomains,
+                                               andTemporaryUnprotectedDomains: tempUnprotectedDomains,
+                                               andTrackerAllowlist: trackerAllowList)
+        let installbuttonRules = buildInstallButtonHider()
+        let rules = blockingRules + installbuttonRules
+
         guard let data = try? JSONEncoder().encode(rules) else {
             os_log("Failed to encode rules", log: generalLog, type: .error)
             return nil
@@ -83,7 +94,23 @@ public class DefaultBlockerListManager: BlockerListManager {
 
         return data
     }
-        
+
+    private func buildInstallButtonHider() -> [ContentBlockerRule] {
+        let trigger = ContentBlockerRule.Trigger.trigger(onDomain: "duckduckgo.com")
+        let rule = ContentBlockerRulesBuilder.buildRule(trigger: trigger,
+                                                        withAction: .cssDisplayNone(selector: ".ddg-extension-hide"))
+        return [ rule ]
+    }
+
+    private func createTrackerAllowList(using adClickAllowList: [AdClickAttributionFeature.AllowlistEntry],
+                                        forDomains domains: [String]) -> [TrackerException] {
+        if domains.isEmpty { return [] }
+        let cleanDomains = domains.map { $0.dropPrefix("www.") }
+        return adClickAllowList.map {
+            TrackerException(rule: $0.host, matching: .domains(cleanDomains))
+        }
+    }
+
     private func writeBlockerList(data: Data) {
         do {
             try data.write(to: blockerListUrl, options: .atomicWrite)

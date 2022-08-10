@@ -33,8 +33,7 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
         
         os_log(#function, log: lifecycleLog, type: .debug)
         
-        let blockerListUrl = BlockerListLocation.blockerListUrl
-                        
+        let blockerListUrl = BlockerListLocation.blockerListUrl                        
         var items = [Any]()
         if let attachment = NSItemProvider(contentsOf: blockerListUrl) {
             let item = NSExtensionItem()

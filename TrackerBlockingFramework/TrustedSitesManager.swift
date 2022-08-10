@@ -146,10 +146,16 @@ public class DefaultTrustedSitesManager: TrustedSitesManager {
     }
 
     private func postSitesUpdatedNotification() {
-        DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
-                                                                     object: nil,
-                                                                     userInfo: nil,
-                                                                     deliverImmediately: true)
+
+        Task {
+            await blockerListManager().update()
+            try await ContentBlockerExtension.reload()
+            DistributedNotificationCenter.default().postNotificationName(TrustedSitesNotification.sitesUpdatedNotificationName,
+                                                                         object: nil,
+                                                                         userInfo: nil,
+                                                                         deliverImmediately: true)
+        }
+        
     }
  
 }

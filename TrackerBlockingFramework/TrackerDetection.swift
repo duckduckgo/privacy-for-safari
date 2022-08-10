@@ -18,6 +18,7 @@
 //
 
 import Foundation
+import TrackerRadarKit
 
 public protocol TrackerDetection {
 
@@ -59,14 +60,14 @@ class DefaultTrackerDetection: TrackerDetection {
                               andKnownTracker tracker: KnownTracker?,
                               withAction action: DetectedTracker.Action) -> DetectedTracker {
         
-        let pageOwner = trackerDataManager().entity(forUrl: pageUrl)
+        let pageOwner = trackerDataManager().entity(forUrl: pageUrl) ?? Entity(displayName: pageUrl.eTLDPlus1Host, domains: nil, prevalence: nil)
         let resourceOwner = tracker?.owner
         return DetectedTracker(matchedTracker: tracker,
                                resource: resourceUrl,
                                page: pageUrl,
                                owner: resourceOwner?.name,
                                prevalence: tracker?.prevalence ?? 0,
-                               isFirstParty: resourceOwner?.isEntity(named: pageOwner?.displayName) ?? false,
+                               isFirstParty: resourceOwner?.isEntity(named: pageOwner.displayName) ?? false,
                                action: action)
 
     }
@@ -76,7 +77,7 @@ class DefaultTrackerDetection: TrackerDetection {
                            onPageWithUrl pageUrl: URL,
                            asResourceType resourceType: String?) -> DetectedTracker.Action? {
         guard let trackerData = trackerDataManager().trackerData else { return nil }
-        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(from: tracker)
+        let rules = ContentBlockerRulesBuilder(trackerData: trackerData).buildRules(from: tracker, loadTypes: [.thirdParty])
 
         var action: DetectedTracker.Action = .ignore
         rules.enumerated().forEach { rule in
@@ -103,6 +104,15 @@ extension URL {
             return nil
         }
         self.init(string: url, relativeTo: relativeUrl)
+    }
+
+}
+
+extension KnownTracker.Owner {
+
+    func isEntity(named name: String?) -> Bool {
+        guard let name = name else { return false }
+        return self.name == name
     }
 
 }

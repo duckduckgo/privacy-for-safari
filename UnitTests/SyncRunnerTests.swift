@@ -9,7 +9,6 @@
 import Foundation
 
 import XCTest
-@testable import SyncSupport
 @testable import TrackerBlocking
 
 class SyncRunnerTests: XCTestCase {
@@ -23,7 +22,7 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertTrue(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 1.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     func testWhenServiceReturnsSuccessWithoutNewDataThenCompletionSucceeds() {
@@ -35,7 +34,7 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertTrue(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 1.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
 
     func testWhenReturnsFailureWithoutNewDataThenCompletionFails() {
@@ -46,7 +45,7 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertFalse(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 1.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     func testWhenServiceReturnsFailureWithNewDataThenCompletionFails() {
@@ -57,7 +56,7 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertFalse(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 1.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     class MockDataService: TrackerDataService, TempUnprotectedSitesDataService {

@@ -19,6 +19,7 @@
 
 import Foundation
 import os
+import TrackerRadarKit
 
 public protocol TrackerDataManager {
     
@@ -32,7 +33,8 @@ public protocol TrackerDataManager {
     func entity(forUrl url: URL) -> Entity?
     func entity(forName name: String) -> Entity?
     func knownTracker(forUrl url: URL) -> KnownTracker?
-    
+    func canonicalURL(forUrl url: URL) -> URL
+
 }
 
 public struct TrackerDataLocation {
@@ -71,6 +73,15 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     init() {
         load()
     }
+
+    public func canonicalURL(forUrl url: URL) -> URL {
+        guard let host = url.host,
+              let cnameHost = trackerData?.cnames?[host],
+              var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
+        os_log("SEH canonical %{public}s", log: generalLog, type: .debug, "\(host) > \(cnameHost)")
+        components.host = cnameHost
+        return components.url ?? url
+    }
     
     public func forEachEntity(_ result: (Entity) -> Void) {
         trackerData?.entities.values.forEach(result)
@@ -81,18 +92,18 @@ public class DefaultTrackerDataManager: TrackerDataManager {
     }
 
     public func entity(forUrl url: URL) -> Entity? {
-        guard let variations = url.hostVariations else { return nil }
-        for host in variations {
-            if let entityName = trackerData?.domains[host] {
-                return trackerData?.entities[entityName]
+        for host in url.hostVariations ?? [] {
+            if let entityName = trackerData?.domains[host],
+               let entity = trackerData?.entities[entityName] {
+                return entity
             }
         }
         return nil
     }
-    
+
     public func entity(forName name: String) -> Entity? {
         return trackerData?.entities[name]
-   }
+    }
 
     public func knownTracker(forUrl url: URL) -> KnownTracker? {
         for domain in url.hostVariations ?? [] {
@@ -124,4 +135,22 @@ public class DefaultTrackerDataManager: TrackerDataManager {
             os_log("Failed to write trackerData.json to %{public}s", log: generalLog, type: .error, TrackerDataLocation.trackerDataUrl.absoluteString)
         }
     }
+}
+
+extension TrackerData {
+
+    static func decode(contentsOf url: URL) -> TrackerData? {
+        guard let data = try? Data(contentsOf: url) else {
+            os_log("Failed to load tracker data: %{public}s", log: generalLog, type: .error, url.path)
+            return nil
+        }
+
+        do {
+            return try JSONDecoder().decode(TrackerData.self, from: data)
+        } catch {
+            os_log("Failed to decode tracker data: %{public}s", log: generalLog, type: .error, error.localizedDescription)
+        }
+        return nil
+    }
+
 }

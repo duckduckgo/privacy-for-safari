@@ -19,6 +19,7 @@
 
 import XCTest
 @testable import TrackerBlocking
+@testable import TrackerRadarKit
 
 class BlockerListManagerTests: XCTestCase {
     
@@ -35,7 +36,7 @@ class BlockerListManagerTests: XCTestCase {
         UserDefaults(suiteName: Constants.suiteName)?.removePersistentDomain(forName: Constants.suiteName)
     }
         
-    func testWhenUnprotectedDomainsArePresentThenGeneratedRulesContainThem() {
+    func testWhenUnprotectedDomainsArePresentThenGeneratedRulesContainThem() async {
         
         let trackers = [
             "Google": KnownTracker(domain: "google.com", defaultAction: .block, owner: nil, prevalence: nil, subdomains: nil, rules: nil)
@@ -50,7 +51,7 @@ class BlockerListManagerTests: XCTestCase {
                                   trustedSitesManager: trustedSitesManagerFactory,
                                   blockerListUrl: url)
         
-        manager.update()
+        await manager.update()
         
         guard let data = try? Data(contentsOf: url) else {
             XCTFail("Failed to load \(url.path)")
@@ -61,12 +62,12 @@ class BlockerListManagerTests: XCTestCase {
             XCTFail("Failed to decode \(url.path)")
             return
         }
-        
+
         XCTAssertEqual(3, rules.count)
         XCTAssertEqual(rules[0].action.type, .block)
         XCTAssertEqual(rules[1].action.type, .ignorePreviousRules)
         XCTAssertEqual(rules[1].trigger.ifDomain, ["*domain1", "*domain2"])
-        XCTAssertEqual(rules[2].action.type, .cssDisplayNone)
+        XCTAssertEqual(rules[2].action.type, .cssDisplayNone) // This is the install button hiding rule
     }
     
     func trackerDataManagerFactory() -> TrackerDataManager {

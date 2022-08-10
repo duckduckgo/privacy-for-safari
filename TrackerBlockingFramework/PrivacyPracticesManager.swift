@@ -18,6 +18,7 @@
 //
 
 import Foundation
+import TrackerRadarKit
 
 public protocol PrivacyPracticesManager {
 
@@ -39,7 +40,7 @@ public class DefaultPrivacyPracticesManager: PrivacyPracticesManager {
         terms.forEach {
             let score = $1.derivedScore
             if let url = URL(string: "https://" + $0),
-                let entity = trackerDataManager().entity(forUrl: url) {
+               let entity = trackerDataManager().entity(forUrl: url) {
                 if entityScores[entity, default: score] <= score {
                     entityScores[entity] = score
                 }
@@ -64,7 +65,7 @@ public class DefaultPrivacyPracticesManager: PrivacyPracticesManager {
 
     private func worstScore(forUrl url: URL, defaultScore: Int) -> Int {
         guard let entity = trackerDataManager().entity(forUrl: url),
-            let entityScore = entityScores[entity] else { return defaultScore }
+                let entityScore = entityScores[entity] else { return defaultScore }
         return max(defaultScore, entityScore)
     }
 
