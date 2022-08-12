@@ -34,7 +34,7 @@ public class AdClickAttributionExemptions {
     public internal(set) var observedVendors = Set<String>()
 
     func containsVendor(_ named: String) -> Bool {
-        return vendorDomains.contains(where: { $0 == named })
+        return vendorDomains.contains(named)
     }
 
 }

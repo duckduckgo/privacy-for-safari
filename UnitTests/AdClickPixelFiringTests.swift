@@ -26,35 +26,35 @@ class AdClickPixelFiringTests: XCTestCase {
 
     func testWhen_parameterAndHeuristicAreMissing_Then_PixelFiredWithDomainDetectionParameterSetToNone() {
         let subject = DefaultAdClickPixelFiring(pixel: pixel)
-        subject.fireAdClickRegistered(vendorDomainFromParameter: nil, vendorDomainFromHeuristic: nil)
+        subject.fireAdClickDetected(vendorDomainFromParameter: nil, vendorDomainFromHeuristic: nil)
         XCTAssertEqual(pixel.pixels[0].name, PixelName.adClickDetected)
         XCTAssertEqual(pixel.pixels[0].params?["domainDetection"], "none")
     }
 
     func testWhen_parameterPresentAndHeuristicMissing_Then_PixelFiredWithDomainDetectionParameterSetToSerpOnly() {
         let subject = DefaultAdClickPixelFiring(pixel: pixel)
-        subject.fireAdClickRegistered(vendorDomainFromParameter: "serp", vendorDomainFromHeuristic: nil)
+        subject.fireAdClickDetected(vendorDomainFromParameter: "serp", vendorDomainFromHeuristic: nil)
         XCTAssertEqual(pixel.pixels[0].name, PixelName.adClickDetected)
         XCTAssertEqual(pixel.pixels[0].params?["domainDetection"], "serp_only")
     }
 
     func testWhen_parameterMissingAndHeuristicPresent_Then_PixelFiredWithDomainDetectionParameterSetToSerpOnly() {
         let subject = DefaultAdClickPixelFiring(pixel: pixel)
-        subject.fireAdClickRegistered(vendorDomainFromParameter: nil, vendorDomainFromHeuristic: "heuristic")
+        subject.fireAdClickDetected(vendorDomainFromParameter: nil, vendorDomainFromHeuristic: "heuristic")
         XCTAssertEqual(pixel.pixels[0].name, PixelName.adClickDetected)
         XCTAssertEqual(pixel.pixels[0].params?["domainDetection"], "heuristic_only")
     }
 
     func testWhen_parameterAndHeuristicSame_Then_PixelFiredWithDomainDetectionParameterSetToMatch() {
         let subject = DefaultAdClickPixelFiring(pixel: pixel)
-        subject.fireAdClickRegistered(vendorDomainFromParameter: "match", vendorDomainFromHeuristic: "match")
+        subject.fireAdClickDetected(vendorDomainFromParameter: "match", vendorDomainFromHeuristic: "match")
         XCTAssertEqual(pixel.pixels[0].name, PixelName.adClickDetected)
         XCTAssertEqual(pixel.pixels[0].params?["domainDetection"], "matched")
     }
 
     func testWhen_parameterAndHeuristicPresentButNotSame_Then_PixelFiredWithDomainDetectionParameterSetToMatch() {
         let subject = DefaultAdClickPixelFiring(pixel: pixel)
-        subject.fireAdClickRegistered(vendorDomainFromParameter: "hello", vendorDomainFromHeuristic: "world")
+        subject.fireAdClickDetected(vendorDomainFromParameter: "hello", vendorDomainFromHeuristic: "world")
         XCTAssertEqual(pixel.pixels[0].name, PixelName.adClickDetected)
         XCTAssertEqual(pixel.pixels[0].params?["domainDetection"], "mismatch")
     }

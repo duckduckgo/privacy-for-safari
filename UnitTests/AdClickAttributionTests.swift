@@ -38,6 +38,28 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
         AdClickAttributionExemptions.shared.allowList = []
     }
 
+    func testWhen_HeuristicTakesTooLong_Then_DetectPixelIsStillFired() async throws {
+
+        mockAttributionType = .heuristic
+
+        let tab = MockTab(activePage: MockPage())
+        let subject = AdClickAttribution<MockTab>(config: self,
+                                                  pixelFiring: self,
+                                                  blockerListManager: self,
+                                                  contentBlockerReloader: self,
+                                                  heuristicTimeoutInterval: 0.01)
+
+        await subject.handlePageNavigationToURL(URL.any, inTab: tab)
+
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+
+        await subject.pageFinishedLoading(URL.withDomain("test.com"), forTab: tab)
+
+        XCTAssertEqual(nil, pixelvendorDomainFromParameter)
+        XCTAssertEqual("test.com", pixelvendorDomainFromHeuristic)
+
+    }
+
     func testWhen_AllowlistResourceIsObservedOnVendorForFirstTime_Then_PixelIsFired() async {
         mockAttributionType = .vendor(name: "addomain.com")
         mockResourceIsOnAllowlist = true
@@ -100,14 +122,14 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
         XCTAssertTrue(AdClickAttributionExemptions.shared.vendorDomains.isEmpty)
     }
 
-    func ttestWhen_PageNavigationIsToAdClickURLWithDomain_Then_ExemptionsApplied() async {
+    func testWhen_PageNavigationIsToAdClickURLWithDomain_Then_ExemptionsApplied() async {
         mockAttributionType = .vendor(name: "test.com")
         let subject = AdClickAttribution<MockTab>(config: self, pixelFiring: self, blockerListManager: self, contentBlockerReloader: self)
         await subject.handlePageNavigationToURL(URL.any, inTab: MockTab(activePage: MockPage()))
         XCTAssertTrue(AdClickAttributionExemptions.shared.vendorDomains.contains(where: { $0 == "test.com" }))
     }
 
-    func ttestWhen_PageNavigationIsToAdClickURLWithNoDomain_Then_ExemptionsAppliedAfterHeuristicsSatisfied() async {
+    func testWhen_PageNavigationIsToAdClickURLWithNoDomain_Then_ExemptionsAppliedAfterHeuristicsSatisfied() async {
         mockAttributionType = .heuristic
 
         let tab = MockTab(activePage: MockPage())
@@ -186,7 +208,7 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
         adClickAllowListUsed = true
     }
 
-    func fireAdClickRegistered(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?) {
+    func fireAdClickDetected(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?) {
         pixelvendorDomainFromParameter = vendorDomainFromParameter
         pixelvendorDomainFromHeuristic = vendorDomainFromHeuristic
     }
