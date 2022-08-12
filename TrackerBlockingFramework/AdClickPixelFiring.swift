@@ -18,11 +18,12 @@
 
 import Foundation
 import Statistics
+import os
 
 // https://app.asana.com/0/0/1202565358472695/f
 public protocol AdClickPixelFiring {
 
-    func fireAdClickRegistered(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?)
+    func fireAdClickDetected(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?)
     func fireAdClickAllowListUsed()
 
 }
@@ -54,7 +55,7 @@ public class DefaultAdClickPixelFiring: AdClickPixelFiring {
         self.pixel = pixel
     }
 
-    public func fireAdClickRegistered(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?) {
+    public func fireAdClickDetected(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?) {
         let registrationType: RegistrationType
 
         switch (vendorDomainFromParameter, vendorDomainFromHeuristic) {
@@ -75,12 +76,14 @@ public class DefaultAdClickPixelFiring: AdClickPixelFiring {
             registrationType = .none
         }
 
+        os_log("ACA fireAdClickDetected %{public}s", log: generalLog, type: .debug, registrationType.rawValue)
         pixel.fire(.adClickDetected, withParams: [
             "domainDetection": registrationType.rawValue
         ])
     }
 
     public func fireAdClickAllowListUsed() {
+        os_log("ACA fireAdClickAllowListUsed", log: generalLog, type: .debug)
         pixel.fire(.adClickActive)
     }
 
