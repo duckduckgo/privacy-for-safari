@@ -1,6 +1,6 @@
 name: Checks
 
-on: 
+on:
   push:
   pull_request:
     branches: [ develop ]
@@ -38,11 +38,9 @@ jobs:
       run: |
         set -o pipefail && xcodebuild test \
           -scheme "DuckDuckGo" \
-          -destination "platform=iOS Simulator,name=iPhone 8" \
           | xcpretty -r junit -o unittests.xml
 
     - name: Publish unit tests report
       uses: mikepenz/action-junit-report@v3
       with:
         report_paths: unittests.xml
-
