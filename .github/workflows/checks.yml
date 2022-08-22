@@ -40,6 +40,8 @@ jobs:
           -scheme "DuckDuckGo" \
           -configuration "CI" \
           ENABLE_TESTABILITY=true \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
           | xcpretty -r junit -o unittests.xml
 
     - name: Publish unit tests report
