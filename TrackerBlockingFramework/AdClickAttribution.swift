@@ -162,7 +162,6 @@ public actor AdClickAttribution<Tab: Tabbing> {
         os_log("ACA vendorDetected %{public}s", log: generalLog, type: .debug, vendorDomain)
         let isNewVendor = !AdClickAttributionExemptions.shared.containsVendor(vendorDomain)
         self.exemptions.append(Exemption(tab: tab, vendorDomain: vendorDomain, isNewVendor: isNewVendor))
-        self.heuristics.append(Heuristic(tab: tab, vendorDomainFromParameter: vendorDomain))
 
         if isNewVendor {
             await self.updateContentBlockerRules()
@@ -176,10 +175,12 @@ public actor AdClickAttribution<Tab: Tabbing> {
            let heuristic = heuristics.first(where: { $0.tab == tab }) {
 
             if !heuristic.hasExpired(usingInterval: self.heuristicTimeoutInterval) {
+
                 if heuristic.vendorDomainFromParameter == nil {
                     await vendorDetected(vendorDomain, inTab: tab)
                     await updateContentBlockerRules()
                 }
+
             }
 
             pixelFiring.fireAdClickDetected(vendorDomainFromParameter: heuristic.vendorDomainFromParameter,
