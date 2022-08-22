@@ -38,6 +38,8 @@ jobs:
       run: |
         set -o pipefail && xcodebuild test \
           -scheme "DuckDuckGo" \
+          -configuration "CI" \
+          ENABLE_TESTABILITY=true \
           | xcpretty -r junit -o unittests.xml
 
     - name: Publish unit tests report
