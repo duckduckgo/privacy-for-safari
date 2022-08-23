@@ -118,7 +118,7 @@ public class DefaultPixel: Pixel {
         params.merge(additionalParams) { (current, _) in current }
       
         apiRequest().get(path, withParams: params) { _, _, error in
-            os_log("Pixel fired %{public}s %s", log: generalLog, pixel.rawValue, String(describing: params))
+            os_log("Pixel fired %{public}s %{public}s", log: generalLog, pixel.rawValue, String(describing: params))
             onComplete(error)
         }
     }

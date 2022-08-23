@@ -87,6 +87,8 @@ actor SafariExtensionActor {
             return
         }
 
+        os_log("SEH handleDOMContentLoadedMessage %{public}s", log: generalLog, type: .debug, url.absoluteString)
+
         let tab = await page.containingTab()
         await SafariTabAddClickAttribution.shared.pageFinishedLoading(url, forTab: tab)
     }
