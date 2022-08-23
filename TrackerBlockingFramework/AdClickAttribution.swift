@@ -115,6 +115,7 @@ public actor AdClickAttribution<Tab: Tabbing> {
         switch self.config.attributionTypeForURL(url) {
         case .vendor(let name):
             await vendorDetected(name, inTab: tab)
+            self.heuristics.append(Heuristic(tab: tab, vendorDomainFromParameter: name))
 
         case .heuristic:
             self.heuristics.append(Heuristic(tab: tab, vendorDomainFromParameter: nil))

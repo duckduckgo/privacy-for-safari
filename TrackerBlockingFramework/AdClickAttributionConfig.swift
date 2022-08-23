@@ -187,3 +187,17 @@ fileprivate extension Int {
     }
 
 }
+
+extension TLD {
+
+    public static let shared = TLD()
+
+}
+
+public extension URL {
+
+    var eTLDPlus1Host: String? {
+        TLD.shared.eTLDplus1(host)
+    }
+
+}

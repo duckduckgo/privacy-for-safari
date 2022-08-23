@@ -29,7 +29,7 @@ public class TLD {
     }
 
     public init() {
-        guard let url = Bundle.main.url(forResource: "tlds", withExtension: "json") else { return }
+        guard let url = Bundle(for: Self.self).url(forResource: "tlds", withExtension: "json") else { return }
         guard let data = try? Data(contentsOf: url) else { return }
 
         let asString = String(decoding: data, as: UTF8.self)
