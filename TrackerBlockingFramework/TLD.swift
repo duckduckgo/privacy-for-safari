@@ -29,48 +29,58 @@ public class TLD {
     }
 
     public init() {
-        guard let url = Bundle(for: Self.self).url(forResource: "tlds", withExtension: "json") else { return }
+        guard let url = Bundle.main.url(forResource: "tlds", withExtension: "json") else { return }
         guard let data = try? Data(contentsOf: url) else { return }
-        guard let tlds = try? JSONDecoder().decode([String].self, from: data) else { return }
+
+        let asString = String(decoding: data, as: UTF8.self)
+        let asStringWithoutComments = asString.replacingOccurrences(of: "(?m)^//.*",
+                                                                    with: "",
+                                                                    options: .regularExpression)
+        guard let cleanedData: Data = asStringWithoutComments.data(using: .utf8) else { return }
+
+        guard let tlds = try? JSONDecoder().decode([String].self, from: cleanedData) else { return }
         self.tlds = Set(tlds)
     }
 
+    /// Return valid domain, stripping subdomains of given entity if possible.
+    ///
+    /// 'test.example.co.uk' -> 'example.co.uk'
+    /// 'example.co.uk' -> 'example.co.uk'
+    /// 'co.uk' -> 'co.uk'
     public func domain(_ host: String?) -> String? {
         guard let host = host else { return nil }
 
         let parts = [String](host.components(separatedBy: ".").reversed())
 
-        guard let lastComponent = parts.first, tlds.contains(lastComponent) else {
+        var stack = ""
+
+        var knownTLDFound = false
+        for part in parts {
+            stack = !stack.isEmpty ? part + "." + stack : part
+
+            if tlds.contains(stack) {
+                knownTLDFound = true
+            } else if knownTLDFound {
+                break
+            }
+        }
+
+        // If host does not contain tld treat it as invalid
+        if knownTLDFound {
+            return stack
+        } else {
             return nil
         }
-        var stack = lastComponent
-
-        for index in 1 ..< parts.count {
-            let part = parts[index]
-            stack = !stack.isEmpty ? part + "." + stack : part
-            guard tlds.contains(stack) else { break }
-        }
-
-        return stack
     }
 
+    /// Return eTLD+1 (entity top level domain + 1) strictly.
+    ///
+    /// 'test.example.co.uk' -> 'example.co.uk'
+    /// 'example.co.uk' -> 'example.co.uk'
+    /// 'co.uk' -> nil
     public func eTLDplus1(_ host: String?) -> String? {
         guard let domain = domain(host), !tlds.contains(domain) else { return nil }
         return domain
-    }
-
-}
-
-extension TLD {
-
-    public static let shared = TLD()
-
-}
-
-public extension URL {
-
-    var eTLDPlus1Host: String? {
-        TLD.shared.eTLDplus1(host)
     }
 
 }
