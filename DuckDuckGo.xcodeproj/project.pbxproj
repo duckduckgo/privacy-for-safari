@@ -33,6 +33,8 @@
 		8510B264226F5A840015D406 /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B263226F5A840015D406 /* MainDashboardViewController.swift */; };
 		8510B266226F5AF30015D406 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8510B265226F5AF30015D406 /* Dashboard.storyboard */; };
 		8510B268226F5DFE0015D406 /* DashboardNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */; };
+		851A7C8C28B645C600AEA86F /* AggregatePixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851A7C8B28B645C600AEA86F /* AggregatePixel.swift */; };
+		851A7C8E28B657DA00AEA86F /* AggregatePixelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851A7C8D28B657DA00AEA86F /* AggregatePixelTests.swift */; };
 		8521FDE8238D629800A44CC3 /* SyncSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8521FDE7238D629800A44CC3 /* SyncSchedulerTests.swift */; };
 		8524A3EE23325162001E8856 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
 		8524A3EF23325173001E8856 /* BundleIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524A3E723325063001E8856 /* BundleIds.swift */; };
@@ -454,6 +456,8 @@
 		8510B263226F5A840015D406 /* MainDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
 		8510B265226F5AF30015D406 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		8510B267226F5DFE0015D406 /* DashboardNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationDelegate.swift; sourceTree = "<group>"; };
+		851A7C8B28B645C600AEA86F /* AggregatePixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatePixel.swift; sourceTree = "<group>"; };
+		851A7C8D28B657DA00AEA86F /* AggregatePixelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregatePixelTests.swift; sourceTree = "<group>"; };
 		8521FDE7238D629800A44CC3 /* SyncSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncSchedulerTests.swift; sourceTree = "<group>"; };
 		8524A3E723325063001E8856 /* BundleIds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleIds.swift; sourceTree = "<group>"; };
 		8524A3F02332651A001E8856 /* SendFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFeedbackViewController.swift; sourceTree = "<group>"; };
@@ -995,6 +999,7 @@
 				85E9521622AFC7FB0071281E /* StatisticsDependencies.swift */,
 				85E9521422AFC7C20071281E /* StatisticsLoader.swift */,
 				85E9521822AFC8F10071281E /* StatisticsStore.swift */,
+				851A7C8B28B645C600AEA86F /* AggregatePixel.swift */,
 			);
 			path = StatisticsFramework;
 			sourceTree = "<group>";
@@ -1044,6 +1049,7 @@
 				8358675F23323FA0001776B0 /* PixelTests.swift */,
 				85E9524522B13E790071281E /* StatisticsLoaderTests.swift */,
 				85E9524722B284710071281E /* StatisticsStoreTests.swift */,
+				851A7C8D28B657DA00AEA86F /* AggregatePixelTests.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -1653,6 +1659,7 @@
 				855150372375AABC00DBC528 /* SyncUserDefaultsTests.swift in Sources */,
 				855205C42333C9DE003E5640 /* DeepDetectionTests.swift in Sources */,
 				854EFADF2333A03400A6BDC3 /* TempUnprotectedSitesDataServiceUserDefaultsTests.swift in Sources */,
+				851A7C8E28B657DA00AEA86F /* AggregatePixelTests.swift in Sources */,
 				8587A6932278901400F622AF /* TrackerDetectionTests.swift in Sources */,
 				8347D38E23325E13006AB02A /* FireOncePixelTests.swift in Sources */,
 				85DDACD9289ABAA1003439DF /* PageData.swift in Sources */,
@@ -1696,6 +1703,7 @@
 				85E9521522AFC7C20071281E /* StatisticsLoader.swift in Sources */,
 				8358675E23322836001776B0 /* FireOncePixel.swift in Sources */,
 				85E9521722AFC7FB0071281E /* StatisticsDependencies.swift in Sources */,
+				851A7C8C28B645C600AEA86F /* AggregatePixel.swift in Sources */,
 				855205C22333C9D4003E5640 /* DeepDetection.swift in Sources */,
 				8590F40F22CE563A00B7473A /* StringExtension.swift in Sources */,
 				85E9521D22AFCE7A0071281E /* Atb.swift in Sources */,

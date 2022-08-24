@@ -54,6 +54,8 @@ public enum PixelName: String {
     // Ad click attribution
     case adClickDetected = "m_ad_click_detected"
     case adClickActive = "m_ad_click_active"
+    case adClickAttributedPageLoads = "m_pageloads_with_ad_attribution"
+    case adClickHeuristicValidation = "m_ad_click_heuristic_validation"
 
     // debug pixels
     case debugStatisticsTimeout = "m_sae_dbg_sts"
@@ -68,6 +70,8 @@ public struct PixelParameters {
     public static let atb = "atb"
     public static let version = "extensionVersion"
     public static let elapsed = "elapsed"
+
+    public static let adClickAttributedPageLoadsCount = "count"
     
     #if DEBUG
     public static let test = "test"
@@ -81,7 +85,7 @@ public struct PixelValues {
 }
 
 public protocol  Pixel {
-    func fire(_ pixel: PixelName, withParams params: [String: String], onComplete: @escaping PixelCompletion )
+    func fire(_ pixel: PixelName, withParams params: [String: String], onComplete: @escaping PixelCompletion)
 }
 
 extension Pixel {
@@ -102,15 +106,22 @@ public class DefaultPixel: Pixel {
         self.apiRequest = apiRequest
     }
     
-    public func fire(_ pixel: PixelName, withParams additionalParams: [String: String], onComplete: @escaping PixelCompletion ) {
+    public func fire(_ pixel: PixelName, withParams additionalParams: [String: String], onComplete: @escaping PixelCompletion) {
         
         let path = "/t/\(pixel.rawValue)_safari"
         
-        var params = [
-            PixelParameters.atb: statisticsStore.installAtb ?? "",
-            PixelParameters.version: appVersion.fullVersion
-        ]
-        
+        var params = [String: String]()
+
+        let appStatsExcluded = [
+            PixelName.adClickHeuristicValidation,
+            PixelName.adClickAttributedPageLoads
+        ].contains(pixel)
+
+        if !appStatsExcluded {
+            params[PixelParameters.atb] = statisticsStore.installAtb ?? ""
+            params[PixelParameters.version] = appVersion.fullVersion
+        }
+
         #if DEBUG
         params[PixelParameters.test] = PixelValues.test
         #endif
@@ -118,8 +129,8 @@ public class DefaultPixel: Pixel {
         params.merge(additionalParams) { (current, _) in current }
       
         apiRequest().get(path, withParams: params) { _, _, error in
-            os_log("Pixel fired %{public}s %{public}s", log: generalLog, pixel.rawValue, String(describing: params))
-            onComplete(error)
+            os_log("Pixel fired %{public}s %{public}s, error: %{publics}", log: generalLog, pixel.rawValue,
+                   String(describing: params), error?.localizedDescription ?? "none")
         }
     }
 }
