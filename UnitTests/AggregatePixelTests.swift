@@ -31,6 +31,17 @@ class AggregatePixelTests: XCTestCase {
         super.setUp()
     }
 
+    func test_WhenPixelFiredAndIntervalPassesButNoCount_ThenNoPixelFired() async throws {
+        let subject = createSubject()
+        await subject.sendIfNeeded()
+        XCTAssertTrue(pixel.pixels.isEmpty)
+
+        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+
+        await subject.sendIfNeeded()
+        XCTAssertTrue(pixel.pixels.isEmpty)
+    }
+
     func test_WhenNewInstanceOfAggregateCreatedAfterIntervalPasses_ThenFiresPixel() async throws {
         let subject1 = createSubject()
         await subject1.incrementAndSendIfNeeded()

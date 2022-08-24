@@ -155,7 +155,7 @@ actor SafariExtensionActor {
         var detectedTrackers = Set<DetectedTracker>()
         var detectedRequests = Set<PageData.DetectedRequest>()
 
-        resources.forEach { resource in
+        for resource in resources {
             guard let url = resource["url"],
                   let resourceUrl = URL(withResource: url, relativeTo: pageUrl) else {
                 return
@@ -166,7 +166,12 @@ actor SafariExtensionActor {
             SafariTabAddClickAttribution.shared.firePixelForResourceIfNeeded(resourceURL: resourceUrl,
                                                                              onPage: pageUrl)
 
-            // True first party requests should be ignored entirely.
+            if SafariTabAddClickAttribution.shared.isExemptAllowListResource(resourceUrl),
+               !(await DashboardData.shared.hasResourceBeenSeenBefore(resourceUrl, onPage: page, withUrl: pageUrl)) {
+                await SafariTabAddClickAttribution.shared.incrementAdClickPageLoadCounter()
+            }
+
+            // For the purposes of reporting, true first party requests should be ignored entirely.
             if isFirstPartyResource(resourceUrl, ofPage: pageUrl) {
                 return
             }

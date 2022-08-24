@@ -180,14 +180,6 @@ fileprivate extension URL {
 
 }
 
-fileprivate extension Int {
-
-    var hours: TimeInterval {
-        return Double(self) * 60 * 60
-    }
-
-}
-
 extension TLD {
 
     public static let shared = TLD()

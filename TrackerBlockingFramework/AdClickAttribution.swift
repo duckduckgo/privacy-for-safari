@@ -18,6 +18,7 @@
 
 import Core
 import Foundation
+import Statistics
 import os
 
 public protocol Tabbing: AnyObject, Equatable {
@@ -33,6 +34,12 @@ public protocol AdClickContentBlockerReloading {
     func reload() async
 
 }
+
+#if DEBUG
+private let isDebugBuild = true
+#else
+private let isDebugBuild = false
+#endif
 
 public actor AdClickAttribution<Tab: Tabbing> {
 
@@ -54,8 +61,11 @@ public actor AdClickAttribution<Tab: Tabbing> {
     }
 
     nonisolated public let config: AdClickAttributionConfig
-    
+
     private let heuristicTimeoutInterval: TimeInterval
+    private let pageLoadsPixel = AggregatePixel(pixelName: .adClickAttributedPageLoads,
+                                                pixelParameterName: PixelParameters.adClickAttributedPageLoadsCount,
+                                                sendInterval: isDebugBuild ? 60.0 : 24.hours)
 
     var exemptions = [Exemption]()
     var heuristics = [Heuristic]()
@@ -95,6 +105,14 @@ public actor AdClickAttribution<Tab: Tabbing> {
             pixelFiring.fireAdClickAllowListUsed()
         }
         
+    }
+
+    public func incrementAdClickPageLoadCounter() async {
+        await pageLoadsPixel.incrementAndSendIfNeeded()
+    }
+
+    nonisolated public func isExemptAllowListResource(_ resourceURL: URL) -> Bool {
+        return config.resourceIsOnAllowlist(resourceURL)
     }
 
     public func clearExpiredVendors() async {

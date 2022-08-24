@@ -83,17 +83,23 @@ public actor AggregatePixel {
 
     public func sendIfNeeded() async {
         let lastSendInterval = lastSendDate.timeIntervalSinceNow * -1
-        print("***", #function, lastSendDate)
 
         guard lastSendInterval > sendInterval else { return }
         if counter > 0 {
-            pixel.fire(pixelName, withParams: [ pixelParameterName: "\(counter)" ]) { _ in
-                self.counter = 0
-                self.lastSendDate = Date()
-            }
+            await fireAndReset()
         } else {
             counter = 0
             lastSendDate = Date()
+        }
+    }
+
+    private func fireAndReset() async {
+        return await withCheckedContinuation { continuation in
+            pixel.fire(pixelName, withParams: [ pixelParameterName: "\(counter)" ]) { _ in
+                self.counter = 0
+                self.lastSendDate = Date()
+                continuation.resume()
+            }
         }
     }
 

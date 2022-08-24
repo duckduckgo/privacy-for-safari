@@ -74,6 +74,13 @@ actor DashboardData {
         os_log("DashboardData deinit", log: lifecycleLog, type: .debug)
     }
 
+    func hasResourceBeenSeenBefore(_ resourceURL: URL, onPage page: SFSafariPage, withUrl url: URL) -> Bool {
+        let data = cache(forPage: page, withUrl: url.absoluteString)
+        return data.loadedTrackers.contains(where: {
+            $0.resource == resourceURL
+        })
+    }
+
     func pageForDomain(_ domain: String) -> SFSafariPage? {
         return cache.keys.first(where: { URL(string: $0.url)?.host == domain })?.page
     }
