@@ -17,6 +17,7 @@
 //
 
 import Foundation
+import os
 
 public actor AggregatePixel {
 
@@ -94,6 +95,9 @@ public actor AggregatePixel {
     }
 
     private func fireAndReset() async {
+
+        os_log("fireAndReset", log: generalLog, type: .debug)
+
         return await withCheckedContinuation { continuation in
             pixel.fire(pixelName, withParams: [ pixelParameterName: "\(counter)" ]) { _ in
                 self.counter = 0
