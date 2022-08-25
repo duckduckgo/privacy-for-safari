@@ -57,13 +57,7 @@ struct ParamValue {
 }
 
 public class DefaultAPIRequest: APIRequest {
-    
-#if DEBUG
-    let isDebugBuild = true
-#else
-    let isDebugBuild = false
-#endif
-    
+       
     private let baseUrl: ApiBaseUrl
     
     public init(baseUrl: ApiBaseUrl = .standard) {

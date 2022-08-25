@@ -55,7 +55,8 @@ public enum PixelName: String {
     case adClickDetected = "m_ad_click_detected"
     case adClickActive = "m_ad_click_active"
     case adClickAttributedPageLoads = "m_pageloads_with_ad_attribution"
-    case adClickHeuristicValidation = "m_ad_click_heuristic_validation"
+    case adClickHeuristicValidationMatch = "m_ad_click_heuristic_validation_1"
+    case adClickHeuristicValidationMismatch = "m_ad_click_heuristic_validation_0"
 
     // debug pixels
     case debugStatisticsTimeout = "m_sae_dbg_sts"
@@ -113,7 +114,8 @@ public class DefaultPixel: Pixel {
         var params = [String: String]()
 
         let appStatsExcluded = [
-            PixelName.adClickHeuristicValidation,
+            PixelName.adClickHeuristicValidationMatch,
+            PixelName.adClickHeuristicValidationMismatch,
             PixelName.adClickAttributedPageLoads
         ].contains(pixel)
 

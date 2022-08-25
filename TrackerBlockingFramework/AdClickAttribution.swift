@@ -21,11 +21,12 @@ import Foundation
 import Statistics
 import os
 
-public protocol Tabbing: AnyObject, Equatable {
+public protocol Tabbing: AnyObject, Hashable {
 
     associatedtype Page
 
     func activePage() async -> Page?
+    func currentURL() async -> URL?
 
 }
 
@@ -35,11 +36,7 @@ public protocol AdClickContentBlockerReloading {
 
 }
 
-#if DEBUG
-private let isDebugBuild = true
-#else
-private let isDebugBuild = false
-#endif
+private var timerId = 0
 
 public actor AdClickAttribution<Tab: Tabbing> {
 
@@ -60,13 +57,50 @@ public actor AdClickAttribution<Tab: Tabbing> {
         }
     }
 
+    class ValidationTimer {
+        let vendorDomain: String
+        let tab: Tab
+        let id: Int
+
+        let work: DispatchWorkItem
+
+        init(vendorDomain: String, tab: Tab, callback: @escaping (Tab) -> Void) {
+            self.vendorDomain = vendorDomain
+            self.tab = tab
+            timerId += 1
+            let id = timerId
+            self.id = id
+
+            let interval = isDebugBuild ? 5.0 : 0.3
+
+            work = DispatchWorkItem {
+                os_log("ValidationTimer fired %d", log: generalLog, type: .debug, id)
+                callback(tab)
+            }
+            DispatchQueue.global().asyncAfter(deadline: .now() + interval, execute: work)
+
+            os_log("ValidationTimer scheduled %d", log: generalLog, type: .debug, id)
+        }
+
+        static func scheduleForVendor(_ vendorDomain: String, inTab tab: Tab, callback: @escaping (Tab) -> Void) -> ValidationTimer {
+            return ValidationTimer(vendorDomain: vendorDomain, tab: tab, callback: callback)
+        }
+
+        func invalidate() {
+            os_log("ValidationTimer invalidated %d", log: generalLog, type: .debug, id)
+            work.cancel()
+        }
+
+        deinit {
+            os_log("ValidationTimer deinit %d", log: generalLog, type: .debug, id)
+        }
+
+    }
+
     nonisolated public let config: AdClickAttributionConfig
 
     private let heuristicTimeoutInterval: TimeInterval
-    private let pageLoadsPixel = AggregatePixel(pixelName: .adClickAttributedPageLoads,
-                                                pixelParameterName: PixelParameters.adClickAttributedPageLoadsCount,
-                                                sendInterval: isDebugBuild ? 60.0 : 24.hours)
-
+    
     var exemptions = [Exemption]()
     var heuristics = [Heuristic]()
 
@@ -108,7 +142,7 @@ public actor AdClickAttribution<Tab: Tabbing> {
     }
 
     public func incrementAdClickPageLoadCounter() async {
-        await pageLoadsPixel.incrementAndSendIfNeeded()
+        pixelFiring.incrementAdClickPageLoadCounterAndSendIfNeeded()
     }
 
     nonisolated public func isExemptAllowListResource(_ resourceURL: URL) -> Bool {
@@ -187,8 +221,28 @@ public actor AdClickAttribution<Tab: Tabbing> {
         }
     }
 
+    private var timers = [Tab: ValidationTimer]()
+
+    func handleHeuristicValidationFired(_ tab: Tab) {
+        os_log("ValidationTimer fired", log: generalLog, type: .debug)
+        if let timer = timers[tab] {
+            Task {
+                guard let url = await tab.currentURL() else { return }
+                pixelFiring.fireAdClickHeuristicValidation(domainMatches: timer.vendorDomain == url.eTLDPlus1Host)
+            }
+        }
+        self.timers[tab] = nil
+    }
+
     public func pageFinishedLoading(_ url: URL, forTab tab: Tab) async {
         os_log("ACA pageFinishedLoading %{public}s", log: generalLog, type: .debug, url.absoluteString)
+
+        if let timer = timers[tab] {
+            os_log("ValidationTimer rescheduling", log: generalLog, type: .debug)
+            timer.invalidate()
+            timers[tab] = ValidationTimer.scheduleForVendor(timer.vendorDomain, inTab: tab,
+                                                            callback: handleHeuristicValidationFired)
+        }
 
         if let vendorDomain = url.eTLDPlus1Host,
            let heuristic = heuristics.first(where: { $0.tab == tab }) {
@@ -198,8 +252,9 @@ public actor AdClickAttribution<Tab: Tabbing> {
                 if heuristic.vendorDomainFromParameter == nil {
                     await vendorDetected(vendorDomain, inTab: tab)
                     await updateContentBlockerRules()
+                    os_log("ValidationTimer creating", log: generalLog, type: .debug)
+                    timers[tab] = ValidationTimer.scheduleForVendor(vendorDomain, inTab: tab, callback: handleHeuristicValidationFired)
                 }
-
             }
 
             pixelFiring.fireAdClickDetected(vendorDomainFromParameter: heuristic.vendorDomainFromParameter,
