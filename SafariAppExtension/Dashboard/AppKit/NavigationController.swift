@@ -105,12 +105,15 @@ extension NavigationController: NSPageControllerDelegate {
         return controllerId.rawValue
     }
 
+    static var controllerCache = [NSPageController.ObjectIdentifier: Any]()
+
     func pageController(_ pageController: NSPageController,
                         viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
 
-        guard let controller = storyboard?.instantiateController(withIdentifier: identifier) else {
+        guard let controller = Self.controllerCache[identifier] ?? storyboard?.instantiateController(withIdentifier: identifier) else {
             fatalError("instantiateController with identifier \(identifier) failed")
         }
+        Self.controllerCache[identifier] = controller
 
         guard let navController = controller as? DashboardNavigationController else {
             fatalError("failed to convert \(controller) to DashboardNavigationController")
