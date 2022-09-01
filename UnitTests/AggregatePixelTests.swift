@@ -39,14 +39,12 @@ class AggregatePixelTests: XCTestCase {
 
         try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds allows things to fire
 
-        print("*** subject1.sendIfNeeded")
         await subject1.sendIfNeeded() // This will wait 5.0 seconds before sending using concurrency to block further calls
 
         (pixel as? DelayedMockPixel)?.delay = 0.0 // allows subsequent calls to fire instantly
 
         Task {
             await subject1.incrementAndSendIfNeeded() // Concurrency will increment the counter but prevent this firing
-            print("*** Task > incrementAndSendIfNeeded")
         }
 
         XCTAssertEqual(1, pixel.pixels.count)
@@ -57,8 +55,6 @@ class AggregatePixelTests: XCTestCase {
 
         XCTAssertEqual(2, pixel.pixels.count)
         XCTAssertEqual("2", pixel.pixels[1].params?["count"])
-
-        print("***", pixel.pixels)
     }
 
     func test_WhenPixelFiredAndIntervalPassesButNoCount_ThenNoPixelFired() async throws {
