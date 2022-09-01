@@ -35,12 +35,12 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return monitor
     }()
 
-    let actor = SafariExtensionActor()
+    static let actor = SafariExtensionActor()
 
     override func contentBlocker(withIdentifier contentBlockerIdentifier: String, blockedResourcesWith urls: [URL], on page: SFSafariPage) {
         // No logging, as this one is noisy
         Task {
-            await actor.contentBlocker(withIdentifier: contentBlockerIdentifier,
+            await Self.actor.contentBlocker(withIdentifier: contentBlockerIdentifier,
                                        blockedResourcesWith: urls,
                                        on: page)
         }
@@ -50,14 +50,14 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         os_log("SEH page willNavigateTo %{public}s", log: lifecycleLog, type: .debug, url?.absoluteString ?? "<no url>")
         updateRetentionData()
         Task {
-            await actor.page(page, willNavigateTo: url)
+            await Self.actor.page(page, willNavigateTo: url)
         }
     }
 
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]?) {
         os_log("SEH messageReceived %{public}s", log: lifecycleLog, type: .debug, messageName)
         Task {
-            await actor.messageReceived(withName: messageName, from: page, userInfo: userInfo)
+            await Self.actor.messageReceived(withName: messageName, from: page, userInfo: userInfo)
         }
     }
 
@@ -65,7 +65,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         // No logging, as this one is noisy
         validationHandler(true, "")
         Task {
-            await actor.validateToolbarItem(in: window)
+            await Self.actor.validateToolbarItem(in: window)
         }
     }
 
@@ -75,7 +75,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             let page = await window.activeTab()?.activePage()
             let url = await page?.properties()?.url
             await DashboardData.shared.setCurrentPage(to: page, withUrl: url)
-            await actor.popoverWillShow(in: window)
+            await Self.actor.popoverWillShow(in: window)
         }
     }
 

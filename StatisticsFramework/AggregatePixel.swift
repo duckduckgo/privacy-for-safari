@@ -21,6 +21,8 @@ import os
 
 public actor AggregatePixel {
 
+    let id = UUID().uuidString
+
     var lastSendDate: Date {
         get {
             let interval = userDefaults.double(forKey: lastSendDateKey)
@@ -78,32 +80,19 @@ public actor AggregatePixel {
     }
 
     public func incrementAndSendIfNeeded() async {
+        os_log("AggregatePixel incrementAndSendIfNeeded %{public}s", log: generalLog, type: .debug, id)
         counter += 1
         await sendIfNeeded()
     }
 
     public func sendIfNeeded() async {
+        os_log("AggregatePixel sendIfNeeded %{public}s", log: generalLog, type: .debug, id)
         let lastSendInterval = lastSendDate.timeIntervalSinceNow * -1
-
         guard lastSendInterval > sendInterval else { return }
+        lastSendDate = Date()
         if counter > 0 {
-            await fireAndReset()
-        } else {
+            pixel.fire(pixelName, withParams: [ pixelParameterName: "\(counter)" ])
             counter = 0
-            lastSendDate = Date()
-        }
-    }
-
-    private func fireAndReset() async {
-
-        os_log("fireAndReset", log: generalLog, type: .debug)
-
-        return await withCheckedContinuation { continuation in
-            pixel.fire(pixelName, withParams: [ pixelParameterName: "\(counter)" ]) { _ in
-                self.counter = 0
-                self.lastSendDate = Date()
-                continuation.resume()
-            }
         }
     }
 

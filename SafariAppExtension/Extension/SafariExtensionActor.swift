@@ -68,7 +68,7 @@ actor SafariExtensionActor {
 
         switch message {
         case .resourceLoaded:
-            await self.handleResourceLoadedMessage(userInfo, onPage: page)
+            await self.handleResourceLoadedMessage(userInfo, onPage: page)        
 
         case .userAgent:
             self.handleUserAgentMessage(userInfo)
@@ -161,13 +161,17 @@ actor SafariExtensionActor {
                 return
             }
 
-            // Checks on the URL
             self.deepDetection.check(resource: url, onPage: pageUrl)
-            SafariTabAddClickAttribution.shared.firePixelForResourceIfNeeded(resourceURL: resourceUrl,
-                                                                             onPage: pageUrl)
 
-            if SafariTabAddClickAttribution.shared.isExemptAllowListResource(resourceUrl),
-               !(await DashboardData.shared.hasResourceBeenSeenBefore(resourceUrl, onPage: page, withUrl: pageUrl)) {
+            let canonicalResourceURL = Dependencies.shared.trackerDataManager.canonicalURL(forUrl: resourceUrl)
+
+            // Only send pixels the first time we see ad click resources.  An ad click resource
+            //  can load a bunch of other resources with the same host so we don't want to over count.
+            if SafariTabAddClickAttribution.shared.isExemptAllowListResource(canonicalResourceURL),
+               !(await DashboardData.shared.hasResourceBeenSeenBefore(canonicalResourceURL, onPage: page, withUrl: pageUrl)) {
+
+                SafariTabAddClickAttribution.shared.firePixelForResourceIfNeeded(resourceURL: canonicalResourceURL, onPage: pageUrl)
+
                 await SafariTabAddClickAttribution.shared.incrementAdClickPageLoadCounter()
             }
 
@@ -177,7 +181,6 @@ actor SafariExtensionActor {
             }
 
             os_log("SEH handleResourceLoadedMessage %{public}s", log: generalLog, type: .debug, resourceUrl.absoluteString)
-            let canonicalResourceURL = Dependencies.shared.trackerDataManager.canonicalURL(forUrl: resourceUrl)
             updateTrackersOrRequests(&detectedTrackers, &detectedRequests,
                                      withResourceURL: canonicalResourceURL,
                                      ofType: resource["type"],
