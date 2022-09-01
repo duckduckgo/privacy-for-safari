@@ -24,11 +24,41 @@ import XCTest
 class AggregatePixelTests: XCTestCase {
 
     let userDefaults = UserDefaults(suiteName: "test")!
-    let pixel = MockPixel()
+    var pixel = MockPixel()
 
     override func setUp() {
         userDefaults.removePersistentDomain(forName: "test")
         super.setUp()
+    }
+
+    func test() async throws {
+        pixel = DelayedMockPixel(delay: 1.0)
+        let subject1 = createSubject()
+        await subject1.incrementAndSendIfNeeded()
+        XCTAssertTrue(pixel.pixels.isEmpty)
+
+        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds allows things to fire
+
+        print("*** subject1.sendIfNeeded")
+        await subject1.sendIfNeeded() // This will wait 5.0 seconds before sending using concurrency to block further calls
+
+        (pixel as? DelayedMockPixel)?.delay = 0.0 // allows subsequent calls to fire instantly
+
+        Task {
+            await subject1.incrementAndSendIfNeeded() // Concurrency will increment the counter but prevent this firing
+            print("*** Task > incrementAndSendIfNeeded")
+        }
+
+        XCTAssertEqual(1, pixel.pixels.count)
+        XCTAssertEqual("1", pixel.pixels[0].params?["count"])
+
+        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds allows things to fire again
+        await subject1.incrementAndSendIfNeeded() // Increment again, and try to send which should happen immediately
+
+        XCTAssertEqual(2, pixel.pixels.count)
+        XCTAssertEqual("2", pixel.pixels[1].params?["count"])
+
+        print("***", pixel.pixels)
     }
 
     func test_WhenPixelFiredAndIntervalPassesButNoCount_ThenNoPixelFired() async throws {
@@ -77,6 +107,22 @@ class AggregatePixelTests: XCTestCase {
                                      sendInterval: 1, // 1 second for testing
                                      pixel: pixel,
                                      userDefaults: userDefaults)
+    }
+
+}
+
+private class DelayedMockPixel: MockPixel {
+
+    var delay: TimeInterval
+
+    init(delay: TimeInterval) {
+        self.delay = delay
+    }
+
+    override func fire(_ pixel: PixelName, withParams params: [String: String], onComplete: @escaping PixelCompletion) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
+            super.fire(pixel, withParams: params, onComplete: onComplete)
+        }
     }
 
 }

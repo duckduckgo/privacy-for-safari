@@ -220,6 +220,12 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
         pixelVendorDomainFromHeuristic = vendorDomainFromHeuristic
     }
 
+    func fireAdClickHeuristicValidation(domainMatches: Bool) {
+    }
+
+    func incrementAdClickPageLoadCounterAndSendIfNeeded() {
+    }
+
     func reload() async {
         contentBlockerReloadCalled = true
     }
@@ -237,6 +243,10 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
 
         func activePage() async -> AdClickAttributionTests.MockPage? {
             return mockActivePage
+        }
+
+        func currentURL() async -> URL? {
+            return nil
         }
     }
 
