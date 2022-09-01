@@ -26,8 +26,8 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
     var mockHasExemptionExpired = false
     var mockResourceIsOnAllowlist = false
     var blockerListManagerUpdatedCalled = false
-    var pixelvendorDomainFromParameter: String?
-    var pixelvendorDomainFromHeuristic: String?
+    var pixelVendorDomainFromParameter: String?
+    var pixelVendorDomainFromHeuristic: String?
     var adClickAllowListUsed = false
     var contentBlockerReloadCalled = false
 
@@ -55,8 +55,8 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
 
         await subject.pageFinishedLoading(URL.withDomain("test.com"), forTab: tab)
 
-        XCTAssertEqual(nil, pixelvendorDomainFromParameter)
-        XCTAssertEqual("test.com", pixelvendorDomainFromHeuristic)
+        XCTAssertEqual(nil, pixelVendorDomainFromParameter)
+        XCTAssertEqual("test.com", pixelVendorDomainFromHeuristic)
 
     }
 
@@ -85,12 +85,19 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
         AdClickAttributionExemptions.shared.vendorDomains = []
 
         subject.firePixelForResourceIfNeeded(resourceURL: URL(string: "https://bat.bing.com/script.js")!,
-                                             onPage: URL(string: "https://addomain.com")!)
+                                             onPage: URL(string: "https://www.addomain.com")!)
 
         XCTAssertTrue(adClickAllowListUsed)
+
+        // Check navigating to a sub domain does not fire an extra pixel
+        adClickAllowListUsed = false
+        subject.firePixelForResourceIfNeeded(resourceURL: URL(string: "https://bat.bing.com/script.js")!,
+                                             onPage: URL(string: "https://checkout.addomain.com")!)
+
+        XCTAssertFalse(adClickAllowListUsed)
     }
 
-    func testWhen_AdDomainParameterPresent_And_HeuristicCompletes_Then_PixelFiresForNewVendorWithCorrectvendorDomainParams() async {
+    func testWhen_AdDomainParameterPresent_And_HeuristicCompletes_Then_PixelFiresForNewVendorWithCorrectVendorDomainParams() async {
         mockAttributionType = .vendor(name: "addomain.com")
 
         let tab = MockTab(activePage: MockPage())
@@ -98,11 +105,11 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
         await subject.handlePageNavigationToURL(URL.any, inTab: tab)
         await subject.pageFinishedLoading(URL.withDomain("test.com"), forTab: tab)
 
-        XCTAssertEqual("addomain.com", pixelvendorDomainFromParameter)
-        XCTAssertEqual("test.com", pixelvendorDomainFromHeuristic)
+        XCTAssertEqual("addomain.com", pixelVendorDomainFromParameter)
+        XCTAssertEqual("test.com", pixelVendorDomainFromHeuristic)
     }
 
-    func testWhen_NoAdDomainParameter_And_HeuristicCompletes_Then_PixelFiresForNewVendorWithCorrectvendorDomainParams() async {
+    func testWhen_NoAdDomainParameter_And_HeuristicCompletes_Then_PixelFiresForNewVendorWithCorrectVendorDomainParams() async {
         mockAttributionType = .heuristic
 
         let tab = MockTab(activePage: MockPage())
@@ -112,8 +119,8 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
 
         await subject.pageFinishedLoading(URL.withDomain("test.com"), forTab: tab)
 
-        XCTAssertNil(pixelvendorDomainFromParameter)
-        XCTAssertEqual("test.com", pixelvendorDomainFromHeuristic)
+        XCTAssertNil(pixelVendorDomainFromParameter)
+        XCTAssertEqual("test.com", pixelVendorDomainFromHeuristic)
     }
 
     func testWhen_PageNavigationIsToNonAdClickURL_Then_NoExemptionsApplied() async {
@@ -209,8 +216,14 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
     }
 
     func fireAdClickDetected(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?) {
-        pixelvendorDomainFromParameter = vendorDomainFromParameter
-        pixelvendorDomainFromHeuristic = vendorDomainFromHeuristic
+        pixelVendorDomainFromParameter = vendorDomainFromParameter
+        pixelVendorDomainFromHeuristic = vendorDomainFromHeuristic
+    }
+
+    func fireAdClickHeuristicValidation(domainMatches: Bool) {
+    }
+
+    func incrementAdClickPageLoadCounterAndSendIfNeeded() {
     }
 
     func reload() async {
@@ -230,6 +243,10 @@ class AdClickAttributionTests: XCTestCase, AdClickAttributionConfig, BlockerList
 
         func activePage() async -> AdClickAttributionTests.MockPage? {
             return mockActivePage
+        }
+
+        func currentURL() async -> URL? {
+            return nil
         }
     }
 

@@ -25,6 +25,8 @@ public protocol AdClickPixelFiring {
 
     func fireAdClickDetected(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?)
     func fireAdClickAllowListUsed()
+    func fireAdClickHeuristicValidation(domainMatches: Bool)
+    func incrementAdClickPageLoadCounterAndSendIfNeeded()
 
 }
 
@@ -49,10 +51,24 @@ public class DefaultAdClickPixelFiring: AdClickPixelFiring {
 
     }
 
-    let pixel: Pixel
+    private let pixel: Pixel
+
+    private let pageLoadsPixel = AggregatePixel(pixelName: .adClickAttributedPageLoads,
+                                                pixelParameterName: PixelParameters.adClickAttributedPageLoadsCount,
+                                                sendInterval: isDebugBuild ? 60.0 : 24.hours)
 
     public init(pixel: Pixel = Statistics.Dependencies.shared.pixel) {
         self.pixel = pixel
+
+        Task {
+            await pageLoadsPixel.sendIfNeeded()
+        }
+    }
+
+    public func incrementAdClickPageLoadCounterAndSendIfNeeded() {
+        Task {
+            await pageLoadsPixel.incrementAndSendIfNeeded()
+        }
     }
 
     public func fireAdClickDetected(vendorDomainFromParameter: String?, vendorDomainFromHeuristic: String?) {
@@ -85,6 +101,16 @@ public class DefaultAdClickPixelFiring: AdClickPixelFiring {
     public func fireAdClickAllowListUsed() {
         os_log("ACA fireAdClickAllowListUsed", log: generalLog, type: .debug)
         pixel.fire(.adClickActive)
+    }
+
+    public func fireAdClickHeuristicValidation(domainMatches: Bool) {
+        os_log("ACA fireAdClickHeuristicValidation %{public}s", log: generalLog, type: .debug,
+               domainMatches ? "match" : "mismatch")
+        if domainMatches {
+            pixel.fire(.adClickHeuristicValidationMatch)
+        } else {
+            pixel.fire(.adClickHeuristicValidationMismatch)
+        }
     }
 
 }

@@ -35,8 +35,6 @@ public struct AdClickAttributionFeature {
 
     public struct LinkFormat: Decodable {
         public let url: String
-        public let parameterName: String?
-        public let parameterValue: String?
         public let adDomainParameterName: String?
 
         // https://app.asana.com/0/481882893211075/1202389492148020/f
@@ -45,19 +43,10 @@ public struct AdClickAttributionFeature {
             guard let host = url.host,
                   "\(host)\(url.path)" == self.url else { return false }
 
-            if let parameterName = parameterName {
-                if let parameterValue = parameterValue,
-                   url.getParameter(named: parameterName) == parameterValue {
-                    return true
-                } else if url.getParameter(named: parameterName) != nil {
-                    return true
-                }
-            }
-
-            if let adDomainParameterName = adDomainParameterName {
-                if url.getParameter(named: adDomainParameterName) != nil {
-                    return true
-                }
+            if let adDomainParameterName = adDomainParameterName,
+               url.getParameter(named: adDomainParameterName) != nil {
+                // also returns true if present but blank
+                return true
             }
 
             return false
@@ -102,45 +91,36 @@ public struct DefaultAdClickAttributionConfig: AdClickAttributionConfig {
     let linkFormatsJSON =
 """
 [
- {
-   "url": "duckduckgo.com/y.js",
-   "parameterName": "u3",
-   "adDomainParameterName": "ad_domain",
-   "desc": "SERP Ads"
- },
- {
-   "url": "www.search-company.site/y.js",
-   "parameterName": "u3",
-   "adDomainParameterName": "ad_domain",
-   "desc": "Test Domain"
- },
- {
-   "url": "www.search-company.example/y.js",
-   "parameterName": "u3",
-   "adDomainParameterName": "ad_domain",
-   "desc": "Test Domain"
- },
- {
-   "url": "links.duckduckgo.com/m.js",
-   "parameterName": "dsl",
-   "parameterValue": "1",
-   "adDomainParameterName": "ad_domain",
-   "desc": "Shopping Ads"
- },
- {
-   "url": "www.search-company.site/m.js",
-   "parameterName": "dsl",
-   "parameterValue": "1",
-   "adDomainParameterName": "ad_domain",
-   "desc": "Test Domain"
- },
- {
-   "url": "www.search-company.example/m.js",
-   "parameterName": "dsl",
-   "parameterValue": "1",
-   "adDomainParameterName": "ad_domain",
-   "desc": "Test Domain"
- },
+    {
+        "url": "duckduckgo.com/y.js",
+        "adDomainParameterName": "ad_domain",
+        "desc": "SERP Ads"
+    },
+    {
+        "url": "www.search-company.site/y.js",
+        "adDomainParameterName": "ad_domain",
+        "desc": "Test Domain"
+    },
+    {
+        "url": "www.search-company.example/y.js",
+        "adDomainParameterName": "ad_domain",
+        "desc": "Test Domain"
+    },
+    {
+        "url": "links.duckduckgo.com/m.js",
+        "adDomainParameterName": "ad_domain",
+        "desc": "Shopping Ads"
+    },
+    {
+        "url": "www.search-company.site/m.js",
+        "adDomainParameterName": "ad_domain",
+        "desc": "Test Domain"
+    },
+    {
+        "url": "www.search-company.example/m.js",
+        "adDomainParameterName": "ad_domain",
+        "desc": "Test Domain"
+    }
 ]
 """
 
@@ -200,10 +180,16 @@ fileprivate extension URL {
 
 }
 
-fileprivate extension Int {
+extension TLD {
 
-    var hours: TimeInterval {
-        return Double(self) * 60 * 60
+    public static let shared = TLD()
+
+}
+
+public extension URL {
+
+    var eTLDPlus1Host: String? {
+        TLD.shared.eTLDplus1(host)
     }
 
 }

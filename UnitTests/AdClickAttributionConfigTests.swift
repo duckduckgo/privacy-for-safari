@@ -27,39 +27,22 @@ class AdClickAttributionConfigTests: XCTestCase {
         XCTAssertTrue(subject.resourceIsOnAllowlist(URL(string: "https://bat.bing.com/y.js")!))
     }
 
-    // swiftlint:disable line_length
     func testAttributionTypeDetection() {
 
         let tests: [String: AttributionType] = [
-            "https://example.com/y.js?ad_domain=test.com": .none, // does not match host + path part
-            "https://duckduckgo.com/y.js?u3=x": .heuristic, // no ad_domain
-            "https://duckduckgo.com/y.js?u3=x&ad_domain=test.com": .vendor(name: "test.com"), // ad_domain present
-            "https://www.search-company.site/y.js?u3=x": .heuristic, // no ad_domain
 
-            // From https://www.search-company.site/shared/testCases.json
-            // Ad 1
-            "https://www.search-company.site/y.js?eddgt=nothing&rut=else&u3=foo&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D1": .heuristic,
+            "https://duckduckgo.com/y.js?ad_domain=&foo=&bar=": .heuristic,
+            "https://duckduckgo.com/y.js?ad_domain=example.com&foo=&bar=": .vendor(name: "example.com"),
+            "https://duckduckgo.com/y.js?ad_domain=&foo=&bar=&u3=xyz": .heuristic,
+            "https://duckduckgo.com/y.js?foo=&bar=&u3=xyz": .none,
+            "https://duckduckgo.com/y.js?foo=&bar=": .none,
 
-            // Ad 2
-            "https://www.search-company.site/m.js?iurl=foo&ivu=foo&sfexp=0&shopping=1&spld=foo&styp=entitydetails&dsl=1&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D2": .heuristic,
+            "https://links.duckduckgo.com/m.js?ad_domain=&foo=&bar=": .heuristic,
+            "https://links.duckduckgo.com/m.js?ad_domain=example.com&foo=&bar=": .vendor(name: "example.com"),
+            "https://links.duckduckgo.com/m.js?ad_domain=&foo=&bar=&u3=xyz": .heuristic,
+            "https://links.duckduckgo.com/m.js?foo=&bar=&u3=xyz": .none,
+            "https://links.duckduckgo.com/m.js?foo=&bar=": .none
 
-            // Ad 3
-            "https://www.search-company.site/y.js?eddgt=nothing&rut=else&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D3": .none,
-
-            // Ad 4
-            "https://www.search-company.site/m.js?iurl=foo&ivu=foo&sfexp=0&shopping=1&spld=foo&styp=entitydetails&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D4": .none,
-
-            // Ad 5
-            "https://www.search-company.site/y.js?ad_domain=&eddgt=nothing&rut=else&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D5": .heuristic,
-
-            // Ad 6
-            "https://www.search-company.site/m.js?ad_domain=&iurl=foo&ivu=foo&sfexp=0&shopping=1&spld=foo&styp=entitydetails&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D6": .heuristic,
-
-            // Ad 7
-            "https://www.search-company.site/y.js?ad_domain=www.publisher-company.site&eddgt=nothing&rut=else&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D7": .vendor(name: "publisher-company.site"),
-
-            // Ad 8
-            "https://www.search-company.site/m.js?ad_domain=www.publisher-company.site&iurl=foo&ivu=foo&sfexp=0&shopping=1&spld=foo&styp=entitydetails&u=https%253A%252F%252Fwww.ad-company.site%252Faclick%253Fld%253DldValue%2526u%253DuValue%2526rlid%253DrlidValue%2526vqd%253DvqdValue%2526iurl%253DiurlValue%2526CID%253DCIDValue%2526ID%253D8": .vendor(name: "publisher-company.site")
         ]
 
         tests.forEach { test in
@@ -67,7 +50,6 @@ class AdClickAttributionConfigTests: XCTestCase {
         }
 
     }
-    // swiftlint:enable line_length
 
     func testETLDPlus1() {
         let tests = [

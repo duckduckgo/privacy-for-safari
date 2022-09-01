@@ -18,13 +18,15 @@
 
 import Core
 import Foundation
+import Statistics
 import os
 
-public protocol Tabbing: AnyObject, Equatable {
+public protocol Tabbing: AnyObject, Hashable {
 
     associatedtype Page
 
     func activePage() async -> Page?
+    func currentURL() async -> URL?
 
 }
 
@@ -33,6 +35,8 @@ public protocol AdClickContentBlockerReloading {
     func reload() async
 
 }
+
+private var timerId = 0
 
 public actor AdClickAttribution<Tab: Tabbing> {
 
@@ -53,10 +57,50 @@ public actor AdClickAttribution<Tab: Tabbing> {
         }
     }
 
-    nonisolated public let config: AdClickAttributionConfig
-    
-    private let heuristicTimeoutInterval: TimeInterval
+    class ValidationTimer {
+        let vendorDomain: String
+        let tab: Tab
+        let id: Int
 
+        let work: DispatchWorkItem
+
+        init(vendorDomain: String, tab: Tab, callback: @escaping (Tab) -> Void) {
+            self.vendorDomain = vendorDomain
+            self.tab = tab
+            timerId += 1
+            let id = timerId
+            self.id = id
+
+            let interval = isDebugBuild ? 5.0 : 0.3
+
+            work = DispatchWorkItem {
+                os_log("ValidationTimer fired %d", log: generalLog, type: .debug, id)
+                callback(tab)
+            }
+            DispatchQueue.global().asyncAfter(deadline: .now() + interval, execute: work)
+
+            os_log("ValidationTimer scheduled %d", log: generalLog, type: .debug, id)
+        }
+
+        static func scheduleForVendor(_ vendorDomain: String, inTab tab: Tab, callback: @escaping (Tab) -> Void) -> ValidationTimer {
+            return ValidationTimer(vendorDomain: vendorDomain, tab: tab, callback: callback)
+        }
+
+        func invalidate() {
+            os_log("ValidationTimer invalidated %d", log: generalLog, type: .debug, id)
+            work.cancel()
+        }
+
+        deinit {
+            os_log("ValidationTimer deinit %d", log: generalLog, type: .debug, id)
+        }
+
+    }
+
+    nonisolated public let config: AdClickAttributionConfig
+
+    private let heuristicTimeoutInterval: TimeInterval
+    
     var exemptions = [Exemption]()
     var heuristics = [Heuristic]()
 
@@ -97,6 +141,14 @@ public actor AdClickAttribution<Tab: Tabbing> {
         
     }
 
+    public func incrementAdClickPageLoadCounter() async {
+        pixelFiring.incrementAdClickPageLoadCounterAndSendIfNeeded()
+    }
+
+    nonisolated public func isExemptAllowListResource(_ resourceURL: URL) -> Bool {
+        return config.resourceIsOnAllowlist(resourceURL)
+    }
+
     public func clearExpiredVendors() async {
         if await removeExpiredExemptions() {
             await blockerListManager.update()
@@ -115,6 +167,7 @@ public actor AdClickAttribution<Tab: Tabbing> {
         switch self.config.attributionTypeForURL(url) {
         case .vendor(let name):
             await vendorDetected(name, inTab: tab)
+            self.heuristics.append(Heuristic(tab: tab, vendorDomainFromParameter: name))
 
         case .heuristic:
             self.heuristics.append(Heuristic(tab: tab, vendorDomainFromParameter: nil))
@@ -162,23 +215,45 @@ public actor AdClickAttribution<Tab: Tabbing> {
         os_log("ACA vendorDetected %{public}s", log: generalLog, type: .debug, vendorDomain)
         let isNewVendor = !AdClickAttributionExemptions.shared.containsVendor(vendorDomain)
         self.exemptions.append(Exemption(tab: tab, vendorDomain: vendorDomain, isNewVendor: isNewVendor))
-        self.heuristics.append(Heuristic(tab: tab, vendorDomainFromParameter: vendorDomain))
 
         if isNewVendor {
             await self.updateContentBlockerRules()
         }
     }
 
+    private var timers = [Tab: ValidationTimer]()
+
+    func handleHeuristicValidationFired(_ tab: Tab) {
+        os_log("ValidationTimer fired", log: generalLog, type: .debug)
+        if let timer = timers[tab] {
+            Task {
+                guard let url = await tab.currentURL() else { return }
+                pixelFiring.fireAdClickHeuristicValidation(domainMatches: timer.vendorDomain == url.eTLDPlus1Host)
+            }
+        }
+        self.timers[tab] = nil
+    }
+
     public func pageFinishedLoading(_ url: URL, forTab tab: Tab) async {
         os_log("ACA pageFinishedLoading %{public}s", log: generalLog, type: .debug, url.absoluteString)
+
+        if let timer = timers[tab] {
+            os_log("ValidationTimer rescheduling", log: generalLog, type: .debug)
+            timer.invalidate()
+            timers[tab] = ValidationTimer.scheduleForVendor(timer.vendorDomain, inTab: tab,
+                                                            callback: handleHeuristicValidationFired)
+        }
 
         if let vendorDomain = url.eTLDPlus1Host,
            let heuristic = heuristics.first(where: { $0.tab == tab }) {
 
             if !heuristic.hasExpired(usingInterval: self.heuristicTimeoutInterval) {
+
                 if heuristic.vendorDomainFromParameter == nil {
                     await vendorDetected(vendorDomain, inTab: tab)
                     await updateContentBlockerRules()
+                    os_log("ValidationTimer creating", log: generalLog, type: .debug)
+                    timers[tab] = ValidationTimer.scheduleForVendor(vendorDomain, inTab: tab, callback: handleHeuristicValidationFired)
                 }
             }
 

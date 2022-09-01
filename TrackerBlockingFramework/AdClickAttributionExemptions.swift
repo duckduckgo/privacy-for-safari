@@ -17,6 +17,7 @@
 //
 
 import Foundation
+import os
 
 public class AdClickAttributionExemptions {
 
@@ -25,13 +26,16 @@ public class AdClickAttributionExemptions {
     public internal(set) var allowList = [AdClickAttributionFeature.AllowlistEntry]()
     public internal(set) var vendorDomains = [String]() {
         willSet {
-            var oldDomains = Set<String>(vendorDomains)
+            let oldDomains = Set<String>(vendorDomains)
             let newDomains = Set<String>(newValue)
-            oldDomains.subtract(newDomains)
-            observedVendors.subtract(oldDomains)
+            observedVendors = observedVendors.subtracting(oldDomains.subtracting(newDomains))
         }
     }
-    public internal(set) var observedVendors = Set<String>()
+    public internal(set) var observedVendors = Set<String>() {
+        didSet {
+            os_log("ADA observedVendors = %{public}s", log: generalLog, type: .debug, String(describing: observedVendors))
+        }
+    }
 
     func containsVendor(_ named: String) -> Bool {
         return vendorDomains.contains(named)

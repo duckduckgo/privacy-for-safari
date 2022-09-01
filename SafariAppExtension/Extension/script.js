@@ -29,22 +29,34 @@
     });
     observer.observe({entryTypes: ["resource"]});
 
-    safari.extension.dispatchMessage("userAgent", {
-        "userAgent": navigator.userAgent
-    });
-
     safari.self.addEventListener("message", function(event) {
         if (event.name === "stopCheckingResources") {
             observer.disconnect();
         }
     });
 
-    window.addEventListener("beforeunload", function(event) {
-       safari.extension.dispatchMessage("beforeUnload");
-    });
+    // Only do these in the top level window
+    if (!isBeingFramed()) {
 
-    window.addEventListener('DOMContentLoaded', function() {
-        safari.extension.dispatchMessage("DOMContentLoaded");
-    }, true);
+        safari.extension.dispatchMessage("userAgent", {
+            "userAgent": navigator.userAgent
+        });
+
+        window.addEventListener("beforeunload", function(event) {
+           safari.extension.dispatchMessage("beforeUnload");
+        });
+
+        window.addEventListener('DOMContentLoaded', function() {
+            safari.extension.dispatchMessage("DOMContentLoaded");
+        }, true);
+    }
+
+    // From: https://github.com/duckduckgo/content-scope-scripts/blob/main/src/utils.js#L59-L65
+    function isBeingFramed () {
+        if ('ancestorOrigins' in globalThis.location) {
+            return globalThis.location.ancestorOrigins.length > 0
+        }
+        return globalThis.top !== globalThis
+    }
 
 }) ();

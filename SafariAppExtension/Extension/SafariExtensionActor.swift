@@ -68,7 +68,7 @@ actor SafariExtensionActor {
 
         switch message {
         case .resourceLoaded:
-            await self.handleResourceLoadedMessage(userInfo, onPage: page)
+            await self.handleResourceLoadedMessage(userInfo, onPage: page)        
 
         case .userAgent:
             self.handleUserAgentMessage(userInfo)
@@ -86,6 +86,8 @@ actor SafariExtensionActor {
         guard let url = properties?.url else {
             return
         }
+
+        os_log("SEH handleDOMContentLoadedMessage %{public}s", log: generalLog, type: .debug, url.absoluteString)
 
         let tab = await page.containingTab()
         await SafariTabAddClickAttribution.shared.pageFinishedLoading(url, forTab: tab)
@@ -153,24 +155,32 @@ actor SafariExtensionActor {
         var detectedTrackers = Set<DetectedTracker>()
         var detectedRequests = Set<PageData.DetectedRequest>()
 
-        resources.forEach { resource in
+        for resource in resources {
             guard let url = resource["url"],
                   let resourceUrl = URL(withResource: url, relativeTo: pageUrl) else {
                 return
             }
 
-            // Checks on the URL
             self.deepDetection.check(resource: url, onPage: pageUrl)
-            SafariTabAddClickAttribution.shared.firePixelForResourceIfNeeded(resourceURL: resourceUrl,
-                                                                             onPage: pageUrl)
 
-            // True first party requests should be ignored entirely.
+            let canonicalResourceURL = Dependencies.shared.trackerDataManager.canonicalURL(forUrl: resourceUrl)
+
+            // Only send pixels the first time we see ad click resources.  An ad click resource
+            //  can load a bunch of other resources with the same host so we don't want to over count.
+            if SafariTabAddClickAttribution.shared.isExemptAllowListResource(canonicalResourceURL),
+               !(await DashboardData.shared.hasResourceBeenSeenBefore(canonicalResourceURL, onPage: page, withUrl: pageUrl)) {
+
+                SafariTabAddClickAttribution.shared.firePixelForResourceIfNeeded(resourceURL: canonicalResourceURL, onPage: pageUrl)
+
+                await SafariTabAddClickAttribution.shared.incrementAdClickPageLoadCounter()
+            }
+
+            // For the purposes of reporting, true first party requests should be ignored entirely.
             if isFirstPartyResource(resourceUrl, ofPage: pageUrl) {
                 return
             }
 
             os_log("SEH handleResourceLoadedMessage %{public}s", log: generalLog, type: .debug, resourceUrl.absoluteString)
-            let canonicalResourceURL = Dependencies.shared.trackerDataManager.canonicalURL(forUrl: resourceUrl)
             updateTrackersOrRequests(&detectedTrackers, &detectedRequests,
                                      withResourceURL: canonicalResourceURL,
                                      ofType: resource["type"],

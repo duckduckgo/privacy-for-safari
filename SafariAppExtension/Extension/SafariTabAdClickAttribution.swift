@@ -51,4 +51,10 @@ struct SafariTabAddClickAttribution {
 
 }
 
-extension SFSafariTab: Tabbing { }
+extension SFSafariTab: Tabbing {
+
+    public func currentURL() async -> URL? {
+        return await activePage()?.properties()?.url
+    }
+
+}
