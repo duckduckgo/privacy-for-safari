@@ -442,7 +442,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		379F74FB28CB1CB6003CF254 /* DuckDuckGo Privacy for SafariCI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DuckDuckGo Privacy for SafariCI.entitlements"; sourceTree = "<group>"; };
 		833FACE3232F9585001F1BC9 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		8347D38D23325E13006AB02A /* FireOncePixelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireOncePixelTests.swift; sourceTree = "<group>"; };
 		834E5858232C22B700B43C37 /* SyncStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncStore.swift; sourceTree = "<group>"; };
@@ -755,7 +754,6 @@
 		85417D57226605E60062A081 = {
 			isa = PBXGroup;
 			children = (
-				379F74FB28CB1CB6003CF254 /* DuckDuckGo Privacy for SafariCI.entitlements */,
 				AAC688222865EE2C00D54247 /* README.md */,
 				AAC68823286601A600D54247 /* CONTRIBUTING.md */,
 				85417D62226605E60062A081 /* App */,
