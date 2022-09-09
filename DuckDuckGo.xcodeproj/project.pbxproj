@@ -442,6 +442,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		379F74FD28CB26E0003CF254 /* SafariCI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafariCI.entitlements; sourceTree = "<group>"; };
+		379F74FE28CB26F0003CF254 /* DuckDuckGoCI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuckDuckGoCI.entitlements; sourceTree = "<group>"; };
+		379F74FF28CB2709003CF254 /* ContentBlockerCI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ContentBlockerCI.entitlements; sourceTree = "<group>"; };
 		833FACE3232F9585001F1BC9 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		8347D38D23325E13006AB02A /* FireOncePixelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireOncePixelTests.swift; sourceTree = "<group>"; };
 		834E5858232C22B700B43C37 /* SyncStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncStore.swift; sourceTree = "<group>"; };
@@ -794,6 +797,7 @@
 				8503859722F3041F002259DB /* CircleIndicatorView.swift */,
 				8503859522F2FE28002259DB /* Colours.xcassets */,
 				85417D6D226605E60062A081 /* DuckDuckGo.entitlements */,
+				379F74FE28CB26F0003CF254 /* DuckDuckGoCI.entitlements */,
 				8503859922F332B6002259DB /* ExtensionsStateWatcher.swift */,
 				8540D8F122BBE264009A2FF4 /* HomeSectionViewController.swift */,
 				85417D6C226605E60062A081 /* Info.plist */,
@@ -829,6 +833,7 @@
 				85417D97226762870062A081 /* Info.plist */,
 				8587FD5422C67CD70072F47F /* Localizable.stringsdict */,
 				85417D9C226762870062A081 /* Safari.entitlements */,
+				379F74FD28CB26E0003CF254 /* SafariCI.entitlements */,
 			);
 			path = SafariAppExtension;
 			sourceTree = "<group>";
@@ -839,6 +844,7 @@
 				85417DAD226762E40062A081 /* ContentBlockerRequestHandler.swift */,
 				85417DAF226762E40062A081 /* Info.plist */,
 				85417DB0226762E40062A081 /* ContentBlocker.entitlements */,
+				379F74FF28CB2709003CF254 /* ContentBlockerCI.entitlements */,
 			);
 			path = ContentBlockerExtension;
 			sourceTree = "<group>";
@@ -1970,11 +1976,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/Safari.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = SafariAppExtension/SafariCI.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 34;
-				DEVELOPMENT_TEAM = HKE973VLUW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariAppExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1995,11 +2001,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlocker.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = ContentBlockerExtension/ContentBlockerCI.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 34;
-				DEVELOPMENT_TEAM = HKE973VLUW;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ContentBlockerExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
