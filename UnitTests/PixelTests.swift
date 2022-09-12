@@ -54,8 +54,7 @@ class PixelTests: XCTestCase {
 
         let pixel = DefaultPixel(statisticsStore: store, appVersion: appVersion, apiRequest: { self.apiRequest })
         let expectedParams = ["atb": "v173-2",
-                              "extensionVersion": "1.2.3",
-                              "test": "1"] // test=1 will be added to debug builds - which tests run under
+                              "extensionVersion": "1.2.3"]
         
         pixel.fire(.onboardingGetStartedShown) { _ in
             XCTAssertEqual(expectedParams, self.apiRequest.requests.first?.params)
@@ -77,8 +76,7 @@ class PixelTests: XCTestCase {
         let expectedParams = ["atb": "v173-2",
                               "extensionVersion": "1.2.3",
                               "param1": "value1",
-                              "param2": "value2",
-                              "test": "1"]
+                              "param2": "value2"]
 
         pixel.fire(.onboardingGetStartedShown, withParams: additionalParams) { _ in
             XCTAssertEqual(expectedParams, self.apiRequest.requests.first?.params)
