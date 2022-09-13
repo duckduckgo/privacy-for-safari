@@ -32,29 +32,21 @@ class AggregatePixelTests: XCTestCase {
     }
 
     func test() async throws {
-        pixel = DelayedMockPixel(delay: 1.0)
+        pixel = DelayedMockPixel(delay: 3.0)
         let subject1 = createSubject()
+        await _ = subject1.lastSendDate // set initial send date
+        try? await Task.sleep(nanoseconds: NSEC_PER_SEC * 2) // allow a pixel to be fire
+
         await subject1.incrementAndSendIfNeeded()
-        XCTAssertTrue(pixel.pixels.isEmpty)
+        XCTAssertTrue(pixel.pixels.isEmpty) // Not sent yet as delayed
 
-        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds allows things to fire
-
-        await subject1.sendIfNeeded() // This will wait 5.0 seconds before sending using concurrency to block further calls
-
-        (pixel as? DelayedMockPixel)?.delay = 0.0 // allows subsequent calls to fire instantly
-
-        Task {
-            await subject1.incrementAndSendIfNeeded() // Concurrency will increment the counter but prevent this firing
-        }
-
+        (pixel as? DelayedMockPixel)?.delay = 0.0 // Disable firing delays for subsequent pixels
+        try? await Task.sleep(nanoseconds: NSEC_PER_SEC * 2) // allow another pixel to fire
+        await subject1.incrementAndSendIfNeeded() // will be blocked by concurrency
         XCTAssertEqual(1, pixel.pixels.count)
-        XCTAssertEqual("1", pixel.pixels[0].params?["count"])
 
-        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds allows things to fire again
-        await subject1.incrementAndSendIfNeeded() // Increment again, and try to send which should happen immediately
-
+        try? await Task.sleep(nanoseconds: NSEC_PER_SEC * 2) // allow all firing to finish
         XCTAssertEqual(2, pixel.pixels.count)
-        XCTAssertEqual("2", pixel.pixels[1].params?["count"])
     }
 
     func test_WhenPixelFiredAndIntervalPassesButNoCount_ThenNoPixelFired() async throws {
@@ -62,7 +54,7 @@ class AggregatePixelTests: XCTestCase {
         await subject.sendIfNeeded()
         XCTAssertTrue(pixel.pixels.isEmpty)
 
-        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        try? await Task.sleep(nanoseconds: 2 * NSEC_PER_SEC) // 2 seconds
 
         await subject.sendIfNeeded()
         XCTAssertTrue(pixel.pixels.isEmpty)
@@ -73,7 +65,7 @@ class AggregatePixelTests: XCTestCase {
         await subject1.incrementAndSendIfNeeded()
         XCTAssertTrue(pixel.pixels.isEmpty)
 
-        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        try? await Task.sleep(nanoseconds: 2 * NSEC_PER_SEC) // 2 seconds
 
         let subject2 = createSubject()
         await subject2.incrementAndSendIfNeeded()
@@ -86,7 +78,7 @@ class AggregatePixelTests: XCTestCase {
         await subject.incrementAndSendIfNeeded()
         XCTAssertTrue(pixel.pixels.isEmpty)
 
-        try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        try? await Task.sleep(nanoseconds: 2 * NSEC_PER_SEC) // 2 seconds
 
         await subject.incrementAndSendIfNeeded()
         XCTAssertEqual(1, pixel.pixels.count)
@@ -116,7 +108,10 @@ private class DelayedMockPixel: MockPixel {
     }
 
     override func fire(_ pixel: PixelName, withParams params: [String: String], onComplete: @escaping PixelCompletion) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
+
+        Task {
+            let delayNanos = UInt64(delay * TimeInterval(NSEC_PER_SEC))
+            try? await Task.sleep(nanoseconds: delayNanos)
             super.fire(pixel, withParams: params, onComplete: onComplete)
         }
     }
