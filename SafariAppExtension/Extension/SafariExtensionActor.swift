@@ -117,6 +117,7 @@ actor SafariExtensionActor {
         await self.updateToolbar()
     }
 
+    @MainActor
     private func updateToolbar() async {
         guard let activeWindow = await SFSafariApplication.activeWindow(),
               let toolbarItem = await activeWindow.toolbarItem() else {
