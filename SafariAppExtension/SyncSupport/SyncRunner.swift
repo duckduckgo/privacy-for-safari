@@ -56,27 +56,25 @@ public class SyncRunner {
         if group.wait(timeout: .now() + 30) == .timedOut {
             Statistics.Dependencies.shared.pixel.fire(.debugSyncTimeout)
         }
-        print("1")
-        
+
         if trackerData.newData || tempUnprotectedSitesData.newData {
             os_log("Sync has new data %{public}s %{public}s", log: generalLog, type: .debug,
                    trackerData.newData ? "tracker data" : "",
                    tempUnprotectedSitesData.newData ? "unprotected sites data" : "")
             
-            print("2")
             self.trackerDataManager.load()
             Task {
-                print("3")
                 await self.blockerListManager.update()
-                print("4")
-                try await ContentBlockerExtension.reload()
-                print("5")
+                do {
+                    try await ContentBlockerExtension.reload()
+                } catch {
+                    print(error)
+                }
                 completion(trackerData.success && tempUnprotectedSitesData.success)
             }
             return
         }
         
-        print("6")
         // if either fail, don't store the sync time - we need that data!
         completion(trackerData.success && tempUnprotectedSitesData.success)
     }
