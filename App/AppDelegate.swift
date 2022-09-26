@@ -24,6 +24,8 @@ import SafariServices
 import os
 import ServiceManagement
 
+
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
