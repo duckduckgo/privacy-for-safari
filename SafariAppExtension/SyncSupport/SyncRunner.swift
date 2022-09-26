@@ -67,10 +67,10 @@ public class SyncRunner {
                 await self.blockerListManager.update()
                 do {
                     try await ContentBlockerExtension.reload()
+                    completion(trackerData.success && tempUnprotectedSitesData.success)
                 } catch {
-                    print(error)
+                    completion(false)
                 }
-                completion(trackerData.success && tempUnprotectedSitesData.success)
             }
             return
         }
