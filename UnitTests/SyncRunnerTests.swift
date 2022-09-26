@@ -13,7 +13,7 @@ import XCTest
 
 class SyncRunnerTests: XCTestCase {
     
-    func testWhenServiceReturnsSuccessWithNewDataThenCompletionSucceeds() {
+    func testWhenServiceReturnsSuccessWithNewDataThenCompletionSucceeds() async {
         let expect = expectation(description: "When service succeeds, response in completion is true")
         let testee = SyncRunner(trackerDataService: MockDataService(success: true, newData: true),
                                 tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
@@ -22,10 +22,10 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertTrue(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 5.0, handler: nil)
+        await waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    func testWhenServiceReturnsSuccessWithoutNewDataThenCompletionSucceeds() {
+    func testWhenServiceReturnsSuccessWithoutNewDataThenCompletionSucceeds() async {
         let expect = expectation(description: "When service succeeds, response in completion is true")
         let testee = SyncRunner(trackerDataService: MockDataService(success: true, newData: false),
                                 tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
@@ -34,10 +34,10 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertTrue(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 5.0, handler: nil)
+        await waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    func testWhenReturnsFailureWithoutNewDataThenCompletionFails() {
+    func testWhenReturnsFailureWithoutNewDataThenCompletionFails() async {
         let expect = expectation(description: "When service fails, response in completion is false")
         let testee = SyncRunner(trackerDataService: MockDataService(success: false, newData: false),
                                 tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
@@ -45,10 +45,10 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertFalse(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 5.0, handler: nil)
+        await waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    func testWhenServiceReturnsFailureWithNewDataThenCompletionFails() {
+    func testWhenServiceReturnsFailureWithNewDataThenCompletionFails() async {
         let expect = expectation(description: "When service fails, response in completion is false")
         let testee = SyncRunner(trackerDataService: MockDataService(success: false, newData: true),
                                 tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
@@ -56,7 +56,7 @@ class SyncRunnerTests: XCTestCase {
             XCTAssertFalse(success)
             expect.fulfill()
         }
-        waitForExpectations(timeout: 5.0, handler: nil)
+        await waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     class MockDataService: TrackerDataService, TempUnprotectedSitesDataService {

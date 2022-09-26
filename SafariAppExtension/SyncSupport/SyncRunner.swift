@@ -53,9 +53,9 @@ public class SyncRunner {
         trackerDataService.updateData(completion: trackerData.start())
         tempUnprotectedSitesDataService.updateData(completion: tempUnprotectedSitesData.start())
         
-//        if group.wait(timeout: .now() + 30) == .timedOut {
-//            Statistics.Dependencies.shared.pixel.fire(.debugSyncTimeout)
-//        }
+        if group.wait(timeout: .now() + 30) == .timedOut {
+            Statistics.Dependencies.shared.pixel.fire(.debugSyncTimeout)
+        }
         
         if trackerData.newData || tempUnprotectedSitesData.newData {
             os_log("Sync has new data %{public}s %{public}s", log: generalLog, type: .debug,
