@@ -16,9 +16,7 @@ class SyncRunnerTests: XCTestCase {
     func testWhenServiceReturnsSuccessWithNewDataThenCompletionSucceeds() {
         let expect = expectation(description: "When service succeeds, response in completion is true")
         let testee = SyncRunner(trackerDataService: MockDataService(success: true, newData: true),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
-                                trackerDataManager: MockTrackerDataManager(),
-                                blockerListManager: MockBlockerListManager())
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
         
         testee.sync { success  in
             XCTAssertTrue(success)
@@ -30,9 +28,7 @@ class SyncRunnerTests: XCTestCase {
     func testWhenServiceReturnsSuccessWithoutNewDataThenCompletionSucceeds() {
         let expect = expectation(description: "When service succeeds, response in completion is true")
         let testee = SyncRunner(trackerDataService: MockDataService(success: true, newData: false),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
-                                trackerDataManager: MockTrackerDataManager(),
-                                blockerListManager: MockBlockerListManager())
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
         
         testee.sync { success  in
             XCTAssertTrue(success)
@@ -44,9 +40,7 @@ class SyncRunnerTests: XCTestCase {
     func testWhenReturnsFailureWithoutNewDataThenCompletionFails() {
         let expect = expectation(description: "When service fails, response in completion is false")
         let testee = SyncRunner(trackerDataService: MockDataService(success: false, newData: false),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
-                                trackerDataManager: MockTrackerDataManager(),
-                                blockerListManager: MockBlockerListManager())
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
         testee.sync { success  in
             XCTAssertFalse(success)
             expect.fulfill()
@@ -57,9 +51,7 @@ class SyncRunnerTests: XCTestCase {
     func testWhenServiceReturnsFailureWithNewDataThenCompletionFails() {
         let expect = expectation(description: "When service fails, response in completion is false")
         let testee = SyncRunner(trackerDataService: MockDataService(success: false, newData: true),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
-                                trackerDataManager: MockTrackerDataManager(),
-                                blockerListManager: MockBlockerListManager())
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
         testee.sync { success  in
             XCTAssertFalse(success)
             expect.fulfill()
