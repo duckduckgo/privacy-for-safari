@@ -13,50 +13,58 @@ import XCTest
 
 class SyncRunnerTests: XCTestCase {
     
-    func testWhenServiceReturnsSuccessWithNewDataThenCompletionSucceeds() async {
+    func testWhenServiceReturnsSuccessWithNewDataThenCompletionSucceeds() {
         let expect = expectation(description: "When service succeeds, response in completion is true")
         let testee = SyncRunner(trackerDataService: MockDataService(success: true, newData: true),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
+                                trackerDataManager: MockTrackerDataManager(),
+                                blockerListManager: MockBlockerListManager())
         
         testee.sync { success  in
             XCTAssertTrue(success)
             expect.fulfill()
         }
-        await waitForExpectations(timeout: 5.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    func testWhenServiceReturnsSuccessWithoutNewDataThenCompletionSucceeds() async {
+    func testWhenServiceReturnsSuccessWithoutNewDataThenCompletionSucceeds() {
         let expect = expectation(description: "When service succeeds, response in completion is true")
         let testee = SyncRunner(trackerDataService: MockDataService(success: true, newData: false),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
+                                trackerDataManager: MockTrackerDataManager(),
+                                blockerListManager: MockBlockerListManager())
         
         testee.sync { success  in
             XCTAssertTrue(success)
             expect.fulfill()
         }
-        await waitForExpectations(timeout: 5.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
 
-    func testWhenReturnsFailureWithoutNewDataThenCompletionFails() async {
+    func testWhenReturnsFailureWithoutNewDataThenCompletionFails() {
         let expect = expectation(description: "When service fails, response in completion is false")
         let testee = SyncRunner(trackerDataService: MockDataService(success: false, newData: false),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
+                                trackerDataManager: MockTrackerDataManager(),
+                                blockerListManager: MockBlockerListManager())
         testee.sync { success  in
             XCTAssertFalse(success)
             expect.fulfill()
         }
-        await waitForExpectations(timeout: 5.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    func testWhenServiceReturnsFailureWithNewDataThenCompletionFails() async {
+    func testWhenServiceReturnsFailureWithNewDataThenCompletionFails() {
         let expect = expectation(description: "When service fails, response in completion is false")
         let testee = SyncRunner(trackerDataService: MockDataService(success: false, newData: true),
-                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true))
+                                tempUnprotectedSitesDataService: MockDataService(success: true, newData: true),
+                                trackerDataManager: MockTrackerDataManager(),
+                                blockerListManager: MockBlockerListManager())
         testee.sync { success  in
             XCTAssertFalse(success)
             expect.fulfill()
         }
-        await waitForExpectations(timeout: 5.0, handler: nil)
+        waitForExpectations(timeout: 5.0, handler: nil)
     }
     
     class MockDataService: TrackerDataService, TempUnprotectedSitesDataService {
