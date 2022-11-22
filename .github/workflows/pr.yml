@@ -36,7 +36,7 @@ jobs:
     - name: Check out the code
       uses: actions/checkout@v3
 
-    - name: Select Xcode 14.1
+    - name: Select Xcode
       run: sudo xcode-select -s /Applications/Xcode_14.1.app/Contents/Developer
 
     - name: Build and test
