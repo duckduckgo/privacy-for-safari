@@ -21,8 +21,8 @@ import XCTest
 @testable import TrackerBlocking
 @testable import TrackerRadarKit
 
-/// This is subject to change once known trackers are available to the app.
 // swiftlint:disable type_body_length
+/// This is subject to change once known trackers are available to the app.
 class TrackerDetectionTests: XCTestCase {
 
     struct TestCase: Codable {

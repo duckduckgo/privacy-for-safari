@@ -128,7 +128,7 @@ actor SafariExtensionActor {
         guard let activePage = await activeWindow.activeTab()?.activePage(),
               let properties = await activePage.properties(),
               let url = properties.url else {
-            await SafariExtensionViewController.shared.dismissPopover()
+            SafariExtensionViewController.shared.dismissPopover()
             toolbarItem.setImage(ToolbarIcon.currentIcon)
             return
         }
