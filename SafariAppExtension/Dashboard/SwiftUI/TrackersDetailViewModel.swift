@@ -64,7 +64,6 @@ class TrackersDetailViewModel: ObservableObject {
         blockedEntities = EntityDetailsModel.entityDetailsFromTrackers(pageData.blockedTrackers)
     }
 
-    // swiftlint:disable function_body_length
     func updateState() {
         guard let pageData = pageData, !isNewTab else { return }
 
@@ -132,6 +131,5 @@ class TrackersDetailViewModel: ObservableObject {
         }
 
     }
-    // swiftlint:enable function_body_length
 
 }

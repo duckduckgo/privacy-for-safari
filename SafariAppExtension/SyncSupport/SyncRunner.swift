@@ -56,7 +56,7 @@ public class SyncRunner {
         if group.wait(timeout: .now() + 30) == .timedOut {
             Statistics.Dependencies.shared.pixel.fire(.debugSyncTimeout)
         }
-        
+
         if trackerData.newData || tempUnprotectedSitesData.newData {
             os_log("Sync has new data %{public}s %{public}s", log: generalLog, type: .debug,
                    trackerData.newData ? "tracker data" : "",
@@ -65,8 +65,12 @@ public class SyncRunner {
             self.trackerDataManager.load()
             Task {
                 await self.blockerListManager.update()
-                try await ContentBlockerExtension.reload()
-                completion(trackerData.success && tempUnprotectedSitesData.success)
+                do {
+                    try await ContentBlockerExtension.reload()
+                    completion(trackerData.success && tempUnprotectedSitesData.success)
+                } catch {
+                    completion(false)
+                }
             }
             return
         }

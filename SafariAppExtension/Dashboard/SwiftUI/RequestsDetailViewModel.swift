@@ -156,7 +156,6 @@ class RequestsDetailViewModel: ObservableObject {
 
     }
 
-    // swiftlint:disable function_body_length
     func updateState() {
         guard let pageData = pageData, !isNewTab else { return }
 
@@ -224,7 +223,6 @@ class RequestsDetailViewModel: ObservableObject {
         }
 
     }
-    // swiftlint:enable function_body_length
 
 }
 
