@@ -1,22 +1,25 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "ddgLogo-1.pdf"
+      "filename" : "Logo-Horizontal-Registered.svg",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "filename" : "ddgLogo-2.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "filename" : "Logo-Horizontal-Registered-Dark.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }
