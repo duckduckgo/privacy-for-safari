@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="AfP-Og-hqd">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="AfP-Og-hqd">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -164,6 +164,10 @@
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxl-lN-A6s">
                                 <rect key="frame" x="27" y="442" width="140" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="MCg-XH-0eb"/>
+                                    <constraint firstAttribute="width" constant="140" id="dv5-wg-zLq"/>
+                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LogoHorizontalText" id="dhZ-2E-Eae"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UET-kF-jZx">
@@ -483,7 +487,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LogoHorizontalText" width="140" height="38"/>
+        <image name="LogoHorizontalText" width="2000" height="551"/>
         <image name="OnboardingOpen" width="160" height="108"/>
         <image name="ScreenshotExtensions" width="800" height="270"/>
         <image name="ScreenshotSearchEngine" width="800" height="230"/>

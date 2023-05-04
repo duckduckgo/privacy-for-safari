@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -745,11 +745,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rKT-0T-Bla">
-                                <rect key="frame" x="268" y="323" width="154" height="122"/>
+                                <rect key="frame" x="268" y="322" width="154" height="123"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="OnboardingLogo" id="ei6-Rw-d6d"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ok5-Tf-GTo">
-                                <rect key="frame" x="249" y="302" width="193" height="13"/>
+                                <rect key="frame" x="249" y="301" width="193" height="13"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="P R I V A C Y   E S S E N T I A L S  1 . 0" id="H7j-Jt-dzE">
                                     <font key="font" metaFont="systemHeavy" size="10"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -757,7 +757,7 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJI-1H-589">
-                                <rect key="frame" x="91" y="233" width="508" height="46"/>
+                                <rect key="frame" x="91" y="232" width="508" height="46"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rZP-Y1-M6U">
                                     <rect key="frame" x="0.0" y="0.0" width="508" height="46"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -797,7 +797,7 @@
                                 </scroller>
                             </scrollView>
                             <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="y39-xW-L0p">
-                                <rect key="frame" x="135" y="102" width="420" height="89"/>
+                                <rect key="frame" x="135" y="101" width="420" height="89"/>
                                 <view key="contentView" id="ZhB-tg-FZD">
                                     <rect key="frame" x="1" y="1" width="418" height="87"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -910,7 +910,7 @@
                                 <color key="fillColor" name="HomeScreenFill"/>
                             </box>
                             <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="lHt-jp-tUY">
-                                <rect key="frame" x="135" y="54" width="420" height="49"/>
+                                <rect key="frame" x="135" y="53" width="420" height="49"/>
                                 <view key="contentView" id="IVi-6S-oql">
                                     <rect key="frame" x="1" y="1" width="418" height="47"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -958,7 +958,7 @@
                                 <color key="fillColor" name="HomeScreenFill"/>
                             </box>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-5a-asi">
-                                <rect key="frame" x="564" y="65" width="25" height="25"/>
+                                <rect key="frame" x="564" y="64" width="25" height="25"/>
                                 <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SSc-Dd-hfP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1077,7 +1077,7 @@
         <image name="ExtensionActive" width="14" height="14"/>
         <image name="ExtensionInactive" width="14" height="14"/>
         <image name="FeedbackSent" width="140" height="98"/>
-        <image name="OnboardingLogo" width="154" height="122"/>
+        <image name="OnboardingLogo" width="154" height="123"/>
         <image name="RemoveEntry" width="24" height="24"/>
         <image name="SearchExtension" width="14" height="14"/>
         <namedColor name="HomeEssentialsStateEnabled">
