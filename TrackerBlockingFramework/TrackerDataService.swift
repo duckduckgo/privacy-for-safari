@@ -29,7 +29,7 @@ public protocol TrackerDataService {
 public class DefaultTrackerDataService: TrackerDataService {
 
     struct Paths {
-        static let tds = "/trackerblocking/v3/apple-tds.json"
+        static let tds = "/trackerblocking/v5/current/extension-safari-tds.json"
     }
     
     private let apiRequest: APIRequest.Factory
