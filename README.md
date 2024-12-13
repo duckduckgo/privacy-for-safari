@@ -1,30 +1,13 @@
-# DuckDuckGo Privacy for Safari
+# DuckDuckGo Safari Extension
 
-## Building
-Requires Xcode 11 and macOS 10.15 or better.
+## Project status
+This project is now archived. 
 
-Open the project in Xcode then build and run the DuckDuckGo scheme.
+## Download DuckDuckGo app
+For a more protected browsing experience that blocks creepy trackers, targeted ads, cookie pop-ups, and more, download the DuckDuckGo app for macOS from the [DuckDuckGo app page](https://duckduckgo.com/app).
 
-### SwiftLint
-We use [SwiftLint](https://github.com/realm/SwiftLint) for enforcing Swift style and conventions, so you'll need to [install it](https://github.com/realm/SwiftLint#installation).
+Switch to DuckDuckGo Search
+If you prefer to stay in Safari, you can still improve your privacy by setting DuckDuckGo as your default search engine. Follow our easy [step-by-step guide](https://duckduckgo.com/duckduckgo-help-pages/change-default-search-engine/safari/).
 
-### Fonts
-We use Proxima Nova fonts which are proprietary and cannot be committed to source control, see [fonts](https://github.com/duckduckgo/privacy-essentials-safari/tree/develop/fonts/licensed). 
-
-## Cleaning up
-
-***CAUTION** - this is a destructive process.  Please be comfortable with the contents of `deleteApp.sh` before running it.*
-
-To competely remove the app and any files it creates:
-
-* Disable the extension in Safari's Extension Preferences pane. 
-* Run the `./deleteApp.sh` script.
-
-## Contribute
-Please refer to [contributing](CONTRIBUTING.md).
-
-## Discuss
-Contact us at https://duckduckgo.com/feedback if you have feedback, questions or want to chat.  You can also use the feedback form embedded within the macOS app - to do so open the app and select "Send Feedback".
-
-## License
-DuckDuckGo Privacy for Safari is distributed under the Apache 2.0 [license](https://github.com/duckduckgo/privacy-essentials-safari/blob/master/LICENSE).
+## Source code
+Explore the [source for our macOS app](https://github.com/duckduckgo/macos-browser).
